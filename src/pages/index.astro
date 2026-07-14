@@ -85,7 +85,7 @@ const schemas = [
       <canvas class="prismCanvas" aria-hidden="true"></canvas>
       <div class="prismField" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <header class="siteHeader" data-site-header>
-        <a class="logo" href="#home" aria-label="PrysmNexus home">
+        <a class="logo" href="#home" aria-label="PrysmNexus home" translate="no">
           <span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span>
           <span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span>
         </a>
@@ -124,10 +124,10 @@ const schemas = [
 
     <section class="about" id="about">
       <div class="aboutShowcase">
-        <div class="aboutVisual" data-reveal="clip"><Image src={aboutImage} alt="Marketing team collaborating around a tablet" widths={[560, 760, 960]} sizes="(max-width: 760px) 100vw, 44vw" format="webp" quality={84} loading="lazy" /></div>
+        <div class="aboutVisual" data-reveal="clip"><Image src={aboutImage} alt="Marketing team collaborating around a tablet" widths={[560, 760, 960, 1200]} sizes="(max-width: 760px) 100vw, (max-width: 1100px) 40vw, 636px" format="webp" quality={92} loading="lazy" /></div>
         <div class="aboutContent">
           <div class="eyebrow" data-reveal="line">About Us</div>
-          <h2 data-reveal="title">We help brands grow faster with connected marketing strategies.</h2>
+          <h2 data-reveal="title">We help brands grow faster with powerful digital marketing strategies.</h2>
           <div class="aboutMetrics" data-reveal="up">
             <article class="experienceMetric">
               <img class="metricMark" src="/prysmnexus-logo.png" alt="" width="1254" height="1254" loading="lazy" />
@@ -148,8 +148,12 @@ const schemas = [
           </div>
           <div class="mission aboutMission" data-reveal="up">
             <Image class="missionBackdrop" src={serviceImage} alt="" widths={[640, 900]} sizes="(max-width: 760px) 100vw, 48vw" format="webp" quality={66} loading="lazy" />
-            <div class="tabs" role="tablist" aria-label="About PrysmNexus"><button class="active" type="button" role="tab" aria-selected="true" data-mission-tab="0">Our Mission</button><button type="button" role="tab" aria-selected="false" data-mission-tab="1">Our Vision</button><button type="button" role="tab" aria-selected="false" data-mission-tab="2">Our Goal</button></div>
-            <div class="missionCopy" data-mission-copy><p>Our mission is to empower businesses with clear strategies, data-driven insights, and practical solutions that drive sustainable growth, improve performance, and create lasting value in an ever-changing competitive market.</p></div>
+            <div class="tabs" role="tablist" aria-label="About PrysmNexus">
+              <button class="active" id="about-tab-mission" type="button" role="tab" aria-selected="true" aria-controls="about-panel" tabindex="0" data-mission-tab="0">Our Mission</button>
+              <button id="about-tab-vision" type="button" role="tab" aria-selected="false" aria-controls="about-panel" tabindex="-1" data-mission-tab="1">Our Vision</button>
+              <button id="about-tab-goal" type="button" role="tab" aria-selected="false" aria-controls="about-panel" tabindex="-1" data-mission-tab="2">Our Goal</button>
+            </div>
+            <div class="missionCopy" id="about-panel" role="tabpanel" aria-labelledby="about-tab-mission" aria-live="polite" tabindex="0" data-mission-copy><p>Our mission is to empower businesses with clear strategies, data-driven insights, and practical solutions that drive sustainable growth, improve performance, and create lasting value in an ever-changing competitive market.</p></div>
           </div>
           <p class="aboutSummary" data-reveal="up">PrysmNexus brings strategy, creativity, and analytics together so your brand, content, campaigns, and search presence move in the same direction.</p>
           <a class="gradientButton magnetic" href="#services" data-reveal="up">Know About Us <b>↗</b></a>
@@ -197,7 +201,85 @@ const schemas = [
       </div>
     </section>
 
-    <section class="whyChoose" aria-labelledby="why-choose-title">
+    <section class="geoSection systemSection" id="method">
+      <header class="systemHeader">
+        <div>
+          <div class="eyebrow" data-reveal="line">Our Growth System</div>
+          <h2 data-reveal="title">Three systems.<br /><span>One direction.</span></h2>
+        </div>
+        <p data-reveal="up">We align how your business looks, attracts demand, and earns trust—so every channel reinforces the same brand.</p>
+      </header>
+      <div class="systemBento">
+        <article class="bentoCard bentoCard--marquee" data-reveal="up">
+          <div class="bentoMarqueeInner">
+            <h3>Services We Deliver</h3>
+            <div class="marqueeTrack">
+              <div class="marqueeRow">
+                <span>Positioning</span><span>Identity</span><span>Messaging</span><span>Social media</span><span>Paid media</span><span>Lead journeys</span><span>Content strategy</span><span>Analytics</span><span>Brand audit</span><span>Video production</span><span>Email marketing</span><span>Conversion optimization</span><span>Positioning</span><span>Identity</span><span>Messaging</span><span>Social media</span><span>Paid media</span><span>Lead journeys</span><span>Content strategy</span><span>Analytics</span><span>Brand audit</span><span>Video production</span><span>Email marketing</span><span>Conversion optimization</span>
+              </div>
+              <div class="marqueeRow marqueeRow--reverse">
+                <span>SEO</span><span>Local search</span><span>Reputation</span><span>Technical SEO</span><span>Keyword research</span><span>Link building</span><span>Google Business Profile</span><span>Review management</span><span>Local citations</span><span>Schema markup</span><span>Core Web Vitals</span><span>SEO</span><span>Local search</span><span>Reputation</span><span>Technical SEO</span><span>Keyword research</span><span>Link building</span><span>Google Business Profile</span><span>Review management</span><span>Local citations</span><span>Schema markup</span><span>Core Web Vitals</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="bentoCard bentoCard--featured systemCard" data-reveal="card" style="--accent:#f10b16">
+          <div class="systemCardTop"><span class="systemNumber">01</span><b class="systemLabel">Brand</b></div>
+          <h3>Become unmistakable.</h3>
+          <p>Make the business clear, credible, and recognizable.</p>
+          <ul><li>Positioning</li><li>Identity</li><li>Messaging</li></ul>
+          <div class="systemSignals"><small>Measured by</small><strong>Consistency · Recall · Engagement</strong></div>
+        </article>
+        <article class="bentoCard bentoCard--dark bentoCard--stat" data-reveal="up">
+          <span class="bentoStatIcon" aria-hidden="true">✦</span>
+          <strong data-count="500" data-suffix="+">0</strong>
+          <small>Campaigns Delivered</small>
+        </article>
+        <article class="bentoCard bentoCard--dark bentoCard--avatars" data-reveal="up">
+          <div class="avatarStack">
+            <span>P</span>
+            <span>N</span>
+            <span>G</span>
+            <span>+</span>
+          </div>
+          <div class="avatarMeta">
+            <span class="avatarCount">62+</span>
+            <span class="avatarStars" aria-label="5 out of 5 stars">★★★★★</span>
+            <small>Happy clients worldwide</small>
+          </div>
+          <div class="avatarStat">
+            <strong data-count="98" data-suffix="%">0</strong>
+            <p>Clients stay for our quality and results.</p>
+          </div>
+        </article>
+        <article class="bentoCard bentoCard--demand systemCard" data-reveal="card" style="--accent:#ff6b4a">
+          <div class="systemCardTop"><span class="systemNumber">02</span><b class="systemLabel">Demand</b></div>
+          <h3>Turn attention into action.</h3>
+          <p>Create qualified enquiries through connected campaigns.</p>
+          <ul><li>Social media</li><li>Paid media</li><li>Lead journeys</li></ul>
+          <div class="systemSignals"><small>Measured by</small><strong>Lead quality · Cost per lead · Conversions</strong></div>
+        </article>
+        <article class="bentoCard bentoCard--discovery systemCard" data-reveal="card" style="--accent:#f8c34d">
+          <div class="systemCardTop"><span class="systemNumber">03</span><b class="systemLabel">Discovery</b></div>
+          <h3>Be found and trusted.</h3>
+          <p>Strengthen visibility wherever customers are searching.</p>
+          <ul><li>SEO</li><li>Local search</li><li>Reputation</li></ul>
+          <div class="systemSignals"><small>Measured by</small><strong>Visibility · Profile actions · Qualified traffic</strong></div>
+        </article>
+        <article class="bentoCard bentoCard--dark bentoCard--chat" data-reveal="up">
+          <div class="bentoChatHeader">
+            <strong>24/7</strong>
+            <small>Always On Support</small>
+          </div>
+          <div class="chatBubbles">
+            <div class="chatBubble"><span class="chatDot" aria-hidden="true"></span>Hey there!</div>
+            <div class="chatBubble chatBubble--reply"><span class="chatDot" aria-hidden="true"></span>How can we help?</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="whyChoose" id="method" aria-labelledby="why-choose-title">
       <header class="whyChooseHeader">
         <div>
           <div class="eyebrow" data-reveal="line">Why Choose Us</div>
@@ -310,7 +392,7 @@ const schemas = [
       </div>
       <div class="footerRule"></div>
       <div class="footerInfo" data-reveal="up">
-        <a class="logo inverse" href="#home"><span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
+        <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
         <p>Brand, content, demand, and discovery under one accountable team.</p>
         <nav class="footerNav" aria-label="Footer navigation"><a href="#services">Services</a><a href="#method">Method</a><a href="#process">Process</a><a href="#faq">FAQ</a></nav>
         <a class="footerEmail" href="mailto:hello@prysmnexus.agency">hello@prysmnexus.agency</a>
@@ -335,15 +417,13 @@ const schemas = [
       menuButton?.setAttribute("aria-expanded", "false");
       nav.classList.remove("open");
     }));
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !nav?.classList.contains("open")) return;
+      nav.classList.remove("open");
+      menuButton?.setAttribute("aria-expanded", "false");
+      menuButton?.focus();
+    });
 
-    // Spring physics easing
-    const spring = (t: number, b: number, c: number, d: number) => {
-      const p = .5 * Math.PI;
-      return c * Math.sin(t * p / d) * Math.exp(-t * b / d) + b;
-    };
-
-    const easeOutCubic = (t: number) => Math.pow(t, 3);
-    const easeInOutCubic = (t: number) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
     const smoothSpring = (t: number, b: number, c: number, d: number) => {
       const p = .9;
       const a = 2;
@@ -382,43 +462,6 @@ const schemas = [
           return baseDelay + (index * 90 * rhythm) + (proximityFactor * 150);
         };
 
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const item = entry.target as HTMLElement;
-            const revealType = item.dataset.reveal;
-            
-            // Apply natural rhythm-based animation
-            const index = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]")).indexOf(item);
-            const staggerDelay = calculateStagger(item, index);
-            
-            item.style.setProperty('--reveal-delay', `${staggerDelay}ms`);
-            
-            // Apply reveal-specific classes for different animation types
-            item.classList.add("reveal-active");
-            
-            // Stagger children reveals
-            const children = item.querySelectorAll<HTMLElement>(".reveal-child");
-            if (children.length) {
-              children.forEach((child, childIndex) => {
-                child.style.setProperty('--child-delay', `${staggerDelay + (childIndex * 60)}ms`);
-                child.classList.add("reveal-active");
-              });
-            }
-            
-            item.classList.add("is-visible");
-            observer.unobserve(item);
-            
-            if (item.querySelectorAll<HTMLElement>("[data-count]").length) {
-              item.querySelectorAll<HTMLElement>("[data-count]").forEach((counter) => this.animateCounter(counter));
-            }
-            if (item.matches("[data-count]")) this.animateCounter(item);
-          });
-        }, { 
-          threshold: 0.14, 
-          rootMargin: "0px 0px -10%" 
-        });
-
         // Group reveals by type for optimized observation
         const groupedElements = new Map<string, HTMLElement[]>();
         revealItems.forEach((item) => {
@@ -439,6 +482,14 @@ const schemas = [
               const staggerDelay = calculateStagger(item, Array.from(groupedElements.get(type) || []).indexOf(item));
               item.style.setProperty('--reveal-delay', `${staggerDelay}ms`);
               item.classList.add("reveal-active", "is-visible");
+
+              item.querySelectorAll<HTMLElement>("[data-count]").forEach((counter) => this.animateCounter(counter));
+              if (item.matches("[data-count]")) this.animateCounter(item);
+
+              item.querySelectorAll<HTMLElement>(".reveal-child").forEach((child, childIndex) => {
+                child.style.setProperty("--child-delay", `${staggerDelay + childIndex * 60}ms`);
+                child.classList.add("reveal-active");
+              });
               obs.unobserve(item);
             });
           }, { threshold, rootMargin: "0px 0px -5%" });
@@ -458,7 +509,7 @@ const schemas = [
         const tick = (now: number) => {
           const progress = Math.min((now - started) / duration, 1);
           const eased = smoothSpring(progress, startValue, target - startValue, 1);
-          counter.textContent = `${Math.round(eased)}${counter.dataset.suffix ?? ""}`;
+          counter.textContent = `${new Intl.NumberFormat(document.documentElement.lang || "en").format(Math.round(eased))}${counter.dataset.suffix ?? ""}`;
           if (progress < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
@@ -503,18 +554,18 @@ const schemas = [
       }
       
       // Nav link underline position based on scroll
-      const scrollPercentage = progress * 100;
-      navLinks.forEach((link) => {
+      const navPositions = Array.from(navLinks).map((link) => {
         const targetSection = link.getAttribute('href');
         if (targetSection && targetSection !== '#home') {
           const targetElement = document.querySelector(targetSection);
           if (targetElement) {
             const rect = targetElement.getBoundingClientRect();
-            const navPosition = Math.max(0, Math.min(100, ((innerHeight - rect.top) / (innerHeight + rect.height)) * 100));
-            link.style.setProperty('--nav-indicator', `${navPosition}%`);
+            return Math.max(0, Math.min(100, ((innerHeight - rect.top) / (innerHeight + rect.height)) * 100));
           }
         }
+        return 0;
       });
+      navLinks.forEach((link, index) => link.style.setProperty('--nav-indicator', `${navPositions[index]}%`));
     };
     
     addEventListener("scroll", () => {
@@ -529,14 +580,16 @@ const schemas = [
     ];
     const missionTabs = document.querySelectorAll<HTMLButtonElement>("[data-mission-tab]");
     const missionCopy = document.querySelector<HTMLElement>("[data-mission-copy]");
-    missionTabs.forEach((tab) => tab.addEventListener("click", () => {
+    const activateMissionTab = (tab: HTMLButtonElement) => {
       const index = Number(tab.dataset.missionTab ?? 0);
       missionTabs.forEach((item) => {
         const active = item === tab;
         item.classList.toggle("active", active);
         item.setAttribute("aria-selected", String(active));
+        item.tabIndex = active ? 0 : -1;
       });
       if (!missionCopy) return;
+      missionCopy.setAttribute("aria-labelledby", tab.id);
       const swap = () => {
         missionCopy.innerHTML = missionContent[index].map((paragraph) => `<p>${paragraph}</p>`).join("");
       };
@@ -545,7 +598,20 @@ const schemas = [
         swap();
         missionCopy.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 360, easing: "cubic-bezier(.16,1,.3,1)", fill: "forwards" });
       }).catch(swap);
-    }));
+    };
+
+    missionTabs.forEach((tab, tabIndex) => {
+      tab.addEventListener("click", () => activateMissionTab(tab));
+      tab.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const lastIndex = missionTabs.length - 1;
+        const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? lastIndex : event.key === "ArrowRight" ? (tabIndex + 1) % missionTabs.length : (tabIndex - 1 + missionTabs.length) % missionTabs.length;
+        const nextTab = missionTabs[nextIndex];
+        nextTab?.focus();
+        if (nextTab) activateMissionTab(nextTab);
+      });
+    });
 
     document.querySelectorAll<HTMLDetailsElement>(".faq details").forEach((details) => {
       const summary = details.querySelector("summary");
