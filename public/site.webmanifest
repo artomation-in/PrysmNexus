@@ -1,0 +1,10 @@
+{
+  "name": "PrysmNexus",
+  "short_name": "PrysmNexus",
+  "description": "Branding, content, social media, performance marketing, SEO, local search, and reputation support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#171c23",
+  "icons": [{ "src": "/prysmnexus-logo.png", "sizes": "1254x1254", "type": "image/png" }]
+}

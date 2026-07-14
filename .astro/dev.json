@@ -1,0 +1,13 @@
+{
+	"pid": 13372,
+	"port": 4174,
+	"url": "http://127.0.0.1:4174",
+	"urls": {
+		"local": [
+			"http://127.0.0.1:4174/"
+		],
+		"network": []
+	},
+	"background": false,
+	"startedAt": "2026-07-14T06:46:26.787Z"
+}

@@ -1,0 +1,25 @@
+# PrysmNexus
+
+> PrysmNexus is a Hyderabad-based growth marketing agency that brings brand strategy, original content, social media, paid acquisition, SEO, local search, and reputation support under one accountable team.
+
+## Core pages
+
+- [Homepage](/): Brand overview, services, growth system, engagement process, and FAQs.
+- [Full AI-readable overview](/llms-full.txt): Detailed entity, service, method, and measurement information.
+
+## Core services
+
+- Brand Strategy and Identity
+- Content Production
+- Social Media Management
+- Performance Marketing
+- SEO, Local Search, and Reputation Management
+
+## Working approach
+
+PrysmNexus uses three connected systems: brand, demand, and discovery. Engagements move through discovery, coordinated creation, and ongoing improvement against agreed business signals.
+
+## Contact
+
+- Email: hello@prysmnexus.agency
+- Content last reviewed: 2026-07-13

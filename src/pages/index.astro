@@ -1,0 +1,507 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import aboutImage from "../assets/about.jpg";
+import serviceImage from "../assets/service.webp";
+
+const services = [
+  { number: "01", title: "Brand Strategy & Identity", description: "Clear positioning, voice, and visual direction that make your business recognizable and consistent across every customer touchpoint.", bullets: ["Brand positioning", "Visual direction", "Messaging framework", "Campaign toolkit"] },
+  { number: "02", title: "Content Production", description: "Original photography, video, reels, and campaign creatives planned around your brand rather than recycled templates.", bullets: ["Photography and video", "Reels and short-form content", "Creative copy", "Campaign design"] },
+  { number: "03", title: "Social Media Management", description: "A practical content system that keeps your channels active, consistent, and focused on meaningful audience engagement.", bullets: ["Content calendar", "Publishing and page handling", "Community engagement", "Monthly reporting"] },
+  { number: "04", title: "Performance Marketing", description: "Focused Google and Meta campaigns designed to generate qualified enquiries with clear tracking and accountable optimization.", bullets: ["Google and Meta ads", "Lead generation", "Landing-page alignment", "Campaign reporting"] },
+  { number: "05", title: "SEO, Local & Reputation", description: "Search, Google Business Profile, and reputation improvements that help nearby customers find and trust your business.", bullets: ["SEO and local search", "Google Business Profile", "Review management", "Search visibility reporting"] },
+];
+
+const growthSystems = [
+  { number: "01", label: "Brand", headline: "Become unmistakable.", goal: "Make the business clear, credible, and recognizable.", work: ["Positioning", "Identity", "Messaging"], signals: "Consistency · Recall · Engagement" },
+  { number: "02", label: "Demand", headline: "Turn attention into action.", goal: "Create qualified enquiries through connected campaigns.", work: ["Social media", "Paid media", "Lead journeys"], signals: "Lead quality · Cost per lead · Conversions" },
+  { number: "03", label: "Discovery", headline: "Be found and trusted.", goal: "Strengthen visibility wherever customers are searching.", work: ["SEO", "Local search", "Reputation"], signals: "Visibility · Profile actions · Qualified traffic" },
+];
+
+const standards = [
+  { number: "01", title: "Strategic", copy: "Every action connects to a business priority." },
+  { number: "02", title: "Original", copy: "Creative work is built around your brand." },
+  { number: "03", title: "Consistent", copy: "One clear voice across every customer touchpoint." },
+  { number: "04", title: "Responsive", copy: "Fast communication and hands-on attention." },
+  { number: "05", title: "Measurable", copy: "Clear signals show what is creating progress." },
+  { number: "06", title: "Accountable", copy: "One connected team owns the outcome." },
+];
+
+const processSteps = [
+  { number: "01", glyph: "◎", title: "Discover", copy: "Understand the business, audience, current channels, and the outcomes that matter most.", focus: ["Goals and audience", "Brand and channel review", "Priority roadmap"] },
+  { number: "02", glyph: "✦", title: "Create", copy: "Build the strategy, content, campaigns, and search foundations into one coordinated system.", focus: ["Brand direction", "Content and campaigns", "Connected launch plan"] },
+  { number: "03", glyph: "↗", title: "Grow", copy: "Improve performance through reporting, customer response, campaign learning, and search data.", focus: ["Performance reporting", "Ongoing optimization", "Next-step planning"] },
+];
+
+const faqs = [
+  { question: "What does PrysmNexus handle?", answer: "PrysmNexus brings brand strategy, content production, social media, paid advertising, SEO, local search, and reputation support under one accountable team." },
+  { question: "Do you produce original content?", answer: "Yes. Content can include photography, video, reels, campaign creatives, and copy developed around your brand, audience, and business goals." },
+  { question: "Can you manage Google and Meta advertising?", answer: "Yes. Campaign work can cover account setup, audience and creative planning, lead generation, conversion paths, optimization, and reporting." },
+  { question: "How do you improve local visibility?", answer: "We combine local SEO, Google Business Profile improvements, useful website content, and reputation management to strengthen discovery and trust." },
+  { question: "Do you offer fixed packages?", answer: "Scope is tailored to the channels, content volume, campaign needs, and level of ongoing support required. Recommendations are made after a focused discovery review." },
+  { question: "How is performance measured?", answer: "We agree on relevant baselines and report against practical signals such as reach, engagement, qualified leads, search visibility, profile actions, and conversions." },
+];
+
+const siteUrl = (Astro.site ?? Astro.url.origin).toString().replace(/\/$/, "");
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    name: "PrysmNexus",
+    url: `${siteUrl}/`,
+    logo: `${siteUrl}/prysmnexus-logo.png`,
+    description: "PrysmNexus is a Hyderabad-based growth marketing agency combining branding, content production, social media, paid acquisition, SEO, local search, and reputation support.",
+    email: "hello@prysmnexus.agency",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: `${siteUrl}/`,
+    name: "PrysmNexus",
+    publisher: { "@id": `${siteUrl}/#organization` },
+    inLanguage: "en",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${siteUrl}/#service`,
+    name: "PrysmNexus Growth Marketing",
+    url: `${siteUrl}/`,
+    provider: { "@id": `${siteUrl}/#organization` },
+    serviceType: ["Brand Strategy", "Content Production", "Social Media Management", "Performance Marketing", "Search Engine Optimization", "Local Search Optimization", "Reputation Management"],
+    areaServed: "Hyderabad, India",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(({ question, answer }) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="PrysmNexus — Branding & Growth Marketing Agency in Hyderabad"
+  description="PrysmNexus combines brand strategy, original content, social media, performance marketing, SEO, local search, and reputation support under one accountable team."
+  schemas={schemas}
+>
+  <div class="scrollProgress" aria-hidden="true"><span></span></div>
+  <div class="cursorHalo" aria-hidden="true"></div>
+  <main id="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-heading">
+      <canvas class="prismCanvas" aria-hidden="true"></canvas>
+      <div class="prismField" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <header class="siteHeader" data-site-header>
+        <a class="logo" href="#home" aria-label="PrysmNexus home">
+          <span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span>
+          <span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span>
+        </a>
+        <button class="menuButton" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">☰</button>
+        <nav id="primary-nav" aria-label="Primary navigation">
+          <a href="#home">Home</a><a href="#services">Services</a><a href="#about">About</a><a href="#method">Method</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+        </nav>
+        <div class="headerActions"><span class="dash"></span><a class="consult" href="#contact">Free Consultation</a><span class="gridButton" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+      </header>
+      <div class="heroGlow"></div>
+      <h1 class="heroTitle" id="hero-heading"><span class="heroWord"><em>Growth</em></span><strong class="heroWord"><em>Marketing</em></strong><small>Built Around Your Business.</small></h1>
+      <div class="focused" aria-hidden="true"><span>Focused</span></div>
+      <div class="heroCopy" data-reveal="up">
+        <p><strong>PrysmNexus is a Hyderabad-based growth marketing agency</strong> bringing brand strategy, original content, social media, paid campaigns, and search visibility together under one accountable team.</p>
+        <a class="gradientButton" href="#services">Explore Services <b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="capabilityShowcase" aria-label="Core marketing capabilities">
+      <div class="capabilityPanel">
+        {[
+          ["Performance Marketing", "Focused Google and Meta campaigns built to generate qualified enquiries.", "↗", "4.8%"],
+          ["Brand & Content Strategy", "Clear positioning and original content shaped around your audience.", "✦", "35%"],
+          ["One Accountable Team", "Strategy, creative, publishing, and optimization managed together.", "◎", "65.2%"],
+          ["SEO & Local Growth", "Stronger search, Google profile, and reputation signals for discovery.", "⌕", "95.3%"],
+        ].map(([title, text, glyph, photoPosition], index) => (
+          <article class="capabilityCard" data-reveal="up" style={`--reveal-delay:${index * 100}ms;--photo-x:${photoPosition}`}>
+            <div class="capabilityPhoto" aria-hidden="true"><span></span></div>
+            <span class="capabilityIcon" aria-hidden="true"><b>{glyph}</b></span>
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="aboutShowcase">
+        <div class="aboutVisual" data-reveal="clip"><Image src={aboutImage} alt="Marketing team collaborating around a tablet" widths={[560, 760, 960]} sizes="(max-width: 760px) 100vw, 44vw" format="webp" quality={84} loading="lazy" /></div>
+        <div class="aboutContent">
+          <div class="eyebrow" data-reveal="line">About Us</div>
+          <h2 data-reveal="title">We help brands grow faster with connected marketing strategies.</h2>
+          <div class="aboutMetrics" data-reveal="up">
+            <article class="experienceMetric">
+              <img class="metricMark" src="/prysmnexus-logo.png" alt="" width="1254" height="1254" loading="lazy" />
+              <strong data-count="30" data-suffix="+">0</strong>
+              <span>Years Of Working<br />Experience</span>
+            </article>
+            <article class="wide loyaltyMetric">
+              <Image class="metricBackdrop" src={serviceImage} alt="" widths={[520, 760]} sizes="(max-width: 760px) 100vw, 34vw" format="webp" quality={72} loading="lazy" />
+              <strong data-count="28" data-suffix="M">0</strong>
+              <div class="metricAvatars" aria-hidden="true">
+                <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+                <Image src={serviceImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+                <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+                <Image src={serviceImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+              </div>
+              <span>Customer Happiness and Loyalty</span>
+            </article>
+          </div>
+          <div class="mission aboutMission" data-reveal="up">
+            <Image class="missionBackdrop" src={serviceImage} alt="" widths={[640, 900]} sizes="(max-width: 760px) 100vw, 48vw" format="webp" quality={66} loading="lazy" />
+            <div class="tabs" role="tablist" aria-label="About PrysmNexus"><button class="active" type="button" role="tab" aria-selected="true" data-mission-tab="0">Our Mission</button><button type="button" role="tab" aria-selected="false" data-mission-tab="1">Our Vision</button><button type="button" role="tab" aria-selected="false" data-mission-tab="2">Our Goal</button></div>
+            <div class="missionCopy" data-mission-copy><p>Our mission is to empower businesses with clear strategies, data-driven insights, and practical solutions that drive sustainable growth, improve performance, and create lasting value in an ever-changing competitive market.</p></div>
+          </div>
+          <p class="aboutSummary" data-reveal="up">PrysmNexus brings strategy, creativity, and analytics together so your brand, content, campaigns, and search presence move in the same direction.</p>
+          <a class="gradientButton magnetic" href="#services" data-reveal="up">Know About Us <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" aria-label="Working principles"><div class="reviewTrack">{[0, 1].map((set) => <div class="reviewSet" aria-hidden={set === 1 ? "true" : undefined}><div><span>“Make the brand clear.”</span><b>POSITIONING</b></div><div><span>“Create, do not recycle.”</span><b>ORIGINALITY</b></div><div><span>“Connect every channel.”</span><b>CONSISTENCY</b></div><div><span>“Measure what matters.”</span><b>ACCOUNTABILITY</b></div></div>)}</div></section>
+
+    <section class="services servicesShowcase" id="services">
+      <div class="servicesAura" aria-hidden="true"></div>
+      <header class="servicesHeader">
+        <div>
+          <div class="eyebrow light" data-reveal="line">What We Do</div>
+          <h2 data-reveal="title">One team.<br /><span>Every growth lever.</span></h2>
+        </div>
+        <div class="servicesLead" data-reveal="up">
+          <p>Strategy, creative, media, and search—designed as one connected system that moves your brand forward.</p>
+          <a href="#contact">Build your growth system <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <div class="serviceBento">
+        {services.map((service, index) => (
+          <article class:list={["serviceCard", index === 0 && "serviceCardFeatured"]} data-reveal="up" style={`--reveal-delay:${index * 70}ms`}>
+            <div class="serviceCardTop">
+              <span class="serviceNumber">{service.number}</span>
+              <span class="serviceArrow" aria-hidden="true">↗</span>
+            </div>
+            {index === 0 && (
+              <div class="serviceBrandMark" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" />
+              </div>
+            )}
+            <div class="serviceCardBody">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <ul aria-label={`${service.title} capabilities`}>
+                {service.bullets.slice(0, index === 0 ? 4 : 2).map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="geoSection systemSection" id="method">
+      <header class="systemHeader">
+        <div>
+          <div class="eyebrow" data-reveal="line">Our Growth System</div>
+          <h2 data-reveal="title">Three systems.<br /><span>One direction.</span></h2>
+        </div>
+        <p data-reveal="up">We align how your business looks, attracts demand, and earns trust—so every channel reinforces the same brand.</p>
+      </header>
+      <div class="systemGrid">
+        {growthSystems.map((system, index) => (
+          <article class="systemCard" data-reveal="up" style={`--reveal-delay:${index * 90}ms`}>
+            <div class="systemCardTop"><span>{system.number}</span><b>{system.label}</b></div>
+            <h3>{system.headline}</h3>
+            <p>{system.goal}</p>
+            <ul>{system.work.map((item) => <li>{item}</li>)}</ul>
+            <div class="systemSignals"><small>Measured by</small><strong>{system.signals}</strong></div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="clients standardsSection" aria-labelledby="principles-title">
+      <div class="standardsIntro">
+        <div class="eyebrow light" data-reveal="line">Our Standard</div>
+        <h2 id="principles-title" data-reveal="title">The way we work<br />is part of the work.</h2>
+        <p data-reveal="up">Clear thinking, original execution, and accountable delivery at every stage.</p>
+      </div>
+      <div class="standardsGrid" aria-label="Marketing principles">
+        {standards.map((standard, index) => (
+          <article class="standardItem" data-reveal="up" style={`--reveal-delay:${index * 55}ms`}>
+            <span>{standard.number}</span><div><h3>{standard.title}</h3><p>{standard.copy}</p></div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="pricing processSection" id="process">
+      <header class="processHeader">
+        <div><div class="eyebrow" data-reveal="line">Engagement Process</div><h2 data-reveal="title">From clarity<br />to momentum.</h2></div>
+        <p data-reveal="up">A focused three-stage process keeps strategy, execution, and improvement connected.</p>
+      </header>
+      <div class="processTrack">
+        {processSteps.map((step, index) => (
+          <article class:list={["processStep", index === 1 && "featured"]} data-reveal="up" style={`--reveal-delay:${index * 90}ms`}>
+            <div class="processStepTop"><span class="processIcon" aria-hidden="true">{step.glyph}</span>{index === 1 && <small>Core phase</small>}</div>
+            <div class="processStepIntro"><span>Step {step.number}</span><h3>{step.title}</h3><p>{step.copy}</p></div>
+            <div class="processStepDetails"><small>What happens</small><ul>{step.focus.map((item) => <li>{item}</li>)}</ul></div>
+            <a href="#contact">Start this phase <span aria-hidden="true">↗</span></a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="faq faqEditorial" id="faq">
+      <div class="faqShell">
+        <header class="faqIntro">
+          <div class="eyebrow light" data-reveal="line">Frequently Asked Questions</div>
+          <h2 data-reveal="title">A few things worth knowing.</h2>
+          <p data-reveal="up">Clear answers about scope, content, advertising, visibility, and measurement.</p>
+          <a href="mailto:hello@prysmnexus.agency" data-reveal="up">Ask us directly <span aria-hidden="true">↗</span></a>
+        </header>
+        <div class="faqGrid">{faqs.map(({ question, answer }, index) => <details open={index === 0} data-reveal="up" style={`--reveal-delay:${(index % 3) * 60}ms`}><summary>{question}<span aria-hidden="true"></span></summary><div class="faqAnswer"><p>{answer}</p></div></details>)}</div>
+      </div>
+    </section>
+
+    <footer class="editorialFooter" id="contact">
+      <div class="footerGlow" aria-hidden="true"></div>
+      <div class="footerCta">
+        <div><div class="eyebrow light" data-reveal="line">Let’s Work Together</div><h2 data-reveal="title">Ready to make every<br />channel work together?</h2></div>
+        <a class="footerCtaButton magnetic" href="mailto:hello@prysmnexus.agency" data-reveal="up"><span>Start a<br />conversation</span><b aria-hidden="true">↗</b></a>
+      </div>
+      <div class="footerRule"></div>
+      <div class="footerInfo" data-reveal="up">
+        <a class="logo inverse" href="#home"><span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
+        <p>Brand, content, demand, and discovery under one accountable team.</p>
+        <nav class="footerNav" aria-label="Footer navigation"><a href="#services">Services</a><a href="#method">Method</a><a href="#process">Process</a><a href="#faq">FAQ</a></nav>
+        <a class="footerEmail" href="mailto:hello@prysmnexus.agency">hello@prysmnexus.agency</a>
+      </div>
+      <div class="footerMeta"><small>© 2026 PrysmNexus</small><small>Strategy · Creative · Performance · Search</small><a href="#home">Back to top ↑</a></div>
+    </footer>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    root.classList.add("motion-ready");
+
+    const menuButton = document.querySelector<HTMLButtonElement>(".menuButton");
+    const nav = document.querySelector<HTMLElement>("#primary-nav");
+    menuButton?.addEventListener("click", () => {
+      const expanded = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!expanded));
+      nav?.classList.toggle("open", !expanded);
+    });
+    nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      menuButton?.setAttribute("aria-expanded", "false");
+      nav.classList.remove("open");
+    }));
+
+    const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const item = entry.target as HTMLElement;
+          item.classList.add("is-visible");
+          observer.unobserve(item);
+          item.querySelectorAll<HTMLElement>("[data-count]").forEach((counter) => animateCounter(counter));
+          if (item.matches("[data-count]")) animateCounter(item);
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -7%" });
+      revealItems.forEach((item) => revealObserver.observe(item));
+    }
+
+    function animateCounter(counter: HTMLElement) {
+      if (counter.dataset.counted === "true") return;
+      counter.dataset.counted = "true";
+      const target = Number(counter.dataset.count ?? "0");
+      const started = performance.now();
+      const duration = 900;
+      const tick = (now: number) => {
+        const progress = Math.min((now - started) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = `${Math.round(target * eased)}${counter.dataset.suffix ?? ""}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    const progressBar = document.querySelector<HTMLElement>(".scrollProgress span");
+    const header = document.querySelector<HTMLElement>("[data-site-header]");
+    let scrollFrame = 0;
+    const updateScrollEffects = () => {
+      scrollFrame = 0;
+      const maxScroll = document.documentElement.scrollHeight - innerHeight;
+      const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+      progressBar?.style.setProperty("--scroll-progress", String(progress));
+      header?.classList.toggle("is-scrolled", scrollY > 28);
+      root.style.setProperty("--hero-scroll", `${Math.min(scrollY * 0.12, 90)}px`);
+    };
+    addEventListener("scroll", () => {
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollEffects);
+    }, { passive: true });
+    updateScrollEffects();
+
+    const missionContent = [
+      ["Our mission is to empower businesses with clear strategies, data-driven insights, and practical solutions that drive sustainable growth, improve performance, and create lasting value in an ever-changing competitive market."],
+      ["Our vision is to make connected, accountable digital growth accessible to ambitious brands—bringing strategy, creativity, performance, and discovery into one clear system."],
+      ["Our goal is to turn marketing activity into measurable business momentum through focused execution, useful reporting, and continuous improvement across every channel."],
+    ];
+    const missionTabs = document.querySelectorAll<HTMLButtonElement>("[data-mission-tab]");
+    const missionCopy = document.querySelector<HTMLElement>("[data-mission-copy]");
+    missionTabs.forEach((tab) => tab.addEventListener("click", () => {
+      const index = Number(tab.dataset.missionTab ?? 0);
+      missionTabs.forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-selected", String(active));
+      });
+      if (!missionCopy) return;
+      const swap = () => {
+        missionCopy.innerHTML = missionContent[index].map((paragraph) => `<p>${paragraph}</p>`).join("");
+      };
+      if (reduceMotion.matches) return swap();
+      missionCopy.animate([{ opacity: 1, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: 140, fill: "forwards" }).finished.then(() => {
+        swap();
+        missionCopy.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 360, easing: "cubic-bezier(.16,1,.3,1)", fill: "forwards" });
+      }).catch(swap);
+    }));
+
+    document.querySelectorAll<HTMLDetailsElement>(".faq details").forEach((details) => {
+      const summary = details.querySelector("summary");
+      const answer = details.querySelector<HTMLElement>(".faqAnswer");
+      summary?.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        summary.click();
+      });
+      summary?.addEventListener("click", (event) => {
+        if (reduceMotion.matches || !answer) return;
+        event.preventDefault();
+        if (details.open) {
+          const animation = answer.animate([{ height: `${answer.offsetHeight}px`, opacity: 1 }, { height: "0px", opacity: 0 }], { duration: 280, easing: "cubic-bezier(.4,0,.2,1)" });
+          animation.onfinish = () => { details.open = false; answer.style.removeProperty("height"); };
+        } else {
+          details.open = true;
+          const height = answer.offsetHeight;
+          answer.animate([{ height: "0px", opacity: 0 }, { height: `${height}px`, opacity: 1 }], { duration: 380, easing: "cubic-bezier(.16,1,.3,1)" }).onfinish = () => answer.style.removeProperty("height");
+        }
+      });
+    });
+
+    const finePointer = window.matchMedia("(pointer: fine)");
+    const halo = document.querySelector<HTMLElement>(".cursorHalo");
+    if (finePointer.matches && !reduceMotion.matches) {
+      addEventListener("pointermove", (event) => {
+        halo?.style.setProperty("--pointer-x", `${event.clientX}px`);
+        halo?.style.setProperty("--pointer-y", `${event.clientY}px`);
+        halo?.classList.add("is-active");
+      }, { passive: true });
+      document.querySelectorAll<HTMLElement>(".magnetic").forEach((element) => {
+        element.addEventListener("pointermove", (event) => {
+          const rect = element.getBoundingClientRect();
+          element.style.setProperty("--magnet-x", `${(event.clientX - rect.left - rect.width / 2) * 0.12}px`);
+          element.style.setProperty("--magnet-y", `${(event.clientY - rect.top - rect.height / 2) * 0.12}px`);
+        });
+        element.addEventListener("pointerleave", () => {
+          element.style.setProperty("--magnet-x", "0px");
+          element.style.setProperty("--magnet-y", "0px");
+        });
+      });
+      document.querySelectorAll<HTMLElement>(".tiltCard").forEach((card) => {
+        card.addEventListener("pointermove", (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - .5;
+          const y = (event.clientY - rect.top) / rect.height - .5;
+          card.style.setProperty("--tilt-x", `${-y * 3.5}deg`);
+          card.style.setProperty("--tilt-y", `${x * 4.5}deg`);
+          card.style.setProperty("--glow-x", `${(x + .5) * 100}%`);
+          card.style.setProperty("--glow-y", `${(y + .5) * 100}%`);
+        });
+        card.addEventListener("pointerleave", () => {
+          card.style.setProperty("--tilt-x", "0deg");
+          card.style.setProperty("--tilt-y", "0deg");
+        });
+      });
+      const hero = document.querySelector<HTMLElement>(".hero");
+      hero?.addEventListener("pointermove", (event) => {
+        const x = event.clientX / innerWidth - .5;
+        const y = event.clientY / innerHeight - .5;
+        hero.style.setProperty("--pointer-shift-x", `${x * 18}px`);
+        hero.style.setProperty("--pointer-shift-y", `${y * 12}px`);
+      }, { passive: true });
+    }
+
+    const canvas = document.querySelector<HTMLCanvasElement>(".prismCanvas");
+    const hero = document.querySelector<HTMLElement>(".hero");
+    if (canvas && hero && !reduceMotion.matches) {
+      const context = canvas.getContext("2d");
+      const points = Array.from({ length: 24 }, (_, index) => ({
+        x: ((index * 47) % 101) / 100,
+        y: ((index * 73) % 97) / 100,
+        speed: .000045 + (index % 5) * .000009,
+        phase: index * .7,
+      }));
+      let canvasWidth = 0;
+      let canvasHeight = 0;
+      let canvasVisible = true;
+      let canvasFrame = 0;
+      const resizeCanvas = () => {
+        const ratio = Math.min(devicePixelRatio, 1.5);
+        canvasWidth = hero.clientWidth;
+        canvasHeight = hero.clientHeight;
+        canvas.width = Math.round(canvasWidth * ratio);
+        canvas.height = Math.round(canvasHeight * ratio);
+        canvas.style.width = `${canvasWidth}px`;
+        canvas.style.height = `${canvasHeight}px`;
+        context?.setTransform(ratio, 0, 0, ratio, 0, 0);
+      };
+      const drawPrisms = (time: number) => {
+        if (!context || !canvasVisible) { canvasFrame = requestAnimationFrame(drawPrisms); return; }
+        context.clearRect(0, 0, canvasWidth, canvasHeight);
+        const positioned = points.map((point) => ({ x: point.x * canvasWidth + Math.sin(time * point.speed + point.phase) * 22, y: point.y * canvasHeight + Math.cos(time * point.speed * 1.3 + point.phase) * 16 }));
+        for (let index = 0; index < positioned.length; index += 1) {
+          for (let next = index + 1; next < positioned.length; next += 1) {
+            const dx = positioned[index].x - positioned[next].x;
+            const dy = positioned[index].y - positioned[next].y;
+            const distance = Math.hypot(dx, dy);
+            if (distance > 185) continue;
+            context.beginPath();
+            context.moveTo(positioned[index].x, positioned[index].y);
+            context.lineTo(positioned[next].x, positioned[next].y);
+            context.strokeStyle = `rgba(255,35,47,${(1 - distance / 185) * .13})`;
+            context.lineWidth = .7;
+            context.stroke();
+          }
+        }
+        positioned.forEach((point, index) => {
+          context.beginPath();
+          context.arc(point.x, point.y, index % 4 === 0 ? 2.2 : 1.2, 0, Math.PI * 2);
+          context.fillStyle = index % 4 === 0 ? "rgba(255,255,255,.48)" : "rgba(255,28,39,.38)";
+          context.fill();
+        });
+        canvasFrame = requestAnimationFrame(drawPrisms);
+      };
+      new ResizeObserver(resizeCanvas).observe(hero);
+      new IntersectionObserver(([entry]) => { canvasVisible = entry.isIntersecting && !document.hidden; }).observe(hero);
+      document.addEventListener("visibilitychange", () => { canvasVisible = !document.hidden && hero.getBoundingClientRect().bottom > 0; });
+      resizeCanvas();
+      canvasFrame = requestAnimationFrame(drawPrisms);
+      addEventListener("pagehide", () => cancelAnimationFrame(canvasFrame), { once: true });
+    }
+  </script>
+</BaseLayout>

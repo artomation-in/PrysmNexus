@@ -1,0 +1,25 @@
+@import "./site.css";
+
+body{font-family:"Segoe UI Variable Text","Segoe UI",Arial,sans-serif}
+h1,h2,h3,h4,.logo b,.focused,.price,.faq summary{font-family:"Segoe UI Variable Display","Segoe UI",Arial,sans-serif}
+
+:focus-visible{outline:3px solid #f10b16;outline-offset:4px}
+.answerBox{margin:0 0 34px;padding:22px 24px;border-left:4px solid var(--orange);background:#fff;color:#32363d;line-height:1.7;max-width:850px}
+.answerBox strong{color:var(--ink)}
+.geoSection{padding:110px 5vw;background:#fff}
+.geoSection h2,.faq h2{font:600 clamp(44px,5vw,78px)/1.05 Manrope;margin:24px 0 28px;letter-spacing:-3px}
+.geoSection>p{max-width:780px;color:#626168;line-height:1.75}
+.comparison{width:100%;border-collapse:collapse;margin-top:48px;background:#fff}
+.comparison th,.comparison td{padding:20px;text-align:left;border:1px solid var(--line);vertical-align:top}
+.comparison th{background:#171c23;color:#fff}
+.comparison td:first-child{font-weight:700;color:var(--ink)}
+.faq{padding:110px 5vw;background:#f4f4f4}
+.faqGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:52px}
+.faq details{background:#fff;border:1px solid #dedfe2;padding:24px}
+.faq summary{cursor:pointer;font:700 19px Manrope;color:var(--ink)}
+.faq details p{color:#5f6369;line-height:1.7;margin:18px 0 0}
+.sources{margin-top:42px;padding-top:30px;border-top:1px solid var(--line);color:#626168}
+.sources a{text-decoration:underline;text-underline-offset:3px}
+.skipLink{position:fixed;left:12px;top:-80px;z-index:100;background:#fff;color:#111;padding:12px 16px;border:2px solid #f10b16}
+.skipLink:focus{top:12px}
+@media(max-width:760px){.faqGrid{grid-template-columns:1fr}.comparison{display:block;overflow-x:auto}.geoSection,.faq{padding:80px 20px}}

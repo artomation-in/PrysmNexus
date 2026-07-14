@@ -1,0 +1,39 @@
+# PrysmNexus: AI-readable company and service overview
+
+## Entity definition
+
+PrysmNexus is a Hyderabad-based branding and growth marketing agency. It combines strategy, original creative production, social media management, paid acquisition, search visibility, local discovery, and reputation support through one coordinated team.
+
+## Service definitions
+
+Brand Strategy and Identity clarifies positioning, voice, messaging, and visual direction so the business is recognizable across customer touchpoints.
+
+Content Production covers original photography, video, reels, creative copy, and campaign design developed around the brand and its audience.
+
+Social Media Management provides content planning, publishing, page handling, audience engagement, and monthly reporting.
+
+Performance Marketing covers Google and Meta advertising, lead generation, landing-page alignment, campaign optimization, and reporting.
+
+SEO, Local Search, and Reputation Management improves website discovery, Google Business Profile visibility, local relevance, and customer trust signals.
+
+## Growth system
+
+1. Brand: positioning, identity, messaging, and creative direction.
+2. Demand: social media, paid advertising, and lead generation.
+3. Discovery: SEO, local search, Google profile, and reputation support.
+
+## Engagement method
+
+1. Discover the business, audience, current channels, market position, and priority outcomes.
+2. Create the strategy, content, campaigns, and search foundations as one coordinated plan.
+3. Grow through reporting, campaign learning, customer response, content refinement, and search performance.
+
+## Measurement
+
+Relevant measures may include reach, engagement, qualified leads, cost per lead, conversions, search visibility, profile actions, and qualified traffic. Metrics are selected to match the agreed scope and business goals.
+
+## Primary contact
+
+Email: hello@prysmnexus.agency
+
+Last reviewed: 2026-07-13
