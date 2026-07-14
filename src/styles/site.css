@@ -1492,7 +1492,64 @@ nav a:focus-visible:after {
   height: min(940px, 100svh);
   min-height: 780px;
   overflow: hidden;
-  background: radial-gradient(circle at 72% 34%, #1b2028 0, #0a0d12 31%, #040609 70%)
+  background: radial-gradient(circle at 72% 34%, #1b2028 0, #0a0d12 31%, #040609 70%);
+  transform: translate3d(0, var(--hero-scroll) * .5, 0);
+  transition: transform .3s ease-out
+}
+
+.heroPortrait {
+  transform: translate3d(calc(var(--pointer-shift-x) + var(--hero-scroll) * .14), calc(var(--hero-scroll) * -.18), 0) scale(1.015);
+  animation: portraitIn 1.45s .12s var(--ease-out) both;
+  will-change: transform, filter
+}
+
+.heroGlow {
+  animation: glowBreathe 6s ease-in-out infinite;
+  will-change: transform, opacity
+}
+
+.heroCopy {
+  z-index: 2;
+  animation: fadeSlide .9s .72s var(--ease-out) both;
+  transition: transform .3s var(--ease-out)
+}
+
+.heroCopy p {
+  position: relative;
+  padding-left: 22px
+}
+
+.heroCopy p:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .35em;
+  bottom: .35em;
+  width: 2px;
+  background: linear-gradient(var(--red), transparent)
+}
+
+.gradientButton {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(var(--magnet-x, 0), var(--magnet-y, 0), 0)
+}
+
+.gradientButton:before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, .8) 48%, transparent 75%);
+  transform: translateX(-130%);
+  transition: transform .8s var(--ease-out)
+}
+
+.gradientButton:hover:before {
+  transform: translateX(130%)
+}
+
+.gradientButton>* {
+  position: relative
 }
 
 .hero:before {
@@ -1502,7 +1559,28 @@ nav a:focus-visible:after {
   z-index: -1;
   background: linear-gradient(110deg, rgba(241, 11, 22, .12), transparent 42%), repeating-linear-gradient(90deg, transparent 0, transparent calc(12.5% - 1px), rgba(255, 255, 255, .025) 12.5%);
   mask-image: linear-gradient(to bottom, black, transparent 85%);
-  pointer-events: none
+  pointer-events: none;
+  animation: heroPulse 20s ease-in-out infinite
+}
+
+.hero:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .12), transparent 45%, rgba(0, 0, 0, .58));
+  z-index: -1
+}
+
+@keyframes heroPulse {
+  0%, 100% {
+    opacity: .72;
+    filter: brightness(.95)
+  }
+
+  50% {
+    opacity: .88;
+    filter: brightness(1.02)
+  }
 }
 
 .prismCanvas {
