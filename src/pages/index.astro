@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import aboutImage from "../assets/about.jpg";
 import serviceImage from "../assets/service.webp";
+import heroImage from "../assets/hero.png";
+import processBackdrop from "../assets/bg-step-overly.png";
 
 const services = [
   { number: "01", title: "Brand Strategy & Identity", description: "Clear positioning, voice, and visual direction that make your business recognizable and consistent across every customer touchpoint.", bullets: ["Brand positioning", "Visual direction", "Messaging framework", "Campaign toolkit"] },
@@ -12,25 +14,11 @@ const services = [
   { number: "05", title: "SEO, Local & Reputation", description: "Search, Google Business Profile, and reputation improvements that help nearby customers find and trust your business.", bullets: ["SEO and local search", "Google Business Profile", "Review management", "Search visibility reporting"] },
 ];
 
-const growthSystems = [
-  { number: "01", label: "Brand", headline: "Become unmistakable.", goal: "Make the business clear, credible, and recognizable.", work: ["Positioning", "Identity", "Messaging"], signals: "Consistency · Recall · Engagement" },
-  { number: "02", label: "Demand", headline: "Turn attention into action.", goal: "Create qualified enquiries through connected campaigns.", work: ["Social media", "Paid media", "Lead journeys"], signals: "Lead quality · Cost per lead · Conversions" },
-  { number: "03", label: "Discovery", headline: "Be found and trusted.", goal: "Strengthen visibility wherever customers are searching.", work: ["SEO", "Local search", "Reputation"], signals: "Visibility · Profile actions · Qualified traffic" },
-];
-
-const standards = [
-  { number: "01", title: "Strategic", copy: "Every action connects to a business priority." },
-  { number: "02", title: "Original", copy: "Creative work is built around your brand." },
-  { number: "03", title: "Consistent", copy: "One clear voice across every customer touchpoint." },
-  { number: "04", title: "Responsive", copy: "Fast communication and hands-on attention." },
-  { number: "05", title: "Measurable", copy: "Clear signals show what is creating progress." },
-  { number: "06", title: "Accountable", copy: "One connected team owns the outcome." },
-];
-
-const processSteps = [
-  { number: "01", glyph: "◎", title: "Discover", copy: "Understand the business, audience, current channels, and the outcomes that matter most.", focus: ["Goals and audience", "Brand and channel review", "Priority roadmap"] },
-  { number: "02", glyph: "✦", title: "Create", copy: "Build the strategy, content, campaigns, and search foundations into one coordinated system.", focus: ["Brand direction", "Content and campaigns", "Connected launch plan"] },
-  { number: "03", glyph: "↗", title: "Grow", copy: "Improve performance through reporting, customer response, campaign learning, and search data.", focus: ["Performance reporting", "Ongoing optimization", "Next-step planning"] },
+const workProcessSteps = [
+  { number: "01", glyph: "◎", title: "Discover", copy: "We assess your goals, audience, current channels, and market position to understand what the business needs most." },
+  { number: "02", glyph: "≋", title: "Analyze", copy: "We examine brand, content, campaign, and search performance to uncover gaps and practical opportunities." },
+  { number: "03", glyph: "◇", title: "Strategize", copy: "We shape a connected, actionable growth plan aligned with your priorities, resources, and commercial goals." },
+  { number: "04", glyph: "↗", title: "Execute & Optimize", copy: "We launch, measure, learn, and continuously improve the work to build sustainable momentum." },
 ];
 
 const faqs = [
@@ -209,54 +197,94 @@ const schemas = [
       </div>
     </section>
 
-    <section class="geoSection systemSection" id="method">
-      <header class="systemHeader">
+    <section class="whyChoose" aria-labelledby="why-choose-title">
+      <header class="whyChooseHeader">
         <div>
-          <div class="eyebrow" data-reveal="line">Our Growth System</div>
-          <h2 data-reveal="title">Three systems.<br /><span>One direction.</span></h2>
+          <div class="eyebrow" data-reveal="line">Why Choose Us</div>
+          <h2 id="why-choose-title" data-reveal="title">Flexible growth support<br />tailored to your business.</h2>
         </div>
-        <p data-reveal="up">We align how your business looks, attracts demand, and earns trust—so every channel reinforces the same brand.</p>
+        <p data-reveal="up">We combine strategic insight, original execution, and accountable support to build sustainable growth and long-term momentum.</p>
       </header>
-      <div class="systemGrid">
-        {growthSystems.map((system, index) => (
-          <article class="systemCard" data-reveal="up" style={`--reveal-delay:${index * 90}ms`}>
-            <div class="systemCardTop"><span>{system.number}</span><b>{system.label}</b></div>
-            <h3>{system.headline}</h3>
-            <p>{system.goal}</p>
-            <ul>{system.work.map((item) => <li>{item}</li>)}</ul>
-            <div class="systemSignals"><small>Measured by</small><strong>{system.signals}</strong></div>
+
+      <div class="whyChooseLayout">
+        <div class="whyChooseBento">
+          <article class="whyCard whyCapabilities" data-reveal="up">
+            <h3>Capabilities We Bring</h3>
+            <div class="whyRibbon" aria-label="PrysmNexus capabilities">
+              <div class="whyRibbonRow">
+                <span>Brand Strategy</span><span>Content Production</span><span>Social Media</span><span>Performance Marketing</span><span>SEO</span><span>Local Search</span><span>Brand Strategy</span><span>Content Production</span><span>Social Media</span><span>Performance Marketing</span><span>SEO</span><span>Local Search</span>
+              </div>
+              <div class="whyRibbonRow reverse">
+                <span>Reputation</span><span>Campaign Creative</span><span>Lead Journeys</span><span>Analytics</span><span>Messaging</span><span>Video</span><span>Reputation</span><span>Campaign Creative</span><span>Lead Journeys</span><span>Analytics</span><span>Messaging</span><span>Video</span>
+              </div>
+              <div class="whyRibbonRow">
+                <span>Google Ads</span><span>Meta Ads</span><span>Conversion</span><span>Community</span><span>Reporting</span><span>Identity</span><span>Google Ads</span><span>Meta Ads</span><span>Conversion</span><span>Community</span><span>Reporting</span><span>Identity</span>
+              </div>
+            </div>
           </article>
-        ))}
+
+          <article class="whyCard whyProjects" data-reveal="up" style="--reveal-delay:70ms">
+            <div class="whyProjectVisual">
+              <Image src={serviceImage} alt="PrysmNexus consultants reviewing campaign performance" widths={[420, 620]} sizes="(max-width: 820px) 100vw, 30vw" format="webp" quality={82} loading="lazy" />
+              <div><strong data-count="500" data-suffix="+">0</strong><span>Campaigns delivered</span></div>
+            </div>
+            <div class="whyProjectCta"><p>Let’s make great work together.<br /><a href="#contact">Get in touch with us.</a></p><a class="whyPhone" href="#contact" aria-label="Start a consultation">↗</a></div>
+          </article>
+
+          <article class="whyCard whyRetention" data-reveal="up" style="--reveal-delay:100ms">
+            <div class="whyPeople" aria-hidden="true">
+              <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+              <Image src={serviceImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+              <Image src={heroImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+              <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
+              <b>62+</b>
+            </div>
+            <div class="whyRating"><span aria-label="Five star rating">★★★★★</span><small>Happy clients worldwide</small></div>
+            <div class="whyRetentionStat"><strong data-count="98" data-suffix="%">0</strong><p>Clients stay for our quality<br />and measurable results.</p></div>
+          </article>
+
+          <article class="whyCard whySupport" data-reveal="up" style="--reveal-delay:150ms">
+            <div><strong>24/7</strong><span>Always-on support</span></div>
+            <div class="whyChats" aria-label="Responsive client support">
+              <p><i></i><span>Hey there!</span></p>
+              <p><i></i><span>How can we help?</span></p>
+            </div>
+          </article>
+        </div>
+
+        <article class="whyFeature" data-reveal="clip" style="--reveal-delay:110ms">
+          <Image src={heroImage} alt="PrysmNexus creative strategist" widths={[520, 760]} sizes="(max-width: 820px) 100vw, 34vw" format="webp" quality={88} loading="lazy" />
+          <div class="whyFeatureShade"></div>
+          <div class="whyFeatureContent">
+            <div class="whyFeatureTitle"><span aria-hidden="true"><i></i><i></i><i></i></span><h3>Why Choose Us?</h3></div>
+            <p>We deliver connected strategy, creative execution, and measurable results that help your business move faster and smarter.</p>
+            <ul>
+              <li>Data-driven decision making</li>
+              <li>ROI-focused campaigns</li>
+              <li>Experienced creative team</li>
+              <li>Transparent reporting</li>
+              <li>Scalable growth systems</li>
+            </ul>
+          </div>
+          <a href="#contact">Free Consultation <span aria-hidden="true">↗</span></a>
+        </article>
       </div>
     </section>
 
-    <section class="clients standardsSection" aria-labelledby="principles-title">
-      <div class="standardsIntro">
-        <div class="eyebrow light" data-reveal="line">Our Standard</div>
-        <h2 id="principles-title" data-reveal="title">The way we work<br />is part of the work.</h2>
-        <p data-reveal="up">Clear thinking, original execution, and accountable delivery at every stage.</p>
-      </div>
-      <div class="standardsGrid" aria-label="Marketing principles">
-        {standards.map((standard, index) => (
-          <article class="standardItem" data-reveal="up" style={`--reveal-delay:${index * 55}ms`}>
-            <span>{standard.number}</span><div><h3>{standard.title}</h3><p>{standard.copy}</p></div>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="pricing processSection" id="process">
-      <header class="processHeader">
-        <div><div class="eyebrow" data-reveal="line">Engagement Process</div><h2 data-reveal="title">From clarity<br />to momentum.</h2></div>
-        <p data-reveal="up">A focused three-stage process keeps strategy, execution, and improvement connected.</p>
+    <section class="workProcess" id="process" aria-labelledby="process-title">
+      <Image class="workProcessBg" src={processBackdrop} alt="" widths={[1280, 1920, 2560]} sizes="100vw" format="webp" quality={90} loading="lazy" />
+      <div class="workProcessVeil" aria-hidden="true"></div>
+      <header class="workProcessHeader">
+        <div class="eyebrow" data-reveal="line">Work Process</div>
+        <h2 id="process-title" data-reveal="title">Our proven process for consistent<br />marketing success.</h2>
       </header>
-      <div class="processTrack">
-        {processSteps.map((step, index) => (
-          <article class:list={["processStep", index === 1 && "featured"]} data-reveal="up" style={`--reveal-delay:${index * 90}ms`}>
-            <div class="processStepTop"><span class="processIcon" aria-hidden="true">{step.glyph}</span>{index === 1 && <small>Core phase</small>}</div>
-            <div class="processStepIntro"><span>Step {step.number}</span><h3>{step.title}</h3><p>{step.copy}</p></div>
-            <div class="processStepDetails"><small>What happens</small><ul>{step.focus.map((item) => <li>{item}</li>)}</ul></div>
-            <a href="#contact">Start this phase <span aria-hidden="true">↗</span></a>
+      <div class="workProcessSteps">
+        {workProcessSteps.map((step, index) => (
+          <article class="workProcessStep" data-reveal="up" style={`--reveal-delay:${index * 95}ms`}>
+            <span class="workProcessIcon" aria-hidden="true"><b>{step.glyph}</b></span>
+            <div class="workProcessName"><h3>{step.title}</h3><strong>{step.number}</strong></div>
+            <span class="workProcessLine" aria-hidden="true"><i></i></span>
+            <p>{step.copy}</p>
           </article>
         ))}
       </div>
@@ -560,21 +588,6 @@ const schemas = [
           element.style.setProperty("--magnet-y", "0px");
         });
       });
-      document.querySelectorAll<HTMLElement>(".tiltCard").forEach((card) => {
-        card.addEventListener("pointermove", (event) => {
-          const rect = card.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - .5;
-          const y = (event.clientY - rect.top) / rect.height - .5;
-          card.style.setProperty("--tilt-x", `${-y * 3.5}deg`);
-          card.style.setProperty("--tilt-y", `${x * 4.5}deg`);
-          card.style.setProperty("--glow-x", `${(x + .5) * 100}%`);
-          card.style.setProperty("--glow-y", `${(y + .5) * 100}%`);
-        });
-        card.addEventListener("pointerleave", () => {
-          card.style.setProperty("--tilt-x", "0deg");
-          card.style.setProperty("--tilt-y", "0deg");
-        });
-      });
     const hero = document.querySelector<HTMLElement>(".hero");
     const heroPortrait = document.querySelector<HTMLElement>(".heroPortrait");
     const heroGlow = document.querySelector<HTMLElement>(".heroGlow");
@@ -661,7 +674,7 @@ const schemas = [
           point.x = Math.max(0.02, Math.min(0.98, point.x));
           point.y = Math.max(0.02, Math.min(0.98, point.y));
           
-          return { x, y, ...point };
+          return { ...point, x, y };
         });
         
         for (let index = 0; index < positioned.length; index += 1) {
