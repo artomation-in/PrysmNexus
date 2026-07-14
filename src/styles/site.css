@@ -6370,3 +6370,10 @@ html,body{max-width:100%;overflow-x:clip}
 .reviews:after{background:linear-gradient(-90deg,#e15d5e,rgba(225,93,94,0))}
 .reviewSet>div:before{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
 .reviewSet b{background:rgba(255,255,255,.72);color:#681d20}
+
+/* Compact outer spacing for the What We Do section */
+.servicesShowcase{padding-top:24px;padding-bottom:30px}
+
+@media(max-width:760px){
+  .servicesShowcase{padding-top:26px;padding-bottom:30px}
+}
