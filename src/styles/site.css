@@ -6805,3 +6805,26 @@ html,body{max-width:100%;overflow-x:clip}
   box-shadow:none;
   pointer-events:none
 }
+
+/* Softer edge language for Why Choose Us and Case Studies only. */
+.whyChoose .eyebrow,
+.projectShowcase .eyebrow{border-radius:999px}
+.whyChoose .whyCard,
+.whyChoose .whyFeature{border-radius:30px}
+.projectShowcase .projectMedia{border-radius:30px}
+.projectShowcase .projectCategory{border-radius:999px}
+
+@media(max-width:760px){
+  .whyChoose .whyCard,
+  .whyChoose .whyFeature,
+  .projectShowcase .projectMedia{border-radius:22px}
+}
+
+/* Remove the square-looking shadow footprints from these rounded cards. */
+.whyChoose .whyCard,
+.whyChoose .whyFeature,
+.whyChoose .whyCard:hover,
+.whyChoose .whyFeature:hover,
+.projectShowcase .projectMedia{
+  box-shadow:none
+}
