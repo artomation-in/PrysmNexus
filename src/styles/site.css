@@ -6828,3 +6828,100 @@ html,body{max-width:100%;overflow-x:clip}
 .projectShowcase .projectMedia{
   box-shadow:none
 }
+
+/* Proposal-led copy typography: concise, balanced, and editorial. */
+.heroCopy p strong{
+  display:block;
+  margin-bottom:5px;
+  font-weight:750;
+  letter-spacing:-.025em
+}
+.aboutContent h2,
+.servicesHeader h2,
+.whyChooseHeader h2,
+.projectHeader h2{
+  text-wrap:balance
+}
+.aboutContent h2{max-width:20ch}
+.aboutMetrics strong{
+  font-weight:750;
+  letter-spacing:-.055em
+}
+.whyProjectVisual strong,
+.whyRetentionStat strong{
+  font-weight:750;
+  letter-spacing:-.045em
+}
+.whyRating span{
+  color:#fff;
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.015em
+}
+.whySupport strong{font-size:clamp(23px,2vw,29px);letter-spacing:-.035em}
+
+/* The About headline must remain visible even if its reveal observer fires late. */
+.motion-ready .aboutContent h2[data-reveal="title"]{
+  opacity:1;
+  transform:none;
+  clip-path:none;
+  will-change:auto
+}
+
+/* Keep the complete About narrative aligned within the desktop image height. */
+@media(min-width:1101px){
+  .aboutShowcase{margin-bottom:0}
+  .aboutContent{
+    padding-top:0;
+    transform:none
+  }
+  .aboutContent>.eyebrow{
+    top:0;
+    margin-bottom:14px
+  }
+  .aboutContent h2{
+    max-width:none;
+    margin:0 0 28px;
+    font-size:clamp(39px,2.55vw,46px);
+    line-height:1.035;
+    white-space:normal
+  }
+  .aboutMetrics article{min-height:168px}
+  .aboutMission{min-height:205px;padding-bottom:22px}
+  .aboutMission .tabs{margin-bottom:18px}
+  .aboutSummary{margin-top:28px}
+  .aboutContent>.gradientButton{margin-top:20px}
+}
+
+@media(max-width:760px){
+  .aboutContent h2 br{display:none}
+}
+
+/* Reveal safety: only elements explicitly waiting below the viewport may hide. */
+.motion-ready [data-reveal]:not(.reveal-pending){
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  clip-path:inset(0 0 0 0)
+}
+
+/* Align service-card titles, descriptions, and capability pills by row. */
+@media(min-width:761px){
+  .serviceCard:not(.serviceCardFeatured) .serviceCardBody{
+    margin-top:58px
+  }
+  .serviceCard:not(.serviceCardFeatured) h3{
+    min-height:2.2em;
+    margin:0 0 12px
+  }
+}
+
+/* Permanent visibility guarantee: entrance effects must never hide content. */
+.motion-ready [data-reveal],
+.motion-ready .capabilityCard[data-reveal],
+.motion-ready .workProcessStep[data-reveal],
+.motion-ready .processStep[data-reveal]{
+  opacity:1!important;
+  transform:none!important;
+  clip-path:none!important;
+  visibility:visible!important
+}
