@@ -5,6 +5,13 @@ import aboutImage from "../assets/about.jpg";
 import serviceImage from "../assets/service.webp";
 import heroImage from "../assets/hero.png";
 import processBackdrop from "../assets/bg-step-overly.png";
+import whyAnalyticsImage from "../assets/why-analytics.jpg";
+import whyFeatureImage from "../assets/why-feature.jpg";
+import whyTeamImage from "../assets/why-team.jpg";
+import whySupportImage from "../assets/why-support.jpg";
+import projectBrandImage from "../assets/project-brand.jpg";
+import projectSocialImage from "../assets/project-social.jpg";
+import projectContentImage from "../assets/project-content.jpg";
 
 const services = [
   { number: "01", title: "Brand Strategy & Identity", description: "Clear positioning, voice, and visual direction that make your business recognizable and consistent across every customer touchpoint.", bullets: ["Brand positioning", "Visual direction", "Messaging framework", "Campaign toolkit"] },
@@ -12,6 +19,14 @@ const services = [
   { number: "03", title: "Social Media Management", description: "A practical content system that keeps your channels active, consistent, and focused on meaningful audience engagement.", bullets: ["Content calendar", "Publishing and page handling", "Community engagement", "Monthly reporting"] },
   { number: "04", title: "Performance Marketing", description: "Focused Google and Meta campaigns designed to generate qualified enquiries with clear tracking and accountable optimization.", bullets: ["Google and Meta ads", "Lead generation", "Landing-page alignment", "Campaign reporting"] },
   { number: "05", title: "SEO, Local & Reputation", description: "Search, Google Business Profile, and reputation improvements that help nearby customers find and trust your business.", bullets: ["SEO and local search", "Google Business Profile", "Review management", "Search visibility reporting"] },
+];
+
+const projectStudies = [
+  { image: projectBrandImage, category: "Brand / Strategy", title: "Brand Identity Transformation", copy: "A sharper visual and messaging system built for consistent recognition across every channel.", result: "Stronger brand recall", accent: "#e45d5e" },
+  { image: projectSocialImage, category: "Social / Content", title: "Always-On Content Engine", copy: "A practical publishing system that turned scattered activity into clear, consistent audience growth.", result: "Higher engagement", accent: "#ef8d48" },
+  { image: whyAnalyticsImage, category: "Performance / Media", title: "Qualified Lead Campaign", copy: "Focused creative, audience testing, and accountable optimization designed around meaningful enquiries.", result: "Better lead quality", accent: "#d9353a" },
+  { image: projectContentImage, category: "Creative / Production", title: "Campaign Content Studio", copy: "Original campaign visuals and short-form assets designed to keep the brand fresh and recognizable.", result: "Faster production", accent: "#e77248" },
+  { image: whyTeamImage, category: "Integrated / Growth", title: "Connected Growth Programme", copy: "Strategy, content, paid media, and search aligned under one focused plan and reporting rhythm.", result: "One accountable team", accent: "#cc3f46" },
 ];
 
 const workProcessSteps = [
@@ -201,84 +216,6 @@ const schemas = [
       </div>
     </section>
 
-    <section class="geoSection systemSection" id="method">
-      <header class="systemHeader">
-        <div>
-          <div class="eyebrow" data-reveal="line">Our Growth System</div>
-          <h2 data-reveal="title">Three systems.<br /><span>One direction.</span></h2>
-        </div>
-        <p data-reveal="up">We align how your business looks, attracts demand, and earns trust—so every channel reinforces the same brand.</p>
-      </header>
-      <div class="systemBento">
-        <article class="bentoCard bentoCard--marquee" data-reveal="up">
-          <div class="bentoMarqueeInner">
-            <h3>Services We Deliver</h3>
-            <div class="marqueeTrack">
-              <div class="marqueeRow">
-                <span>Positioning</span><span>Identity</span><span>Messaging</span><span>Social media</span><span>Paid media</span><span>Lead journeys</span><span>Content strategy</span><span>Analytics</span><span>Brand audit</span><span>Video production</span><span>Email marketing</span><span>Conversion optimization</span><span>Positioning</span><span>Identity</span><span>Messaging</span><span>Social media</span><span>Paid media</span><span>Lead journeys</span><span>Content strategy</span><span>Analytics</span><span>Brand audit</span><span>Video production</span><span>Email marketing</span><span>Conversion optimization</span>
-              </div>
-              <div class="marqueeRow marqueeRow--reverse">
-                <span>SEO</span><span>Local search</span><span>Reputation</span><span>Technical SEO</span><span>Keyword research</span><span>Link building</span><span>Google Business Profile</span><span>Review management</span><span>Local citations</span><span>Schema markup</span><span>Core Web Vitals</span><span>SEO</span><span>Local search</span><span>Reputation</span><span>Technical SEO</span><span>Keyword research</span><span>Link building</span><span>Google Business Profile</span><span>Review management</span><span>Local citations</span><span>Schema markup</span><span>Core Web Vitals</span>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="bentoCard bentoCard--featured systemCard" data-reveal="card" style="--accent:#f10b16">
-          <div class="systemCardTop"><span class="systemNumber">01</span><b class="systemLabel">Brand</b></div>
-          <h3>Become unmistakable.</h3>
-          <p>Make the business clear, credible, and recognizable.</p>
-          <ul><li>Positioning</li><li>Identity</li><li>Messaging</li></ul>
-          <div class="systemSignals"><small>Measured by</small><strong>Consistency · Recall · Engagement</strong></div>
-        </article>
-        <article class="bentoCard bentoCard--dark bentoCard--stat" data-reveal="up">
-          <span class="bentoStatIcon" aria-hidden="true">✦</span>
-          <strong data-count="500" data-suffix="+">0</strong>
-          <small>Campaigns Delivered</small>
-        </article>
-        <article class="bentoCard bentoCard--dark bentoCard--avatars" data-reveal="up">
-          <div class="avatarStack">
-            <span>P</span>
-            <span>N</span>
-            <span>G</span>
-            <span>+</span>
-          </div>
-          <div class="avatarMeta">
-            <span class="avatarCount">62+</span>
-            <span class="avatarStars" aria-label="5 out of 5 stars">★★★★★</span>
-            <small>Happy clients worldwide</small>
-          </div>
-          <div class="avatarStat">
-            <strong data-count="98" data-suffix="%">0</strong>
-            <p>Clients stay for our quality and results.</p>
-          </div>
-        </article>
-        <article class="bentoCard bentoCard--demand systemCard" data-reveal="card" style="--accent:#ff6b4a">
-          <div class="systemCardTop"><span class="systemNumber">02</span><b class="systemLabel">Demand</b></div>
-          <h3>Turn attention into action.</h3>
-          <p>Create qualified enquiries through connected campaigns.</p>
-          <ul><li>Social media</li><li>Paid media</li><li>Lead journeys</li></ul>
-          <div class="systemSignals"><small>Measured by</small><strong>Lead quality · Cost per lead · Conversions</strong></div>
-        </article>
-        <article class="bentoCard bentoCard--discovery systemCard" data-reveal="card" style="--accent:#f8c34d">
-          <div class="systemCardTop"><span class="systemNumber">03</span><b class="systemLabel">Discovery</b></div>
-          <h3>Be found and trusted.</h3>
-          <p>Strengthen visibility wherever customers are searching.</p>
-          <ul><li>SEO</li><li>Local search</li><li>Reputation</li></ul>
-          <div class="systemSignals"><small>Measured by</small><strong>Visibility · Profile actions · Qualified traffic</strong></div>
-        </article>
-        <article class="bentoCard bentoCard--dark bentoCard--chat" data-reveal="up">
-          <div class="bentoChatHeader">
-            <strong>24/7</strong>
-            <small>Always On Support</small>
-          </div>
-          <div class="chatBubbles">
-            <div class="chatBubble"><span class="chatDot" aria-hidden="true"></span>Hey there!</div>
-            <div class="chatBubble chatBubble--reply"><span class="chatDot" aria-hidden="true"></span>How can we help?</div>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section class="whyChoose" id="method" aria-labelledby="why-choose-title">
       <header class="whyChooseHeader">
         <div>
@@ -307,13 +244,14 @@ const schemas = [
 
           <article class="whyCard whyProjects" data-reveal="up" style="--reveal-delay:70ms">
             <div class="whyProjectVisual">
-              <Image src={serviceImage} alt="PrysmNexus consultants reviewing campaign performance" widths={[420, 620]} sizes="(max-width: 820px) 100vw, 30vw" format="webp" quality={82} loading="lazy" />
+              <Image src={whyAnalyticsImage} alt="Marketing analytics displayed on a laptop" widths={[520, 760, 1040]} sizes="(max-width: 820px) 100vw, 30vw" format="webp" quality={92} loading="lazy" />
               <div><strong data-count="500" data-suffix="+">0</strong><span>Campaigns delivered</span></div>
             </div>
             <div class="whyProjectCta"><p>Let’s make great work together.<br /><a href="#contact">Get in touch with us.</a></p><a class="whyPhone" href="#contact" aria-label="Start a consultation">↗</a></div>
           </article>
 
           <article class="whyCard whyRetention" data-reveal="up" style="--reveal-delay:100ms">
+            <Image class="whyCardPhoto" src={whyTeamImage} alt="" widths={[620, 920]} sizes="(max-width: 680px) 100vw, 34vw" format="webp" quality={88} loading="lazy" />
             <div class="whyPeople" aria-hidden="true">
               <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
               <Image src={serviceImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
@@ -326,6 +264,7 @@ const schemas = [
           </article>
 
           <article class="whyCard whySupport" data-reveal="up" style="--reveal-delay:150ms">
+            <Image class="whyCardPhoto" src={whySupportImage} alt="" widths={[520, 760]} sizes="(max-width: 680px) 100vw, 28vw" format="webp" quality={88} loading="lazy" />
             <div><strong>24/7</strong><span>Always-on support</span></div>
             <div class="whyChats" aria-label="Responsive client support">
               <p><i></i><span>Hey there!</span></p>
@@ -335,7 +274,7 @@ const schemas = [
         </div>
 
         <article class="whyFeature" data-reveal="clip" style="--reveal-delay:110ms">
-          <Image src={heroImage} alt="PrysmNexus creative strategist" widths={[520, 760]} sizes="(max-width: 820px) 100vw, 34vw" format="webp" quality={88} loading="lazy" />
+          <Image src={whyFeatureImage} alt="Creative professional in dramatic red studio light" widths={[620, 920, 1200]} sizes="(max-width: 820px) 100vw, 34vw" format="webp" quality={92} loading="lazy" />
           <div class="whyFeatureShade"></div>
           <div class="whyFeatureContent">
             <div class="whyFeatureTitle"><span aria-hidden="true"><i></i><i></i><i></i></span><h3>Why Choose Us?</h3></div>
@@ -350,6 +289,38 @@ const schemas = [
           </div>
           <a href="#contact">Free Consultation <span aria-hidden="true">↗</span></a>
         </article>
+      </div>
+    </section>
+
+    <section class="projectShowcase" id="projects" aria-labelledby="projects-title">
+      <header class="projectHeader">
+        <div>
+          <div class="eyebrow" data-reveal="line">Case Studies</div>
+          <h2 id="projects-title" data-reveal="title">Our projects that showcase real<br /><span>marketing success.</span></h2>
+        </div>
+        <div class="projectHeaderAction" data-reveal="up">
+          <a class="gradientButton magnetic" href="#contact">View All Projects <b>↗</b></a>
+        </div>
+      </header>
+
+      <div class="projectCarousel" data-project-carousel>
+        <button class="projectArrow projectArrow--prev" type="button" aria-label="View previous project" data-project-prev><span>←</span></button>
+        <div class="projectRail" tabindex="0" aria-label="PrysmNexus case studies" data-project-rail>
+          {projectStudies.map((project, index) => (
+            <article class="projectCard" data-reveal="up" style={`--project-accent:${project.accent};--reveal-delay:${index * 65}ms`}>
+              <a class="projectMedia" href="#contact" aria-label={`Discuss a project like ${project.title}`}>
+                <Image src={project.image} alt="" widths={[540, 760, 1040]} sizes="(max-width: 760px) 86vw, 34vw" format="webp" quality={90} loading="lazy" />
+                <span class="projectCategory">{project.category}</span>
+                <span class="projectOpen" aria-hidden="true">↗</span>
+              </a>
+              <div class="projectCopy"><div><h3>{project.title}</h3><p>{project.copy}</p></div></div>
+            </article>
+          ))}
+        </div>
+        <button class="projectArrow projectArrow--next" type="button" aria-label="View next project" data-project-next><span>→</span></button>
+        <div class="projectDots" aria-label="Choose a project">
+          {projectStudies.map((project, index) => <button type="button" aria-label={`View ${project.title}`} data-project-dot={index}></button>)}
+        </div>
       </div>
     </section>
 
@@ -634,6 +605,94 @@ const schemas = [
         }
       });
     });
+
+    const projectRail = document.querySelector<HTMLElement>("[data-project-rail]");
+    const projectPrevious = document.querySelector<HTMLButtonElement>("[data-project-prev]");
+    const projectNext = document.querySelector<HTMLButtonElement>("[data-project-next]");
+    const projectDots = document.querySelectorAll<HTMLButtonElement>("[data-project-dot]");
+    const projectCarousel = document.querySelector<HTMLElement>("[data-project-carousel]");
+    if (projectRail && projectPrevious && projectNext && projectCarousel && projectDots.length) {
+      const projectStep = () => {
+        const card = projectRail.querySelector<HTMLElement>(".projectCard");
+        const gap = Number.parseFloat(getComputedStyle(projectRail).columnGap || "0");
+        return (card?.offsetWidth ?? projectRail.clientWidth * .85) + gap;
+      };
+      const updateProjectCarousel = () => {
+        const maximum = Math.max(1, projectRail.scrollWidth - projectRail.clientWidth);
+        const activeIndex = Math.min(projectDots.length - 1, Math.max(0, Math.round(projectRail.scrollLeft / projectStep())));
+        projectDots.forEach((dot, index) => {
+          const active = index === activeIndex;
+          dot.classList.toggle("active", active);
+          dot.setAttribute("aria-current", active ? "true" : "false");
+        });
+        projectPrevious.disabled = projectRail.scrollLeft <= 4;
+        projectNext.disabled = projectRail.scrollLeft >= maximum - 4;
+      };
+      projectPrevious.addEventListener("click", () => projectRail.scrollBy({ left: -projectStep(), behavior: reduceMotion.matches ? "auto" : "smooth" }));
+      projectNext.addEventListener("click", () => projectRail.scrollBy({ left: projectStep(), behavior: reduceMotion.matches ? "auto" : "smooth" }));
+      projectDots.forEach((dot, index) => dot.addEventListener("click", () => projectRail.scrollTo({ left: index * projectStep(), behavior: reduceMotion.matches ? "auto" : "smooth" })));
+      projectRail.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        projectRail.scrollBy({ left: event.key === "ArrowRight" ? projectStep() : -projectStep(), behavior: reduceMotion.matches ? "auto" : "smooth" });
+      });
+      let projectScrollFrame = 0;
+      projectRail.addEventListener("scroll", () => {
+        cancelAnimationFrame(projectScrollFrame);
+        projectScrollFrame = requestAnimationFrame(updateProjectCarousel);
+      }, { passive: true });
+      let dragStart = 0;
+      let dragScrollStart = 0;
+      let dragging = false;
+      let suppressProjectClick = false;
+      projectRail.addEventListener("pointerdown", (event) => {
+        if (event.pointerType !== "mouse") return;
+        dragging = true;
+        suppressProjectClick = false;
+        dragStart = event.clientX;
+        dragScrollStart = projectRail.scrollLeft;
+        projectRail.classList.add("is-dragging");
+        projectRail.setPointerCapture(event.pointerId);
+      });
+      projectRail.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+        const distance = event.clientX - dragStart;
+        if (Math.abs(distance) > 5) suppressProjectClick = true;
+        projectRail.scrollLeft = dragScrollStart - distance;
+      });
+      const stopProjectDrag = (event: PointerEvent) => {
+        if (!dragging) return;
+        dragging = false;
+        projectRail.classList.remove("is-dragging");
+        if (projectRail.hasPointerCapture(event.pointerId)) projectRail.releasePointerCapture(event.pointerId);
+      };
+      projectRail.addEventListener("pointerup", stopProjectDrag);
+      projectRail.addEventListener("pointercancel", stopProjectDrag);
+      projectRail.addEventListener("click", (event) => {
+        if (!suppressProjectClick) return;
+        event.preventDefault();
+        suppressProjectClick = false;
+      }, true);
+      let projectAutoTimer = 0;
+      const stopProjectAuto = () => window.clearInterval(projectAutoTimer);
+      const startProjectAuto = () => {
+        stopProjectAuto();
+        if (reduceMotion.matches || document.hidden) return;
+        projectAutoTimer = window.setInterval(() => {
+          const maximum = projectRail.scrollWidth - projectRail.clientWidth;
+          const atEnd = projectRail.scrollLeft >= maximum - projectStep() * .3;
+          projectRail.scrollTo({ left: atEnd ? 0 : projectRail.scrollLeft + projectStep(), behavior: "smooth" });
+        }, 3600);
+      };
+      projectCarousel.addEventListener("pointerenter", stopProjectAuto);
+      projectCarousel.addEventListener("pointerleave", startProjectAuto);
+      projectCarousel.addEventListener("focusin", stopProjectAuto);
+      projectCarousel.addEventListener("focusout", startProjectAuto);
+      document.addEventListener("visibilitychange", () => document.hidden ? stopProjectAuto() : startProjectAuto());
+      new ResizeObserver(updateProjectCarousel).observe(projectRail);
+      updateProjectCarousel();
+      startProjectAuto();
+    }
 
     const finePointer = window.matchMedia("(pointer: fine)");
     const halo = document.querySelector<HTMLElement>(".cursorHalo");
