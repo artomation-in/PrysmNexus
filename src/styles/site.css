@@ -6787,3 +6787,21 @@ html,body{max-width:100%;overflow-x:clip}
   .projectRail{padding-bottom:14px}
   .projectDots{margin-top:4px}
 }
+
+/* Keep the right header connector identical to the left connector. */
+.siteHeader .headerActions{position:relative;overflow:visible}
+.siteHeader .headerActions .dash{
+  position:absolute;
+  z-index:2;
+  top:50%;
+  left:-19px;
+  width:31px;
+  height:4px;
+  margin:0;
+  transform:translateY(-50%);
+  border:0;
+  border-radius:999px;
+  background:#f10b16;
+  box-shadow:none;
+  pointer-events:none
+}
