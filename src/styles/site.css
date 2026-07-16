@@ -6915,6 +6915,136 @@ html,body{max-width:100%;overflow-x:clip}
   }
 }
 
+/* Capability ribbon: a more tactile, editorial surface without changing its content. */
+.whyCapabilities{
+  isolation:isolate;
+  overflow:hidden;
+  border:5px solid rgba(255,255,255,.94);
+  border-radius:30px;
+  background:
+    radial-gradient(circle at 1% 0%,rgba(225,52,56,.16),transparent 26%),
+    radial-gradient(circle at 98% 94%,rgba(238,184,69,.19),transparent 31%),
+    linear-gradient(145deg,#fffdfc 0%,#f3f5f7 51%,#fff9ed 100%);
+  box-shadow:0 20px 46px rgba(25,31,40,.10),inset 0 1px 0 rgba(255,255,255,.95)
+}
+
+.whyCapabilities:before{
+  z-index:5;
+  top:-1px;
+  left:22px;
+  width:170px;
+  height:3px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,#df3039 0%,#f6a08f 58%,rgba(246,160,143,0) 100%);
+  transform:scaleX(1)
+}
+
+.whyCapabilities:after{
+  z-index:0;
+  inset:96px 0 0;
+  opacity:.9;
+  background:
+    linear-gradient(90deg,rgba(244,246,248,.96) 0%,transparent 14%,transparent 86%,rgba(255,247,226,.93) 100%),
+    repeating-linear-gradient(0deg,transparent 0 52px,rgba(43,53,65,.045) 52px 53px)
+}
+
+.whyCapabilities h3{
+  z-index:4;
+  margin:0;
+  padding:34px 34px 22px;
+  color:#171f2c;
+  font-size:clamp(26px,2.2vw,34px);
+  letter-spacing:-.043em
+}
+
+.whyRibbon{
+  position:relative;
+  z-index:3;
+  gap:12px;
+  padding-top:12px;
+  transform:rotate(-1deg) scale(1.025)
+}
+
+.whyRibbon:before,
+.whyRibbon:after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:-12px;
+  bottom:-14px;
+  width:56px;
+  pointer-events:none
+}
+
+.whyRibbon:before{
+  left:0;
+  background:linear-gradient(90deg,rgba(246,247,248,.96),rgba(246,247,248,0))
+}
+
+.whyRibbon:after{
+  right:0;
+  background:linear-gradient(270deg,rgba(255,249,237,.94),rgba(255,249,237,0))
+}
+
+.whyRibbonRow{gap:10px}
+
+.whyRibbonRow span{
+  padding:9px 14px;
+  border:1px solid rgba(42,52,65,.055);
+  border-radius:7px;
+  background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(225,229,234,.84));
+  box-shadow:0 6px 15px rgba(35,43,54,.055),inset 0 1px 0 rgba(255,255,255,.92);
+  color:#59616e;
+  font-size:clamp(13px,1.15vw,15px)
+}
+
+.whyRibbonRow span:before{
+  width:24px;
+  height:24px;
+  border-radius:5px;
+  background:#fff;
+  box-shadow:0 3px 9px rgba(34,42,53,.08);
+  color:#313b47;
+  font-size:9px
+}
+
+.whyCapabilities:hover{
+  border-color:#fff;
+  box-shadow:0 26px 56px rgba(25,31,40,.13),inset 0 1px 0 rgba(255,255,255,.98)
+}
+
+@media(max-width:760px){
+  .whyCapabilities{border-width:4px;border-radius:24px}
+  .whyCapabilities:before{left:16px;width:124px}
+  .whyCapabilities:after{inset:84px 0 0}
+  .whyCapabilities h3{padding:26px 22px 18px;font-size:26px}
+  .whyRibbon{gap:10px;padding-top:10px}
+  .whyRibbonRow span{padding:8px 11px;font-size:13px}
+  .whyRibbonRow span:before{width:21px;height:21px}
+}
+
+/* Keep each moving capability immediately recognisable at a glance. */
+.whyRibbonRow:nth-child(1) span:nth-child(6n + 1):before{content:"✦"}
+.whyRibbonRow:nth-child(1) span:nth-child(6n + 2):before{content:"✎"}
+.whyRibbonRow:nth-child(1) span:nth-child(6n + 3):before{content:"◌"}
+.whyRibbonRow:nth-child(1) span:nth-child(6n + 4):before{content:"↗"}
+.whyRibbonRow:nth-child(1) span:nth-child(6n + 5):before{content:"⌕"}
+.whyRibbonRow:nth-child(1) span:nth-child(6n):before{content:"◎"}
+
+.whyRibbonRow:nth-child(2) span:nth-child(6n + 1):before{content:"★"}
+.whyRibbonRow:nth-child(2) span:nth-child(6n + 2):before{content:"✎"}
+.whyRibbonRow:nth-child(2) span:nth-child(6n + 3):before{content:"→"}
+.whyRibbonRow:nth-child(2) span:nth-child(6n + 4):before{content:"◔"}
+.whyRibbonRow:nth-child(2) span:nth-child(6n + 5):before{content:"✉"}
+.whyRibbonRow:nth-child(2) span:nth-child(6n):before{content:"▶"}
+
+.whyRibbonRow:nth-child(3) span:nth-child(6n + 1):before{content:"G";font-size:8px;font-weight:800}
+.whyRibbonRow:nth-child(3) span:nth-child(6n + 2):before{content:"M";font-size:8px;font-weight:800}
+.whyRibbonRow:nth-child(3) span:nth-child(6n + 3):before{content:"↻"}
+.whyRibbonRow:nth-child(3) span:nth-child(6n + 4):before{content:"◉"}
+.whyRibbonRow:nth-child(3) span:nth-child(6n + 5):before{content:"▤"}
+.whyRibbonRow:nth-child(3) span:nth-child(6n):before{content:"◇"}
+
 /* Compact editorial rhythm: final typography and alignment refinement. */
 :root{
   --pn-section-y:clamp(52px,5vw,74px);
@@ -7030,6 +7160,116 @@ body{letter-spacing:-.006em}
 
 @media(max-width:760px){
   .heroTitle small{margin-top:14px;margin-left:10px}
+}
+
+/* Refined energetic motion system.  Only pending elements animate into view;
+   restored, zoomed, and already-visible content remains immediately readable. */
+:root{
+  --motion-rate:1;
+  --scroll-energy:0;
+  --reveal-duration:580ms;
+  --motion-quick:220ms
+}
+
+.motion-ready [data-reveal]{
+  transition:
+    opacity var(--reveal-duration) var(--pn-ease),
+    transform var(--reveal-duration) var(--pn-ease),
+    clip-path var(--reveal-duration) var(--pn-ease)!important;
+  transition-delay:var(--reveal-delay,0ms)!important
+}
+.motion-ready [data-reveal="up"].reveal-pending{opacity:0;transform:translate3d(0,34px,0)}
+.motion-ready [data-reveal="title"].reveal-pending{opacity:0;transform:translate3d(0,28px,0);clip-path:inset(0 0 100% 0)}
+.motion-ready [data-reveal="clip"].reveal-pending{opacity:0;transform:scale(.975);clip-path:inset(6% 4% round 12px)}
+.motion-ready [data-reveal="line"].reveal-pending{opacity:0;transform:translate3d(-18px,0,0)}
+.motion-ready [data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0) scale(1);clip-path:inset(0 0 0 0)}
+
+/* Reactions stay short and crisp even as long-running effects speed up. */
+.capabilityCard,.serviceCard,.whyCard,.whyFeature,.projectMedia,.workProcessStep,.faqEditorial details,.proFooterAction{
+  transition-duration:var(--motion-quick)!important
+}
+
+@media(prefers-reduced-motion:no-preference){
+  .capabilityCard.is-visible .capabilityPhoto{
+    animation:pnCapabilityFloat 6.8s ease-in-out infinite alternate
+  }
+  .aboutMetrics.is-visible article:after{
+    background-size:180% 100%;
+    animation:pnMetricSheen 6.4s ease-in-out infinite alternate
+  }
+  .aboutMission.is-visible:after{
+    background-size:100% 150%;
+    animation:pnMissionBreathe 7.2s ease-in-out infinite alternate
+  }
+  .serviceCard.is-visible:after{
+    animation:pnCardOrbit 7.5s ease-in-out infinite alternate
+  }
+  .whyCard.is-visible .whyProjectVisual:after{
+    animation:pnProjectLight 6.5s ease-in-out infinite alternate
+  }
+  .projectCard.is-visible .projectCategory:before{
+    animation:pnStatusPulse 2.8s ease-in-out infinite
+  }
+  .projectCard.is-visible .projectMedia:after{
+    animation:pnProjectLight 7s ease-in-out infinite alternate
+  }
+  .workProcessStep.is-visible .workProcessIcon{
+    animation:pnStepPulse 4.4s ease-in-out infinite alternate
+  }
+  .faqEditorial details.is-visible summary span{
+    animation:pnFaqPulse 4.8s ease-in-out infinite alternate
+  }
+  .proFooterAction.is-visible b{
+    animation:pnCtaPulse 4.4s ease-in-out infinite alternate
+  }
+}
+
+@keyframes pnCapabilityFloat{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+@keyframes pnMetricSheen{from{background-position:0 50%}to{background-position:100% 50%}}
+@keyframes pnMissionBreathe{from{background-position:50% 0;filter:brightness(1)}to{background-position:50% 100%;filter:brightness(1.12)}}
+@keyframes pnCardOrbit{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-10px,-8px,0) scale(1.06)}}
+@keyframes pnProjectLight{from{opacity:.72}to{opacity:1}}
+@keyframes pnStatusPulse{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--project-accent),transparent 78%)}50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--project-accent),transparent 100%)}}
+@keyframes pnStepPulse{from{box-shadow:0 10px 26px rgba(2,7,6,.18),0 0 0 0 rgba(255,255,255,.18)}to{box-shadow:0 14px 30px rgba(2,7,6,.25),0 0 0 7px rgba(255,255,255,0)}}
+@keyframes pnFaqPulse{from{border-color:#444b55}to{border-color:rgba(241,75,85,.72)}}
+@keyframes pnCtaPulse{from{box-shadow:0 0 0 0 rgba(255,255,255,.16)}to{box-shadow:0 0 0 9px rgba(255,255,255,0)}}
+
+/* The JavaScript controller adjusts playback rates while scrolling. */
+.is-scrolling .clientMarqueeTrack,
+.is-scrolling .whyRibbonRow,
+.is-scrolling .workProcessBg,
+.is-scrolling .workProcess:before,
+.is-scrolling .proFooterRule span,
+.is-scrolling .capabilityShowcase:before,
+.is-scrolling .about .eyebrow,
+.is-scrolling .servicesShowcase .eyebrow,
+.is-scrolling .whyChoose .eyebrow,
+.is-scrolling .projectShowcase .eyebrow,
+.is-scrolling .workProcess .eyebrow,
+.is-scrolling .faqEditorial .eyebrow,
+.is-scrolling .editorialFooter .eyebrow{
+  filter:saturate(1.06)
+}
+
+@media(prefers-reduced-motion:reduce){
+  .motion-ready [data-reveal],
+  .motion-ready [data-reveal].reveal-pending,
+  .motion-ready [data-reveal].is-visible{
+    opacity:1!important;
+    transform:none!important;
+    clip-path:none!important;
+    transition:none!important
+  }
+  .capabilityCard.is-visible .capabilityPhoto,
+  .aboutMetrics.is-visible article:after,
+  .aboutMission.is-visible:after,
+  .serviceCard.is-visible:after,
+  .whyCard.is-visible .whyProjectVisual:after,
+  .projectCard.is-visible .projectCategory:before,
+  .projectCard.is-visible .projectMedia:after,
+  .workProcessStep.is-visible .workProcessIcon,
+  .faqEditorial details.is-visible summary span,
+  .proFooterAction.is-visible b{animation:none!important}
 }
 
 /* Photographic Work Process background treatment. */
@@ -7475,17 +7715,6 @@ body{letter-spacing:-.006em}
 @media(prefers-reduced-motion:reduce){
   .proFooterRule span{animation:none!important;transform:none}
   .proFooterAction:hover,.proFooterAction:hover b,.proFooterLinks a:hover,.proFooterBottom a:hover span{transform:none}
-}
-
-/* Permanent visibility guarantee: entrance effects must never hide content. */
-.motion-ready [data-reveal],
-.motion-ready .capabilityCard[data-reveal],
-.motion-ready .workProcessStep[data-reveal],
-.motion-ready .processStep[data-reveal]{
-  opacity:1!important;
-  transform:none!important;
-  clip-path:none!important;
-  visibility:visible!important
 }
 
 /* 2026 final rhythm pass: unified typography, spacing, and alignment. */

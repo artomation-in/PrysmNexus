@@ -12,6 +12,7 @@ import whySupportImage from "../assets/why-support.jpg";
 import projectBrandImage from "../assets/project-brand.jpg";
 import projectSocialImage from "../assets/project-social.jpg";
 import projectContentImage from "../assets/project-content.jpg";
+import prysmNexusLogo from "../assets/prysmnexus-logo.png";
 
 const services = [
   { number: "01", title: "Strategic Branding", description: "Sharp positioning, a clear voice, and a consistent visual direction designed to make your business recognizable and memorable.", bullets: ["Brand positioning", "Visual identity", "Messaging framework", "Campaign toolkit"] },
@@ -107,7 +108,7 @@ const schemas = [
       <div class="prismField" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <header class="siteHeader" data-site-header>
         <a class="logo" href="#home" aria-label="PrysmNexus home" translate="no">
-          <span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span>
+          <span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[64, 96, 128]} sizes="(max-width: 760px) 48px, 62px" format="webp" quality={90} loading="eager" /></span>
           <span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span>
         </a>
         <button class="menuButton" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">☰</button>
@@ -151,7 +152,7 @@ const schemas = [
           <h2 data-reveal="title">We help brands grow faster with<br />powerful digital marketing strategies.</h2>
           <div class="aboutMetrics" data-reveal="up">
             <article class="experienceMetric">
-              <img class="metricMark" src="/prysmnexus-logo.png" alt="" width="1254" height="1254" loading="lazy" />
+              <Image class="metricMark" src={prysmNexusLogo} alt="" widths={[96, 144, 192]} sizes="100px" format="webp" quality={90} loading="lazy" />
               <strong data-count="348" data-suffix="K+">0</strong>
               <span>Content Views<br />Generated</span>
             </article>
@@ -207,7 +208,7 @@ const schemas = [
             {index === 0 && (
               <div class="serviceBrandMark" aria-hidden="true">
                 <span></span><span></span><span></span>
-                <img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" />
+                <Image src={prysmNexusLogo} alt="" widths={[96, 144, 192]} sizes="112px" format="webp" quality={90} loading="lazy" />
               </div>
             )}
             <div class="serviceCardBody">
@@ -404,7 +405,7 @@ const schemas = [
 
         <div class="proFooterGrid" data-reveal="up">
           <div class="proFooterBrand">
-            <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
+            <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[64, 96, 128]} sizes="62px" format="webp" quality={90} loading="lazy" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
             <p>Strategy, creative, performance, and discovery—managed by one focused Hyderabad team.</p>
             <span class="proFooterLocation"><i></i>Hyderabad · India</span>
           </div>
@@ -441,6 +442,7 @@ const schemas = [
   <script>
     const root = document.documentElement;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const getMotionRate = () => Number.parseFloat(getComputedStyle(root).getPropertyValue("--motion-rate")) || 1;
     root.classList.add("motion-ready");
 
     const menuButton = document.querySelector<HTMLButtonElement>(".menuButton");
@@ -497,7 +499,7 @@ const schemas = [
 
         // Stagger calculator for rhythmic reveals
         const calculateStagger = (item: HTMLElement, index: number): number => {
-          const baseDelay = 80;
+          const baseDelay = 36;
           const revealType = item.dataset.reveal;
           const typeVariation = {
             'up': .8, 'title': 1.2, 'clip': 1, 'line': .6, 'row': 1.1
@@ -509,7 +511,8 @@ const schemas = [
           const viewportHeight = window.innerHeight;
           const proximityFactor = Math.max(0, 1 - distance / (viewportHeight + 200));
           
-          return baseDelay + (index * 90 * rhythm) + (proximityFactor * 150);
+          const authoredDelay = Number.parseFloat(item.style.getPropertyValue("--reveal-delay")) || 0;
+          return Math.min(360, baseDelay + authoredDelay * .34 + (index * 46 * rhythm) + (proximityFactor * 36));
         };
 
         // Group reveals by type for optimized observation
@@ -531,6 +534,7 @@ const schemas = [
               const item = entry.target as HTMLElement;
               const staggerDelay = calculateStagger(item, Array.from(groupedElements.get(type) || []).indexOf(item));
               item.style.setProperty('--reveal-delay', `${staggerDelay}ms`);
+              item.style.setProperty('--reveal-duration', `${Math.round(580 / getMotionRate())}ms`);
               item.classList.remove("reveal-pending");
               item.classList.add("reveal-active", "is-visible");
 
@@ -543,10 +547,29 @@ const schemas = [
               });
               obs.unobserve(item);
             });
-          }, { threshold, rootMargin: "0px 0px -5%" });
+          }, { threshold, rootMargin: "0px 0px -9%" });
           
           elements.forEach((element) => observer.observe(element));
         });
+
+        // A direct anchor jump can place the start of a section in view while
+        // its lower cards sit just outside an item observer threshold. Reveal
+        // that section as a compact sequence so it never looks partially empty.
+        const sectionObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const pendingItems = Array.from(entry.target.querySelectorAll<HTMLElement>("[data-reveal].reveal-pending"));
+            pendingItems.forEach((item, index) => {
+              item.style.setProperty("--reveal-delay", `${32 + index * 38}ms`);
+              item.style.setProperty("--reveal-duration", `${Math.round(580 / getMotionRate())}ms`);
+              item.classList.remove("reveal-pending");
+              item.classList.add("reveal-active", "is-visible");
+              item.querySelectorAll<HTMLElement>("[data-count]").forEach((counter) => this.animateCounter(counter));
+            });
+            obs.unobserve(entry.target);
+          });
+        }, { threshold: .08, rootMargin: "0px 0px -8%" });
+        document.querySelectorAll<HTMLElement>("main > section, main > footer").forEach((section) => sectionObserver.observe(section));
       }
 
       animateCounter(counter: HTMLElement) {
@@ -554,7 +577,7 @@ const schemas = [
         counter.dataset.counted = "true";
         const target = Number(counter.dataset.count ?? "0");
         const started = performance.now();
-        const duration = 950;
+        const duration = Math.round(680 / getMotionRate());
         const startValue = Number(counter.textContent?.match(/\d+/)?.[0] || "0");
         
         const tick = (now: number) => {
@@ -570,33 +593,89 @@ const schemas = [
     // Initialize the advanced reveal system
     new RevealSystem();
 
-    // Advanced scroll effects with velocity-based animations
+    // Velocity-aware scroll motion: decorative motion moves faster while the
+    // page is in motion, then returns smoothly to its calm base state.
     const progressBar = document.querySelector<HTMLElement>(".scrollProgress span");
     const header = document.querySelector<HTMLElement>("[data-site-header]");
     const glassLayer = document.querySelector<HTMLElement>(".glassLayer");
     const navLinks = document.querySelectorAll<HTMLElement>("#primary-nav a");
+    const motionSurfaces = Array.from(document.querySelectorAll<HTMLElement>(
+      ".capabilityShowcase, .about, .servicesShowcase, .whyChoose, .projectShowcase, .clientMarquee, .workProcess, .faqEditorial, .proFooter"
+    ));
+    const visibleMotionSurfaces = new Set<HTMLElement>(motionSurfaces);
     let scrollFrame = 0;
-    
-    // Velocity calculator for smooth scroll transitions
     let lastScrollY = scrollY;
-    let scrollVelocity = 0;
+    let lastScrollTime = performance.now();
+    let scrollEnergy = 0;
+    let motionRate = 1;
+    let motionFrame = 0;
+    let appliedMotionRate = 0;
+
+    const applyMotionRate = (rate: number) => {
+      if (reduceMotion.matches) return;
+      if (Math.abs(rate - appliedMotionRate) < .015) return;
+      appliedMotionRate = rate;
+      motionSurfaces.forEach((surface) => {
+        const playbackRate = visibleMotionSurfaces.has(surface) ? rate : 0;
+        surface.getAnimations({ subtree: true }).forEach((animation) => {
+          if (animation.playState !== "idle") animation.playbackRate = playbackRate;
+        });
+      });
+    };
+
+    const publishMotionState = () => {
+      root.style.setProperty("--scroll-energy", scrollEnergy.toFixed(3));
+      root.style.setProperty("--motion-rate", motionRate.toFixed(3));
+      root.classList.toggle("is-scrolling", scrollEnergy > .05);
+      applyMotionRate(motionRate);
+    };
+
+    const settleMotion = () => {
+      motionFrame = 0;
+      scrollEnergy *= .88;
+      motionRate += (1 + scrollEnergy * .78 - motionRate) * .22;
+      publishMotionState();
+      if (scrollEnergy > .008 || Math.abs(motionRate - 1) > .01) {
+        motionFrame = requestAnimationFrame(settleMotion);
+      } else {
+        scrollEnergy = 0;
+        motionRate = 1;
+        publishMotionState();
+      }
+    };
+
+    if (!reduceMotion.matches && "IntersectionObserver" in window) {
+      const motionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const surface = entry.target as HTMLElement;
+          if (entry.isIntersecting) visibleMotionSurfaces.add(surface);
+          else visibleMotionSurfaces.delete(surface);
+        });
+        applyMotionRate(motionRate);
+      }, { rootMargin: "18% 0px" });
+      motionSurfaces.forEach((surface) => motionObserver.observe(surface));
+    }
     
     const updateScrollEffects = () => {
       scrollFrame = 0;
       const maxScroll = document.documentElement.scrollHeight - innerHeight;
       const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
-      
-      // Calculate scroll velocity for dynamic effects
-      scrollVelocity = Math.abs(scrollY - lastScrollY) / (performance.now() - (performance.now() - 16));
+      const now = performance.now();
+      const elapsed = Math.max(8, now - lastScrollTime);
+      const rawVelocity = Math.min(1, Math.abs(scrollY - lastScrollY) / elapsed / 1.1);
+      scrollEnergy = Math.max(rawVelocity, scrollEnergy * .72);
+      motionRate += (1 + scrollEnergy * .78 - motionRate) * .32;
       lastScrollY = scrollY;
+      lastScrollTime = now;
+      publishMotionState();
+      if (!motionFrame && !reduceMotion.matches) motionFrame = requestAnimationFrame(settleMotion);
       
       progressBar?.style.setProperty("--scroll-progress", String(progress));
       header?.classList.toggle("is-scrolled", scrollY > 28);
       root.style.setProperty("--hero-scroll", `${Math.min(scrollY * 0.12, 90)}px`);
       
-      // Dynamic header scaling based on scroll velocity
-      const velocityScale = Math.min(scrollVelocity * 2, 1.5);
-      header?.style.setProperty("--header-scale", String(1 + (scrollY > 50 ? velocityScale * 0.03 : 0)));
+      // The header receives only a restrained response to fast scrolling.
+      header?.style.setProperty("--header-scale", String(1 + (scrollY > 50 ? scrollEnergy * .025 : 0)));
       
       // Glass layer opacity based on scroll position
       if (glassLayer) {
@@ -622,6 +701,15 @@ const schemas = [
     addEventListener("scroll", () => {
       if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollEffects);
     }, { passive: true });
+    reduceMotion.addEventListener("change", () => {
+      if (reduceMotion.matches) {
+        scrollEnergy = 0;
+        motionRate = 1;
+        root.style.setProperty("--scroll-energy", "0");
+        root.style.setProperty("--motion-rate", "1");
+        root.classList.remove("is-scrolling");
+      }
+    });
     updateScrollEffects();
 
     const missionContent = [
@@ -645,9 +733,9 @@ const schemas = [
         missionCopy.innerHTML = missionContent[index].map((paragraph) => `<p>${paragraph}</p>`).join("");
       };
       if (reduceMotion.matches) return swap();
-      missionCopy.animate([{ opacity: 1, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: 140, fill: "forwards" }).finished.then(() => {
+      missionCopy.animate([{ opacity: 1, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: Math.round(130 / getMotionRate()), fill: "forwards" }).finished.then(() => {
         swap();
-        missionCopy.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 360, easing: "cubic-bezier(.16,1,.3,1)", fill: "forwards" });
+        missionCopy.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: Math.round(320 / getMotionRate()), easing: "cubic-bezier(.16,1,.3,1)", fill: "forwards" });
       }).catch(swap);
     };
 
@@ -676,12 +764,12 @@ const schemas = [
         if (reduceMotion.matches || !answer) return;
         event.preventDefault();
         if (details.open) {
-          const animation = answer.animate([{ height: `${answer.offsetHeight}px`, opacity: 1 }, { height: "0px", opacity: 0 }], { duration: 280, easing: "cubic-bezier(.4,0,.2,1)" });
+          const animation = answer.animate([{ height: `${answer.offsetHeight}px`, opacity: 1 }, { height: "0px", opacity: 0 }], { duration: Math.round(240 / getMotionRate()), easing: "cubic-bezier(.4,0,.2,1)" });
           animation.onfinish = () => { details.open = false; answer.style.removeProperty("height"); };
         } else {
           details.open = true;
           const height = answer.offsetHeight;
-          answer.animate([{ height: "0px", opacity: 0 }, { height: `${height}px`, opacity: 1 }], { duration: 380, easing: "cubic-bezier(.16,1,.3,1)" }).onfinish = () => answer.style.removeProperty("height");
+          answer.animate([{ height: "0px", opacity: 0 }, { height: `${height}px`, opacity: 1 }], { duration: Math.round(330 / getMotionRate()), easing: "cubic-bezier(.16,1,.3,1)" }).onfinish = () => answer.style.removeProperty("height");
         }
       });
     });
