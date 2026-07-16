@@ -1,0 +1,12 @@
+---
+import SeoLayout from "../layouts/SeoLayout.astro";
+import { brand } from "../data/seo";
+---
+<SeoLayout title="Cookie Policy | PrysmNexus" description="How PrysmNexus uses essential browser storage and optional consented analytics cookies." eyebrow="Cookie choices" heading="Only essential storage by default. Analytics after consent." lead="The website keeps optional measurement separate from the essential browser functions needed to remember your choice." noindex={false}>
+  <div class="seoMain articleBody">
+    <aside class="answerBlock"><span>Plain-language summary</span><p>PrysmNexus stores the analytics consent choice locally in your browser. Google Analytics is loaded only when a production analytics identifier exists and you choose “Accept analytics.”</p></aside>
+    <section><h2>Essential storage</h2><p>The site uses local browser storage to remember whether analytics was accepted or declined. This prevents the consent panel from appearing on every page and does not create an advertising profile.</p></section>
+    <section><h2>Optional analytics</h2><p>If accepted, Google Analytics may use cookies or similar technologies to measure visits and selected website interactions. This helps PrysmNexus understand which services and information visitors find useful. You can decline without losing access to the website.</p></section>
+    <section><h2>Changing your choice</h2><p>You can clear the site's stored data using your browser settings and make a fresh choice on the next visit. For questions, email <a href={`mailto:${brand.email}`}>{brand.email}</a>.</p></section>
+  </div>
+</SeoLayout>

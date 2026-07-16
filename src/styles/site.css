@@ -134,7 +134,7 @@ main {
   background: var(--acid)
 }
 
-nav {
+.siteHeader nav {
   height: 68px;
   display: flex;
   align-items: center;
@@ -146,11 +146,11 @@ nav {
   border-radius: 0 6px 6px 0
 }
 
-nav a {
+.siteHeader nav a {
   font-weight: 500
 }
 
-nav em {
+.siteHeader nav em {
   font-style: normal;
   color: var(--orange);
   margin-left: 3px
@@ -842,7 +842,7 @@ footer {
     display: none
   }
 
-  nav {
+  .siteHeader nav {
     gap: 22px
   }
 
@@ -1433,12 +1433,12 @@ main {
   animation: logoSweep 6s 1.4s ease-in-out infinite
 }
 
-nav a {
+.siteHeader nav a {
   position: relative;
   transition: color var(--motion-fast)
 }
 
-nav a:after {
+.siteHeader nav a:after {
   content: "";
   position: absolute;
   left: 0;
@@ -1451,8 +1451,8 @@ nav a:after {
   transition: transform var(--motion-base) var(--ease-out)
 }
 
-nav a:hover:after,
-nav a:focus-visible:after {
+.siteHeader nav a:hover:after,
+.siteHeader nav a:focus-visible:after {
   transform: scaleX(1);
   transform-origin: left
 }
@@ -7055,6 +7055,9 @@ html,body{max-width:100%;overflow-x:clip}
 }
 
 .whyCapabilities .whyRibbonRow span:before{color:#111a27}
+
+.serviceCardBody h3 a,.serviceArrow{color:inherit;text-decoration:none}
+.serviceCardBody h3 a:focus-visible,.serviceArrow:focus-visible{outline:3px solid #fff;outline-offset:4px}
 
 /* Compact editorial rhythm: final typography and alignment refinement. */
 :root{

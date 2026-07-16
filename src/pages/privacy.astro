@@ -1,0 +1,14 @@
+---
+import SeoLayout from "../layouts/SeoLayout.astro";
+import { brand } from "../data/seo";
+---
+<SeoLayout title="Privacy Policy | PrysmNexus" description="PrysmNexus privacy policy covering website analytics, contact information, cookies, and data choices." eyebrow="Privacy" heading="A clear privacy approach for this website." lead="This policy explains what the PrysmNexus website may collect, why it is used, and how visitors can make choices." noindex={false}>
+  <div class="seoMain articleBody">
+    <aside class="answerBlock"><span>Last reviewed</span><p>16 July 2026. PrysmNexus uses contact information to respond to enquiries and loads optional analytics only after consent.</p></aside>
+    <section><h2>Information you provide</h2><p>If you email PrysmNexus, the information in your message is used to understand and respond to the enquiry, maintain relevant business records, and follow up on requested services. Do not send sensitive personal information through a general enquiry.</p></section>
+    <section><h2>Optional website analytics</h2><p>When a Google Analytics identifier is configured, analytics remains disabled until the visitor accepts optional analytics. The site records the consent choice in local browser storage. Analytics may measure page visits and selected interactions such as service, case-study, consultation, and email clicks.</p></section>
+    <section><h2>Sharing and retention</h2><p>PrysmNexus does not sell website visitor information. Information may be processed by necessary service providers used for hosting, email, security, or consented analytics. Records are retained only as long as reasonably required for the enquiry, service, legal obligation, or operational need.</p></section>
+    <section><h2>Your choices</h2><p>You may decline optional analytics from the consent panel. To ask about information associated with an enquiry, contact <a href={`mailto:${brand.email}`}>{brand.email}</a>. Requests are assessed using the information reasonably available to verify and respond to them.</p></section>
+    <aside class="sourceBox">This operational website policy is not a substitute for legal advice. It should be reviewed when the production hosting, analytics configuration, forms, advertising integrations, or business data practices change.</aside>
+  </div>
+</SeoLayout>

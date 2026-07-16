@@ -1,7 +1,7 @@
 @import "./site.css";
 
-body{font-family:"Segoe UI Variable Text","Segoe UI",Arial,sans-serif}
-h1,h2,h3,h4,.logo b,.focused,.price,.faq summary{font-family:"Segoe UI Variable Display","Segoe UI",Arial,sans-serif}
+body{font-family:"Inter","Segoe UI Variable Text","Segoe UI",Arial,sans-serif}
+h1,h2,h3,h4,.logo b,.focused,.price,.faq summary{font-family:"Manrope","Segoe UI Variable Display","Segoe UI",Arial,sans-serif}
 
 :focus-visible{outline:3px solid #f10b16;outline-offset:4px}
 .answerBox{margin:0 0 34px;padding:22px 24px;border-left:4px solid var(--orange);background:#fff;color:#32363d;line-height:1.7;max-width:850px}

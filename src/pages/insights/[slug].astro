@@ -1,0 +1,16 @@
+---
+import SeoLayout from "../../layouts/SeoLayout.astro";
+import { brand, breadcrumbSchema, insights } from "../../data/seo";
+export const getStaticPaths = () => insights.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+const { article } = Astro.props;
+const origin = (Astro.site ?? new URL(brand.domain)).origin;
+const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Insights", path: "/insights/" }, { name: article.title, path: `/insights/${article.slug}/` }]), { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.description, datePublished: article.updated, dateModified: article.updated, author: { "@type": "Organization", "@id": `${origin}/#organization`, name: "PrysmNexus Strategy Team" }, publisher: { "@id": `${origin}/#organization` }, mainEntityOfPage: `${origin}/insights/${article.slug}/` }];
+---
+<SeoLayout title={`${article.title} | PrysmNexus`} description={article.description} eyebrow="PrysmNexus Insights" heading={article.title} lead={article.description} schemas={schemas} type="article" published={article.updated} modified={article.updated}>
+  <div class="seoMain articleBody">
+    <aside class="answerBlock"><span>Direct answer</span><p>{article.answer}</p></aside>
+    {article.sections.map((section) => <section><h2>{section.title}</h2><p>{section.text}</p></section>)}
+    <section><h2>Practical checklist.</h2><ul class="seoList">{article.checklist.map((item) => <li>{item}</li>)}</ul></section>
+    <aside class="sourceBox"><strong>Method and limitations:</strong> This guide reflects PrysmNexus working practice and general platform principles reviewed on {article.updated}. Recommendations must be adapted to the business, market, budget, evidence, and platform conditions; no ranking or commercial result is guaranteed.</aside>
+  </div>
+</SeoLayout>

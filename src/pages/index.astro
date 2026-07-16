@@ -13,13 +13,14 @@ import projectBrandImage from "../assets/project-brand.jpg";
 import projectSocialImage from "../assets/project-social.jpg";
 import projectContentImage from "../assets/project-content.jpg";
 import prysmNexusLogo from "../assets/prysmnexus-logo.png";
+import { brand as seoBrand, services as seoServices } from "../data/seo";
 
 const services = [
-  { number: "01", title: "Strategic Branding", description: "Sharp positioning, a clear voice, and a consistent visual direction designed to make your business recognizable and memorable.", bullets: ["Brand positioning", "Visual identity", "Messaging framework", "Campaign toolkit"] },
-  { number: "02", title: "Photography & Video", description: "Original photography, video, reels, and campaign creatives produced around your business—not pulled from recycled templates.", bullets: ["Photography and styling", "Video production", "Reels and short-form", "Creative copy"] },
-  { number: "03", title: "Social Media Management", description: "Planned content, active page management, and audience engagement that keep your brand visible, relevant, and consistent.", bullets: ["Monthly content calendar", "Publishing and page handling", "Community engagement", "WhatsApp marketing"] },
-  { number: "04", title: "Performance Marketing", description: "Google and Meta campaigns built to generate qualified enquiries, with clear optimization, reporting, and commercial focus.", bullets: ["Google and Meta ads", "Lead generation", "Campaign optimization", "Monthly reporting"] },
-  { number: "05", title: "Search & Reputation", description: "SEO, Google Business Profile, local discovery, and review management that help customers find and trust your business.", bullets: ["SEO and local search", "Google Business Profile", "Review management", "Online visibility"] },
+  { number: "01", slug: "brand-strategy", title: "Strategic Branding", description: "Sharp positioning, a clear voice, and a consistent visual direction designed to make your business recognizable and memorable.", bullets: ["Brand positioning", "Visual identity", "Messaging framework", "Campaign toolkit"] },
+  { number: "02", slug: "content-production", title: "Photography & Video", description: "Original photography, video, reels, and campaign creatives produced around your business—not pulled from recycled templates.", bullets: ["Photography and styling", "Video production", "Reels and short-form", "Creative copy"] },
+  { number: "03", slug: "social-media-management", title: "Social Media Management", description: "Planned content, active page management, and audience engagement that keep your brand visible, relevant, and consistent.", bullets: ["Monthly content calendar", "Publishing and page handling", "Community engagement", "WhatsApp marketing"] },
+  { number: "04", slug: "performance-marketing", title: "Performance Marketing", description: "Google and Meta campaigns built to generate qualified enquiries, with clear optimization, reporting, and commercial focus.", bullets: ["Google and Meta ads", "Lead generation", "Campaign optimization", "Monthly reporting"] },
+  { number: "05", slug: "seo-local-search-reputation", title: "Search & Reputation", description: "SEO, Google Business Profile, local discovery, and review management that help customers find and trust your business.", bullets: ["SEO and local search", "Google Business Profile", "Review management", "Online visibility"] },
 ];
 
 const projectStudies = [
@@ -62,7 +63,9 @@ const schemas = [
     url: `${siteUrl}/`,
     logo: `${siteUrl}/prysmnexus-logo.png`,
     description: "PrysmNexus is a Hyderabad-based growth marketing agency combining branding, content production, social media, paid acquisition, SEO, local search, and reputation support.",
-    email: "hello@prysmnexus.agency",
+    email: seoBrand.email,
+    areaServed: [{ "@type": "City", name: "Hyderabad" }, { "@type": "AdministrativeArea", name: "Telangana" }],
+    hasOfferCatalog: { "@type": "OfferCatalog", name: "Growth marketing services", itemListElement: seoServices.map((service) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: service.name, url: `${siteUrl}/services/${service.slug}/` } })) },
   },
   {
     "@context": "https://schema.org",
@@ -113,9 +116,9 @@ const schemas = [
         </a>
         <button class="menuButton" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">☰</button>
         <nav id="primary-nav" aria-label="Primary navigation">
-          <a href="#home">Home</a><a href="#services">Services</a><a href="#about">About</a><a href="#method">Method</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+          <a href="#home">Home</a><a href="/services/">Services</a><a href="/about/">About</a><a href="#method">Method</a><a href="#faq">FAQ</a><a href="/contact/">Contact</a>
         </nav>
-        <div class="headerActions"><span class="dash"></span><a class="consult" href="#contact">Free Consultation</a><span class="gridButton" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+        <div class="headerActions"><span class="dash"></span><a class="consult" href="/contact/#consultation-form">Free Consultation</a><span class="gridButton" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
       </header>
       <div class="heroGlow"></div>
       <h1 class="heroTitle" id="hero-heading"><span class="heroWord"><em>Growth</em></span><strong class="heroWord"><em>Marketing</em></strong><small>Built Around Your Business.</small></h1>
@@ -194,7 +197,7 @@ const schemas = [
         </div>
         <div class="servicesLead" data-reveal="up">
           <p>Branding, original content, social media, performance campaigns, and search—connected around one clear growth plan.</p>
-          <a href="#contact">Build your growth system <span aria-hidden="true">↗</span></a>
+          <a href="/services/">Explore every service <span aria-hidden="true">↗</span></a>
         </div>
       </header>
 
@@ -203,7 +206,7 @@ const schemas = [
           <article class:list={["serviceCard", index === 0 && "serviceCardFeatured"]} data-reveal="up" style={`--reveal-delay:${index * 70}ms`}>
             <div class="serviceCardTop">
               <span class="serviceNumber">{service.number}</span>
-              <span class="serviceArrow" aria-hidden="true">↗</span>
+              <a class="serviceArrow" href={`/services/${service.slug}/`} aria-label={`Explore ${service.title}`}>↗</a>
             </div>
             {index === 0 && (
               <div class="serviceBrandMark" aria-hidden="true">
@@ -212,7 +215,7 @@ const schemas = [
               </div>
             )}
             <div class="serviceCardBody">
-              <h3>{service.title}</h3>
+              <h3><a href={`/services/${service.slug}/`}>{service.title}</a></h3>
               <p>{service.description}</p>
               <ul aria-label={`${service.title} capabilities`}>
                 {service.bullets.slice(0, index === 0 ? 4 : 2).map((item) => <li>{item}</li>)}
@@ -294,7 +297,7 @@ const schemas = [
               <li>Brand-to-search execution</li>
             </ul>
           </div>
-          <a href="#contact">Free Consultation <span aria-hidden="true">↗</span></a>
+          <a href="/contact/#consultation-form">Free Consultation <span aria-hidden="true">↗</span></a>
         </article>
       </div>
     </section>
@@ -306,7 +309,7 @@ const schemas = [
           <h2 id="projects-title" data-reveal="title">Our projects that showcase real<br /><span>marketing success.</span></h2>
         </div>
         <div class="projectHeaderAction" data-reveal="up">
-          <a class="gradientButton magnetic" href="#contact">View All Projects <b>↗</b></a>
+          <a class="gradientButton magnetic" href="/case-studies/">View All Projects <b>↗</b></a>
         </div>
       </header>
 
@@ -383,7 +386,7 @@ const schemas = [
           <div class="eyebrow light" data-reveal="line">Frequently Asked Questions</div>
           <h2 data-reveal="title">A few things worth knowing.</h2>
           <p data-reveal="up">Clear answers about scope, content, advertising, visibility, and measurement.</p>
-          <a href="mailto:hello@prysmnexus.agency" data-reveal="up">Ask us directly <span aria-hidden="true">↗</span></a>
+          <a href={`mailto:${seoBrand.email}`} data-reveal="up">Ask us directly <span aria-hidden="true">↗</span></a>
         </header>
         <div class="faqGrid">{faqs.map(({ question, answer }, index) => <details open={index === 0} data-reveal="up" style={`--reveal-delay:${(index % 3) * 60}ms`}><summary>{question}<span aria-hidden="true"></span></summary><div class="faqAnswer"><p>{answer}</p></div></details>)}</div>
       </div>
@@ -398,7 +401,7 @@ const schemas = [
             <h2 id="footer-heading" data-reveal="title">One accountable team.<br /><span>Your next stage of growth.</span></h2>
             <p data-reveal="up">Bring your brand, content, campaigns, and search presence into one clear growth system.</p>
           </div>
-          <a class="proFooterAction magnetic" href="mailto:hello@prysmnexus.agency" data-reveal="up"><span><small>Let’s discuss your goals</small>Book a free consultation</span><b aria-hidden="true">↗</b></a>
+          <a class="proFooterAction magnetic" href="/contact/#consultation-form" data-reveal="up"><span><small>Let’s discuss your goals</small>Book a free consultation</span><b aria-hidden="true">↗</b></a>
         </section>
 
         <div class="proFooterRule" aria-hidden="true"><span></span></div>
@@ -413,23 +416,23 @@ const schemas = [
           <nav class="proFooterLinks" aria-label="Footer navigation">
             <h3>Explore</h3>
             <a href="#home">Home <span>↗</span></a>
-            <a href="#about">About <span>↗</span></a>
+            <a href="/about/">About <span>↗</span></a>
             <a href="#method">Method <span>↗</span></a>
             <a href="#process">Process <span>↗</span></a>
           </nav>
 
           <nav class="proFooterLinks" aria-label="Service navigation">
             <h3>Capabilities</h3>
-            <a href="#services">Brand Strategy <span>↗</span></a>
-            <a href="#services">Content Production <span>↗</span></a>
-            <a href="#services">Performance Marketing <span>↗</span></a>
-            <a href="#services">Search & Reputation <span>↗</span></a>
+            <a href="/services/brand-strategy/">Brand Strategy <span>↗</span></a>
+            <a href="/services/content-production/">Content Production <span>↗</span></a>
+            <a href="/services/performance-marketing/">Performance Marketing <span>↗</span></a>
+            <a href="/services/seo-local-search-reputation/">Search & Reputation <span>↗</span></a>
           </nav>
 
           <div class="proFooterContact">
             <h3>Contact</h3>
             <p>Have a project in mind?</p>
-            <a href="mailto:hello@prysmnexus.agency">hello@prysmnexus.agency <span>↗</span></a>
+            <a href={`mailto:${seoBrand.email}`}>{seoBrand.email} <span>↗</span></a>
             <small>Replies within one business day.</small>
           </div>
         </div>

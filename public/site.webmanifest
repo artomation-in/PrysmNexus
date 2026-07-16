@@ -1,10 +1,10 @@
 {
   "name": "PrysmNexus",
   "short_name": "PrysmNexus",
-  "description": "Branding, content, social media, performance marketing, SEO, local search, and reputation support.",
+  "description": "Hyderabad growth marketing agency for brand strategy, content, social media, performance marketing, SEO, local search, and reputation.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#0d1118",
   "theme_color": "#171c23",
-  "icons": [{ "src": "/prysmnexus-logo.png", "sizes": "1254x1254", "type": "image/png" }]
+  "icons": [{ "src": "/prysmnexus-logo.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any" }]
 }

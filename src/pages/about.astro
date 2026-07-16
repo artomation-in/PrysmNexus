@@ -1,0 +1,14 @@
+---
+import SeoLayout from "../layouts/SeoLayout.astro";
+import { brand, breadcrumbSchema } from "../data/seo";
+const origin = (Astro.site ?? new URL(brand.domain)).origin;
+const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "About", path: "/about/" }]), { "@context": "https://schema.org", "@type": "AboutPage", name: "About PrysmNexus", url: `${origin}/about/`, mainEntity: { "@id": `${origin}/#organization` } }];
+---
+<SeoLayout title="About PrysmNexus | Hyderabad Growth Marketing Agency" description="PrysmNexus is a Hyderabad growth marketing agency bringing brand strategy, original content, social media, paid campaigns, SEO, and reputation support together." eyebrow="About PrysmNexus" heading="One accountable team for brand, content, demand, and discovery." lead="PrysmNexus was built around a practical idea: businesses should not have to coordinate disconnected suppliers to keep their brand and marketing moving in the same direction." schemas={schemas}>
+  <div class="seoMain">
+    <aside class="answerBlock"><span>Entity definition</span><p>{brand.description}</p></aside>
+    <section class="seoSection"><div class="seoSectionHead"><h2>What we believe.</h2><p>Good marketing starts with a clear brand, uses original work, connects every customer-facing channel, and measures signals that matter to the business. The role of the team is to make those parts work together.</p></div></section>
+    <section class="seoSection"><div class="seoSectionHead"><h2>How the system works.</h2><p>Brand defines the promise. Content gives the promise a visible form. Social and paid media distribute it. Search and reputation make it easier to discover and trust. Reporting turns response into the next useful decision.</p></div><div class="seoGrid"><article class="seoCard"><b>01</b><h3>Brand</h3><p>Positioning, messaging, identity, and creative direction.</p></article><article class="seoCard"><b>02</b><h3>Demand</h3><p>Content, social media, Google Ads, Meta Ads, and lead journeys.</p></article><article class="seoCard"><b>03</b><h3>Discovery</h3><p>SEO, local search, Google Business Profile, and reputation signals.</p></article></div></section>
+    <section class="seoSection"><div class="seoSectionHead"><h2>Experience and evidence.</h2><p>PrysmNexus publishes only approved client names and proposal-backed metrics. Results are labelled with source context and are never presented as guarantees for another business.</p></div><div class="seoRelated"><a href="/case-studies/"><small>First-party evidence</small><strong>View case studies ↗</strong></a><a href="/services/"><small>Complete offering</small><strong>Explore services ↗</strong></a><a href="/insights/"><small>Working knowledge</small><strong>Read insights ↗</strong></a></div></section>
+  </div>
+</SeoLayout>

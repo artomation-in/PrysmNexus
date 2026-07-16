@@ -1,0 +1,9 @@
+---
+import SeoLayout from "../../layouts/SeoLayout.astro";
+import { brand, breadcrumbSchema, caseStudies } from "../../data/seo";
+const origin = (Astro.site ?? new URL(brand.domain)).origin;
+const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Case Studies", path: "/case-studies/" }])];
+---
+<SeoLayout title="Marketing Case Studies | PrysmNexus Hyderabad" description="Named PrysmNexus case studies covering hospitality content, social media, brand strategy, and digital discovery in Hyderabad." eyebrow="First-party evidence" heading="Selected work, named clients, and clearly labelled results." lead="These case studies use figures supplied in the PrysmNexus proposal. Metrics are presented with their platform context and are not treated as universal performance promises." schemas={schemas}>
+  <div class="seoMain"><aside class="answerBlock"><span>Evidence policy</span><p>PrysmNexus publishes only client and performance information approved for use. Every metric on these pages is labelled as user-provided evidence and should be read in its stated platform and reporting context.</p></aside><div class="seoIndexGrid">{caseStudies.map((study) => <a class="seoIndexCard" href={`/case-studies/${study.slug}/`}><small>{study.sector}</small><div><h2>{study.name}</h2><p>{study.title}</p></div><strong>Read case study ↗</strong></a>)}</div></div>
+</SeoLayout>

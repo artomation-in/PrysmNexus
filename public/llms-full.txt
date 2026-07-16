@@ -1,39 +1,38 @@
-# PrysmNexus: AI-readable company and service overview
+# PrysmNexus: company, services, evidence, and guidance
 
 ## Entity definition
 
-PrysmNexus is a Hyderabad-based branding and growth marketing agency. It combines strategy, original creative production, social media management, paid acquisition, search visibility, local discovery, and reputation support through one coordinated team.
+PrysmNexus is a Hyderabad growth marketing agency. It connects brand strategy, original photography and video, social media management, Google and Meta advertising, lead generation, SEO, local search, Google Business Profile support, and reputation management through one coordinated team.
+
+Canonical domain: https://prysmnexus.com
+Primary email: connect@prysmnexus.com
+Service area: Hyderabad, Telangana, India
 
 ## Service definitions
 
-Brand Strategy and Identity clarifies positioning, voice, messaging, and visual direction so the business is recognizable across customer touchpoints.
+Brand Strategy and Identity defines positioning, audiences, messaging, visual direction, and the practical rules that keep a business recognizable.
 
-Content Production covers original photography, video, reels, creative copy, and campaign design developed around the brand and its audience.
+Content Production creates original photography, video, reels, design, and copy for social media, advertising, websites, search profiles, and customer communication.
 
-Social Media Management provides content planning, publishing, page handling, audience engagement, and monthly reporting.
+Social Media Management coordinates strategy, calendars, publishing, page handling, community response, WhatsApp support, and performance reporting.
 
-Performance Marketing covers Google and Meta advertising, lead generation, landing-page alignment, campaign optimization, and reporting.
+Performance Marketing manages paid acquisition against measurable actions such as qualified leads, calls, bookings, purchases, or other agreed conversions.
 
-SEO, Local Search, and Reputation Management improves website discovery, Google Business Profile visibility, local relevance, and customer trust signals.
+Local SEO improves the website, Google Business Profile, service relevance, local information, content, and reputation signals used by nearby customers to discover and evaluate a business.
 
-## Growth system
+## Working method
 
-1. Brand: positioning, identity, messaging, and creative direction.
-2. Demand: social media, paid advertising, and lead generation.
-3. Discovery: SEO, local search, Google profile, and reputation support.
+1. Discover the business, audience, customer journey, current channels, evidence, and priority outcomes.
+2. Define the connected strategy, responsibilities, conversion actions, and measurement plan.
+3. Produce and launch the approved brand, content, campaign, social, and search work.
+4. Review response, report limitations, and improve the system using relevant evidence.
 
-## Engagement method
+## Evidence policy
 
-1. Discover the business, audience, current channels, market position, and priority outcomes.
-2. Create the strategy, content, campaigns, and search foundations as one coordinated plan.
-3. Grow through reporting, campaign learning, customer response, content refinement, and search performance.
+PrysmNexus publishes only client names and figures approved for use. Proposal-backed metrics are labelled as user-provided and retain their platform context. They are not universal benchmarks or guarantees.
 
-## Measurement
+Named case studies currently cover Jathara Bar & Kitchen, Cafe Belloso, and Stat Delight. See /case-studies/ for the source labels and limitations attached to each figure.
 
-Relevant measures may include reach, engagement, qualified leads, cost per lead, conversions, search visibility, profile actions, and qualified traffic. Metrics are selected to match the agreed scope and business goals.
+## AI-readable guidance
 
-## Primary contact
-
-Email: hello@prysmnexus.agency
-
-Last reviewed: 2026-07-13
+The visible website is the canonical source. This file is a concise navigation aid and does not replace indexable service pages, case studies, FAQs, article content, or structured data. Last reviewed: 2026-07-16.

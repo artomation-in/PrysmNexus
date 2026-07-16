@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "./BaseLayout.astro";
+import logo from "../assets/prysmnexus-logo.png";
+import { brand, services } from "../data/seo";
+import "../styles/seo-pages.css";
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  schemas?: Record<string, unknown>[];
+  type?: "website" | "article";
+  published?: string;
+  modified?: string;
+  noindex?: boolean;
+}
+
+const { title, description, eyebrow, heading, lead, schemas = [], type = "website", published, modified, noindex = false } = Astro.props;
+const segments = Astro.url.pathname.split("/").filter(Boolean);
+---
+
+<BaseLayout title={title} description={description} schemas={schemas} type={type} published={published} modified={modified} noindex={noindex}>
+  <div class="seoPage">
+    <header class="seoHeader">
+      <a class="seoLogo" href="/" aria-label="PrysmNexus home">
+        <span class="seoLogoMark"><Image src={logo} alt="" widths={[64, 96, 128]} sizes="54px" format="webp" quality={92} loading="eager" /></span>
+        <span><strong>Prysm<span>Nexus</span></strong><small>GROWTH MARKETING</small></span>
+      </a>
+      <nav class="seoNav" aria-label="Primary navigation">
+        <a href="/services/">Services</a><a href="/case-studies/">Case Studies</a><a href="/insights/">Insights</a><a href="/about/">About</a><a class="seoCta" href="/contact/#consultation-form">Free Consultation</a>
+      </nav>
+    </header>
+    <main id="main-content">
+      <section class="seoHero">
+        <div class="seoHeroInner">
+          <nav class="seoBreadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a>{segments.map((segment, index) => <><span>/</span>{index === segments.length - 1 ? <span aria-current="page">{segment.replaceAll("-", " ")}</span> : <a href={`/${segments.slice(0, index + 1).join("/")}/`}>{segment.replaceAll("-", " ")}</a>}</>)}</nav>
+          <div class="seoEyebrow">{eyebrow}</div>
+          <h1>{heading}</h1>
+          <p class="seoHeroLead">{lead}</p>
+          <div class="seoHeroActions"><a class="seoButton" href="/contact/#consultation-form">Discuss your goals <span aria-hidden="true">↗</span></a><a class="seoButton secondary" href="/services/">Explore services</a></div>
+          {type === "article" && <div class="articleMeta"><span>By PrysmNexus Strategy Team</span><span>Updated {modified}</span><span>Hyderabad, India</span></div>}
+        </div>
+      </section>
+      <slot />
+    </main>
+    <footer class="seoFooter">
+      <div class="seoFooterTop">
+        <div><h2>Sharp branding. Original content. Accountable growth.</h2><p>{brand.description}</p><a class="seoButton" href={`mailto:${brand.email}`}>{brand.email}</a></div>
+        <nav><strong>Services</strong>{services.map((service) => <a href={`/services/${service.slug}/`}>{service.shortName}</a>)}</nav>
+        <nav><strong>Explore</strong><a href="/case-studies/">Case Studies</a><a href="/insights/">Insights</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/cookie-policy/">Cookie Policy</a></nav>
+      </div>
+      <div class="seoFooterBottom">© 2026 PrysmNexus · Hyderabad, Telangana, India</div>
+    </footer>
+  </div>
+</BaseLayout>

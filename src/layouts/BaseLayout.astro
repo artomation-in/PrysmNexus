@@ -1,33 +1,57 @@
 ---
 import "../styles/global.css";
+import { brand } from "../data/seo";
 
 interface Props {
   title: string;
   description: string;
   schemas?: Record<string, unknown>[];
+  type?: "website" | "article";
+  published?: string;
+  modified?: string;
+  noindex?: boolean;
 }
 
-const { title, description, schemas = [] } = Astro.props;
+const { title, description, schemas = [], type = "website", published, modified, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const socialImage = new URL("/prysmnexus-logo.png", canonical);
+const isProduction = canonical.origin === brand.domain;
+const robots = isProduction && !noindex ? "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" : "noindex,nofollow";
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
+const analyticsId = import.meta.env.PUBLIC_GA4_ID;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="robots" content={robots} />
+    <meta name="googlebot" content={robots} />
+    <style is:inline>
+      html,body{min-height:100%;margin:0;background:#0d1118}
+      @view-transition{navigation:auto}
+      ::view-transition-old(root){animation:pn-page-out .14s cubic-bezier(.4,0,1,1) both}
+      ::view-transition-new(root){animation:pn-page-in .22s cubic-bezier(.16,1,.3,1) both}
+      @keyframes pn-page-out{to{opacity:.18;transform:scale(.995)}}
+      @keyframes pn-page-in{from{opacity:0;transform:translateY(5px)}}
+      @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+    </style>
+    {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+    {bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png" href="/prysmnexus-logo.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#171c23" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:site_name" content="PrysmNexus" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -35,7 +59,9 @@ const socialImage = new URL("/prysmnexus-logo.png", canonical);
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:width" content="1254" />
     <meta property="og:image:height" content="1254" />
-    <meta property="og:image:alt" content="PrysmNexus brand mark" />
+    <meta property="og:image:alt" content="PrysmNexus growth marketing agency in Hyderabad" />
+    {type === "article" && published && <meta property="article:published_time" content={published} />}
+    {type === "article" && modified && <meta property="article:modified_time" content={modified} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -45,5 +71,41 @@ const socialImage = new URL("/prysmnexus-logo.png", canonical);
   <body>
     <a class="skipLink" href="#main-content">Skip to main content</a>
     <slot />
+    {analyticsId && <aside class="pnConsent" data-consent hidden><p>We use privacy-conscious analytics to understand which pages and services are useful. You can accept or decline optional analytics cookies. <a href="/cookie-policy/">Cookie policy</a></p><div><button type="button" data-consent-accept>Accept analytics</button><button type="button" data-consent-decline>Decline</button></div></aside>}
+    {analyticsId && <script is:inline define:vars={{ analyticsId }}>
+      (() => {
+        const key = "pn-analytics-consent";
+        const panel = document.querySelector("[data-consent]");
+        const loadAnalytics = () => {
+          if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${analyticsId}"]`)) return;
+          const script = document.createElement("script");
+          script.async = true;
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`;
+          document.head.append(script);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function(){ window.dataLayer.push(arguments); };
+          window.gtag("js", new Date());
+          window.gtag("config", analyticsId, { anonymize_ip: true });
+          document.addEventListener("click", (event) => {
+            const link = event.target.closest("a");
+            if (!link) return;
+            let name = "navigation_click";
+            if (link.href.startsWith("mailto:")) name = "email_click";
+            else if (link.href.includes("/contact") || link.textContent.toLowerCase().includes("consult")) name = "consultation_click";
+            else if (link.href.includes("/services/")) name = "service_click";
+            else if (link.href.includes("/case-studies/")) name = "case_study_click";
+            window.gtag("event", name, { link_url: link.href, link_text: link.textContent.trim().slice(0, 100) });
+          }, { passive: true });
+        };
+        const state = localStorage.getItem(key);
+        if (state === "accepted") loadAnalytics();
+        else if (!state && panel) panel.hidden = false;
+        panel?.querySelector("[data-consent-accept]")?.addEventListener("click", () => { localStorage.setItem(key, "accepted"); panel.hidden = true; loadAnalytics(); });
+        panel?.querySelector("[data-consent-decline]")?.addEventListener("click", () => { localStorage.setItem(key, "declined"); panel.hidden = true; });
+      })();
+    </script>}
+    <style is:global>
+      .pnConsent{position:fixed;z-index:9999;right:18px;bottom:18px;max-width:420px;padding:20px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:#131922;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.3);font:13px/1.55 Inter,sans-serif}.pnConsent[hidden]{display:none}.pnConsent p{margin:0;color:#d4d7dd}.pnConsent a{color:#fff}.pnConsent div{display:flex;gap:9px;margin-top:15px}.pnConsent button{padding:10px 14px;border:0;border-radius:999px;background:#df353a;color:#fff;font-weight:700;cursor:pointer}.pnConsent button:last-child{background:#323b47}@media(max-width:520px){.pnConsent{right:10px;bottom:10px;left:10px}}
+    </style>
   </body>
 </html>
