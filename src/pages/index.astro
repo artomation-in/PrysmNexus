@@ -29,6 +29,12 @@ const projectStudies = [
   { image: whyTeamImage, category: "Search / Reputation", title: "Local Discovery System", copy: "SEO, Google Business Profile, useful content, and reputation signals aligned to improve customer discovery.", result: "Stronger local presence", accent: "#cc3f46" },
 ];
 
+const featuredClients = [
+  { mark: "J", name: "Jathara", category: "Bar & Kitchen" },
+  { mark: "CB", name: "Cafe Belloso", category: "Hospitality" },
+  { mark: "SD", name: "Stat Delight", category: "Brand & Content" },
+];
+
 const workProcessSteps = [
   { number: "01", glyph: "◎", title: "Discover", copy: "We assess your goals, audience, current channels, and market position to understand what the business needs most." },
   { number: "02", glyph: "≋", title: "Analyze", copy: "We examine brand, content, campaign, and search performance to uncover gaps and practical opportunities." },
@@ -324,6 +330,33 @@ const schemas = [
       </div>
     </section>
 
+    <section class="clientMarquee" aria-labelledby="clients-title">
+      <div class="clientMarqueeGlow" aria-hidden="true"></div>
+      <header class="clientMarqueeHeader">
+        <div>
+          <div class="eyebrow light" data-reveal="line">Selected Clients</div>
+          <h2 id="clients-title" data-reveal="title">Built with brands that<br /><span>care about the details.</span></h2>
+        </div>
+        <p data-reveal="up">Selected Hyderabad collaborations across hospitality, content, and growth marketing.</p>
+      </header>
+      <div class="clientMarqueeWindow" aria-label="Featured PrysmNexus clients">
+        <div class="clientMarqueeTrack">
+          {[0, 1].map((set) => (
+            <div class="clientMarqueeSet" aria-hidden={set === 1 ? "true" : undefined}>
+              {featuredClients.map((client, index) => (
+                <article class="clientMarqueeCard" style={`--client-index:${index}`}>
+                  <span class="clientMonogram" aria-hidden="true">{client.mark}</span>
+                  <div><strong>{client.name}</strong><small>{client.category}</small></div>
+                  <b aria-hidden="true">↗</b>
+                </article>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="clientMarqueeFooter"><span>Strategy</span><i></i><span>Creative</span><i></i><span>Performance</span><i></i><span>Search</span></div>
+    </section>
+
     <section class="workProcess" id="process" aria-labelledby="process-title">
       <Image class="workProcessBg" src={processBackdrop} alt="" widths={[1280, 1920, 2560]} sizes="100vw" format="webp" quality={90} loading="lazy" />
       <div class="workProcessVeil" aria-hidden="true"></div>
@@ -355,20 +388,53 @@ const schemas = [
       </div>
     </section>
 
-    <footer class="editorialFooter" id="contact">
-      <div class="footerGlow" aria-hidden="true"></div>
-      <div class="footerCta">
-        <div><div class="eyebrow light" data-reveal="line">Let’s Work Together</div><h2 data-reveal="title">Ready to make every<br />channel work together?</h2></div>
-        <a class="footerCtaButton magnetic" href="mailto:hello@prysmnexus.agency" data-reveal="up"><span>Start a<br />conversation</span><b aria-hidden="true">↗</b></a>
+    <footer class="editorialFooter proFooter" id="contact">
+      <div class="proFooterGlow" aria-hidden="true"></div>
+      <div class="proFooterShell">
+        <section class="proFooterCta" aria-labelledby="footer-heading">
+          <div class="proFooterIntro">
+            <div class="eyebrow light" data-reveal="line">Start a Conversation</div>
+            <h2 id="footer-heading" data-reveal="title">One accountable team.<br /><span>Your next stage of growth.</span></h2>
+            <p data-reveal="up">Bring your brand, content, campaigns, and search presence into one clear growth system.</p>
+          </div>
+          <a class="proFooterAction magnetic" href="mailto:hello@prysmnexus.agency" data-reveal="up"><span><small>Let’s discuss your goals</small>Book a free consultation</span><b aria-hidden="true">↗</b></a>
+        </section>
+
+        <div class="proFooterRule" aria-hidden="true"><span></span></div>
+
+        <div class="proFooterGrid" data-reveal="up">
+          <div class="proFooterBrand">
+            <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
+            <p>Strategy, creative, performance, and discovery—managed by one focused Hyderabad team.</p>
+            <span class="proFooterLocation"><i></i>Hyderabad · India</span>
+          </div>
+
+          <nav class="proFooterLinks" aria-label="Footer navigation">
+            <h3>Explore</h3>
+            <a href="#home">Home <span>↗</span></a>
+            <a href="#about">About <span>↗</span></a>
+            <a href="#method">Method <span>↗</span></a>
+            <a href="#process">Process <span>↗</span></a>
+          </nav>
+
+          <nav class="proFooterLinks" aria-label="Service navigation">
+            <h3>Capabilities</h3>
+            <a href="#services">Brand Strategy <span>↗</span></a>
+            <a href="#services">Content Production <span>↗</span></a>
+            <a href="#services">Performance Marketing <span>↗</span></a>
+            <a href="#services">Search & Reputation <span>↗</span></a>
+          </nav>
+
+          <div class="proFooterContact">
+            <h3>Contact</h3>
+            <p>Have a project in mind?</p>
+            <a href="mailto:hello@prysmnexus.agency">hello@prysmnexus.agency <span>↗</span></a>
+            <small>Replies within one business day.</small>
+          </div>
+        </div>
+
+        <div class="proFooterBottom"><small>© 2026 PrysmNexus. All rights reserved.</small><small>Strategy · Creative · Performance · Search</small><a href="#home">Back to top <span>↑</span></a></div>
       </div>
-      <div class="footerRule"></div>
-      <div class="footerInfo" data-reveal="up">
-        <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><img src="/prysmnexus-logo.png" alt="" width="1254" height="1254" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
-        <p>Brand, content, demand, and discovery under one accountable team.</p>
-        <nav class="footerNav" aria-label="Footer navigation"><a href="#services">Services</a><a href="#method">Method</a><a href="#process">Process</a><a href="#faq">FAQ</a></nav>
-        <a class="footerEmail" href="mailto:hello@prysmnexus.agency">hello@prysmnexus.agency</a>
-      </div>
-      <div class="footerMeta"><small>© 2026 PrysmNexus</small><small>Strategy · Creative · Performance · Search</small><a href="#home">Back to top ↑</a></div>
     </footer>
   </main>
 
