@@ -7045,6 +7045,17 @@ html,body{max-width:100%;overflow-x:clip}
 .whyRibbonRow:nth-child(3) span:nth-child(6n + 5):before{content:"▤"}
 .whyRibbonRow:nth-child(3) span:nth-child(6n):before{content:"◇"}
 
+/* Stronger readability across every scrolling capability label. */
+.whyCapabilities .whyRibbonRow span{
+  border-color:rgba(20,29,42,.10);
+  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(213,218,225,.92));
+  box-shadow:0 7px 16px rgba(24,32,44,.09),inset 0 1px 0 rgba(255,255,255,.98);
+  color:#1d2735;
+  font-weight:650
+}
+
+.whyCapabilities .whyRibbonRow span:before{color:#111a27}
+
 /* Compact editorial rhythm: final typography and alignment refinement. */
 :root{
   --pn-section-y:clamp(52px,5vw,74px);
