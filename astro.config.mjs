@@ -5,11 +5,22 @@ export default defineConfig({
   site: process.env.SITE_URL || "http://localhost:4174",
   output: "static",
   trailingSlash: "always",
+
   integrations: [sitemap()],
+
+  // ✅ Use Sharp to generate optimized images at build time
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+  },
+
   build: {
     inlineStylesheets: "auto",
   },
+
   compressHTML: true,
+
   prefetch: {
     prefetchAll: false,
     defaultStrategy: "viewport",
