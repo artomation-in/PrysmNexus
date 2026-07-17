@@ -978,9 +978,35 @@ const schemas = [
             return mat2(c, -s, s, c);
           }
 
-          float roundedBox(vec3 p, vec3 bounds, float radius) {
-            vec3 q = abs(p) - bounds;
-            return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0) - radius;
+          float triangleDistance(vec2 p, vec2 a, vec2 b, vec2 c) {
+            vec2 e0 = b - a;
+            vec2 e1 = c - b;
+            vec2 e2 = a - c;
+            vec2 v0 = p - a;
+            vec2 v1 = p - b;
+            vec2 v2 = p - c;
+            vec2 pq0 = v0 - e0 * clamp(dot(v0, e0) / dot(e0, e0), 0.0, 1.0);
+            vec2 pq1 = v1 - e1 * clamp(dot(v1, e1) / dot(e1, e1), 0.0, 1.0);
+            vec2 pq2 = v2 - e2 * clamp(dot(v2, e2) / dot(e2, e2), 0.0, 1.0);
+            float orientation = sign(e0.x * e2.y - e0.y * e2.x);
+            vec2 distanceEdge = min(
+              min(vec2(dot(pq0, pq0), orientation * (v0.x * e0.y - v0.y * e0.x)),
+                  vec2(dot(pq1, pq1), orientation * (v1.x * e1.y - v1.y * e1.x))),
+              vec2(dot(pq2, pq2), orientation * (v2.x * e2.y - v2.y * e2.x))
+            );
+            return -sqrt(distanceEdge.x) * sign(distanceEdge.y);
+          }
+
+          float triangularCard(vec3 p) {
+            float face = triangleDistance(
+              p.xy,
+              vec2(-.78, .01),
+              vec2(.78, .01),
+              vec2(0.0, -.44)
+            );
+            vec2 extrusion = vec2(face, abs(p.z) - .052);
+            return min(max(extrusion.x, extrusion.y), 0.0)
+              + length(max(extrusion, 0.0)) - .018;
           }
 
           float panelDistance(vec3 p, float angle, float assembled, vec3 origin, float twist) {
@@ -988,23 +1014,29 @@ const schemas = [
             q.xy *= rotate2d(angle + (1.0 - assembled) * twist);
             q.y -= .44;
             q.z += (1.0 - assembled) * origin.z * .22;
-            return roundedBox(q, vec3(.78, .052, .54), .038);
+            return triangularCard(q);
           }
 
           vec2 scene(vec3 p) {
             float cycle = mod(uTime, 7.6);
-            float first = smoothstep(.25, 1.65, cycle) * (1.0 - smoothstep(6.45, 7.45, cycle));
-            float second = smoothstep(.58, 1.98, cycle) * (1.0 - smoothstep(6.22, 7.25, cycle));
-            float third = smoothstep(.91, 2.31, cycle) * (1.0 - smoothstep(5.99, 7.05, cycle));
+            float first = smoothstep(.25, 1.65, cycle) * (1.0 - smoothstep(6.05, 6.95, cycle));
+            float second = smoothstep(.58, 1.98, cycle) * (1.0 - smoothstep(5.90, 6.80, cycle));
+            float third = smoothstep(.91, 2.31, cycle) * (1.0 - smoothstep(5.75, 6.65, cycle));
+            float frontPose = smoothstep(.86, .995, min(first, min(second, third)));
 
             p.y += sin(uTime * .78) * .055;
-            p.xy *= rotate2d(-.12 + sin(uTime * .24) * .065 + uPointer.x * .075);
-            p.yz *= rotate2d(.69 + sin(uTime * .29) * .105 - uPointer.y * .085);
-            p.xz *= rotate2d(-.38 + uTime * (.055 + uEnergy * .026));
+            float faceRotation = mix(-.12 + sin(uTime * .24) * .065 + uPointer.x * .075, -.08, frontPose);
+            float depthTilt = 1.0 - frontPose;
+            p.xy *= rotate2d(faceRotation);
+            p.yz *= rotate2d((.69 + sin(uTime * .29) * .105 - uPointer.y * .085) * depthTilt);
+            p.xz *= rotate2d((-.38 + uTime * (.055 + uEnergy * .026)) * depthTilt);
 
-            float d1 = panelDistance(p, 0.0, first, vec3(-1.72, 1.18, .9), -.72);
-            float d2 = panelDistance(p, 2.094395, second, vec3(1.82, .76, -.75), .84);
-            float d3 = panelDistance(p, 4.188790, third, vec3(.12, -1.82, 1.05), -.96);
+            float aspectRatio = uResolution.x / uResolution.y;
+            float horizontalEdge = mix(2.9, 5.05, smoothstep(.72, 1.78, aspectRatio));
+            float lowerEdge = mix(3.35, 3.75, smoothstep(.72, 1.45, aspectRatio));
+            float d1 = panelDistance(p, 0.0, first, vec3(-horizontalEdge, .34, .9), -.72);
+            float d2 = panelDistance(p, 2.094395, second, vec3(horizontalEdge, .34, -.75), .84);
+            float d3 = panelDistance(p, 4.188790, third, vec3(0.0, -lowerEdge, 1.05), -.96);
             vec2 result = vec2(d1, 1.0);
             if (d2 < result.x) result = vec2(d2, 2.0);
             if (d3 < result.x) result = vec2(d3, 3.0);
@@ -1066,9 +1098,18 @@ const schemas = [
             color *= .42 + diffuse * .92;
             color += vec3(1.0, .12, .16) * (rim * .62 + edge * .78);
             color += vec3(1.0, .8, .78) * pow(max(dot(reflect(rayDirection, normal), lightDirection), 0.0), 42.0) * .9;
+
+            float cycle = mod(uTime, 7.6);
+            float joined = smoothstep(2.12, 2.36, cycle) * (1.0 - smoothstep(3.48, 3.72, cycle));
+            float sweepProgress = smoothstep(2.16, 3.58, cycle);
+            float sweepPosition = mix(-1.05, 1.05, sweepProgress);
+            float reflectionBand = exp(-54.0 * pow((uv.x + uv.y * .42) - sweepPosition, 2.0));
+            float polishedSpecular = pow(max(dot(reflect(rayDirection, normal), normalize(vec3(-.72, .52, 1.0))), 0.0), 18.0);
+            float joiningReflection = joined * (reflectionBand * 1.18 + polishedSpecular * .38);
+            color += vec3(1.0, .82, .79) * joiningReflection;
             color += auraColor * aura * 1.8;
 
-            outColor = vec4(color, .97);
+            outColor = vec4(color, 1.0);
           }
         `;
 
