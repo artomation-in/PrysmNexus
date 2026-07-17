@@ -5,9 +5,9 @@ const origin = (Astro.site ?? new URL(brand.domain)).origin;
 const formEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim() ?? "";
 const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }]), { "@context": "https://schema.org", "@type": "ContactPage", name: "Contact PrysmNexus", url: `${origin}/contact/`, mainEntity: { "@id": `${origin}/#organization` } }];
 ---
-<SeoLayout title="Contact PrysmNexus | Growth Marketing Hyderabad" description="Contact PrysmNexus in Hyderabad to discuss branding, content production, social media, performance marketing, SEO, local search, or reputation support." eyebrow="Start a conversation" heading="Tell us what needs to grow, change, or become clearer." lead="Share the business, current channels, priority outcomes, and the problem you want the next stage of marketing to solve." schemas={schemas}>
+<SeoLayout title="Contact PrysmNexus | Growth Marketing India" description="Contact PrysmNexus to discuss branding, content production, social media, performance marketing, SEO, local search, or reputation support across India." eyebrow="Start a conversation" heading="Tell us what needs to grow, change, or become clearer." lead="Share the business, current channels, priority outcomes, and the problem you want the next stage of marketing to solve." schemas={schemas}>
   <div class="seoMain">
-    <aside class="answerBlock"><span>Primary contact</span><p>Email <a href={`mailto:${brand.email}`}>{brand.email}</a>. PrysmNexus serves Hyderabad brands and hospitality businesses, with wider India enquiries considered where the scope is a good fit.</p></aside>
+    <aside class="answerBlock"><span>Primary contact</span><p>Email <a href={`mailto:${brand.email}`}>{brand.email}</a>. PrysmNexus supports brands and hospitality businesses across India where the scope is a strong fit.</p></aside>
     <section class="seoSection contactSection" id="consultation-form" aria-labelledby="contact-form-title">
       <div class="contactIntro">
         <span class="contactKicker">Project enquiry</span>

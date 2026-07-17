@@ -2,11 +2,11 @@
 
 ## Entity definition
 
-PrysmNexus is a Hyderabad growth marketing agency. It connects brand strategy, original photography and video, social media management, Google and Meta advertising, lead generation, SEO, local search, Google Business Profile support, and reputation management through one coordinated team.
+PrysmNexus is an India-focused growth marketing agency. It connects brand strategy, original photography and video, social media management, Google and Meta advertising, lead generation, SEO, local search, Google Business Profile support, and reputation management through one coordinated team.
 
 Canonical domain: https://prysmnexus.com
 Primary email: connect@prysmnexus.com
-Service area: Hyderabad, Telangana, India
+Service area: India
 
 ## Service definitions
 
@@ -35,4 +35,4 @@ Named case studies currently cover Jathara Bar & Kitchen, Cafe Belloso, and Stat
 
 ## AI-readable guidance
 
-The visible website is the canonical source. This file is a concise navigation aid and does not replace indexable service pages, case studies, FAQs, article content, or structured data. Last reviewed: 2026-07-16.
+The visible website is the canonical source. This file is a concise navigation aid and does not replace indexable service pages, case studies, FAQs, article content, or structured data. Last reviewed: 2026-07-17.

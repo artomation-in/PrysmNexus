@@ -62,9 +62,9 @@ const schemas = [
     name: "PrysmNexus",
     url: `${siteUrl}/`,
     logo: `${siteUrl}/prysmnexus-logo.png`,
-    description: "PrysmNexus is a Hyderabad-based growth marketing agency combining branding, content production, social media, paid acquisition, SEO, local search, and reputation support.",
+    description: "PrysmNexus is an India-focused growth marketing agency combining branding, content production, social media, paid acquisition, SEO, local search, and reputation support.",
     email: seoBrand.email,
-    areaServed: [{ "@type": "City", name: "Hyderabad" }, { "@type": "AdministrativeArea", name: "Telangana" }],
+    areaServed: { "@type": "Country", name: "India" },
     hasOfferCatalog: { "@type": "OfferCatalog", name: "Growth marketing services", itemListElement: seoServices.map((service) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: service.name, url: `${siteUrl}/services/${service.slug}/` } })) },
   },
   {
@@ -84,7 +84,7 @@ const schemas = [
     url: `${siteUrl}/`,
     provider: { "@id": `${siteUrl}/#organization` },
     serviceType: ["Brand Strategy", "Content Production", "Social Media Management", "Performance Marketing", "Search Engine Optimization", "Local Search Optimization", "Reputation Management"],
-    areaServed: "Hyderabad, India",
+    areaServed: { "@type": "Country", name: "India" },
   },
   {
     "@context": "https://schema.org",
@@ -99,7 +99,7 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="PrysmNexus — Branding & Growth Marketing Agency in Hyderabad"
+  title="PrysmNexus — Branding & Growth Marketing Agency in India"
   description="PrysmNexus combines brand strategy, original content, social media, performance marketing, SEO, local search, and reputation support under one accountable team."
   schemas={schemas}
 >
@@ -124,7 +124,7 @@ const schemas = [
       <h1 class="heroTitle" id="hero-heading"><span class="heroWord"><em>Growth</em></span><strong class="heroWord"><em>Marketing</em></strong><small>Built Around Your Business.</small></h1>
       <div class="focused" aria-hidden="true"><span>Focused</span></div>
       <div class="heroCopy" data-reveal="up">
-        <p><strong>Sharp branding. Original content. Accountable growth.</strong> PrysmNexus brings strategy, creative production, social media, paid campaigns, and search visibility together under one Hyderabad-based team.</p>
+        <p><strong>Sharp branding. Original content. Accountable growth.</strong> PrysmNexus brings strategy, creative production, social media, paid campaigns, and search visibility together for businesses across India.</p>
         <a class="gradientButton" href="#services">Explore Services <b>↗</b></a>
       </div>
     </section>
@@ -341,7 +341,7 @@ const schemas = [
           <div class="eyebrow light" data-reveal="line">Selected Clients</div>
           <h2 id="clients-title" data-reveal="title">Built with brands that<br /><span>care about the details.</span></h2>
         </div>
-        <p data-reveal="up">Selected Hyderabad collaborations across hospitality, content, and growth marketing.</p>
+        <p data-reveal="up">Selected collaborations across hospitality, content, and growth marketing in India.</p>
       </header>
       <div class="clientMarqueeWindow" aria-label="Featured PrysmNexus clients">
         <div class="clientMarqueeTrack">
@@ -409,8 +409,8 @@ const schemas = [
         <div class="proFooterGrid" data-reveal="up">
           <div class="proFooterBrand">
             <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[64, 96, 128]} sizes="62px" format="webp" quality={90} loading="lazy" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
-            <p>Strategy, creative, performance, and discovery—managed by one focused Hyderabad team.</p>
-            <span class="proFooterLocation"><i></i>Hyderabad · India</span>
+            <p>Strategy, creative, performance, and discovery—managed by one focused team serving businesses across India.</p>
+            <span class="proFooterLocation"><i></i>Serving India</span>
           </div>
 
           <nav class="proFooterLinks" aria-label="Footer navigation">
@@ -496,7 +496,11 @@ const schemas = [
         });
 
         if (reduceMotion.matches || !("IntersectionObserver" in window)) {
-          revealItems.forEach((item) => item.classList.add("is-visible"));
+          revealItems.forEach((item) => {
+            item.classList.remove("reveal-pending");
+            item.classList.add("reveal-active", "is-visible");
+            item.querySelectorAll<HTMLElement>("[data-count]").forEach((counter) => this.animateCounter(counter));
+          });
           return;
         }
 
@@ -594,7 +598,29 @@ const schemas = [
     }
 
     // Initialize the advanced reveal system
-    new RevealSystem();
+    const revealSystem = new RevealSystem();
+
+    // Recheck visibility after zoom, resize, anchor navigation, font loading,
+    // and browser scroll restoration. Readable content must never remain masked.
+    const refreshRevealVisibility = () => {
+      document.querySelectorAll<HTMLElement>("[data-reveal].reveal-pending").forEach((item) => {
+        const bounds = item.getBoundingClientRect();
+        if (bounds.top > innerHeight + 80 || bounds.bottom < -80) return;
+        item.classList.remove("reveal-pending");
+        item.classList.add("reveal-active", "is-visible");
+        item.querySelectorAll<HTMLElement>("[data-count]").forEach((counter) => revealSystem.animateCounter(counter));
+        if (item.matches("[data-count]")) revealSystem.animateCounter(item);
+      });
+    };
+    let revealRefreshFrame = 0;
+    const scheduleRevealRefresh = () => {
+      cancelAnimationFrame(revealRefreshFrame);
+      revealRefreshFrame = requestAnimationFrame(refreshRevealVisibility);
+    };
+    addEventListener("resize", scheduleRevealRefresh, { passive: true });
+    addEventListener("hashchange", scheduleRevealRefresh);
+    addEventListener("pageshow", scheduleRevealRefresh);
+    document.fonts.ready.then(scheduleRevealRefresh);
 
     // Velocity-aware scroll motion: decorative motion moves faster while the
     // page is in motion, then returns smoothly to its calm base state.

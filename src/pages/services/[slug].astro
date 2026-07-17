@@ -7,11 +7,11 @@ const origin = (Astro.site ?? new URL(brand.domain)).origin;
 const related = service.related.map(serviceBySlug).filter(Boolean) as Service[];
 const schemas = [
   breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Services", path: "/services/" }, { name: service.name, path: `/services/${service.slug}/` }]),
-  { "@context": "https://schema.org", "@type": "Service", "@id": `${origin}/services/${service.slug}/#service`, name: service.name, description: service.description, url: `${origin}/services/${service.slug}/`, provider: { "@type": "ProfessionalService", "@id": `${origin}/#organization`, name: brand.name, url: origin, email: brand.email, areaServed: { "@type": "City", name: brand.locality } }, serviceType: service.name, areaServed: ["Hyderabad", "Telangana", "India"] },
+  { "@context": "https://schema.org", "@type": "Service", "@id": `${origin}/services/${service.slug}/#service`, name: service.name, description: service.description, url: `${origin}/services/${service.slug}/`, provider: { "@type": "ProfessionalService", "@id": `${origin}/#organization`, name: brand.name, url: origin, email: brand.email, areaServed: { "@type": "Country", name: "India" } }, serviceType: service.name, areaServed: { "@type": "Country", name: "India" } },
   faqSchema(service.faqs),
 ];
 ---
-<SeoLayout title={`${service.shortName} in Hyderabad | PrysmNexus`} description={service.description} eyebrow={service.eyebrow} heading={service.title} lead={service.intro} schemas={schemas}>
+<SeoLayout title={`${service.shortName} in India | PrysmNexus`} description={service.description} eyebrow={service.eyebrow} heading={service.title} lead={service.intro} schemas={schemas}>
   <div class="seoMain">
     <aside class="answerBlock"><span>Clear definition</span><p><strong>{service.name}</strong> — {service.definition}</p></aside>
     <section class="seoSection"><div class="seoSectionHead"><h2>What the service includes.</h2><p>Every scope is shaped around the business, production volume, customer journey, and priority outcomes. These are the core capabilities available within this service.</p></div><ul class="seoList">{service.deliverables.map((item) => <li>{item}</li>)}</ul></section>

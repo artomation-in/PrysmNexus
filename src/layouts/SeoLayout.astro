@@ -41,7 +41,7 @@ const segments = Astro.url.pathname.split("/").filter(Boolean);
           <h1>{heading}</h1>
           <p class="seoHeroLead">{lead}</p>
           <div class="seoHeroActions"><a class="seoButton" href="/contact/#consultation-form">Discuss your goals <span aria-hidden="true">↗</span></a><a class="seoButton secondary" href="/services/">Explore services</a></div>
-          {type === "article" && <div class="articleMeta"><span>By PrysmNexus Strategy Team</span><span>Updated {modified}</span><span>Hyderabad, India</span></div>}
+          {type === "article" && <div class="articleMeta"><span>By PrysmNexus Strategy Team</span><span>Updated {modified}</span><span>India</span></div>}
         </div>
       </section>
       <slot />
@@ -52,7 +52,7 @@ const segments = Astro.url.pathname.split("/").filter(Boolean);
         <nav><strong>Services</strong>{services.map((service) => <a href={`/services/${service.slug}/`}>{service.shortName}</a>)}</nav>
         <nav><strong>Explore</strong><a href="/case-studies/">Case Studies</a><a href="/insights/">Insights</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/cookie-policy/">Cookie Policy</a></nav>
       </div>
-      <div class="seoFooterBottom">© 2026 PrysmNexus · Hyderabad, Telangana, India</div>
+      <div class="seoFooterBottom">© 2026 PrysmNexus · Serving businesses across India</div>
     </footer>
   </div>
 </BaseLayout>
