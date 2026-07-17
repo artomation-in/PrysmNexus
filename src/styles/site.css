@@ -1586,65 +1586,15 @@ main {
 .prismCanvas {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  opacity: .88;
-  pointer-events: none
-}
-
-.prismField {
-  position: absolute;
-  inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .94;
   pointer-events: none;
-  overflow: hidden
+  contain: strict
 }
 
-.prismField i {
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border: 1px solid rgba(255, 46, 57, .24);
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
-  filter: drop-shadow(0 0 24px rgba(241, 11, 22, .18));
-  animation: prismDrift 13s var(--ease-smooth) infinite alternate
-}
-
-.prismField i:nth-child(1) {
-  left: 8%;
-  top: 15%;
-  transform: rotate(18deg);
-  animation-delay: -2s
-}
-
-.prismField i:nth-child(2) {
-  width: 360px;
-  height: 360px;
-  right: 5%;
-  top: 8%;
-  transform: rotate(-28deg);
-  animation-duration: 17s;
-  opacity: .52
-}
-
-.prismField i:nth-child(3) {
-  width: 140px;
-  height: 140px;
-  right: 31%;
-  bottom: 9%;
-  transform: rotate(52deg);
-  animation-duration: 11s;
-  animation-delay: -5s
-}
-
-.prismField i:nth-child(4) {
-  width: 90px;
-  height: 90px;
-  left: 47%;
-  top: 23%;
-  transform: rotate(-11deg);
-  animation-duration: 9s;
-  opacity: .65
-}
+.focused { z-index: 2 }
 
 .heroGlow {
   animation: glowBreathe 6s ease-in-out infinite;

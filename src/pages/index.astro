@@ -108,7 +108,6 @@ const schemas = [
   <main id="main-content">
     <section class="hero" id="home" aria-labelledby="hero-heading">
       <canvas class="prismCanvas" aria-hidden="true"></canvas>
-      <div class="prismField" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <header class="siteHeader" data-site-header>
         <a class="logo" href="#home" aria-label="PrysmNexus home" translate="no">
           <span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[64, 96, 128]} sizes="(max-width: 760px) 48px, 62px" format="webp" quality={90} loading="eager" /></span>
@@ -715,7 +714,7 @@ const schemas = [
       // Nav link underline position based on scroll
       const navPositions = Array.from(navLinks).map((link) => {
         const targetSection = link.getAttribute('href');
-        if (targetSection && targetSection !== '#home') {
+        if (targetSection?.startsWith('#') && targetSection !== '#home') {
           const targetElement = document.querySelector(targetSection);
           if (targetElement) {
             const rect = targetElement.getBoundingClientRect();
@@ -949,92 +948,222 @@ const schemas = [
     }
 
     const canvas = document.querySelector<HTMLCanvasElement>(".prismCanvas");
-    const hero = document.querySelector<HTMLElement>(".hero");
-    if (canvas && hero && !reduceMotion.matches) {
-      const context = canvas.getContext("2d");
-      const points = Array.from({ length: 48 }, (_, index) => ({
-        x: ((index * 47) % 101) / 100,
-        y: ((index * 73) % 97) / 100,
-        speed: .000045 + (index % 7) * .000008 + Math.random() * .000005,
-        phase: index * .7 + Math.random() * .5,
-        baseRadius: index % 3 === 0 ? 2.2 : 1.2,
-        radiusVariation: index % 2 === 0 ? .8 : 1.5,
-        colorIntensity: [1, 1, .8, .9][index % 4],
-        velocityX: (Math.random() - .5) * .0002,
-        velocityY: (Math.random() - .5) * .0002,
-      }));
-      let canvasWidth = 0;
-      let canvasHeight = 0;
-      let canvasVisible = true;
-      let canvasFrame = 0;
-      const resizeCanvas = () => {
-        const ratio = Math.min(devicePixelRatio, 1.5);
-        canvasWidth = hero.clientWidth;
-        canvasHeight = hero.clientHeight;
-        canvas.width = Math.round(canvasWidth * ratio);
-        canvas.height = Math.round(canvasHeight * ratio);
-        canvas.style.width = `${canvasWidth}px`;
-        canvas.style.height = `${canvasHeight}px`;
-        context?.setTransform(ratio, 0, 0, ratio, 0, 0);
-      };
-      const drawPrisms = (time: number) => {
-        if (!context || !canvasVisible) { canvasFrame = requestAnimationFrame(drawPrisms); return; }
-        context.clearRect(0, 0, canvasWidth, canvasHeight);
-        
-        const positioned = points.map((point) => {
-          const x = point.x * canvasWidth + Math.sin(time * point.speed + point.phase) * 22;
-          const y = point.y * canvasHeight + Math.cos(time * point.speed * 1.3 + point.phase) * 16;
-          
-          point.x += point.velocityX * time;
-          point.y += point.velocityY * time;
-          
-          point.phase += .008;
-          
-          point.velocityX = Math.max(Math.min(point.velocityX + (Math.random() - .5) * .00002, .0005), -.0005);
-          point.velocityY = Math.max(Math.min(point.velocityY + (Math.random() - .5) * .00002, .0005), -.0005);
-          
-          point.x = Math.max(0.02, Math.min(0.98, point.x));
-          point.y = Math.max(0.02, Math.min(0.98, point.y));
-          
-          return { ...point, x, y };
-        });
-        
-        for (let index = 0; index < positioned.length; index += 1) {
-          for (let next = index + 1; next < positioned.length; next += 1) {
-            const dx = positioned[index].x - positioned[next].x;
-            const dy = positioned[index].y - positioned[next].y;
-            const distance = Math.hypot(dx, dy) * Math.min(canvasWidth, canvasHeight);
-            if (distance > 185) continue;
-            context.beginPath();
-            context.moveTo(positioned[index].x * canvasWidth, positioned[index].y * canvasHeight);
-            context.lineTo(positioned[next].x * canvasWidth, positioned[next].y * canvasHeight);
-            context.strokeStyle = `rgba(255,35,47,${(1 - distance / 185) * .13 * positioned[index].colorIntensity})`;
-            context.lineWidth = .7;
-            context.stroke();
+    const prismHero = document.querySelector<HTMLElement>(".hero");
+    if (canvas && prismHero) {
+      const gl = canvas.getContext("webgl2", {
+        alpha: true,
+        antialias: false,
+        depth: false,
+        powerPreference: "high-performance",
+        premultipliedAlpha: false,
+      });
+
+      if (!gl) {
+        canvas.hidden = true;
+      } else {
+        const vertexSource = `#version 300 es
+          in vec2 aPosition;
+          void main() { gl_Position = vec4(aPosition, 0.0, 1.0); }
+        `;
+        const fragmentSource = `#version 300 es
+          precision highp float;
+          out vec4 outColor;
+          uniform vec2 uResolution;
+          uniform vec2 uPointer;
+          uniform float uTime;
+          uniform float uEnergy;
+
+          mat2 rotate2d(float angle) {
+            float c = cos(angle), s = sin(angle);
+            return mat2(c, -s, s, c);
+          }
+
+          float roundedBox(vec3 p, vec3 bounds, float radius) {
+            vec3 q = abs(p) - bounds;
+            return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0) - radius;
+          }
+
+          float panelDistance(vec3 p, float angle, float assembled, vec3 origin, float twist) {
+            vec3 q = p - origin * (1.0 - assembled);
+            q.xy *= rotate2d(angle + (1.0 - assembled) * twist);
+            q.y -= .44;
+            q.z += (1.0 - assembled) * origin.z * .22;
+            return roundedBox(q, vec3(.78, .052, .54), .038);
+          }
+
+          vec2 scene(vec3 p) {
+            float cycle = mod(uTime, 7.6);
+            float first = smoothstep(.25, 1.65, cycle) * (1.0 - smoothstep(6.45, 7.45, cycle));
+            float second = smoothstep(.58, 1.98, cycle) * (1.0 - smoothstep(6.22, 7.25, cycle));
+            float third = smoothstep(.91, 2.31, cycle) * (1.0 - smoothstep(5.99, 7.05, cycle));
+
+            p.y += sin(uTime * .78) * .055;
+            p.xy *= rotate2d(-.12 + sin(uTime * .24) * .065 + uPointer.x * .075);
+            p.yz *= rotate2d(.69 + sin(uTime * .29) * .105 - uPointer.y * .085);
+            p.xz *= rotate2d(-.38 + uTime * (.055 + uEnergy * .026));
+
+            float d1 = panelDistance(p, 0.0, first, vec3(-1.72, 1.18, .9), -.72);
+            float d2 = panelDistance(p, 2.094395, second, vec3(1.82, .76, -.75), .84);
+            float d3 = panelDistance(p, 4.188790, third, vec3(.12, -1.82, 1.05), -.96);
+            vec2 result = vec2(d1, 1.0);
+            if (d2 < result.x) result = vec2(d2, 2.0);
+            if (d3 < result.x) result = vec2(d3, 3.0);
+            return result;
+          }
+
+          vec3 normalAt(vec3 p) {
+            vec2 e = vec2(.0015, 0.0);
+            return normalize(vec3(
+              scene(p + e.xyy).x - scene(p - e.xyy).x,
+              scene(p + e.yxy).x - scene(p - e.yxy).x,
+              scene(p + e.yyx).x - scene(p - e.yyx).x
+            ));
+          }
+
+          void main() {
+            vec2 uv = (gl_FragCoord.xy * 2.0 - uResolution.xy) / min(uResolution.x, uResolution.y);
+            float wide = smoothstep(1.05, 1.55, uResolution.x / uResolution.y);
+            uv.x -= .13 * wide;
+            uv.y += .015;
+
+            vec3 rayOrigin = vec3(0.0, 0.0, 4.35);
+            vec3 rayDirection = normalize(vec3(uv, -2.28));
+            float travel = 0.0;
+            float nearest = 8.0;
+            float material = 1.0;
+            bool hit = false;
+
+            for (int step = 0; step < 84; step++) {
+              vec3 point = rayOrigin + rayDirection * travel;
+              vec2 samplePoint = scene(point);
+              float distanceToSurface = samplePoint.x;
+              nearest = min(nearest, abs(distanceToSurface));
+              if (distanceToSurface < .0012) { hit = true; material = samplePoint.y; break; }
+              travel += distanceToSurface * .72;
+              if (travel > 8.0) break;
+            }
+
+            float aura = exp(-10.5 * nearest) * .18;
+            vec3 auraColor = mix(vec3(.88, .015, .035), vec3(1.0, .19, .24), .55 + .45 * sin(uTime));
+            if (!hit) {
+              outColor = vec4(auraColor, aura);
+              return;
+            }
+
+            vec3 point = rayOrigin + rayDirection * travel;
+            vec3 normal = normalAt(point);
+            vec3 lightDirection = normalize(vec3(-.45, .8, 1.15));
+            vec3 rimDirection = normalize(vec3(.8, -.25, .55));
+            float diffuse = max(dot(normal, lightDirection), 0.0);
+            float rim = pow(1.0 - max(dot(normal, -rayDirection), 0.0), 2.5);
+            float edge = pow(max(dot(normal, rimDirection), 0.0), 5.0);
+            float faceTone = smoothstep(-.7, .9, normal.x * .65 + normal.y * .35);
+
+            vec3 panelRed = mix(vec3(.42, .004, .015), vec3(1.0, .025, .045), faceTone);
+            vec3 panelCoral = mix(vec3(.35, .008, .018), vec3(1.0, .18, .21), faceTone);
+            vec3 panelGraphite = mix(vec3(.025, .03, .04), vec3(.18, .21, .25), faceTone);
+            vec3 color = material < 1.5 ? panelRed : (material < 2.5 ? panelCoral : panelGraphite);
+            color *= .42 + diffuse * .92;
+            color += vec3(1.0, .12, .16) * (rim * .62 + edge * .78);
+            color += vec3(1.0, .8, .78) * pow(max(dot(reflect(rayDirection, normal), lightDirection), 0.0), 42.0) * .9;
+            color += auraColor * aura * 1.8;
+
+            outColor = vec4(color, .97);
+          }
+        `;
+
+        const compileShader = (type: number, source: string) => {
+          const shader = gl.createShader(type);
+          if (!shader) return null;
+          gl.shaderSource(shader, source);
+          gl.compileShader(shader);
+          if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            console.warn("Hero prism shader unavailable", gl.getShaderInfoLog(shader));
+            gl.deleteShader(shader);
+            return null;
+          }
+          return shader;
+        };
+
+        const vertexShader = compileShader(gl.VERTEX_SHADER, vertexSource);
+        const fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentSource);
+        const program = vertexShader && fragmentShader ? gl.createProgram() : null;
+        if (!program || !vertexShader || !fragmentShader) {
+          canvas.hidden = true;
+        } else {
+          gl.attachShader(program, vertexShader);
+          gl.attachShader(program, fragmentShader);
+          gl.linkProgram(program);
+          if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            console.warn("Hero prism program unavailable", gl.getProgramInfoLog(program));
+            canvas.hidden = true;
+          } else {
+            const vertices = new Float32Array([-1, -1, 3, -1, -1, 3]);
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+            const position = gl.getAttribLocation(program, "aPosition");
+            gl.enableVertexAttribArray(position);
+            gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+            gl.useProgram(program);
+
+            const resolutionUniform = gl.getUniformLocation(program, "uResolution");
+            const pointerUniform = gl.getUniformLocation(program, "uPointer");
+            const timeUniform = gl.getUniformLocation(program, "uTime");
+            const energyUniform = gl.getUniformLocation(program, "uEnergy");
+            const pointer = { x: 0, y: 0 };
+            let width = 0;
+            let height = 0;
+            let visible = true;
+            let frame = 0;
+            let shaderTime = 0;
+            let previousFrame = performance.now();
+
+            const resizePrism = () => {
+              const ratio = Math.min(devicePixelRatio || 1, 1.6);
+              width = prismHero.clientWidth;
+              height = prismHero.clientHeight;
+              canvas.width = Math.round(width * ratio);
+              canvas.height = Math.round(height * ratio);
+              canvas.style.width = `${width}px`;
+              canvas.style.height = `${height}px`;
+              gl.viewport(0, 0, canvas.width, canvas.height);
+            };
+
+            prismHero.addEventListener("pointermove", (event) => {
+              const bounds = prismHero.getBoundingClientRect();
+              pointer.x = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
+              pointer.y = ((event.clientY - bounds.top) / bounds.height - .5) * -2;
+            }, { passive: true });
+            prismHero.addEventListener("pointerleave", () => { pointer.x = 0; pointer.y = 0; });
+
+            const renderPrism = (now: number) => {
+              const delta = Math.min((now - previousFrame) / 1000, .05);
+              previousFrame = now;
+              if (visible) {
+                const motionRate = reduceMotion.matches ? 0 : getMotionRate();
+                const energy = reduceMotion.matches ? 0 : Number.parseFloat(getComputedStyle(root).getPropertyValue("--scroll-energy")) || 0;
+                shaderTime += delta * motionRate;
+                gl.clearColor(0, 0, 0, 0);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
+                gl.uniform2f(pointerUniform, pointer.x, pointer.y);
+                gl.uniform1f(timeUniform, shaderTime);
+                gl.uniform1f(energyUniform, energy);
+                gl.drawArrays(gl.TRIANGLES, 0, 3);
+              }
+              if (!reduceMotion.matches) frame = requestAnimationFrame(renderPrism);
+            };
+
+            new ResizeObserver(resizePrism).observe(prismHero);
+            new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && !document.hidden; }).observe(prismHero);
+            document.addEventListener("visibilitychange", () => { visible = !document.hidden && prismHero.getBoundingClientRect().bottom > 0; });
+            resizePrism();
+            frame = requestAnimationFrame(renderPrism);
+            addEventListener("pagehide", () => cancelAnimationFrame(frame), { once: true });
           }
         }
-        positioned.forEach((point, index) => {
-          context.beginPath();
-          const radius = point.baseRadius * (1 + Math.sin(time * .002 + index * .1) * point.radiusVariation * .15);
-          context.arc(point.x * canvasWidth, point.y * canvasHeight, radius, 0, Math.PI * 2);
-          context.fillStyle = index % 4 === 0 ? `rgba(255,255,255,${.48 * point.colorIntensity})` : `rgba(255,28,39,${.38 * point.colorIntensity})`;
-          context.fill();
-          
-          if (index % 6 === 0) {
-            context.beginPath();
-            context.arc(point.x * canvasWidth, point.y * canvasHeight, 6, 0, Math.PI * 2);
-            context.fillStyle = `rgba(255,35,47,${.4 * point.colorIntensity})`;
-            context.fill();
-          }
-        });
-        canvasFrame = requestAnimationFrame(drawPrisms);
-      };
-      new ResizeObserver(resizeCanvas).observe(hero);
-      new IntersectionObserver(([entry]) => { canvasVisible = entry.isIntersecting && !document.hidden; }).observe(hero);
-      document.addEventListener("visibilitychange", () => { canvasVisible = !document.hidden && hero.getBoundingClientRect().bottom > 0; });
-      resizeCanvas();
-      canvasFrame = requestAnimationFrame(drawPrisms);
-      addEventListener("pagehide", () => cancelAnimationFrame(canvasFrame), { once: true });
+      }
     }
   </script>
 </BaseLayout>
