@@ -5,8 +5,8 @@ An Astro 7 marketing site for PrysmNexus, built as static HTML for fast delivery
 ## Local development
 
 ```bash
-npm install
-npm run dev
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
 The local preview runs at `http://localhost:4174/`.
@@ -14,8 +14,8 @@ The local preview runs at `http://localhost:4174/`.
 ## Validation
 
 ```bash
-npm run check
-npm run build
+pnpm run check
+pnpm run build
 ```
 
 ## Production and Cloudflare Pages
@@ -24,9 +24,20 @@ The site includes canonical metadata, JSON-LD, XML sitemaps, `robots.txt`, `llms
 
 Cloudflare Pages must use:
 
-- Build command: `npm run build`
+- Build command: `pnpm run build`
 - Build output directory: `dist`
 - Node.js version: `22.13.0` or newer
+- Root directory: `/`
+
+For a Pages project using Git integration, leave the Cloudflare **Deploy command** empty. Cloudflare publishes the configured `dist` output automatically after the build.
+
+If the Cloudflare workflow requires an explicit deploy command, use:
+
+```bash
+npx wrangler pages deploy dist --project-name prysmnexus
+```
+
+Do not use `npx wrangler deploy`. That command deploys a Worker and fails because this repository is configured as a Cloudflare Pages project.
 
 Deploy the generated `dist` directory. Do not deploy the development server output: it contains Astro's development-only `/_image/` endpoint, which is not available as a static Cloudflare Pages route.
 

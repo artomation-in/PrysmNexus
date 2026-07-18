@@ -11,6 +11,7 @@
     "dev": "astro dev --host 127.0.0.1 --port 4174",
     "build": "astro build",
     "postbuild": "node scripts/verify-production.mjs",
+    "deploy:pages": "wrangler pages deploy dist --project-name prysmnexus",
     "preview": "astro preview --host 127.0.0.1 --port 4174",
     "check": "astro check"
   },
