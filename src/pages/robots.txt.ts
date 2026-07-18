@@ -6,6 +6,7 @@ export const GET: APIRoute = ({ site }) => {
   const production = import.meta.env.PROD && origin === new URL(brand.domain).origin;
   const body = production ? [
     "User-agent: *", "Allow: /", "",
+    "User-agent: Googlebot-Image", "Allow: /", "",
     "User-agent: OAI-SearchBot", "Allow: /", "",
     "User-agent: PerplexityBot", "Allow: /", "",
     "User-agent: ClaudeBot", "Allow: /", "",

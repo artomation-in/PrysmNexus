@@ -8475,3 +8475,173 @@ html,body{max-width:100%;overflow-x:clip}
   .serviceCard h3{font-size:27px}
   .serviceCard p{font-size:13px}
 }
+
+/* Definitive mobile navigation: a single premium surface with reliable states. */
+.mobileConsult,.mobileNavBackdrop{display:none}
+
+@media(max-width:760px){
+  body.menu-open{overflow:hidden}
+  .siteHeader,
+  .siteHeader.is-scrolled{
+    position:fixed;
+    z-index:60;
+    top:max(10px,env(safe-area-inset-top));
+    right:max(12px,env(safe-area-inset-right));
+    left:max(12px,env(safe-area-inset-left));
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:5px;
+    border:1px solid rgba(255,255,255,.11);
+    border-radius:20px;
+    background:linear-gradient(115deg,rgba(14,17,23,.94),rgba(25,17,20,.94));
+    box-shadow:0 14px 36px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.045);
+    filter:none;
+    backdrop-filter:blur(20px) saturate(1.25)
+  }
+  .siteHeader .logo,
+  .siteHeader.is-scrolled .logo{
+    width:auto;
+    min-width:0;
+    max-width:calc(100% - 58px);
+    height:50px;
+    padding:0 8px;
+    border:0;
+    border-radius:15px;
+    background:transparent;
+    box-shadow:none;
+    backdrop-filter:none
+  }
+  .siteHeader .logo:after{display:none}
+  .siteHeader .brandLogo{width:46px;height:48px;flex:0 0 46px;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
+  .siteHeader .brandLogo img{transform:scale(1.42)}
+  .siteHeader .logo b{color:#fff;font-size:18px;letter-spacing:-.035em}
+  .siteHeader .logo b span{color:#f24449}
+  .siteHeader .logo small{color:rgba(255,255,255,.55);font-size:7px;letter-spacing:.15em}
+
+  .menuButton{
+    position:relative;
+    z-index:3;
+    display:grid;
+    place-content:center;
+    gap:5px;
+    width:48px;
+    height:48px;
+    min-width:48px;
+    min-height:48px;
+    flex:0 0 48px;
+    padding:0;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:14px;
+    background:linear-gradient(145deg,rgba(239,52,57,.22),rgba(255,255,255,.04));
+    box-shadow:inset 0 1px rgba(255,255,255,.08);
+    color:#fff;
+    font-size:0;
+    cursor:pointer;
+    transition:background .25s ease,border-color .25s ease,transform .25s ease
+  }
+  .menuButton span{
+    display:block;
+    width:20px;
+    height:2px;
+    border-radius:99px;
+    background:#fff;
+    transform-origin:center;
+    transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .2s ease,width .25s ease
+  }
+  .menuButton span:nth-child(2){width:14px;margin-left:6px}
+  .menuButton[aria-expanded="true"]{border-color:rgba(242,68,73,.48);background:linear-gradient(145deg,#e22d33,#aa151c)}
+  .menuButton[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menuButton[aria-expanded="true"] span:nth-child(2){width:0;opacity:0;transform:translateX(8px)}
+  .menuButton[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .siteHeader nav,
+  .siteHeader.is-scrolled nav{
+    position:absolute;
+    z-index:2;
+    top:calc(100% + 9px);
+    right:0;
+    left:0;
+    display:flex!important;
+    height:auto;
+    max-height:0;
+    padding:7px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:3px;
+    overflow:hidden;
+    visibility:hidden;
+    opacity:0;
+    pointer-events:none;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    background:linear-gradient(155deg,rgba(15,18,24,.985),rgba(28,17,20,.985));
+    box-shadow:0 24px 55px rgba(0,0,0,.34);
+    transform:translateY(-10px) scale(.975);
+    transform-origin:top right;
+    backdrop-filter:blur(22px) saturate(1.2);
+    transition:max-height .42s cubic-bezier(.2,.8,.2,1),opacity .24s ease,transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s linear .42s
+  }
+  .siteHeader nav.open{
+    max-height:min(520px,calc(100dvh - 96px));
+    padding:7px;
+    overflow-y:auto;
+    visibility:visible;
+    opacity:1;
+    pointer-events:auto;
+    transform:none;
+    transition:max-height .42s cubic-bezier(.2,.8,.2,1),opacity .24s ease,transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s
+  }
+  .siteHeader nav a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    min-height:46px;
+    padding:11px 14px;
+    border:0;
+    border-radius:13px;
+    color:rgba(255,255,255,.9);
+    font-size:16px;
+    font-weight:600;
+    line-height:1.2;
+    transition:color .2s ease,background .2s ease,transform .2s ease
+  }
+  .siteHeader nav a:after{display:none}
+  .siteHeader nav a:hover,.siteHeader nav a:focus-visible{color:#fff;background:rgba(255,255,255,.075);transform:translateX(2px)}
+  .siteHeader nav .mobileConsult{
+    display:flex;
+    min-height:50px;
+    margin-top:4px;
+    padding:7px 8px 7px 16px;
+    color:#fff;
+    background:linear-gradient(105deg,#c9171f,#ef3e43 68%,#f26b65);
+    box-shadow:0 10px 24px rgba(220,33,39,.22)
+  }
+  .mobileConsult b{display:grid;width:36px;height:36px;place-items:center;border-radius:50%;background:#fff;color:#b9181e;font-size:16px}
+  .mobileNavBackdrop{
+    position:fixed;
+    z-index:50;
+    inset:0;
+    display:block;
+    visibility:hidden;
+    opacity:0;
+    pointer-events:none;
+    background:rgba(3,5,8,.58);
+    backdrop-filter:blur(5px);
+    transition:opacity .28s ease,visibility 0s linear .28s
+  }
+  .mobileNavBackdrop.is-visible{visibility:visible;opacity:1;pointer-events:auto;transition:opacity .28s ease,visibility 0s}
+}
+
+@media(max-width:380px){
+  .siteHeader .logo{padding-left:5px}
+  .siteHeader .brandLogo{width:41px;flex-basis:41px}
+  .siteHeader .logo b{font-size:17px}
+  .siteHeader .logo small{font-size:6.5px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .menuButton span,.siteHeader nav,.mobileNavBackdrop{transition:none!important}
+}
