@@ -18,26 +18,25 @@ pnpm run check
 pnpm run build
 ```
 
-## Production and Cloudflare Pages
+## Production and Cloudflare Workers
 
 The site includes canonical metadata, JSON-LD, XML sitemaps, `robots.txt`, `llms.txt`, and `llms-full.txt`. Production builds use `https://www.prysmnexus.com` as the public origin.
 
-Cloudflare Pages must use:
+Cloudflare Workers Builds must use:
 
 - Build command: `pnpm run build`
 - Build output directory: `dist`
 - Node.js version: `22.13.0` or newer
 - Root directory: `/`
+- Deploy command: `npx wrangler deploy`
 
-For a Pages project using Git integration, leave the Cloudflare **Deploy command** empty. Cloudflare publishes the configured `dist` output automatically after the build.
+`wrangler.jsonc` publishes `dist` through Cloudflare Workers Static Assets. Astro's generated folder routes and custom `404.html` are preserved with automatic trailing-slash handling.
 
-If the Cloudflare workflow requires an explicit deploy command, use:
+To deploy the already-built site manually, use:
 
 ```bash
-npx wrangler pages deploy dist --project-name prysmnexus
+npx wrangler deploy --config wrangler.jsonc
 ```
-
-Do not use `npx wrangler deploy`. That command deploys a Worker and fails because this repository is configured as a Cloudflare Pages project.
 
 Deploy the generated `dist` directory. Do not deploy the development server output: it contains Astro's development-only `/_image/` endpoint, which is not available as a static Cloudflare Pages route.
 
