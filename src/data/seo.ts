@@ -1,7 +1,7 @@
 export const brand = {
   name: "PrysmNexus",
   legalName: "PrysmNexus",
-  domain: "https://prysmnexus.com",
+  domain: "https://www.prysmnexus.com",
   email: "connect@prysmnexus.com",
   location: "India",
   locality: "",

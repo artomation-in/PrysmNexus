@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4174",
     "build": "astro build",
+    "postbuild": "node scripts/verify-production.mjs",
     "preview": "astro preview --host 127.0.0.1 --port 4174",
     "check": "astro check"
   },

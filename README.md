@@ -18,13 +18,16 @@ npm run check
 npm run build
 ```
 
-## Search configuration
+## Production and Cloudflare Pages
 
-The site includes canonical metadata, JSON-LD, XML sitemaps, `robots.txt`, `llms.txt`, and `llms-full.txt`. Before a future production build, set `SITE_URL` to the public origin so generated canonical and sitemap URLs use the real domain.
+The site includes canonical metadata, JSON-LD, XML sitemaps, `robots.txt`, `llms.txt`, and `llms-full.txt`. Production builds use `https://www.prysmnexus.com` as the public origin.
 
-```powershell
-$env:SITE_URL="https://example.com"
-npm run build
-```
+Cloudflare Pages must use:
 
-The site is currently intended for local preview only.
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node.js version: `22.13.0` or newer
+
+Deploy the generated `dist` directory. Do not deploy the development server output: it contains Astro's development-only `/_image/` endpoint, which is not available as a static Cloudflare Pages route.
+
+The post-build verification rejects output containing `/_image/`, localhost canonical URLs, or production `noindex` metadata.

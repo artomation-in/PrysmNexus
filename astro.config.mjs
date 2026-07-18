@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: process.env.SITE_URL || "http://localhost:4174",
+  site: process.env.SITE_URL || "https://www.prysmnexus.com",
   output: "static",
   trailingSlash: "always",
 
