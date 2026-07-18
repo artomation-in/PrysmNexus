@@ -23,4 +23,5 @@
 
 - Email: connect@prysmnexus.com
 - Service area: India
+- Canonical domain: https://www.prysmnexus.com
 - Last reviewed: 2026-07-17

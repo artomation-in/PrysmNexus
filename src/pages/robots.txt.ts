@@ -1,8 +1,9 @@
 import type { APIRoute } from "astro";
+import { brand } from "../data/seo";
 
 export const GET: APIRoute = ({ site }) => {
   const origin = (site ?? new URL("http://localhost:4174")).origin;
-  const production = import.meta.env.PROD && origin === "https://prysmnexus.com";
+  const production = import.meta.env.PROD && origin === new URL(brand.domain).origin;
   const body = production ? [
     "User-agent: *", "Allow: /", "",
     "User-agent: OAI-SearchBot", "Allow: /", "",

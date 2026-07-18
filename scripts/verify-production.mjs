@@ -27,6 +27,12 @@ for (const file of await collectHtml(distDir)) {
   }
 }
 
+const robotsPath = join(distDir, "robots.txt");
+const robotsTxt = await readFile(robotsPath, "utf8").catch(() => "");
+if (/User-agent:\s*\*\s*\n\s*Disallow:\s*\/\s*(\n|$)/.test(robotsTxt)) {
+  failures.push(`${robotsPath}: robots.txt blocks all crawlers in production`);
+}
+
 if (failures.length) {
   throw new Error(`Unsafe production output:\n${failures.join("\n")}`);
 }
