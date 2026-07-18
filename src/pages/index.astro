@@ -969,9 +969,8 @@ const schemas = [
           precision highp float;
           out vec4 outColor;
           uniform vec2 uResolution;
-          uniform vec2 uPointer;
-          uniform float uTime;
-          uniform float uEnergy;
+          uniform vec3 uAssembly;
+          uniform float uReflection;
 
           mat2 rotate2d(float angle) {
             float c = cos(angle), s = sin(angle);
@@ -1018,18 +1017,16 @@ const schemas = [
           }
 
           vec2 scene(vec3 p) {
-            float cycle = mod(uTime, 7.6);
-            float first = smoothstep(.25, 1.65, cycle) * (1.0 - smoothstep(6.05, 6.95, cycle));
-            float second = smoothstep(.58, 1.98, cycle) * (1.0 - smoothstep(5.90, 6.80, cycle));
-            float third = smoothstep(.91, 2.31, cycle) * (1.0 - smoothstep(5.75, 6.65, cycle));
+            float first = uAssembly.x;
+            float second = uAssembly.y;
+            float third = uAssembly.z;
             float frontPose = smoothstep(.86, .995, min(first, min(second, third)));
 
-            p.y += sin(uTime * .78) * .055;
-            float faceRotation = mix(-.12 + sin(uTime * .24) * .065 + uPointer.x * .075, -.08, frontPose);
+            float faceRotation = mix(-.12, -.08, frontPose);
             float depthTilt = 1.0 - frontPose;
             p.xy *= rotate2d(faceRotation);
-            p.yz *= rotate2d((.69 + sin(uTime * .29) * .105 - uPointer.y * .085) * depthTilt);
-            p.xz *= rotate2d((-.38 + uTime * (.055 + uEnergy * .026)) * depthTilt);
+            p.yz *= rotate2d(.69 * depthTilt);
+            p.xz *= rotate2d(-.38 * depthTilt);
 
             float aspectRatio = uResolution.x / uResolution.y;
             float horizontalEdge = mix(2.9, 5.05, smoothstep(.72, 1.78, aspectRatio));
@@ -1076,7 +1073,7 @@ const schemas = [
             }
 
             float aura = exp(-10.5 * nearest) * .18;
-            vec3 auraColor = mix(vec3(.88, .015, .035), vec3(1.0, .19, .24), .55 + .45 * sin(uTime));
+            vec3 auraColor = mix(vec3(.88, .015, .035), vec3(1.0, .19, .24), .72);
             if (!hit) {
               outColor = vec4(auraColor, aura);
               return;
@@ -1099,13 +1096,13 @@ const schemas = [
             color += vec3(1.0, .12, .16) * (rim * .62 + edge * .78);
             color += vec3(1.0, .8, .78) * pow(max(dot(reflect(rayDirection, normal), lightDirection), 0.0), 42.0) * .9;
 
-            float cycle = mod(uTime, 7.6);
-            float joined = smoothstep(2.12, 2.36, cycle) * (1.0 - smoothstep(3.48, 3.72, cycle));
-            float sweepProgress = smoothstep(2.16, 3.58, cycle);
+            float joined = smoothstep(.94, .998, min(uAssembly.x, min(uAssembly.y, uAssembly.z)));
+            float sweepProgress = clamp(uReflection, 0.0, 1.0);
+            float sweepStrength = sin(sweepProgress * 3.14159265);
             float sweepPosition = mix(-1.05, 1.05, sweepProgress);
             float reflectionBand = exp(-54.0 * pow((uv.x + uv.y * .42) - sweepPosition, 2.0));
             float polishedSpecular = pow(max(dot(reflect(rayDirection, normal), normalize(vec3(-.72, .52, 1.0))), 0.0), 18.0);
-            float joiningReflection = joined * (reflectionBand * 1.18 + polishedSpecular * .38);
+            float joiningReflection = joined * sweepStrength * (reflectionBand * 1.18 + polishedSpecular * .38);
             color += vec3(1.0, .82, .79) * joiningReflection;
             color += auraColor * aura * 1.8;
 
@@ -1149,16 +1146,61 @@ const schemas = [
             gl.useProgram(program);
 
             const resolutionUniform = gl.getUniformLocation(program, "uResolution");
-            const pointerUniform = gl.getUniformLocation(program, "uPointer");
-            const timeUniform = gl.getUniformLocation(program, "uTime");
-            const energyUniform = gl.getUniformLocation(program, "uEnergy");
-            const pointer = { x: 0, y: 0 };
+            const assemblyUniform = gl.getUniformLocation(program, "uAssembly");
+            const reflectionUniform = gl.getUniformLocation(program, "uReflection");
             let width = 0;
             let height = 0;
             let visible = true;
             let frame = 0;
-            let shaderTime = 0;
-            let previousFrame = performance.now();
+            let scrollFrame = 0;
+            let lastPrismScrollY = scrollY;
+            let previousFrame = 0;
+            let entranceActive = false;
+            let entranceStart = 0;
+            let reflectionStart = -1;
+            let wasJoined = false;
+            let destroyed = false;
+            const assembly = [1, 1, 1];
+            let assemblyTarget = [1, 1, 1];
+
+            const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
+            const smoothstep = (edge0: number, edge1: number, value: number) => {
+              const progress = clamp01((value - edge0) / Math.max(edge1 - edge0, .001));
+              return progress * progress * (3 - 2 * progress);
+            };
+            const easeOutCubic = (value: number) => 1 - Math.pow(1 - clamp01(value), 3);
+
+            const getScrollAssembly = () => {
+              if (reduceMotion.matches) return [1, 1, 1];
+              const bounds = prismHero.getBoundingClientRect();
+              const travelled = Math.max(0, -bounds.top);
+              const splitProgress = smoothstep(bounds.height * .08, bounds.height * .68, travelled);
+              return [
+                1 - smoothstep(0, .78, splitProgress),
+                1 - smoothstep(.08, .89, splitProgress),
+                1 - smoothstep(.16, 1, splitProgress),
+              ];
+            };
+
+            const drawPrism = (reflectionProgress = 0) => {
+              gl.clearColor(0, 0, 0, 0);
+              gl.clear(gl.COLOR_BUFFER_BIT);
+              gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
+              gl.uniform3f(assemblyUniform, assembly[0], assembly[1], assembly[2]);
+              gl.uniform1f(reflectionUniform, reflectionProgress);
+              gl.drawArrays(gl.TRIANGLES, 0, 3);
+            };
+
+            const schedulePrism = () => {
+              if (destroyed || frame || !visible) return;
+              frame = requestAnimationFrame(renderPrism);
+            };
+
+            const updatePrismFromScroll = () => {
+              entranceActive = false;
+              assemblyTarget = getScrollAssembly();
+              schedulePrism();
+            };
 
             const resizePrism = () => {
               const ratio = Math.min(devicePixelRatio || 1, 1.6);
@@ -1169,39 +1211,115 @@ const schemas = [
               canvas.style.width = `${width}px`;
               canvas.style.height = `${height}px`;
               gl.viewport(0, 0, canvas.width, canvas.height);
+              schedulePrism();
             };
 
-            prismHero.addEventListener("pointermove", (event) => {
-              const bounds = prismHero.getBoundingClientRect();
-              pointer.x = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
-              pointer.y = ((event.clientY - bounds.top) / bounds.height - .5) * -2;
-            }, { passive: true });
-            prismHero.addEventListener("pointerleave", () => { pointer.x = 0; pointer.y = 0; });
-
-            const renderPrism = (now: number) => {
-              const delta = Math.min((now - previousFrame) / 1000, .05);
+            function renderPrism(now: number) {
+              frame = 0;
+              if (!visible || destroyed) return;
+              const delta = previousFrame ? Math.min((now - previousFrame) / 1000, .05) : 1 / 60;
               previousFrame = now;
-              if (visible) {
-                const motionRate = reduceMotion.matches ? 0 : getMotionRate();
-                const energy = reduceMotion.matches ? 0 : Number.parseFloat(getComputedStyle(root).getPropertyValue("--scroll-energy")) || 0;
-                shaderTime += delta * motionRate;
-                gl.clearColor(0, 0, 0, 0);
-                gl.clear(gl.COLOR_BUFFER_BIT);
-                gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
-                gl.uniform2f(pointerUniform, pointer.x, pointer.y);
-                gl.uniform1f(timeUniform, shaderTime);
-                gl.uniform1f(energyUniform, energy);
-                gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+              let moving = false;
+              if (entranceActive && !reduceMotion.matches) {
+                const delays = [0, 90, 180];
+                for (let index = 0; index < assembly.length; index += 1) {
+                  const progress = clamp01((now - entranceStart - delays[index]) / 760);
+                  assembly[index] = easeOutCubic(progress);
+                  if (progress < 1) moving = true;
+                }
+                if (!moving) {
+                  entranceActive = false;
+                  assemblyTarget = getScrollAssembly();
+                }
+              } else {
+                const response = 1 - Math.exp(-delta * 12);
+                for (let index = 0; index < assembly.length; index += 1) {
+                  const difference = assemblyTarget[index] - assembly[index];
+                  if (Math.abs(difference) > .0015) {
+                    assembly[index] += difference * response;
+                    moving = true;
+                  } else {
+                    assembly[index] = assemblyTarget[index];
+                  }
+                }
               }
-              if (!reduceMotion.matches) frame = requestAnimationFrame(renderPrism);
-            };
+
+              const joined = assembly.every((value) => value > .997) && assemblyTarget.every((value) => value > .997);
+              if (joined && !wasJoined && !reduceMotion.matches) reflectionStart = now;
+              wasJoined = joined;
+
+              let reflectionProgress = 0;
+              if (reflectionStart >= 0) {
+                reflectionProgress = clamp01((now - reflectionStart) / 720);
+                if (reflectionProgress < 1) moving = true;
+                else reflectionStart = -1;
+              }
+
+              drawPrism(reflectionProgress);
+              if (entranceActive || moving) schedulePrism();
+              else previousFrame = 0;
+            }
 
             new ResizeObserver(resizePrism).observe(prismHero);
-            new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && !document.hidden; }).observe(prismHero);
-            document.addEventListener("visibilitychange", () => { visible = !document.hidden && prismHero.getBoundingClientRect().bottom > 0; });
+            new IntersectionObserver(([entry]) => {
+              visible = entry.isIntersecting && !document.hidden;
+              if (visible) {
+                assemblyTarget = getScrollAssembly();
+                schedulePrism();
+              } else if (frame) {
+                cancelAnimationFrame(frame);
+                frame = 0;
+                previousFrame = 0;
+              }
+            }).observe(prismHero);
+
+            addEventListener("scroll", () => {
+              if (scrollFrame) return;
+              scrollFrame = requestAnimationFrame(() => {
+                scrollFrame = 0;
+                if (Math.abs(scrollY - lastPrismScrollY) < .5) return;
+                lastPrismScrollY = scrollY;
+                updatePrismFromScroll();
+              });
+            }, { passive: true });
+
+            const restorePrismState = () => {
+              assemblyTarget = getScrollAssembly();
+              if (reduceMotion.matches) {
+                assembly.splice(0, 3, 1, 1, 1);
+                entranceActive = false;
+                reflectionStart = -1;
+              }
+              schedulePrism();
+            };
+
+            addEventListener("pageshow", restorePrismState);
+            addEventListener("hashchange", restorePrismState);
+            reduceMotion.addEventListener("change", restorePrismState);
+            document.addEventListener("visibilitychange", () => {
+              const bounds = prismHero.getBoundingClientRect();
+              visible = !document.hidden && bounds.bottom > 0 && bounds.top < innerHeight;
+              if (visible) restorePrismState();
+            });
+
             resizePrism();
-            frame = requestAnimationFrame(renderPrism);
-            addEventListener("pagehide", () => cancelAnimationFrame(frame), { once: true });
+            assemblyTarget = getScrollAssembly();
+            const startsAtHero = assemblyTarget.every((value) => value > .997) && !reduceMotion.matches;
+            if (startsAtHero) {
+              assembly.splice(0, 3, 0, 0, 0);
+              entranceActive = true;
+              entranceStart = performance.now() + 110;
+            } else {
+              assembly.splice(0, 3, ...assemblyTarget);
+              wasJoined = assembly.every((value) => value > .997);
+            }
+            schedulePrism();
+            addEventListener("pagehide", () => {
+              destroyed = true;
+              if (frame) cancelAnimationFrame(frame);
+              if (scrollFrame) cancelAnimationFrame(scrollFrame);
+            }, { once: true });
           }
         }
       }
