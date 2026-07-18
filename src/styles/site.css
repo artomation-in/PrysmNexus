@@ -7000,6 +7000,219 @@ html,body{max-width:100%;overflow-x:clip}
   .serviceCard:not(.serviceCardFeatured) .serviceCardBody{margin-top:20px}
   .serviceCard h3{font-size:27px}
   .serviceCard p{font-size:13px}
+  :where(h1,h2,h3,h4){overflow-wrap:normal;word-break:normal;hyphens:none}
+  .aboutContent h2 br,.clientMarqueeHeader h2 br,.workProcessHeader h2 br,.proFooterIntro h2 br{display:block}
+}
+
+/* Canonical mobile composition: compact, touch-friendly, and visually continuous. */
+@media(max-width:760px){
+  :root{--pn-gutter:18px;--pn-section-y:48px}
+  html{scroll-padding-top:82px}
+  body{font-size:15px;line-height:1.58}
+  :where(h1,h2,h3,h4){overflow-wrap:normal;word-break:normal;hyphens:none}
+  .aboutContent h2 br,.clientMarqueeHeader h2 br,.workProcessHeader h2 br,.proFooterIntro h2 br{display:block}
+
+  .siteHeader{
+    top:max(10px,env(safe-area-inset-top));
+    right:max(12px,env(safe-area-inset-right));
+    left:max(12px,env(safe-area-inset-left));
+    align-items:center;
+    gap:10px;
+    filter:none
+  }
+  .siteHeader .logo{
+    width:auto;
+    max-width:calc(100% - 68px);
+    height:56px;
+    padding:0 13px;
+    border:1px solid rgba(255,255,255,.72);
+    border-radius:15px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 12px 32px rgba(0,0,0,.16);
+    backdrop-filter:blur(16px)
+  }
+  .siteHeader .brandLogo{height:54px}
+  .siteHeader .brandLogo img{transform:scale(1.34)}
+  .siteHeader .logo b{font-size:18px;line-height:1}
+  .siteHeader .logo small{margin-top:4px;font-size:7px;letter-spacing:.13em}
+  .menuButton{
+    width:56px;
+    height:56px;
+    flex:0 0 56px;
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:15px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 12px 32px rgba(0,0,0,.16);
+    font-size:24px;
+    backdrop-filter:blur(16px)
+  }
+  .siteHeader nav{
+    top:64px;
+    gap:4px;
+    padding:10px;
+    overflow:hidden;
+    border:1px solid rgba(17,24,34,.08);
+    border-radius:18px;
+    background:rgba(255,255,255,.98);
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+    backdrop-filter:blur(18px)
+  }
+  .siteHeader nav a{
+    width:100%;
+    padding:13px 14px;
+    border-radius:12px;
+    color:#151b24;
+    font-size:15px;
+    line-height:1.2
+  }
+  .siteHeader nav a:after{display:none}
+  .siteHeader nav a:hover,.siteHeader nav a:focus-visible{background:#f7e7e6;color:#b8141b}
+
+  .hero{height:860px;min-height:840px}
+  .heroTitle{top:216px;right:18px;left:18px;width:auto;max-width:none}
+  .heroTitle span,.heroTitle strong{font-size:clamp(52px,15.2vw,59px);line-height:.93;letter-spacing:-.055em}
+  .heroTitle .heroWord{padding-bottom:.16em;margin-bottom:-.08em}
+  .heroTitle small{margin-top:14px;font-size:12px;line-height:1.35;letter-spacing:.085em}
+  .focused{top:468px;right:18px;max-width:calc(100vw - 36px);font-size:clamp(50px,14.2vw,56px);letter-spacing:-.045em}
+  .heroCopy{right:20px;bottom:78px;left:20px;width:auto}
+  .heroCopy p{font-size:14px;line-height:1.62}
+  .heroCopy .gradientButton{min-height:52px;margin-top:22px;padding:9px 10px 9px 22px}
+  .heroCopy .gradientButton b{width:38px;height:38px;flex-basis:38px}
+
+  .capabilityShowcase{margin-top:-50px;padding:0 10px 42px;background:linear-gradient(to bottom,transparent 0 50px,#fff 50px 100%)}
+  .capabilityPanel{gap:9px;padding:10px;border-radius:24px}
+  .capabilityCard{padding:8px 8px 22px;border-radius:17px}
+  .capabilityPhoto{aspect-ratio:2.9/1}
+  .capabilityIcon{width:68px;height:68px;margin:-33px auto 16px;border-width:8px}
+  .capabilityIcon b{font-size:24px}
+  .capabilityCard h2{margin-bottom:10px;font-size:22px;line-height:1.16}
+  .capabilityCard p{max-width:31ch;font-size:14px;line-height:1.55}
+
+  .about{padding:48px 18px}
+  .aboutShowcase{gap:22px}
+  .aboutShowcase .aboutVisual{height:min(108vw,460px);border-radius:20px}
+  .aboutContent>.eyebrow{margin-bottom:12px}
+  .aboutContent h2{margin-bottom:18px;font-size:clamp(34px,9.5vw,39px);line-height:1.055;letter-spacing:-.042em}
+  .aboutMetrics{gap:10px;margin-bottom:10px}
+  .aboutMetrics article{min-height:112px;padding:16px 18px;overflow:hidden;border-radius:16px}
+  .aboutMetrics strong{font-size:44px}
+  .aboutMetrics span{max-width:22ch;font-size:13px;line-height:1.4}
+  .metricMark{right:-18px;top:-26px;width:168px;height:168px}
+  .metricAvatars{right:12px;top:12px}
+  .metricAvatars img{width:26px;height:26px}
+  .aboutMission{min-height:0;padding:0 14px 18px;border-radius:16px}
+  .aboutMission .tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:14px}
+  .aboutMission .tabs button{min-width:0;min-height:42px;padding:9px 7px;font-size:12px}
+  .aboutMission .missionCopy p{font-size:13.5px;line-height:1.58}
+  .aboutSummary{margin-top:16px;font-size:14px;line-height:1.62}
+  .aboutContent>.gradientButton{min-height:52px;margin-top:16px}
+
+  .servicesShowcase,.whyChoose,.projectShowcase,.faq.faqEditorial{padding-block:48px}
+  .servicesHeader,.whyChooseHeader,.projectHeader{grid-template-columns:1fr;gap:18px;margin-bottom:24px}
+  .servicesHeader{padding-top:0}
+  .servicesHeader h2,.whyChooseHeader h2,.projectHeader h2{font-size:clamp(36px,10vw,41px);line-height:1.045;letter-spacing:-.045em}
+  .servicesLead p,.whyChooseHeader>p,.projectHeaderAction p{font-size:14px;line-height:1.62}
+  .servicesLead>a{margin-top:18px}
+  .serviceBento{gap:9px;grid-auto-rows:auto}
+  .serviceCard,.serviceCardFeatured{min-height:0;padding:18px;border-radius:21px}
+  .serviceCardFeatured{padding:20px}
+  .serviceCard:not(.serviceCardFeatured) .serviceCardBody{margin-top:14px}
+  .serviceCard h3{max-width:13ch;margin-bottom:9px;font-size:26px;line-height:1.08}
+  .serviceCard p{margin-bottom:12px;font-size:13.5px;line-height:1.56}
+  .serviceCard ul{gap:6px}
+  .serviceCard li{font-size:11.5px}
+
+  .whyChooseHeader h2{font-size:clamp(36px,9.8vw,40px)}
+  .whyChooseBento{grid-template-rows:248px 310px 190px 190px;gap:9px}
+  .whyCard,.whyFeature{border-width:3px;border-radius:20px}
+  .whyCapabilities h3{padding:21px 20px 12px;font-size:24px}
+  .whyRibbon{gap:8px;padding-top:4px}
+  .whyRibbonRow span{padding:8px 11px;font-size:12px}
+  .whyRibbonRow span:before{width:18px;height:18px}
+  .whyRetention{grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:17px}
+  .whyPeople img{width:32px;height:32px}
+  .whyPeople b{width:42px;height:34px}
+  .whyRating{align-items:flex-start}
+  .whyRating span{font-size:9px}
+  .whyRating small{font-size:9px}
+  .whyRetentionStat{gap:12px}
+  .whyRetentionStat strong{font-size:44px}
+  .whyRetentionStat p{max-width:145px;font-size:11px;line-height:1.4}
+  .whySupport{padding:18px 20px 16px}
+  .whySupport>div:first-child{flex-flow:row wrap;align-items:baseline;gap:5px 7px}
+  .whySupport strong{font-size:25px}
+  .whySupport>div:first-child span{margin-top:0;font-size:11.5px}
+  .whyChats{gap:7px;padding-left:30px}
+  .whyChats p{padding:8px 12px}
+  .whyFeature{min-height:500px}
+  .whyFeatureContent{padding:26px 22px 82px}
+  .whyFeature h3{font-size:29px}
+  .whyFeatureContent>p{margin:17px 0 22px;font-size:13px}
+  .whyFeature ul{gap:12px}
+  .whyFeature li{font-size:13px}
+
+  .projectShowcase{--project-edge:18px}
+  .projectHeader{width:calc(100% - 36px)}
+  .projectHeaderAction{justify-content:flex-start;padding-bottom:0}
+  .projectHeaderAction .gradientButton{min-height:50px}
+  .projectRail{gap:12px;padding-bottom:20px}
+  .projectCard{flex-basis:86vw}
+  .projectMedia{aspect-ratio:1.17/1;border-radius:20px}
+  .projectCategory{top:12px;left:12px;padding:8px 10px;font-size:10px}
+  .projectOpen{right:12px;bottom:12px;width:42px;height:42px;opacity:1;transform:none}
+  .projectCopy{padding-top:14px}
+  .projectCopy h3{font-size:23px}
+  .projectCopy p{margin-top:7px;font-size:13px;line-height:1.55}
+
+  .clientMarquee{padding-block:46px 38px}
+  .clientMarqueeHeader{gap:16px;width:calc(100% - 36px);margin-bottom:22px}
+  .clientMarqueeHeader h2{font-size:clamp(36px,9.8vw,40px);line-height:1.04}
+  .clientMarqueeHeader>p{font-size:13.5px;line-height:1.58}
+  .clientMarqueeCard{width:84vw;min-height:112px;gap:14px;padding:16px;border-radius:19px}
+  .clientMonogram{width:52px;height:52px;border-radius:15px;font-size:17px}
+  .clientMarqueeCard strong{font-size:21px}
+  .clientMarqueeCard>b{width:34px;height:34px}
+
+  .workProcess{padding:48px 18px 52px}
+  .workProcessHeader h2{font-size:clamp(36px,9.8vw,40px);line-height:1.04}
+  .workProcessSteps{gap:26px;margin-top:38px}
+  .workProcessStep{grid-template-columns:46px 1fr;column-gap:14px}
+  .workProcessIcon{width:44px;height:44px}
+  .workProcessName h3{font-size:18px}
+  .workProcessStep p{font-size:13px;line-height:1.58}
+
+  .faqShell{gap:26px}
+  .faqEditorial .faqIntro h2{margin:16px 0 18px;font-size:clamp(36px,9.8vw,40px);line-height:1.04}
+  .faqIntro>p{font-size:14px;line-height:1.6}
+  .faqEditorial .faqGrid{gap:8px}
+  .faqEditorial details{padding-inline:16px;border-radius:15px}
+  .faqEditorial summary{padding-block:17px;padding-right:40px;font-size:15.5px;line-height:1.35}
+  .faqEditorial .faqAnswer p{padding-bottom:17px;font-size:13.5px;line-height:1.62}
+
+  .editorialFooter.proFooter{padding:48px 18px 20px}
+  .proFooterCta{gap:26px}
+  .proFooterIntro h2{font-size:clamp(38px,10.5vw,44px);line-height:1.02}
+  .proFooterIntro>p{margin-top:17px;font-size:14px;line-height:1.62}
+  .proFooterAction{min-height:76px;padding:12px 12px 12px 19px}
+  .proFooterAction>span{font-size:14px}
+  .proFooterAction b{width:48px;height:48px;flex-basis:48px}
+  .proFooterRule{margin:34px 0 28px}
+  .proFooterGrid{gap:30px 20px;padding-bottom:30px}
+  .proFooterBrand>p{margin:20px 0 18px}
+  .proFooterGrid h3{margin-bottom:18px}
+  .proFooterLinks{gap:13px}
+  .proFooterBottom{padding-top:18px}
+}
+
+@media(max-width:420px){
+  .siteHeader .logo{padding-inline:10px}
+  .siteHeader .brandLogo{height:50px}
+  .siteHeader .logo b{font-size:17px}
+  .heroTitle{right:16px;left:16px}
+  .heroTitle span,.heroTitle strong{font-size:clamp(50px,14.8vw,56px)}
+  .focused{right:16px;font-size:clamp(48px,13.8vw,53px)}
+  .aboutMission .tabs button{font-size:11px}
+  .proFooterGrid{grid-template-columns:1fr 1fr}
 }
 
 /* Capability ribbon: a more tactile, editorial surface without changing its content. */
