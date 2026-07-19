@@ -8978,3 +8978,48 @@ html,body{max-width:100%;overflow-x:clip}
     padding-right:52px
   }
 }
+
+/* Mobile header: an opaque white brand surface on every scroll position. */
+@media(max-width:760px){
+  .siteHeader,
+  .siteHeader.is-scrolled{
+    border-color:rgba(20,24,31,.1);
+    background:#fff;
+    box-shadow:0 14px 34px rgba(10,14,20,.16);
+    backdrop-filter:none
+  }
+  .siteHeader .logo b,
+  .siteHeader.is-scrolled .logo b{color:#151922}
+  .siteHeader .logo b span,
+  .siteHeader.is-scrolled .logo b span{color:#d92f35}
+  .siteHeader .logo small,
+  .siteHeader.is-scrolled .logo small{color:#767b84}
+  .siteHeader .brandLogo{
+    filter:drop-shadow(0 5px 9px rgba(123,15,20,.14))
+  }
+  .menuButton{
+    border-color:rgba(210,43,49,.16);
+    background:#f8eeee;
+    box-shadow:none
+  }
+  .menuButton span{background:#b91f25}
+  .menuButton[aria-expanded="true"]{
+    border-color:#cf3036;
+    background:#cf3036
+  }
+  .menuButton[aria-expanded="true"] span{background:#fff}
+  .siteHeader nav,
+  .siteHeader.is-scrolled nav{
+    border-color:rgba(20,24,31,.1);
+    background:#fff;
+    box-shadow:0 24px 55px rgba(10,14,20,.18);
+    backdrop-filter:none
+  }
+  .siteHeader nav a{color:#20252d}
+  .siteHeader nav a:hover,
+  .siteHeader nav a:focus-visible{
+    color:#b9181e;
+    background:#f8eeee
+  }
+  .siteHeader nav .mobileConsult{color:#fff}
+}
