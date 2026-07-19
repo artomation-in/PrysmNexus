@@ -1,6 +1,6 @@
 # PrysmNexus
 
-> PrysmNexus is an India-focused growth marketing agency connecting brand strategy, original content, social media, paid acquisition, SEO, local search, and reputation support under one accountable team.
+> PrysmNexus is an India-focused growth, automation, and software partner connecting marketing, AI workflows, brand authority, and custom digital products under one accountable team.
 
 ## Primary pages
 
@@ -18,10 +18,18 @@
 - [Social Media Management](/services/social-media-management/)
 - [Performance Marketing](/services/performance-marketing/)
 - [SEO, Local Search, and Reputation](/services/seo-local-search-reputation/)
+- [AI Automation Systems](/services/ai-automation-systems/)
+- [Brand and PR Authority](/services/brand-pr-authority/)
+- [Custom Software and SaaS Development](/services/custom-software-saas/)
+
+## Decision guides
+
+- [AI Agents vs Chatbots](/insights/ai-agents-vs-chatbots-business-automation/)
+- [Custom Software vs Off-the-Shelf SaaS](/insights/custom-software-vs-off-the-shelf-saas/)
+- [Digital PR vs Performance Marketing](/insights/digital-pr-vs-performance-marketing/)
 
 ## Contact
 
 - Email: connect@prysmnexus.com
 - Service area: India
-- Canonical domain: https://www.prysmnexus.com
-- Last reviewed: 2026-07-17
+- Last reviewed: 2026-07-19

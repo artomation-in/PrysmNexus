@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import aboutImage from "../assets/about.jpg";
+import aboutImage from "../assets/about-prysmnexus-v2.png";
 import serviceImage from "../assets/service.webp";
 import heroImage from "../assets/hero.png";
 import processBackdrop from "../assets/work-process-prism.png";
 import whyAnalyticsImage from "../assets/why-analytics.jpg";
-import whyFeatureImage from "../assets/why-feature.jpg";
+import whyFeatureImage from "../assets/why-feature-prysmnexus-v2.png";
 import whyTeamImage from "../assets/why-team-v2.png";
 import whySupportImage from "../assets/why-planning-v2.png";
 import projectBrandImage from "../assets/project-brand.jpg";
@@ -17,6 +17,9 @@ import capabilityContentImage from "../assets/capability-content-hq.png";
 import capabilityTeamImage from "../assets/capability-team-hq.png";
 import capabilitySearchImage from "../assets/capability-search-hq.png";
 import prysmNexusLogo from "../assets/prysmnexus-logo-mark-hq-transparent.png";
+import clientCafeBelloso from "../assets/client-cafe-belloso.png";
+import clientStatDelight from "../assets/client-stat-delight.png";
+import clientJathara from "../assets/client-jathara.png";
 import { brand as seoBrand, services as seoServices } from "../data/seo";
 
 const services = [
@@ -25,6 +28,9 @@ const services = [
   { number: "03", slug: "social-media-management", title: "Social Media Management", description: "Planned content, active page management, and audience engagement that keep your brand visible, relevant, and consistent.", bullets: ["Monthly content calendar", "Publishing and page handling", "Community engagement", "WhatsApp marketing"] },
   { number: "04", slug: "performance-marketing", title: "Performance Marketing", description: "Google and Meta campaigns built to generate qualified enquiries, with clear optimization, reporting, and commercial focus.", bullets: ["Google and Meta ads", "Lead generation", "Campaign optimization", "Monthly reporting"] },
   { number: "05", slug: "seo-local-search-reputation", title: "Search & Reputation", description: "SEO, Google Business Profile, local discovery, and review management that help customers find and trust your business.", bullets: ["SEO and local search", "Google Business Profile", "Review management", "Online visibility"] },
+  { number: "06", slug: "ai-automation-systems", title: "AI Automation Systems", description: "Connected CRM, messaging, AI-agent, and operational workflows that reduce repetitive work while keeping your team in control.", bullets: ["CRM automation", "WhatsApp workflows", "Custom AI agents", "n8n orchestration"] },
+  { number: "07", slug: "brand-pr-authority", title: "Brand & PR Authority", description: "Positioning, media outreach, founder visibility, and thought leadership designed to build credible market authority.", bullets: ["Digital PR", "Founder authority", "Media outreach", "LinkedIn strategy"] },
+  { number: "08", slug: "custom-software-saas", title: "Custom Software & SaaS", description: "Purpose-built software, SaaS products, internal applications, and modernization shaped around real business workflows.", bullets: ["Custom software", "SaaS platforms", "Enterprise apps", "MVP development"] },
 ];
 
 const projectStudies = [
@@ -36,9 +42,9 @@ const projectStudies = [
 ];
 
 const featuredClients = [
-  { mark: "J", name: "Jathara", category: "Bar & Kitchen" },
-  { mark: "CB", name: "Cafe Belloso", category: "Hospitality" },
-  { mark: "SD", name: "Stat Delight", category: "Brand & Content" },
+  { key: "jathara", image: clientJathara, name: "Jathara", category: "Bar & Kitchen" },
+  { key: "belloso", image: clientCafeBelloso, name: "Cafe Belloso", category: "Hospitality" },
+  { key: "stat-delight", image: clientStatDelight, name: "Stat Delight", category: "Brand & Content" },
 ];
 
 const workProcessSteps = [
@@ -49,7 +55,7 @@ const workProcessSteps = [
 ];
 
 const faqs = [
-  { question: "What does PrysmNexus handle?", answer: "PrysmNexus brings strategic branding, photography, video, social media, Google and Meta advertising, lead generation, WhatsApp marketing, SEO, local search, and reputation support under one accountable team." },
+  { question: "What does PrysmNexus handle?", answer: "PrysmNexus brings strategic branding, content, social media, paid campaigns, SEO, AI automation, brand authority, and custom software under one accountable team." },
   { question: "Do you produce original content?", answer: "Yes. Photography, video, reels, campaign creatives, stories, and copy are developed around your brand, audience, and commercial goals—not recycled from generic templates." },
   { question: "Can you manage Google and Meta advertising?", answer: "Yes. Campaign work can cover account setup, audience and creative planning, lead generation, conversion paths, optimization, and reporting." },
   { question: "How do you improve local visibility?", answer: "We combine local SEO, Google Business Profile improvements, useful website content, and reputation management to strengthen discovery and trust." },
@@ -66,7 +72,7 @@ const schemas = [
     name: "PrysmNexus",
     url: `${siteUrl}/`,
     logo: `${siteUrl}/prysmnexus-logo.png`,
-    description: "PrysmNexus is an India-focused growth marketing agency combining branding, content production, social media, paid acquisition, SEO, local search, and reputation support.",
+    description: "PrysmNexus is an India-focused growth, automation, and software partner combining marketing, AI workflows, brand authority, and custom digital products.",
     email: seoBrand.email,
     areaServed: { "@type": "Country", name: "India" },
     hasOfferCatalog: { "@type": "OfferCatalog", name: "Growth marketing services", itemListElement: seoServices.map((service) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: service.name, url: `${siteUrl}/services/${service.slug}/` } })) },
@@ -84,10 +90,10 @@ const schemas = [
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${siteUrl}/#service`,
-    name: "PrysmNexus Growth Marketing",
+    name: "PrysmNexus Growth, Automation, and Software Services",
     url: `${siteUrl}/`,
     provider: { "@id": `${siteUrl}/#organization` },
-    serviceType: ["Brand Strategy", "Content Production", "Social Media Management", "Performance Marketing", "Search Engine Optimization", "Local Search Optimization", "Reputation Management"],
+    serviceType: ["Brand Strategy", "Content Production", "Social Media Management", "Performance Marketing", "Search Engine Optimization", "AI Automation Systems", "Digital PR", "Founder Authority Building", "Custom Software Development", "SaaS Development"],
     areaServed: { "@type": "Country", name: "India" },
   },
   {
@@ -103,8 +109,8 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="PrysmNexus — Branding & Growth Marketing Agency in India"
-  description="PrysmNexus combines brand strategy, original content, social media, performance marketing, SEO, local search, and reputation support under one accountable team."
+  title="PrysmNexus — Growth, AI Automation & Software in India"
+  description="PrysmNexus combines growth marketing, AI automation, brand authority, and custom software services for ambitious businesses across India."
   schemas={schemas}
 >
   <div class="scrollProgress" aria-hidden="true"><span></span></div>
@@ -157,7 +163,7 @@ const schemas = [
 
     <section class="about" id="about">
       <div class="aboutShowcase">
-        <div class="aboutVisual" data-reveal="clip"><Image src={aboutImage} alt="Marketing team collaborating around a tablet" widths={[560, 760, 960, 1200]} sizes="(max-width: 760px) 100vw, (max-width: 1100px) 40vw, 636px" format="webp" quality={92} loading="lazy" /></div>
+        <div class="aboutVisual" data-reveal="clip"><Image src={aboutImage} alt="PrysmNexus strategy team collaborating on a brand campaign" widths={[560, 760, 960, 1200]} sizes="(max-width: 760px) 100vw, (max-width: 1100px) 40vw, 636px" format="webp" quality={92} loading="lazy" /></div>
         <div class="aboutContent">
           <div class="eyebrow" data-reveal="line">About Us</div>
           <h2 data-reveal="title">We help brands grow faster with<br />powerful digital marketing strategies.</h2>
@@ -204,7 +210,7 @@ const schemas = [
           <h2 data-reveal="title">One team.<br /><span>Every growth lever.</span></h2>
         </div>
         <div class="servicesLead" data-reveal="up">
-          <p>Branding, original content, social media, performance campaigns, and search—connected around one clear growth plan.</p>
+          <p>Brand, demand, automation, authority, and software—connected around one practical growth system.</p>
           <a href="/services/">Explore every service <span aria-hidden="true">↗</span></a>
         </div>
       </header>
@@ -249,13 +255,13 @@ const schemas = [
             <h3>Capabilities We Bring</h3>
             <div class="whyRibbon" aria-label="PrysmNexus capabilities">
               <div class="whyRibbonRow">
-                <span>Brand Strategy</span><span>Content Production</span><span>Social Media</span><span>Performance Marketing</span><span>SEO</span><span>Local Search</span><span>Brand Strategy</span><span>Content Production</span><span>Social Media</span><span>Performance Marketing</span><span>SEO</span><span>Local Search</span>
+                <span>Brand Strategy</span><span>AI Automation</span><span>Custom Software</span><span>Performance Marketing</span><span>SEO</span><span>Digital PR</span><span>Brand Strategy</span><span>AI Automation</span><span>Custom Software</span><span>Performance Marketing</span><span>SEO</span><span>Digital PR</span>
               </div>
               <div class="whyRibbonRow reverse">
-                <span>Reputation</span><span>Campaign Creative</span><span>Lead Journeys</span><span>Analytics</span><span>Messaging</span><span>Video</span><span>Reputation</span><span>Campaign Creative</span><span>Lead Journeys</span><span>Analytics</span><span>Messaging</span><span>Video</span>
+                <span>AI Agents</span><span>CRM Automation</span><span>WhatsApp Bots</span><span>SaaS Platforms</span><span>Founder Authority</span><span>Video</span><span>AI Agents</span><span>CRM Automation</span><span>WhatsApp Bots</span><span>SaaS Platforms</span><span>Founder Authority</span><span>Video</span>
               </div>
               <div class="whyRibbonRow">
-                <span>Google Ads</span><span>Meta Ads</span><span>Conversion</span><span>Community</span><span>Reporting</span><span>Identity</span><span>Google Ads</span><span>Meta Ads</span><span>Conversion</span><span>Community</span><span>Reporting</span><span>Identity</span>
+                <span>Google Ads</span><span>Meta Ads</span><span>Workflow Design</span><span>System Modernization</span><span>MVP Development</span><span>Identity</span><span>Google Ads</span><span>Meta Ads</span><span>Workflow Design</span><span>System Modernization</span><span>MVP Development</span><span>Identity</span>
               </div>
             </div>
           </article>
@@ -293,7 +299,7 @@ const schemas = [
         </div>
 
         <article class="whyFeature" data-reveal="clip" style="--reveal-delay:110ms">
-          <Image src={whyFeatureImage} alt="Creative professional in dramatic red studio light" widths={[620, 920, 1200]} sizes="(max-width: 820px) 100vw, 34vw" format="webp" quality={92} loading="lazy" />
+          <Image src={whyFeatureImage} alt="Creative growth strategist reviewing a campaign in a PrysmNexus red and graphite studio" widths={[620, 920, 1200]} sizes="(max-width: 820px) 100vw, 34vw" format="webp" quality={92} loading="lazy" />
           <div class="whyFeatureShade"></div>
           <div class="whyFeatureContent">
             <div class="whyFeatureTitle"><span aria-hidden="true"><i></i><i></i><i></i></span><h3>Why Choose Us?</h3></div>
@@ -357,7 +363,9 @@ const schemas = [
             <div class="clientMarqueeSet" aria-hidden={set === 1 ? "true" : undefined}>
               {featuredClients.map((client, index) => (
                 <article class="clientMarqueeCard" style={`--client-index:${index}`}>
-                  <span class="clientMonogram" aria-hidden="true">{client.mark}</span>
+                  <span class={`clientMonogram clientLogo clientLogo--${client.key}`} aria-hidden="true">
+                    <Image src={client.image} alt="" widths={[160, 240, 320]} sizes="(max-width: 760px) 82px, 112px" format="webp" quality={92} loading="lazy" />
+                  </span>
                   <div><strong>{client.name}</strong><small>{client.category}</small></div>
                   <b aria-hidden="true">↗</b>
                 </article>
@@ -434,6 +442,9 @@ const schemas = [
             <a href="/services/content-production/">Content Production <span>↗</span></a>
             <a href="/services/performance-marketing/">Performance Marketing <span>↗</span></a>
             <a href="/services/seo-local-search-reputation/">Search & Reputation <span>↗</span></a>
+            <a href="/services/ai-automation-systems/">AI Automation <span>↗</span></a>
+            <a href="/services/brand-pr-authority/">Brand & PR Authority <span>↗</span></a>
+            <a href="/services/custom-software-saas/">Custom Software & SaaS <span>↗</span></a>
           </nav>
 
           <div class="proFooterContact">

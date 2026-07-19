@@ -1,10 +1,15 @@
 ---
 import SeoLayout from "../../layouts/SeoLayout.astro";
-import { brand, breadcrumbSchema, insights, serviceBySlug, type Service } from "../../data/seo";
+import { brand, breadcrumbSchema, insights } from "../../data/seo";
 export const getStaticPaths = () => insights.map((article) => ({ params: { slug: article.slug }, props: { article } }));
 const { article } = Astro.props;
 const origin = (Astro.site ?? new URL(brand.domain)).origin;
-const relatedServices = article.relatedServices.map(serviceBySlug).filter(Boolean) as Service[];
+const relatedServices: Record<string, { href: string; label: string }> = {
+  "ai-agents-vs-chatbots-business-automation": { href: "/services/ai-automation-systems/", label: "Explore AI Automation Systems" },
+  "custom-software-vs-off-the-shelf-saas": { href: "/services/custom-software-saas/", label: "Explore Custom Software & SaaS" },
+  "digital-pr-vs-performance-marketing": { href: "/services/brand-pr-authority/", label: "Explore Brand & PR Authority" },
+};
+const relatedService = relatedServices[article.slug];
 const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Insights", path: "/insights/" }, { name: article.title, path: `/insights/${article.slug}/` }]), { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.description, datePublished: article.updated, dateModified: article.updated, author: { "@type": "Organization", "@id": `${origin}/#organization`, name: "PrysmNexus Strategy Team" }, publisher: { "@id": `${origin}/#organization` }, mainEntityOfPage: `${origin}/insights/${article.slug}/` }];
 ---
 <SeoLayout title={`${article.title} | PrysmNexus`} description={article.description} eyebrow="PrysmNexus Insights" heading={article.title} lead={article.description} schemas={schemas} type="article" published={article.updated} modified={article.updated}>
@@ -12,7 +17,7 @@ const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: 
     <aside class="answerBlock"><span>Direct answer</span><p>{article.answer}</p></aside>
     {article.sections.map((section) => <section><h2>{section.title}</h2><p>{section.text}</p></section>)}
     <section><h2>Practical checklist.</h2><ul class="seoList">{article.checklist.map((item) => <li>{item}</li>)}</ul></section>
-    {relatedServices.length > 0 && <section class="seoSection"><div class="seoSectionHead"><h2>Related services.</h2><p>These PrysmNexus services connect directly to this guide.</p></div><div class="seoRelated">{relatedServices.map((service) => <a href={`/services/${service.slug}/`}><small>{service.eyebrow}</small><strong>{service.name} ↗</strong></a>)}</div></section>}
+    {relatedService && <aside class="answerBlock"><span>Related PrysmNexus service</span><p>Need help applying this decision to your business? <a href={relatedService.href}>{relatedService.label} ↗</a></p></aside>}
     <aside class="sourceBox"><strong>Method and limitations:</strong> This guide reflects PrysmNexus working practice and general platform principles reviewed on {article.updated}. Recommendations must be adapted to the business, market, budget, evidence, and platform conditions; no ranking or commercial result is guaranteed.</aside>
   </div>
 </SeoLayout>

@@ -2,9 +2,9 @@
 
 ## Entity definition
 
-PrysmNexus is an India-focused growth marketing agency. It connects brand strategy, original photography and video, social media management, Google and Meta advertising, lead generation, SEO, local search, Google Business Profile support, and reputation management through one coordinated team.
+PrysmNexus is an India-focused growth, automation, and software partner. It connects brand strategy, content, paid acquisition, SEO, AI workflows, brand authority, digital PR, custom software, and SaaS product development through one coordinated team.
 
-Canonical domain: https://www.prysmnexus.com
+Canonical domain: https://prysmnexus.com
 Primary email: connect@prysmnexus.com
 Service area: India
 
@@ -19,6 +19,12 @@ Social Media Management coordinates strategy, calendars, publishing, page handli
 Performance Marketing manages paid acquisition against measurable actions such as qualified leads, calls, bookings, purchases, or other agreed conversions.
 
 Local SEO improves the website, Google Business Profile, service relevance, local information, content, and reputation signals used by nearby customers to discover and evaluate a business.
+
+AI Automation Systems connect CRM events, WhatsApp and Telegram messaging, custom AI agents, documents, onboarding, invoices, and internal workflows with appropriate controls and human review.
+
+Brand and PR Authority combines identity, positioning, earned-media outreach, founder visibility, LinkedIn thought leadership, and reusable credibility assets.
+
+Custom Software and SaaS Development covers purpose-built software, multi-tenant platforms, enterprise web applications, dashboards, system modernization, product strategy, and MVP delivery.
 
 ## Working method
 
@@ -35,4 +41,4 @@ Named case studies currently cover Jathara Bar & Kitchen, Cafe Belloso, and Stat
 
 ## AI-readable guidance
 
-The visible website is the canonical source. This file is a concise navigation aid and does not replace indexable service pages, case studies, FAQs, article content, or structured data. Last reviewed: 2026-07-17.
+The visible website is the canonical source. This file is a concise navigation aid and does not replace indexable service pages, case studies, FAQs, article content, or structured data. Last reviewed: 2026-07-19.
