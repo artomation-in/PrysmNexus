@@ -8710,8 +8710,8 @@ html,body{max-width:100%;overflow-x:clip}
     transform:translateX(-50%)
   }
   .hero{
-    height:clamp(740px,100svh,920px);
-    min-height:740px
+    height:clamp(900px,calc(100svh + 140px),1220px);
+    min-height:900px
   }
   .heroLayout{
     width:min(calc(100% - (var(--pn-desktop-gutter) * 2)),var(--pn-container))
@@ -8735,7 +8735,8 @@ html,body{max-width:100%;overflow-x:clip}
   }
   .heroCopy{
     right:0;
-    bottom:clamp(48px,6svh,70px);
+    top:clamp(528px,66svh,690px);
+    bottom:auto;
     width:min(30cqw,420px)
   }
   .capabilityPanel{

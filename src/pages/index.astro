@@ -1036,6 +1036,11 @@ const schemas = [
           }
 
           vec2 scene(vec3 p) {
+            // Enlarge the complete prism without changing the three-panel
+            // geometry, assembly timing, pointer response, or screen anchor.
+            const float prismScale = 1.18;
+            p /= prismScale;
+
             float first = uAssembly.x;
             float second = uAssembly.y;
             float third = uAssembly.z;
@@ -1058,6 +1063,7 @@ const schemas = [
             vec2 result = vec2(d1, 1.0);
             if (d2 < result.x) result = vec2(d2, 2.0);
             if (d3 < result.x) result = vec2(d3, 3.0);
+            result.x *= prismScale;
             return result;
           }
 
