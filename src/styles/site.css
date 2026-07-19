@@ -1107,7 +1107,7 @@ footer {
   width: auto;
   max-width: none;
   object-fit: contain;
-  transform: scale(1.45);
+  transform: none;
 }
 
 .logo b span {
@@ -1589,8 +1589,10 @@ main {
   z-index: 3;
   width: 100%;
   height: 100%;
-  opacity: .94;
+  opacity: 1;
   pointer-events: none;
+  image-rendering: auto;
+  backface-visibility: hidden;
   contain: strict
 }
 
@@ -2642,21 +2644,21 @@ footer {
   background: #d9dadd
 }
 
-.capabilityPhoto span {
+.capabilityPhoto img {
   position: absolute;
   inset: 0;
-  background-image: url('/capabilities-reference.png');
-  background-repeat: no-repeat;
-  background-size: 500% auto;
-  background-position: var(--photo-x) 26.8%;
-  filter: grayscale(1) contrast(1.08);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.04) contrast(1.03);
   transform: scale(1.015);
   transition: transform .8s var(--ease-soft), filter .65s ease
 }
 
-.capabilityCard:hover .capabilityPhoto span {
+.capabilityCard:hover .capabilityPhoto img {
   transform: scale(1.085);
-  filter: grayscale(.22) contrast(1.02)
+  filter: saturate(1.12) contrast(1.04)
 }
 
 .capabilityIcon {
@@ -5690,6 +5692,9 @@ footer {
   .whyChats span{max-width:100%!important}
 }
 
+/* Preserve the natural colour and detail of each dedicated capability image. */
+.capabilityPhoto img{display:block}
+
 /* Cinematic work process */
 .workProcess{position:relative;display:flex;min-height:650px;overflow:hidden;flex-direction:column;padding:58px 4vw 66px;background:#070c0a;color:#fff;isolation:isolate}
 .workProcessBg{position:absolute;z-index:-3;inset:-10% 0;width:100%;height:120%;object-fit:cover;object-position:center;transform:scale(1.035);will-change:transform}
@@ -6415,29 +6420,27 @@ html,body{max-width:100%;overflow-x:clip}
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 44%;
-  opacity:.34;
-  filter:saturate(.58) contrast(1.12)
+  object-position:62% center;
+  opacity:.58;
+  filter:saturate(.92) contrast(1.08)
 }
 .whyRetention:before{
   z-index:1;
   height:100%;
-  background:linear-gradient(110deg,rgba(7,12,19,.9) 5%,rgba(10,16,25,.68) 52%,rgba(9,14,22,.94) 100%);
+  background:linear-gradient(100deg,rgba(7,12,19,.96) 0%,rgba(9,15,23,.8) 42%,rgba(9,14,22,.42) 76%,rgba(9,14,22,.72) 100%),linear-gradient(0deg,rgba(7,12,19,.9),transparent 68%);
   transform:none
 }
 .whyRetention>:not(.whyCardPhoto){position:relative;z-index:2}
 .whySupport>.whyCardPhoto{
-  top:0;
-  right:0;
-  width:58%;
+  inset:0;
+  width:100%;
   height:100%;
   object-fit:cover;
-  object-position:46% center;
-  opacity:.27;
-  filter:saturate(.6) contrast(.92);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 34%)
+  object-position:65% center;
+  opacity:.72;
+  filter:saturate(.88) contrast(1.04)
 }
+.whySupport:after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(250,249,247,.99) 0%,rgba(250,249,247,.96) 30%,rgba(250,249,247,.65) 53%,rgba(250,249,247,.12) 100%);pointer-events:none}
 .whySupport>:not(.whyCardPhoto){position:relative;z-index:2}
 .whyFeature img{object-position:center 52%;filter:saturate(.94) contrast(1.04)}
 .whyFeatureShade{
@@ -6445,8 +6448,43 @@ html,body{max-width:100%;overflow-x:clip}
 }
 
 @media(max-width:760px){
-  .whySupport>.whyCardPhoto{width:64%;opacity:.23}
+  .whyRetention>.whyCardPhoto{object-position:66% center;opacity:.52}
+  .whySupport>.whyCardPhoto{width:100%;opacity:.64;object-position:70% center}
+  .whySupport:after{background:linear-gradient(90deg,rgba(250,249,247,.99) 0%,rgba(250,249,247,.94) 44%,rgba(250,249,247,.34) 100%)}
   .whyFeature img{object-position:center 48%}
+}
+
+/* Editorial visual cards for team ownership and monthly planning */
+.whyVisualCard{isolation:isolate;background:#101722;color:#fff}
+.whyVisualCard>.whyCardPhoto{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out),filter .6s ease}
+.whyVisualCard:after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none}
+.whyVisualCard:hover>.whyCardPhoto{transform:scale(1.045);filter:saturate(1.08) contrast(1.04)}
+.whyVisualBadge{position:absolute;z-index:2;top:18px;left:18px;display:inline-flex;align-items:center;gap:8px;min-height:31px;padding:0 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(12,17,25,.7);color:#fff;font:750 10px/1 Manrope,sans-serif;letter-spacing:.045em;backdrop-filter:blur(10px)}
+.whyVisualBadge i{width:6px;height:6px;border-radius:50%;background:#f04749;box-shadow:0 0 0 4px rgba(240,71,73,.17)}
+.whyTeamCard>.whyCardPhoto{object-position:62% center}
+.whyTeamCard:after{background:linear-gradient(90deg,rgba(7,11,17,.97) 0%,rgba(8,13,20,.82) 42%,rgba(8,13,20,.18) 82%),linear-gradient(0deg,rgba(6,10,16,.8),transparent 70%)}
+.whyVisualCopy{position:absolute;z-index:2;left:22px;bottom:20px;display:grid;gap:7px;max-width:76%}
+.whyVisualCopy>span{color:rgba(255,255,255,.64);font:650 9px/1.3 Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.whyVisualCopy>strong{font:750 clamp(22px,2vw,30px)/.96 Manrope,sans-serif;letter-spacing:-.045em}
+.whyVisualTags{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
+.whyVisualTags b{padding:5px 7px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.78);font:650 8px/1 Manrope,sans-serif}
+.whyPlanningCard>.whyCardPhoto{object-position:65% center}
+.whyPlanningCard:after{background:linear-gradient(90deg,rgba(8,13,20,.96) 0%,rgba(8,13,20,.85) 42%,rgba(8,13,20,.2) 84%),linear-gradient(0deg,rgba(8,13,20,.88),transparent 70%)}
+.whyPlanningCopy{position:absolute;z-index:2;right:18px;bottom:17px;left:18px;display:grid;gap:14px}
+.whyPlanningCopy>strong{max-width:9ch;font:750 24px/.96 Manrope,sans-serif;letter-spacing:-.045em}
+.whyPlanningCopy ol{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0;padding:0;list-style:none}
+.whyPlanningCopy li{display:grid;gap:3px;padding:7px 8px;border-top:1px solid rgba(255,255,255,.22);background:linear-gradient(180deg,rgba(255,255,255,.055),transparent)}
+.whyPlanningCopy li b{color:#ff6669;font:750 8px/1 Manrope,sans-serif;letter-spacing:.08em}
+.whyPlanningCopy li span{color:rgba(255,255,255,.84);font:650 8px/1.2 Manrope,sans-serif}
+
+@media(max-width:760px){
+  .whyVisualBadge{top:14px;left:14px}
+  .whyTeamCard>.whyCardPhoto{object-position:66% center}
+  .whyVisualCopy{left:17px;bottom:17px;max-width:84%}
+  .whyVisualCopy>strong{font-size:27px}
+  .whyPlanningCard>.whyCardPhoto{object-position:68% center}
+  .whyPlanningCopy{right:15px;bottom:15px;left:15px}
+  .whyPlanningCopy>strong{font-size:22px}
 }
 
 /* Larger, clearer type inside the Capabilities card */
@@ -7032,7 +7070,7 @@ html,body{max-width:100%;overflow-x:clip}
     backdrop-filter:blur(16px)
   }
   .siteHeader .brandLogo{height:54px}
-  .siteHeader .brandLogo img{transform:scale(1.34)}
+  .siteHeader .brandLogo img{transform:none}
   .siteHeader .logo b{font-size:18px;line-height:1}
   .siteHeader .logo small{margin-top:4px;font-size:7px;letter-spacing:.13em}
   .menuButton{
@@ -7753,7 +7791,7 @@ body{letter-spacing:-.006em}
 }
 .clientMarqueeHeader{
   display:grid;
-  grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
+  grid-template-columns:1fr;
   align-items:end;
   gap:clamp(36px,6vw,90px);
   width:min(var(--pn-container),calc(100% - (var(--pn-gutter) * 2)));
@@ -8515,7 +8553,7 @@ html,body{max-width:100%;overflow-x:clip}
   }
   .siteHeader .logo:after{display:none}
   .siteHeader .brandLogo{width:46px;height:48px;flex:0 0 46px;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
-  .siteHeader .brandLogo img{transform:scale(1.42)}
+  .siteHeader .brandLogo img{transform:none}
   .siteHeader .logo b{color:#fff;font-size:18px;letter-spacing:-.035em}
   .siteHeader .logo b span{color:#f24449}
   .siteHeader .logo small{color:rgba(255,255,255,.55);font-size:7px;letter-spacing:.15em}
@@ -8644,6 +8682,66 @@ html,body{max-width:100%;overflow-x:clip}
 
 @media(prefers-reduced-motion:reduce){
   .menuButton span,.siteHeader nav,.mobileNavBackdrop{transition:none!important}
+}
+
+/* One bounded desktop coordinate system for the header, hero, prism, and sections. */
+:root{
+  --pn-container:1440px;
+  --pn-desktop-gutter:clamp(24px,3vw,48px)
+}
+
+.heroLayout{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  width:100%;
+  margin-inline:auto;
+  pointer-events:none;
+  container-type:inline-size
+}
+.heroLayout :where(a,button){pointer-events:auto}
+
+@media(min-width:761px){
+  .siteHeader,
+  .siteHeader.is-scrolled{
+    right:auto;
+    left:50%;
+    width:min(calc(100% - (var(--pn-desktop-gutter) * 2)),var(--pn-container));
+    transform:translateX(-50%)
+  }
+  .hero{
+    height:clamp(740px,100svh,920px);
+    min-height:740px
+  }
+  .heroLayout{
+    width:min(calc(100% - (var(--pn-desktop-gutter) * 2)),var(--pn-container))
+  }
+  .heroTitle{
+    top:clamp(218px,27svh,258px);
+    right:auto;
+    left:0;
+    width:min(58%,860px);
+    max-width:none
+  }
+  .heroTitle span,
+  .heroTitle strong{
+    font-size:clamp(86px,10cqw,150px)
+  }
+  .focused{
+    top:clamp(382px,47svh,438px);
+    right:0;
+    max-width:48%;
+    font-size:clamp(82px,9.5cqw,144px)
+  }
+  .heroCopy{
+    right:0;
+    bottom:clamp(48px,6svh,70px);
+    width:min(30cqw,420px)
+  }
+  .capabilityPanel{
+    width:min(calc(100% - (var(--pn-desktop-gutter) * 2)),var(--pn-container));
+    max-width:var(--pn-container)
+  }
 }
 
 /* Larger section category labels with balanced pill proportions. */

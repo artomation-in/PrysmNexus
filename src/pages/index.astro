@@ -7,12 +7,16 @@ import heroImage from "../assets/hero.png";
 import processBackdrop from "../assets/work-process-prism.png";
 import whyAnalyticsImage from "../assets/why-analytics.jpg";
 import whyFeatureImage from "../assets/why-feature.jpg";
-import whyTeamImage from "../assets/why-team.jpg";
-import whySupportImage from "../assets/why-support.jpg";
+import whyTeamImage from "../assets/why-team-v2.png";
+import whySupportImage from "../assets/why-planning-v2.png";
 import projectBrandImage from "../assets/project-brand.jpg";
 import projectSocialImage from "../assets/project-social.jpg";
 import projectContentImage from "../assets/project-content.jpg";
-import prysmNexusLogo from "../assets/prysmnexus-logo.png";
+import capabilityBrandingImage from "../assets/capability-branding-hq.png";
+import capabilityContentImage from "../assets/capability-content-hq.png";
+import capabilityTeamImage from "../assets/capability-team-hq.png";
+import capabilitySearchImage from "../assets/capability-search-hq.png";
+import prysmNexusLogo from "../assets/prysmnexus-logo-mark-hq-transparent.png";
 import { brand as seoBrand, services as seoServices } from "../data/seo";
 
 const services = [
@@ -110,37 +114,39 @@ const schemas = [
       <canvas class="prismCanvas" aria-hidden="true"></canvas>
       <header class="siteHeader" data-site-header>
         <a class="logo" href="#home" aria-label="PrysmNexus home" translate="no">
-          <span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[64, 96, 128]} sizes="(max-width: 760px) 48px, 62px" format="webp" quality={90} loading="eager" /></span>
+          <span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[96, 144, 192, 256]} sizes="(max-width: 760px) 48px, 62px" format="webp" quality={100} loading="eager" /></span>
           <span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span>
         </a>
         <button class="menuButton" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
           <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </button>
         <nav id="primary-nav" aria-label="Primary navigation">
-          <a href="#home">Home</a><a href="/services/">Services</a><a href="/about/">About</a><a href="#method">Method</a><a href="#faq">FAQ</a><a href="/contact/">Contact</a><a class="mobileConsult" href="/contact/#consultation-form"><span>Free Consultation</span><b aria-hidden="true">↗</b></a>
+          <a href="#home">Home</a><a href="/services/">Services</a><a href="/about/">About</a><a href="#projects">Our Works</a><a href="#faq">FAQ</a><a href="/contact/">Contact</a><a class="mobileConsult" href="/contact/#consultation-form"><span>Free Consultation</span><b aria-hidden="true">↗</b></a>
         </nav>
         <div class="headerActions"><span class="dash"></span><a class="consult" href="/contact/#consultation-form">Free Consultation</a><span class="gridButton" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
       </header>
       <div class="mobileNavBackdrop" aria-hidden="true"></div>
       <div class="heroGlow"></div>
-      <h1 class="heroTitle" id="hero-heading"><span class="heroWord"><em>Growth</em></span><strong class="heroWord"><em>Marketing</em></strong><small>Built Around Your Business.</small></h1>
-      <div class="focused" aria-hidden="true"><span>Focused</span></div>
-      <div class="heroCopy" data-reveal="up">
-        <p><strong>Sharp branding. Original content. Accountable growth.</strong> PrysmNexus brings strategy, creative production, social media, paid campaigns, and search visibility together for businesses across India.</p>
-        <a class="gradientButton" href="#services">Explore Services <b>↗</b></a>
+      <div class="heroLayout">
+        <h1 class="heroTitle" id="hero-heading"><span class="heroWord"><em>Growth</em></span><strong class="heroWord"><em>Marketing</em></strong><small>Built Around Your Business.</small></h1>
+        <div class="focused" aria-hidden="true"><span>Focused</span></div>
+        <div class="heroCopy" data-reveal="up">
+          <p><strong>Sharp branding. Original content. Accountable growth.</strong> PrysmNexus brings strategy, creative production, social media, paid campaigns, and search visibility together for businesses across India.</p>
+          <a class="gradientButton" href="#services">Explore Services <b>↗</b></a>
+        </div>
       </div>
     </section>
 
     <section class="capabilityShowcase" aria-label="Core marketing capabilities">
       <div class="capabilityPanel">
         {[
-          ["Strategic Branding", "Clear positioning and visual direction that make your business recognizable.", "↗", "4.8%"],
-          ["Original Content", "Photography, video, reels, and creative work produced for your brand.", "✦", "35%"],
-          ["One Accountable Team", "Strategy, production, publishing, campaigns, and reporting managed together.", "◎", "65.2%"],
-          ["Search & Reputation", "SEO, Google profile, local discovery, and trust signals working as one.", "⌕", "95.3%"],
-        ].map(([title, text, glyph, photoPosition], index) => (
-          <article class="capabilityCard" data-reveal="up" style={`--reveal-delay:${index * 100}ms;--photo-x:${photoPosition}`}>
-            <div class="capabilityPhoto" aria-hidden="true"><span></span></div>
+          ["Strategic Branding", "Clear positioning and visual direction that make your business recognizable.", "↗", capabilityBrandingImage, "Brand strategy materials arranged on a creative studio table"],
+          ["Original Content", "Photography, video, reels, and creative work produced for your brand.", "✦", capabilityContentImage, "Filmmaker preparing a professional cinema camera in a content studio"],
+          ["One Accountable Team", "Strategy, production, publishing, campaigns, and reporting managed together.", "◎", capabilityTeamImage, "Integrated marketing team collaborating around one campaign plan"],
+          ["Search & Reputation", "SEO, Google profile, local discovery, and trust signals working as one.", "⌕", capabilitySearchImage, "Search visibility and reputation analytics across laptop and mobile"],
+        ].map(([title, text, glyph, image, alt], index) => (
+          <article class="capabilityCard" data-reveal="up" style={`--reveal-delay:${index * 100}ms`}>
+            <div class="capabilityPhoto"><Image class="capabilityImage" src={image} alt={alt} widths={[480, 720, 960, 1440, 2048]} sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1100px) 46vw, 24vw" format="webp" quality={92} loading={index === 0 ? "eager" : "lazy"} /></div>
             <span class="capabilityIcon" aria-hidden="true"><b>{glyph}</b></span>
             <h2>{title}</h2>
             <p>{text}</p>
@@ -157,7 +163,7 @@ const schemas = [
           <h2 data-reveal="title">We help brands grow faster with<br />powerful digital marketing strategies.</h2>
           <div class="aboutMetrics" data-reveal="up">
             <article class="experienceMetric">
-              <Image class="metricMark" src={prysmNexusLogo} alt="" widths={[96, 144, 192]} sizes="100px" format="webp" quality={90} loading="lazy" />
+              <Image class="metricMark" src={prysmNexusLogo} alt="" widths={[160, 240, 320]} sizes="100px" format="webp" quality={100} loading="lazy" />
               <strong data-count="348" data-suffix="K+">0</strong>
               <span>Content Views<br />Generated</span>
             </article>
@@ -213,7 +219,7 @@ const schemas = [
             {index === 0 && (
               <div class="serviceBrandMark" aria-hidden="true">
                 <span></span><span></span><span></span>
-                <Image src={prysmNexusLogo} alt="" widths={[96, 144, 192]} sizes="112px" format="webp" quality={90} loading="lazy" />
+                <Image src={prysmNexusLogo} alt="" widths={[160, 240, 320]} sizes="112px" format="webp" quality={100} loading="lazy" />
               </div>
             )}
             <div class="serviceCardBody">
@@ -262,25 +268,26 @@ const schemas = [
             <div class="whyProjectCta"><p>Let’s make great work together.<br /><a href="#contact">Get in touch with us.</a></p><a class="whyPhone" href="#contact" aria-label="Start a consultation">↗</a></div>
           </article>
 
-          <article class="whyCard whyRetention" data-reveal="up" style="--reveal-delay:100ms">
-            <Image class="whyCardPhoto" src={whyTeamImage} alt="" widths={[620, 920]} sizes="(max-width: 680px) 100vw, 34vw" format="webp" quality={88} loading="lazy" />
-            <div class="whyPeople" aria-hidden="true">
-              <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
-              <Image src={serviceImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
-              <Image src={heroImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
-              <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
-              <b>1 team</b>
+          <article class="whyCard whyVisualCard whyTeamCard" data-reveal="up" style="--reveal-delay:100ms">
+            <Image class="whyCardPhoto" src={whyTeamImage} alt="PrysmNexus marketing team collaborating on campaign strategy" widths={[620, 920]} sizes="(max-width: 680px) 100vw, 34vw" format="webp" quality={90} loading="lazy" />
+            <div class="whyVisualBadge"><i aria-hidden="true"></i> One accountable team</div>
+            <div class="whyVisualCopy">
+              <span>From first idea to final report</span>
+              <strong>One team.<br />Clear ownership.</strong>
+              <div class="whyVisualTags" aria-label="Connected capabilities"><b>Strategy</b><b>Creative</b><b>Media</b><b>Reporting</b></div>
             </div>
-            <div class="whyRating"><span>Strategy · Creative · Media</span><small>Aligned around one brand</small></div>
-            <div class="whyRetentionStat"><strong>ONE</strong><p>Accountable partner from<br />planning through reporting.</p></div>
           </article>
 
-          <article class="whyCard whySupport" data-reveal="up" style="--reveal-delay:150ms">
-            <Image class="whyCardPhoto" src={whySupportImage} alt="" widths={[520, 760]} sizes="(max-width: 680px) 100vw, 28vw" format="webp" quality={88} loading="lazy" />
-            <div><strong>Monthly</strong><span>Planning and reporting</span></div>
-            <div class="whyChats" aria-label="Responsive client support">
-              <p><i></i><span>Hey there!</span></p>
-              <p><i></i><span>How can we help?</span></p>
+          <article class="whyCard whyVisualCard whyPlanningCard" data-reveal="up" style="--reveal-delay:150ms">
+            <Image class="whyCardPhoto" src={whySupportImage} alt="Monthly marketing plan and performance reporting workspace" widths={[520, 760]} sizes="(max-width: 680px) 100vw, 28vw" format="webp" quality={90} loading="lazy" />
+            <div class="whyVisualBadge light"><i aria-hidden="true"></i> Monthly growth rhythm</div>
+            <div class="whyPlanningCopy">
+              <strong>Plan. Launch. Learn.</strong>
+              <ol aria-label="Monthly marketing workflow">
+                <li><b>01</b><span>Priorities</span></li>
+                <li><b>02</b><span>Action</span></li>
+                <li><b>03</b><span>Results</span></li>
+              </ol>
             </div>
           </article>
         </div>
@@ -343,7 +350,6 @@ const schemas = [
           <div class="eyebrow light" data-reveal="line">Selected Clients</div>
           <h2 id="clients-title" data-reveal="title">Built with brands that<br /><span>care about the details.</span></h2>
         </div>
-        <p data-reveal="up">Selected collaborations across hospitality, content, and growth marketing in India.</p>
       </header>
       <div class="clientMarqueeWindow" aria-label="Featured PrysmNexus clients">
         <div class="clientMarqueeTrack">
@@ -360,7 +366,6 @@ const schemas = [
           ))}
         </div>
       </div>
-      <div class="clientMarqueeFooter"><span>Strategy</span><i></i><span>Creative</span><i></i><span>Performance</span><i></i><span>Search</span></div>
     </section>
 
     <section class="workProcess" id="process" aria-labelledby="process-title">
@@ -410,7 +415,7 @@ const schemas = [
 
         <div class="proFooterGrid" data-reveal="up">
           <div class="proFooterBrand">
-            <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[64, 96, 128]} sizes="62px" format="webp" quality={90} loading="lazy" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
+            <a class="logo inverse" href="#home" translate="no"><span class="brandLogo"><Image src={prysmNexusLogo} alt="" widths={[96, 144, 192, 256]} sizes="62px" format="webp" quality={100} loading="lazy" /></span><span><b>Prysm<span>Nexus</span></b><small>GROWTH MARKETING</small></span></a>
             <p>Strategy, creative, performance, and discovery—managed by one focused team serving businesses across India.</p>
             <span class="proFooterLocation"><i></i>Serving India</span>
           </div>
@@ -419,7 +424,7 @@ const schemas = [
             <h3>Explore</h3>
             <a href="#home">Home <span>↗</span></a>
             <a href="/about/">About <span>↗</span></a>
-            <a href="#method">Method <span>↗</span></a>
+            <a href="#projects">Our Works <span>↗</span></a>
             <a href="#process">Process <span>↗</span></a>
           </nav>
 
@@ -964,7 +969,7 @@ const schemas = [
     if (canvas && prismHero) {
       const gl = canvas.getContext("webgl2", {
         alpha: true,
-        antialias: false,
+        antialias: true,
         depth: false,
         powerPreference: "high-performance",
         premultipliedAlpha: false,
@@ -983,6 +988,8 @@ const schemas = [
           uniform vec2 uResolution;
           uniform vec3 uAssembly;
           uniform float uReflection;
+          uniform vec2 uPointer;
+          uniform vec2 uAnchor;
 
           mat2 rotate2d(float angle) {
             float c = cos(angle), s = sin(angle);
@@ -1039,6 +1046,8 @@ const schemas = [
             p.xy *= rotate2d(faceRotation);
             p.yz *= rotate2d(.69 * depthTilt);
             p.xz *= rotate2d(-.38 * depthTilt);
+            p.yz *= rotate2d(uPointer.y * .18 * frontPose);
+            p.xz *= rotate2d(-uPointer.x * .22 * frontPose);
 
             float aspectRatio = uResolution.x / uResolution.y;
             float horizontalEdge = mix(2.9, 5.05, smoothstep(.72, 1.78, aspectRatio));
@@ -1063,12 +1072,10 @@ const schemas = [
 
           void main() {
             vec2 uv = (gl_FragCoord.xy * 2.0 - uResolution.xy) / min(uResolution.x, uResolution.y);
-            float wide = smoothstep(1.05, 1.55, uResolution.x / uResolution.y);
-            uv.x -= .13 * wide;
-            uv.y += .015;
+            uv -= uAnchor;
 
-            vec3 rayOrigin = vec3(0.0, 0.0, 4.35);
-            vec3 rayDirection = normalize(vec3(uv, -2.28));
+            vec3 rayOrigin = vec3(uPointer.x * .11, -uPointer.y * .075, 4.35);
+            vec3 rayDirection = normalize(vec3(uv - uPointer * .028, -2.28));
             float travel = 0.0;
             float nearest = 8.0;
             float material = 1.0;
@@ -1087,13 +1094,23 @@ const schemas = [
             float aura = exp(-10.5 * nearest) * .18;
             vec3 auraColor = mix(vec3(.88, .015, .035), vec3(1.0, .19, .24), .72);
             if (!hit) {
-              outColor = vec4(auraColor, aura);
+              float pixelFootprint = 2.0 / min(uResolution.x, uResolution.y);
+              float edgeCoverage = 1.0 - smoothstep(
+                .0012,
+                .0012 + pixelFootprint * 1.35,
+                nearest
+              );
+              outColor = vec4(auraColor, max(aura, edgeCoverage * .92));
               return;
             }
 
             vec3 point = rayOrigin + rayDirection * travel;
             vec3 normal = normalAt(point);
-            vec3 lightDirection = normalize(vec3(-.45, .8, 1.15));
+            vec3 lightDirection = normalize(vec3(
+              -.45 + uPointer.x * .48,
+              .8 - uPointer.y * .34,
+              1.15
+            ));
             vec3 rimDirection = normalize(vec3(.8, -.25, .55));
             float diffuse = max(dot(normal, lightDirection), 0.0);
             float rim = pow(1.0 - max(dot(normal, -rayDirection), 0.0), 2.5);
@@ -1160,6 +1177,8 @@ const schemas = [
             const resolutionUniform = gl.getUniformLocation(program, "uResolution");
             const assemblyUniform = gl.getUniformLocation(program, "uAssembly");
             const reflectionUniform = gl.getUniformLocation(program, "uReflection");
+            const pointerUniform = gl.getUniformLocation(program, "uPointer");
+            const anchorUniform = gl.getUniformLocation(program, "uAnchor");
             let width = 0;
             let height = 0;
             let visible = true;
@@ -1172,8 +1191,14 @@ const schemas = [
             let reflectionStart = -1;
             let wasJoined = false;
             let destroyed = false;
+            let clickSeparated = false;
+            let clickSplitTimer = 0;
             const assembly = [1, 1, 1];
             let assemblyTarget = [1, 1, 1];
+            const pointer = [0, 0];
+            const pointerTarget = [0, 0];
+            const prismAnchor = [0, -.015];
+            const heroLayout = prismHero.querySelector<HTMLElement>(".heroLayout");
 
             const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
             const smoothstep = (edge0: number, edge1: number, value: number) => {
@@ -1184,6 +1209,7 @@ const schemas = [
 
             const getScrollAssembly = () => {
               if (reduceMotion.matches) return [1, 1, 1];
+              if (clickSeparated) return [0, 0, 0];
               const bounds = prismHero.getBoundingClientRect();
               const travelled = Math.max(0, -bounds.top);
               const splitProgress = smoothstep(bounds.height * .08, bounds.height * .68, travelled);
@@ -1200,6 +1226,8 @@ const schemas = [
               gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
               gl.uniform3f(assemblyUniform, assembly[0], assembly[1], assembly[2]);
               gl.uniform1f(reflectionUniform, reflectionProgress);
+              gl.uniform2f(pointerUniform, pointer[0], pointer[1]);
+              gl.uniform2f(anchorUniform, prismAnchor[0], prismAnchor[1]);
               gl.drawArrays(gl.TRIANGLES, 0, 3);
             };
 
@@ -1215,9 +1243,17 @@ const schemas = [
             };
 
             const resizePrism = () => {
-              const ratio = Math.min(devicePixelRatio || 1, 1.6);
+              // A true 2x backing store keeps the ray-marched silhouette smooth
+              // without altering the prism's CSS size or animation geometry.
+              const ratio = Math.min(devicePixelRatio || 1, 2);
               width = prismHero.clientWidth;
               height = prismHero.clientHeight;
+              const heroBounds = prismHero.getBoundingClientRect();
+              const shellBounds = (heroLayout ?? prismHero).getBoundingClientRect();
+              const minimumDimension = Math.max(1, Math.min(width, height));
+              const targetCenterX = shellBounds.left - heroBounds.left + shellBounds.width * .55;
+              prismAnchor[0] = 2 * (targetCenterX - width * .5) / minimumDimension;
+              prismAnchor[1] = -.015;
               canvas.width = Math.round(width * ratio);
               canvas.height = Math.round(height * ratio);
               canvas.style.width = `${width}px`;
@@ -1257,6 +1293,17 @@ const schemas = [
                 }
               }
 
+              const pointerResponse = 1 - Math.exp(-delta * 10);
+              for (let index = 0; index < pointer.length; index += 1) {
+                const difference = pointerTarget[index] - pointer[index];
+                if (Math.abs(difference) > .001) {
+                  pointer[index] += difference * pointerResponse;
+                  moving = true;
+                } else {
+                  pointer[index] = pointerTarget[index];
+                }
+              }
+
               const joined = assembly.every((value) => value > .997) && assemblyTarget.every((value) => value > .997);
               if (joined && !wasJoined && !reduceMotion.matches) reflectionStart = now;
               wasJoined = joined;
@@ -1286,6 +1333,50 @@ const schemas = [
               }
             }).observe(prismHero);
 
+            const updatePointerTarget = (event: PointerEvent) => {
+              if (reduceMotion.matches || event.pointerType === "touch") return;
+              const bounds = prismHero.getBoundingClientRect();
+              if (bounds.bottom <= 0 || bounds.top >= innerHeight) return;
+              pointerTarget[0] = Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - .5) * 2));
+              pointerTarget[1] = Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height - .5) * 2));
+              schedulePrism();
+            };
+            const resetPointerTarget = () => {
+              pointerTarget[0] = 0;
+              pointerTarget[1] = 0;
+              schedulePrism();
+            };
+            addEventListener("pointermove", updatePointerTarget, { passive: true });
+            prismHero.addEventListener("pointerleave", resetPointerTarget, { passive: true });
+
+            const splitPrismOnClick = (event: MouseEvent) => {
+              if (reduceMotion.matches || clickSeparated || assembly.some((value) => value < .94)) return;
+              const target = event.target as Element | null;
+              if (target?.closest("a, button, input, select, textarea, label")) return;
+
+              const bounds = canvas.getBoundingClientRect();
+              const pixel = new Uint8Array(4);
+              const pixelX = Math.max(0, Math.min(canvas.width - 1, Math.round((event.clientX - bounds.left) * canvas.width / bounds.width)));
+              const pixelY = Math.max(0, Math.min(canvas.height - 1, Math.round((bounds.bottom - event.clientY) * canvas.height / bounds.height)));
+              gl.readPixels(pixelX, pixelY, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
+              if (pixel[3] < 160) return;
+
+              clickSeparated = true;
+              entranceActive = false;
+              reflectionStart = -1;
+              pointerTarget.splice(0, 2, 0, 0);
+              assemblyTarget = [0, 0, 0];
+              schedulePrism();
+
+              if (clickSplitTimer) clearTimeout(clickSplitTimer);
+              clickSplitTimer = window.setTimeout(() => {
+                clickSeparated = false;
+                assemblyTarget = getScrollAssembly();
+                schedulePrism();
+              }, 1050);
+            };
+            prismHero.addEventListener("click", splitPrismOnClick);
+
             addEventListener("scroll", () => {
               if (scrollFrame) return;
               scrollFrame = requestAnimationFrame(() => {
@@ -1300,6 +1391,8 @@ const schemas = [
               assemblyTarget = getScrollAssembly();
               if (reduceMotion.matches) {
                 assembly.splice(0, 3, 1, 1, 1);
+                pointer.splice(0, 2, 0, 0);
+                pointerTarget.splice(0, 2, 0, 0);
                 entranceActive = false;
                 reflectionStart = -1;
               }
@@ -1331,6 +1424,7 @@ const schemas = [
               destroyed = true;
               if (frame) cancelAnimationFrame(frame);
               if (scrollFrame) cancelAnimationFrame(scrollFrame);
+              if (clickSplitTimer) clearTimeout(clickSplitTimer);
             }, { once: true });
           }
         }

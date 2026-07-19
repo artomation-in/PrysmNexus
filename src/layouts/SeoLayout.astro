@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
-import logo from "../assets/prysmnexus-logo-transparent.png";
+import logo from "../assets/prysmnexus-logo-mark-hq-transparent.png";
 import { brand, services } from "../data/seo";
 import "../styles/seo-pages.css";
 
@@ -20,22 +20,40 @@ interface Props {
 
 const { title, description, eyebrow, heading, lead, schemas = [], type = "website", published, modified, noindex = false } = Astro.props;
 const segments = Astro.url.pathname.split("/").filter(Boolean);
+const contextualBackLink = segments[0] === "services"
+  ? segments.length > 1
+    ? { href: "/services/", label: "Back to Services", ariaLabel: "Back to all services" }
+    : { href: "/", label: "Back to Home", ariaLabel: "Back to home" }
+  : segments[0] === "case-studies"
+    ? segments.length > 1
+      ? { href: "/case-studies/", label: "Back to Case Studies", ariaLabel: "Back to all case studies" }
+      : { href: "/", label: "Back to Home", ariaLabel: "Back to home" }
+    : null;
 ---
 
 <BaseLayout title={title} description={description} schemas={schemas} type={type} published={published} modified={modified} noindex={noindex}>
   <div class="seoPage">
     <header class="seoHeader">
       <a class="seoLogo" href="/" aria-label="PrysmNexus home">
-        <span class="seoLogoMark"><Image src={logo} alt="" widths={[64, 96, 128]} sizes="54px" format="webp" quality={92} loading="eager" /></span>
+        <span class="seoLogoMark"><Image src={logo} alt="" widths={[96, 144, 192, 256]} sizes="54px" format="webp" quality={100} loading="eager" /></span>
         <span><strong>Prysm<span>Nexus</span></strong><small>GROWTH MARKETING</small></span>
       </a>
-      <nav class="seoNav" aria-label="Primary navigation">
-        <a href="/services/">Services</a><a href="/case-studies/">Case Studies</a><a href="/insights/">Insights</a><a href="/about/">About</a><a class="seoCta" href="/contact/#consultation-form">Free Consultation</a>
+      <button class="seoMenuButton" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="seo-primary-nav">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <nav class="seoNav" id="seo-primary-nav" aria-label="Primary navigation">
+        <a href="/">Home</a><a href="/services/">Services</a><a href="/case-studies/">Our Works</a><a href="/insights/">Insights</a><a href="/about/">About</a><a href="/contact/">Contact</a><a class="seoCta" href="/contact/#consultation-form">Free Consultation</a>
       </nav>
     </header>
+    <div class="seoNavBackdrop" aria-hidden="true"></div>
     <main id="main-content">
       <section class="seoHero">
         <div class="seoHeroInner">
+          {contextualBackLink && (
+            <a class="seoBackLink" href={contextualBackLink.href} aria-label={contextualBackLink.ariaLabel}>
+              <span aria-hidden="true">←</span> {contextualBackLink.label}
+            </a>
+          )}
           <nav class="seoBreadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a>{segments.map((segment, index) => <><span>/</span>{index === segments.length - 1 ? <span aria-current="page">{segment.replaceAll("-", " ")}</span> : <a href={`/${segments.slice(0, index + 1).join("/")}/`}>{segment.replaceAll("-", " ")}</a>}</>)}</nav>
           <div class="seoEyebrow">{eyebrow}</div>
           <h1>{heading}</h1>
@@ -55,4 +73,28 @@ const segments = Astro.url.pathname.split("/").filter(Boolean);
       <div class="seoFooterBottom">© 2026 PrysmNexus · Serving businesses across India</div>
     </footer>
   </div>
+  <script>
+    const menuButton = document.querySelector<HTMLButtonElement>(".seoMenuButton");
+    const navigation = document.querySelector<HTMLElement>("#seo-primary-nav");
+    const backdrop = document.querySelector<HTMLElement>(".seoNavBackdrop");
+    const setMenuOpen = (open: boolean) => {
+      menuButton?.setAttribute("aria-expanded", String(open));
+      menuButton?.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      navigation?.classList.toggle("is-open", open);
+      backdrop?.classList.toggle("is-open", open);
+      document.documentElement.classList.toggle("seo-menu-open", open);
+    };
+    menuButton?.addEventListener("click", () => setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true"));
+    backdrop?.addEventListener("click", () => setMenuOpen(false));
+    navigation?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
+    addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+        menuButton.focus();
+      }
+    });
+    addEventListener("resize", () => {
+      if (innerWidth > 820) setMenuOpen(false);
+    }, { passive: true });
+  </script>
 </BaseLayout>
