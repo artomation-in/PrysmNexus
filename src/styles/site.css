@@ -8645,3 +8645,48 @@ html,body{max-width:100%;overflow-x:clip}
 @media(prefers-reduced-motion:reduce){
   .menuButton span,.siteHeader nav,.mobileNavBackdrop{transition:none!important}
 }
+
+/* Larger section category labels with balanced pill proportions. */
+.about .eyebrow,
+.servicesShowcase .eyebrow,
+.whyChoose .eyebrow,
+.projectShowcase .eyebrow,
+.clientMarquee .eyebrow,
+.workProcess .eyebrow,
+.faqEditorial .eyebrow,
+.editorialFooter .eyebrow{
+  min-height:40px;
+  gap:10px;
+  padding:11px 17px;
+  font-size:13px;
+  letter-spacing:.065em
+}
+
+.about .eyebrow:before,.about .eyebrow:after,
+.servicesShowcase .eyebrow:before,.servicesShowcase .eyebrow:after,
+.whyChoose .eyebrow:before,.whyChoose .eyebrow:after,
+.projectShowcase .eyebrow:before,.projectShowcase .eyebrow:after,
+.clientMarquee .eyebrow:before,.clientMarquee .eyebrow:after,
+.workProcess .eyebrow:before,.workProcess .eyebrow:after,
+.faqEditorial .eyebrow:before,.faqEditorial .eyebrow:after,
+.editorialFooter .eyebrow:before,.editorialFooter .eyebrow:after{
+  width:6px;
+  height:6px;
+  flex-basis:6px
+}
+
+@media(max-width:760px){
+  .about .eyebrow,
+  .servicesShowcase .eyebrow,
+  .whyChoose .eyebrow,
+  .projectShowcase .eyebrow,
+  .clientMarquee .eyebrow,
+  .workProcess .eyebrow,
+  .faqEditorial .eyebrow,
+  .editorialFooter .eyebrow{
+    min-height:36px;
+    padding:9px 14px;
+    font-size:12px;
+    letter-spacing:.055em
+  }
+}

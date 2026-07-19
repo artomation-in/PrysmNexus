@@ -131,3 +131,21 @@
   .seoCta{padding-inline:10px!important;font-size:10.5px}
   .seoHeroActions .seoButton{width:100%}
 }
+
+/* Stronger category labels across inner pages. */
+.seoEyebrow{
+  min-height:38px;
+  align-items:center;
+  padding:10px 15px;
+  font-size:13px;
+  letter-spacing:.09em
+}
+
+@media(max-width:560px){
+  .seoEyebrow{
+    min-height:34px;
+    padding:9px 13px;
+    font-size:12px;
+    letter-spacing:.075em
+  }
+}
