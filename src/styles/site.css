@@ -8544,7 +8544,7 @@ html,body{max-width:100%;overflow-x:clip}
     min-width:0;
     max-width:calc(100% - 58px);
     height:50px;
-    padding:0 8px;
+    padding:0;
     border:0;
     border-radius:15px;
     background:transparent;
@@ -8554,8 +8554,8 @@ html,body{max-width:100%;overflow-x:clip}
     align-items:flex-end
   }
   .siteHeader .logo:after{display:none}
-  .siteHeader .brandLogo{width:30px;height:48px;flex:0 0 30px;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
-  .siteHeader .brandLogo img{transform:none}
+  .siteHeader .brandLogo{width:30px;height:48px;flex:0 0 30px;place-items:end center;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
+  .siteHeader .brandLogo img{transform:none;object-fit:contain}
   .siteHeader .logo b{color:#fff;font-size:18px;letter-spacing:-.035em}
   .siteHeader .logo b span{color:#f24449}
   .siteHeader .logo small{color:rgba(255,255,255,.55);font-size:7px;letter-spacing:.15em}
@@ -8676,7 +8676,7 @@ html,body{max-width:100%;overflow-x:clip}
 }
 
 @media(max-width:380px){
-  .siteHeader .logo{padding-left:5px}
+  .siteHeader .logo{padding:0}
   .siteHeader .brandLogo{width:26px;flex-basis:26px}
   .siteHeader .logo b{font-size:17px}
   .siteHeader .logo small{font-size:6.5px}
