@@ -1,6 +1,6 @@
 .seoPage{--paper:#f7f5f2;--ink:#131a24;--muted:#626a75;--red:#dc3439;--line:rgba(19,26,36,.12);min-height:100vh;background:var(--paper);color:var(--ink)}
 .seoHeader{position:sticky;z-index:50;top:0;display:grid;grid-template-columns:minmax(220px,1fr) auto;align-items:center;gap:28px;min-height:82px;padding:12px max(24px,calc((100vw - 1440px)/2));border-bottom:1px solid rgba(255,255,255,.1);background:rgba(12,16,23,.94);backdrop-filter:blur(18px)}
-.seoLogo{display:flex;align-items:center;gap:13px;padding:0;border:0;border-radius:0;background:transparent;color:#fff;text-decoration:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}.seoLogoMark{display:grid;width:54px;height:54px;flex:0 0 54px;overflow:visible;place-items:center;border:0;border-radius:0;background:transparent;box-shadow:none}.seoLogoMark img{width:54px;height:54px;max-width:none;object-fit:contain;transform:none;filter:saturate(1.22) brightness(1.08) drop-shadow(0 0 4px rgba(255,38,46,.96)) drop-shadow(0 0 13px rgba(238,31,39,.7)) drop-shadow(0 8px 16px rgba(139,10,16,.42))}.seoLogo strong{font:800 21px/1 Manrope,sans-serif;color:#fff;text-shadow:0 0 11px rgba(238,32,39,.22),0 1px 12px rgba(0,0,0,.36)}.seoLogo strong span{color:#ff202a;text-shadow:0 0 7px rgba(255,31,41,.78),0 0 17px rgba(232,26,34,.52)}.seoLogo small{display:block;margin-top:5px;color:#ef8b90;font-size:8px;letter-spacing:.18em;text-shadow:0 0 10px rgba(230,37,44,.28)}
+.seoLogo{display:flex;align-items:flex-end;gap:4px;padding:0;border:0;border-radius:0;background:transparent;color:#fff;text-decoration:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}.seoLogoMark{display:grid;width:34px;height:54px;flex:0 0 34px;overflow:visible;place-items:end center;border:0;border-radius:0;background:transparent;box-shadow:none}.seoLogoMark img{width:34px;height:54px;max-width:none;object-fit:contain;transform:none;filter:saturate(1.22) brightness(1.08) drop-shadow(0 0 4px rgba(255,38,46,.96)) drop-shadow(0 0 13px rgba(238,31,39,.7)) drop-shadow(0 8px 16px rgba(139,10,16,.42))}.seoLogo>span:last-child{display:flex;flex-direction:column;justify-content:center}.seoLogo strong{font:800 21px/1 Manrope,sans-serif;color:#fff;text-shadow:0 0 11px rgba(238,32,39,.22),0 1px 12px rgba(0,0,0,.36)}.seoLogo strong span{color:#ff202a;text-shadow:0 0 7px rgba(255,31,41,.78),0 0 17px rgba(232,26,34,.52)}.seoLogo small{display:block;margin-top:5px;color:#ef8b90;font-size:8px;letter-spacing:.18em;text-shadow:0 0 10px rgba(230,37,44,.28)}
 .seoNav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(17px,1.8vw,29px)}.seoNav a{position:relative;color:#d7dae0;font:650 13px/1 Manrope,sans-serif;text-decoration:none;white-space:nowrap}.seoNav a:not(.seoCta):after{content:"";position:absolute;right:0;bottom:-9px;left:0;height:2px;border-radius:2px;background:#ef4147;transform:scaleX(0);transform-origin:right;transition:transform .3s ease}.seoNav a:hover{color:#fff}.seoNav a:hover:after,.seoNav a:focus-visible:after{transform:scaleX(1);transform-origin:left}.seoCta{padding:13px 19px!important;border-radius:999px;background:#df353a;color:#fff!important;box-shadow:0 10px 25px rgba(223,53,58,.24)}
 .seoMenuButton{display:none;width:46px;height:46px;padding:0;border:1px solid rgba(255,255,255,.15);border-radius:14px;background:rgba(255,255,255,.06);cursor:pointer}.seoMenuButton span{display:block;width:20px;height:2px;margin:4px auto;border-radius:2px;background:#fff;transition:transform .28s ease,opacity .2s ease}.seoMenuButton[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}.seoMenuButton[aria-expanded="true"] span:nth-child(2){opacity:0}.seoMenuButton[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}.seoNavBackdrop{display:none}
 .seoHero{position:relative;overflow:hidden;padding:clamp(90px,11vw,155px) clamp(20px,8vw,120px) clamp(72px,8vw,110px);background:#0d1118;color:#fff}.seoHero:before{content:"";position:absolute;inset:auto -10% -50% 35%;height:520px;background:radial-gradient(circle,rgba(222,52,57,.35),transparent 68%);pointer-events:none}.seoHeroInner{position:relative;z-index:1;max-width:1180px;margin:auto}.seoBreadcrumbs{display:flex;flex-wrap:wrap;align-items:center;gap:11px;color:#aeb4be;font:650 15px/1.4 Manrope,sans-serif;letter-spacing:-.01em}.seoBreadcrumbs a{color:#fff;text-decoration:none;transition:color .2s ease}.seoBreadcrumbs a:hover,.seoBreadcrumbs a:focus-visible{color:#ff7771}.seoEyebrow{display:inline-flex;margin:36px 0 18px;padding:8px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;color:#ff7a72;font:750 11px/1 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase}.seoHero h1{max-width:1020px;margin:0;font:750 clamp(46px,6.7vw,96px)/.98 Manrope,sans-serif;letter-spacing:-.055em}.seoHeroLead{max-width:780px;margin:28px 0 0;color:#c7cbd2;font-size:clamp(17px,1.55vw,21px);line-height:1.65}.seoHeroActions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.seoButton{display:inline-flex;align-items:center;gap:13px;padding:15px 20px;border-radius:999px;background:#df353a;color:#fff;font:750 13px Manrope,sans-serif;text-decoration:none}.seoButton.secondary{border:1px solid rgba(255,255,255,.2);background:transparent}
@@ -51,8 +51,8 @@
 @media(max-width:560px){
   .seoPage :where(section,[id]){scroll-margin-top:84px}
   .seoHeader{padding:10px 14px}
-  .seoLogoMark{width:48px;height:48px;flex-basis:48px}
-  .seoLogoMark img{width:48px;height:48px}
+  .seoLogoMark{width:30px;height:48px;flex-basis:30px}
+  .seoLogoMark img{width:30px;height:48px}
   .seoCta{padding:11px 14px!important}
   .seoHero{padding:48px 18px 42px}
   .seoEyebrow{margin-top:24px}
@@ -68,9 +68,9 @@
 @media(max-width:560px){
   .seoHeader{gap:10px;padding:9px 12px;background:rgba(10,14,20,.97)}
   .seoPage :where(h1,h2,h3){overflow-wrap:normal;word-break:normal;hyphens:none}
-  .seoLogo{min-width:0;gap:8px}
-  .seoLogoMark{width:42px;height:42px;flex-basis:42px}
-  .seoLogoMark img{width:42px;height:42px;transform:none}
+  .seoLogo{min-width:0;gap:4px;align-items:flex-end}
+  .seoLogoMark{width:26px;height:42px;flex-basis:26px}
+  .seoLogoMark img{width:26px;height:42px;transform:none}
   .seoLogo strong{font-size:17px}
   .seoLogo small{margin-top:4px;font-size:6.5px;letter-spacing:.14em}
   .seoCta{min-height:42px;padding:10px 12px!important;font-size:11px;white-space:nowrap}
@@ -126,8 +126,8 @@
 
 @media(max-width:390px){
   .seoHeader{padding-inline:10px}
-  .seoLogoMark{width:38px;height:38px;flex-basis:38px}
-  .seoLogoMark img{width:38px;height:38px}
+  .seoLogoMark{width:24px;height:38px;flex-basis:24px}
+  .seoLogoMark img{width:24px;height:38px}
   .seoLogo strong{font-size:16px}
   .seoLogo small{display:none}
   .seoCta{padding-inline:10px!important;font-size:10.5px}
@@ -161,6 +161,7 @@
     backdrop-filter:none
   }
   .seoLogo strong{color:#151922;text-shadow:none}
+  .seoLogo{gap:11px}
   .seoLogo strong span{color:#d92f35;text-shadow:none}
   .seoLogo small{color:#777d86;text-shadow:none}
   .seoLogoMark img{

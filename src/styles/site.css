@@ -8549,8 +8549,7 @@ html,body{max-width:100%;overflow-x:clip}
     border-radius:15px;
     background:transparent;
     box-shadow:none;
-    backdrop-filter:none;
-    gap:0
+    backdrop-filter:none
   }
   .siteHeader .logo:after{display:none}
   .siteHeader .brandLogo{width:46px;height:48px;flex:0 0 46px;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
@@ -8991,6 +8990,8 @@ html,body{max-width:100%;overflow-x:clip}
   }
   .siteHeader .logo b,
   .siteHeader.is-scrolled .logo b{color:#151922}
+  .siteHeader .logo,
+  .siteHeader.is-scrolled .logo{gap:13px}
   .siteHeader .logo b span,
   .siteHeader.is-scrolled .logo b span{color:#d92f35}
   .siteHeader .logo small,
