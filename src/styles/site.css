@@ -8554,11 +8554,12 @@ html,body{max-width:100%;overflow-x:clip}
     align-items:flex-end
   }
   .siteHeader .logo:after{display:none}
-  .siteHeader .brandLogo{width:30px;height:48px;flex:0 0 30px;place-items:end center;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
+  .siteHeader .brandLogo{width:44px;height:48px;flex:0 0 44px;place-items:end center;padding-left:14px;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
   .siteHeader .brandLogo img{transform:none;object-fit:contain}
   .siteHeader .logo b{color:#fff;font-size:18px;letter-spacing:-.035em}
   .siteHeader .logo b span{color:#f24449}
   .siteHeader .logo small{color:rgba(255,255,255,.55);font-size:7px;letter-spacing:.15em}
+  .siteHeader .logo>span:last-child{justify-content:flex-end}
 
   .menuButton{
     position:relative;
@@ -8677,7 +8678,7 @@ html,body{max-width:100%;overflow-x:clip}
 
 @media(max-width:380px){
   .siteHeader .logo{padding:0}
-  .siteHeader .brandLogo{width:26px;flex-basis:26px}
+  .siteHeader .brandLogo{width:38px;flex-basis:38px;padding-left:12px}
   .siteHeader .logo b{font-size:17px}
   .siteHeader .logo small{font-size:6.5px}
 }
@@ -8985,6 +8986,7 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:760px){
   .siteHeader,
   .siteHeader.is-scrolled{
+    padding:8px 12px;
     border-color:rgba(20,24,31,.1);
     background:#fff;
     box-shadow:0 14px 34px rgba(10,14,20,.16);
@@ -8993,18 +8995,35 @@ html,body{max-width:100%;overflow-x:clip}
   .siteHeader .logo b,
   .siteHeader.is-scrolled .logo b{color:#151922}
   .siteHeader .logo,
-  .siteHeader.is-scrolled .logo{gap:13px}
+  .siteHeader.is-scrolled .logo{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    gap:7px;
+    padding:0;
+    align-items:center
+  }
+  .siteHeader .logo>span:last-child{justify-content:center;margin-top:2px}
   .siteHeader .logo b span,
   .siteHeader.is-scrolled .logo b span{color:#d92f35}
   .siteHeader .logo small,
   .siteHeader.is-scrolled .logo small{color:#767b84}
   .siteHeader .brandLogo{
-    filter:drop-shadow(0 5px 9px rgba(123,15,20,.14))
+    width:32px;
+    height:46px;
+    flex-basis:32px;
+    justify-content:center;
+    align-items:center;
+    filter:drop-shadow(0 4px 10px rgba(220,30,40,.18))
   }
   .menuButton{
+    width:42px;
+    height:42px;
     border-color:rgba(210,43,49,.16);
-    background:#f8eeee;
-    box-shadow:none
+    background:#fdf3f3;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(210,43,49,.08)
   }
   .menuButton span{background:#b91f25}
   .menuButton[aria-expanded="true"]{
@@ -9026,4 +9045,25 @@ html,body{max-width:100%;overflow-x:clip}
     background:#f8eeee
   }
   .siteHeader nav .mobileConsult{color:#fff}
+}
+
+/* Mobile header, final pass: brand name sized to fit its space, hamburger locked to the right edge. Earlier mobile header blocks above disagree on logo position (one centers it absolutely) and menu-button placement; this block is intentionally last so it wins the cascade. */
+@media(max-width:760px){
+  .siteHeader{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .siteHeader .logo,
+  .siteHeader.is-scrolled .logo{
+    position:static;
+    left:auto;
+    top:auto;
+    transform:none;
+    flex:1 1 auto;
+    min-width:0;
+    max-width:none;
+    justify-content:flex-start;
+    align-items:flex-end
+  }
+  .siteHeader .logo>span:last-child{justify-content:flex-start}
+  .siteHeader .logo b{font-size:24px;white-space:nowrap}
+  .siteHeader .logo small{white-space:nowrap}
+  .menuButton{flex:0 0 auto;margin-left:auto}
 }
