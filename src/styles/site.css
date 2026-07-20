@@ -8549,10 +8549,12 @@ html,body{max-width:100%;overflow-x:clip}
     border-radius:15px;
     background:transparent;
     box-shadow:none;
-    backdrop-filter:none
+    backdrop-filter:none;
+    gap:4px;
+    align-items:flex-end
   }
   .siteHeader .logo:after{display:none}
-  .siteHeader .brandLogo{width:46px;height:48px;flex:0 0 46px;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
+  .siteHeader .brandLogo{width:30px;height:48px;flex:0 0 30px;filter:drop-shadow(0 0 9px rgba(239,43,49,.46))}
   .siteHeader .brandLogo img{transform:none}
   .siteHeader .logo b{color:#fff;font-size:18px;letter-spacing:-.035em}
   .siteHeader .logo b span{color:#f24449}
@@ -8675,7 +8677,7 @@ html,body{max-width:100%;overflow-x:clip}
 
 @media(max-width:380px){
   .siteHeader .logo{padding-left:5px}
-  .siteHeader .brandLogo{width:41px;flex-basis:41px}
+  .siteHeader .brandLogo{width:26px;flex-basis:26px}
   .siteHeader .logo b{font-size:17px}
   .siteHeader .logo small{font-size:6.5px}
 }
