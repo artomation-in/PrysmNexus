@@ -23,3 +23,41 @@ h1,h2,h3,h4,.logo b,.focused,.price,.faq summary{font-family:"Manrope","Segoe UI
 .skipLink{position:fixed;left:12px;top:-80px;z-index:100;background:#fff;color:#111;padding:12px 16px;border:2px solid #f10b16}
 .skipLink:focus{top:12px}
 @media(max-width:760px){.faqGrid{grid-template-columns:1fr}.comparison{display:block;overflow-x:auto}.geoSection,.faq{padding:80px 20px}}
+
+.whatsappFloat {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  background: #e15d5e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  box-shadow: 0 8px 24px rgba(225, 93, 94, 0.4);
+  color: #fff;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+.whatsappFloat:hover, .whatsappFloat:focus-visible {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(225, 93, 94, 0.6);
+}
+.whatsappFloat svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+@media (max-width: 760px) {
+  .whatsappFloat {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsappFloat svg {
+    width: 26px;
+    height: 26px;
+  }
+}

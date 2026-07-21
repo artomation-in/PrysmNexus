@@ -2,26 +2,27 @@
 import SeoLayout from "../layouts/SeoLayout.astro";
 import { brand, breadcrumbSchema } from "../data/seo";
 const origin = (Astro.site ?? new URL(brand.domain)).origin;
-const formEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim() ?? "";
+const formEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim() ?? "https://formsubmit.co/ajax/connect@prysmnexus.com";
 const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }]), { "@context": "https://schema.org", "@type": "ContactPage", name: "Contact PrysmNexus", url: `${origin}/contact/`, mainEntity: { "@id": `${origin}/#organization` } }];
 ---
 <SeoLayout title="Contact PrysmNexus | Growth, AI & Software India" description="Contact PrysmNexus to discuss growth marketing, AI automation, brand authority, custom software, SaaS, or connected digital systems across India." eyebrow="Start a conversation" heading="Tell us what needs to grow, change, or work more intelligently." lead="Share the business, current systems, priority outcomes, and the problem you want the next stage of growth or technology to solve." schemas={schemas}>
   <div class="seoMain">
     <aside class="answerBlock"><span>Primary contact</span><p>Email <a href={`mailto:${brand.email}`}>{brand.email}</a>. PrysmNexus supports brands and hospitality businesses across India where the scope is a strong fit.</p></aside>
-    <section class="seoSection contactSection" id="consultation-form" aria-labelledby="contact-form-title">
+    <section class="seoSection contactSection" aria-labelledby="contact-form-title">
       <div class="contactIntro">
         <span class="contactKicker">Project enquiry</span>
         <h2 id="contact-form-title">Start with a few useful details.</h2>
         <p>Tell us enough to understand the opportunity. We will reply with a focused next step, not an automatic package.</p>
         <ul class="contactPromises"><li>Replies within one business day</li><li>No automatic marketing subscription</li><li>Your details stay private</li></ul>
       </div>
-      <form class="contactForm" action={formEndpoint || `mailto:${brand.email}`} method="post" enctype="multipart/form-data" data-contact-form data-endpoint={formEndpoint}>
+      <form class="contactForm" id="consultation-form" action={formEndpoint || `mailto:${brand.email}`} method="post" enctype="multipart/form-data" data-contact-form data-endpoint={formEndpoint}>
         <div class="contactField"><label for="contact-name">Your name <span aria-hidden="true">*</span></label><input id="contact-name" name="name" type="text" autocomplete="name" required /></div>
         <div class="contactField"><label for="contact-email">Work email <span aria-hidden="true">*</span></label><input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" required /></div>
         <div class="contactField"><label for="contact-phone">Phone or WhatsApp</label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" /></div>
         <div class="contactField"><label for="contact-business">Business name</label><input id="contact-business" name="business" type="text" autocomplete="organization" /></div>
         <div class="contactField contactFieldWide"><label for="contact-service">What can we help with? <span aria-hidden="true">*</span></label><select id="contact-service" name="service" required><option value="">Choose a service</option><option>Brand strategy and identity</option><option>Content production</option><option>Social media management</option><option>Performance marketing</option><option>SEO, local search, and reputation</option><option>AI automation systems</option><option>Brand and PR authority</option><option>Custom software and SaaS</option><option>Connected growth support</option></select></div>
-        <div class="contactField contactFieldWide"><label for="contact-message">What would you like to improve? <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" rows="5" minlength="20" placeholder="Share your current situation, priority outcome, and preferred timeline." required></textarea></div>
+        <div class="contactField contactFieldWide"><label for="contact-message">What would you like to improve? <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" rows="5" placeholder="Share your current situation, priority outcome, and preferred timeline." required></textarea></div>
+        <input type="hidden" name="_subject" value="New submission from PrysmNexus">
         <div class="contactTrap" aria-hidden="true"><label for="contact-website">Leave this field empty</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
         <label class="contactConsent contactFieldWide"><input name="consent" type="checkbox" value="yes" required /><span>I agree that PrysmNexus may use these details to respond to my enquiry. See the <a href="/privacy/">privacy policy</a>.</span></label>
         <div class="contactSubmit contactFieldWide"><button class="seoButton" type="submit"><span>Send enquiry</span><b aria-hidden="true">↗</b></button><p role="status" aria-live="polite" data-form-status></p></div>
