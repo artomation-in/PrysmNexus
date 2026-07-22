@@ -12,14 +12,33 @@
 }
 
 html {
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
+  color-scheme: only light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%
 }
 
 body {
   margin: 0;
   background: #fff;
   color: var(--ink);
-  font-family: Inter, Arial, sans-serif
+  font-family: Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+/* Safari versions that do not support overflow: clip retain this safe fallback. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden
+}
+
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip
+  }
 }
 
 a {
@@ -2528,11 +2547,12 @@ footer {
   .footerTop h2 {
     animation: none;
     background: #fff;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: #fff;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
+    color: #fff;
   }
 }
 
@@ -9040,4 +9060,44 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:760px){
   .logo .brandLogo{height:44px}
   .logo .brandWordmark{height:40px;flex:1 1 auto;margin-left:-1px}
+}
+
+/* Match the Services section's coral-red ambient glow in the footer. */
+.proFooterBrand .brandLogo{
+  display:grid;
+  width:54px;
+  height:54px;
+  flex:0 0 54px;
+  padding:5px;
+  place-items:center;
+  isolation:isolate;
+  overflow:visible;
+  border:0;
+  background:transparent;
+  box-shadow:none
+}
+.proFooterBrand .brandLogo:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-9px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,86,91,.92) 0,rgba(225,42,48,.62) 38%,rgba(180,20,27,.2) 64%,transparent 78%);
+  filter:blur(10px)
+}
+.proFooterBrand .brandLogo img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:contain
+}
+
+@media(max-width:760px){
+  .proFooterBrand .brandLogo{
+    width:48px;
+    height:48px;
+    flex-basis:48px;
+    padding:4px
+  }
 }
