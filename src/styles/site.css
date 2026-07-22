@@ -9101,3 +9101,17 @@ html,body{max-width:100%;overflow-x:clip}
     padding:4px
   }
 }
+
+/* Keep the hero palette identical in iOS Safari and other rendering engines. */
+.hero{
+  background-color:#040609;
+  background-image:radial-gradient(circle at 72% 34%,#1b2028 0,#0a0d12 31%,#040609 70%)
+}
+.hero:before{
+  -webkit-mask-image:linear-gradient(to bottom,#000,transparent 85%);
+  mask-image:linear-gradient(to bottom,#000,transparent 85%);
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-size:100% 100%;
+  mask-size:100% 100%
+}
