@@ -8815,6 +8815,8 @@ html,body{max-width:100%;overflow-x:clip}
 .clientLogo--jathara{padding:0;background:#171717}
 .clientLogo--jathara img{object-fit:cover;object-position:center}
 .clientLogo--stat-delight{padding:10px;background:#fff}
+.clientLogo--smiley-fashion{padding:4px;background:#000}
+.clientLogo--smiley-fashion img{object-fit:contain;object-position:center}
 
 @media(max-width:760px){
   .clientMarqueeCard{grid-template-columns:86px minmax(0,1fr) auto;gap:12px}

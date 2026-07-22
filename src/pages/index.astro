@@ -20,6 +20,7 @@ import prysmNexusLogo from "../assets/prysmnexus-logo-mark-hq-transparent.png";
 import clientCafeBelloso from "../assets/client-cafe-belloso.png";
 import clientStatDelight from "../assets/client-stat-delight.png";
 import clientJathara from "../assets/client-jathara.png";
+import clientSmileyFashionAcademy from "../assets/client-smiley-fashion-academy.png";
 import { brand as seoBrand, services as seoServices } from "../data/seo";
 
 const services = [
@@ -45,6 +46,7 @@ const featuredClients = [
   { key: "jathara", image: clientJathara, name: "Jathara", category: "Bar & Kitchen" },
   { key: "belloso", image: clientCafeBelloso, name: "Cafe Belloso", category: "Hospitality" },
   { key: "stat-delight", image: clientStatDelight, name: "Stat Delight", category: "Brand & Content" },
+  { key: "smiley-fashion", image: clientSmileyFashionAcademy, name: "Smiley Fashion Academy", category: "Fashion Education" },
 ];
 
 const workProcessSteps = [
@@ -1003,7 +1005,7 @@ const schemas = [
         antialias: true,
         depth: false,
         powerPreference: "high-performance",
-        premultipliedAlpha: false,
+        premultipliedAlpha: true,
         preserveDrawingBuffer: true,
       });
 
@@ -1138,7 +1140,8 @@ const schemas = [
                 .0012 + pixelFootprint * 1.35,
                 nearest
               );
-              outColor = vec4(auraColor, max(aura, edgeCoverage * .92));
+              float auraAlpha = max(aura, edgeCoverage * .92);
+              outColor = vec4(auraColor * auraAlpha, auraAlpha);
               return;
             }
 
