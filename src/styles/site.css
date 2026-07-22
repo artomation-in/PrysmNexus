@@ -218,6 +218,10 @@ main {
 .heroTitle span {
   background: linear-gradient(100deg, var(--orange), var(--gold));
   -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   color: transparent
 }
 
@@ -1117,6 +1121,10 @@ footer {
 .heroTitle span {
   background: linear-gradient(100deg, #ff0b18, #ff5a61);
   -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   color: transparent
 }
 
@@ -1603,6 +1611,9 @@ main {
   background: linear-gradient(100deg, #ff0b18, #ff6770);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   color: transparent
 }
 
@@ -2298,6 +2309,9 @@ footer {
   background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   color: transparent;
   animation: textShimmer 8s linear infinite
 }
@@ -2515,7 +2529,10 @@ footer {
     animation: none;
     background: #fff;
     -webkit-background-clip: text;
-    background-clip: text
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 }
 
@@ -4873,6 +4890,9 @@ footer {
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   color: transparent;
   animation: processTitle 9s ease-in-out infinite
 }
