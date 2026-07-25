@@ -8,6 +8,7 @@ const relatedServices: Record<string, { href: string; label: string }> = {
   "ai-agents-vs-chatbots-business-automation": { href: "/services/ai-automation-systems/", label: "Explore AI Automation Systems" },
   "custom-software-vs-off-the-shelf-saas": { href: "/services/custom-software-saas/", label: "Explore Custom Software & SaaS" },
   "digital-pr-vs-performance-marketing": { href: "/services/brand-pr-authority/", label: "Explore Brand & PR Authority" },
+  "digital-marketing-for-fashion-design-academies-india": { href: "/services/brand-strategy/", label: "Explore Brand Strategy and Identity" },
 };
 const relatedService = relatedServices[article.slug];
 const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Insights", path: "/insights/" }, { name: article.title, path: `/insights/${article.slug}/` }]), { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.description, datePublished: article.updated, dateModified: article.updated, author: { "@type": "Organization", "@id": `${origin}/#organization`, name: "PrysmNexus Strategy Team" }, publisher: { "@id": `${origin}/#organization` }, mainEntityOfPage: `${origin}/insights/${article.slug}/` }];

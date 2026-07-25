@@ -37,7 +37,7 @@ Custom Software and SaaS Development covers purpose-built software, multi-tenant
 
 PrysmNexus publishes only client names and figures approved for use. Proposal-backed metrics are labelled as user-provided and retain their platform context. They are not universal benchmarks or guarantees.
 
-Named case studies currently cover Jathara Bar & Kitchen, Cafe Belloso, and Stat Delight. See /case-studies/ for the source labels and limitations attached to each figure.
+Named case studies currently cover Smiley Fashion Academy. See /case-studies/ for the source labels and limitations attached to each figure.
 
 ## AI-readable guidance
 
