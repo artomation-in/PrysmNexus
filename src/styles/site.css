@@ -8834,6 +8834,8 @@ html,body{max-width:100%;overflow-x:clip}
 .clientLogo--divine-radiance img{object-fit:contain;object-position:center}
 .clientLogo--lovely-lady-nx{padding:8px 6px;background:#fff}
 .clientLogo--lovely-lady-nx img{object-fit:contain;object-position:center}
+.clientLogo--tahaa-mattress{padding:4px;background:#000}
+.clientLogo--tahaa-mattress img{object-fit:contain;object-position:center}
 
 @media(max-width:760px){
   .clientMarqueeCard{grid-template-columns:86px minmax(0,1fr) auto;gap:12px}
