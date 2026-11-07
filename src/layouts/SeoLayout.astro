@@ -11,6 +11,7 @@ interface Props {
   eyebrow: string;
   heading: string;
   lead: string;
+  keywords?: string[];
   schemas?: Record<string, unknown>[];
   type?: "website" | "article";
   published?: string;
@@ -18,7 +19,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, eyebrow, heading, lead, schemas = [], type = "website", published, modified, noindex = false } = Astro.props;
+const { title, description, eyebrow, heading, lead, keywords = [], schemas = [], type = "website", published, modified, noindex = false } = Astro.props;
 const segments = Astro.url.pathname.split("/").filter(Boolean);
 const contextualBackLink = segments[0] === "services"
   ? segments.length > 1
@@ -31,7 +32,7 @@ const contextualBackLink = segments[0] === "services"
     : null;
 ---
 
-<BaseLayout title={title} description={description} schemas={schemas} type={type} published={published} modified={modified} noindex={noindex}>
+<BaseLayout title={title} description={description} keywords={keywords} schemas={schemas} type={type} published={published} modified={modified} noindex={noindex}>
   <div class="seoPage">
     <header class="seoHeader">
       <a class="seoLogo" href="/" aria-label="PrysmNexus home">

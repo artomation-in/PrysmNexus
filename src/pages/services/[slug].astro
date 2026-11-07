@@ -1,29 +1,152 @@
 ---
 import SeoLayout from "../../layouts/SeoLayout.astro";
-import { brand, breadcrumbSchema, faqSchema, serviceBySlug, services, type Service } from "../../data/seo";
+import {
+  brand,
+  breadcrumbSchema,
+  faqSchema,
+  serviceSchema,
+  serviceBySlug,
+  services,
+  type Service,
+} from "../../data/seo";
+
 export const getStaticPaths = () => services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+
 const { service } = Astro.props as { service: Service };
 const origin = (Astro.site ?? new URL(brand.domain)).origin;
 const related = service.related.map(serviceBySlug).filter(Boolean) as Service[];
+
 const comparisonGuides: Record<string, { href: string; label: string }> = {
   "ai-automation-systems": { href: "/insights/ai-agents-vs-chatbots-business-automation/", label: "AI agents vs chatbots" },
   "brand-pr-authority": { href: "/insights/digital-pr-vs-performance-marketing/", label: "Digital PR vs performance marketing" },
   "custom-software-saas": { href: "/insights/custom-software-vs-off-the-shelf-saas/", label: "Custom software vs off-the-shelf SaaS" },
+  "performance-marketing": { href: "/insights/google-ads-vs-meta-ads-local-business/", label: "Google Ads vs Meta Ads for Local Business" },
+  "seo-local-search-reputation": { href: "/insights/local-seo-google-business-profile-india/", label: "Local SEO & Google Business Profile Guide" },
+  "social-media-management": { href: "/insights/social-media-content-plan-hospitality/", label: "Hospitality Social Media Content Plan" },
+  "brand-strategy": { href: "/insights/digital-marketing-services-india/", label: "Integrated Digital Marketing Strategy Guide" },
+  "content-production": { href: "/insights/digital-marketing-for-restaurants-india/", label: "Restaurant & Hospitality Content Playbook" },
 };
+
 const comparisonGuide = comparisonGuides[service.slug];
+
 const schemas = [
-  breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Services", path: "/services/" }, { name: service.name, path: `/services/${service.slug}/` }]),
-  { "@context": "https://schema.org", "@type": "Service", "@id": `${origin}/services/${service.slug}/#service`, name: service.name, description: service.description, url: `${origin}/services/${service.slug}/`, provider: { "@type": "ProfessionalService", "@id": `${origin}/#organization`, name: brand.name, url: origin, email: brand.email, areaServed: { "@type": "Country", name: "India" } }, serviceType: service.name, areaServed: { "@type": "Country", name: "India" } },
+  breadcrumbSchema(origin, [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services/" },
+    { name: service.name, path: `/services/${service.slug}/` },
+  ]),
+  serviceSchema(origin, service),
   faqSchema(service.faqs),
 ];
 ---
-<SeoLayout title={`${service.shortName} in India | PrysmNexus`} description={service.description} eyebrow={service.eyebrow} heading={service.title} lead={service.intro} schemas={schemas}>
+
+<SeoLayout
+  title={`${service.shortName} in India | PrysmNexus`}
+  description={service.description}
+  keywords={service.keywords}
+  eyebrow={service.eyebrow}
+  heading={service.title}
+  lead={service.intro}
+  schemas={schemas}
+>
   <div class="seoMain">
-    <aside class="answerBlock"><span>Clear definition</span><p><strong>{service.name}</strong> — {service.definition}</p></aside>
-    <section class="seoSection"><div class="seoSectionHead"><h2>What the service includes.</h2><p>Every scope is shaped around the business, production volume, customer journey, and priority outcomes. These are the core capabilities available within this service.</p></div><ul class="seoList">{service.deliverables.map((item) => <li>{item}</li>)}</ul></section>
-    <section class="seoSection"><div class="seoSectionHead"><h2>How PrysmNexus approaches the work.</h2><p>The process keeps decisions explainable and connects strategy with practical execution and measurement.</p></div><div class="seoGrid">{service.process.map((step, index) => <article class="seoCard"><b>0{index + 1}</b><h3>{step.title}</h3><p>{step.text}</p></article>)}</div></section>
-    <section class="seoSection"><div class="seoSectionHead"><h2>{service.compareLabels[0]} compared with {service.compareLabels[1]}.</h2><p>This comparison clarifies where each approach is useful. The right choice depends on the problem, customer intent, available evidence, and the role the service must play.</p></div><div class="seoTableWrap"><table class="seoTable"><thead><tr><th>Factor</th><th>{service.compareLabels[0]}</th><th>{service.compareLabels[1]}</th></tr></thead><tbody>{service.compare.map((row) => <tr><td>{row.factor}</td><td>{row.left}</td><td>{row.right}</td></tr>)}</tbody></table></div>{comparisonGuide && <div class="seoRelated" style="margin-top:24px"><a href={comparisonGuide.href}><small>Detailed comparison guide</small><strong>{comparisonGuide.label} ↗</strong></a></div>}</section>
-    <section class="seoSection"><div class="seoSectionHead"><h2>Frequently asked questions.</h2><p>Direct answers to common questions about scope, process, measurement, and suitability.</p></div><div class="seoFaq">{service.faqs.map((faq, index) => <details open={index === 0}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></section>
-    <section class="seoSection"><div class="seoSectionHead"><h2>Related growth services.</h2><p>These services commonly work alongside {service.shortName.toLowerCase()}.</p></div><div class="seoRelated">{related.map((item) => <a href={`/services/${item.slug}/`}><small>{item.eyebrow}</small><strong>{item.name} ↗</strong></a>)}</div></section>
+    <aside class="answerBlock">
+      <span>Clear Definition (AEO Direct Answer)</span>
+      <p><strong>{service.name}</strong> — {service.definition}</p>
+    </aside>
+
+    <section class="seoSection">
+      <div class="seoSectionHead">
+        <h2>What the service includes.</h2>
+        <p>Every scope is shaped around the business, production volume, customer journey, and priority outcomes. These are the core capabilities available within this service.</p>
+      </div>
+      <ul class="seoList">
+        {service.deliverables.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="seoSection">
+      <div class="seoSectionHead">
+        <h2>How PrysmNexus approaches the work.</h2>
+        <p>The process keeps decisions explainable and connects strategy with practical execution and measurement.</p>
+      </div>
+      <div class="seoGrid">
+        {service.process.map((step, index) => (
+          <article class="seoCard">
+            <b>0{index + 1}</b>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="seoSection">
+      <div class="seoSectionHead">
+        <h2>{service.compareLabels[0]} compared with {service.compareLabels[1]}.</h2>
+        <p>This comparison clarifies where each approach is useful. The right choice depends on the problem, customer intent, available evidence, and the role the service must play.</p>
+      </div>
+      <div class="seoTableWrap">
+        <table class="seoTable">
+          <caption class="sr-only">{service.name} comparison: {service.compareLabels[0]} versus {service.compareLabels[1]}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Factor</th>
+              <th scope="col">{service.compareLabels[0]}</th>
+              <th scope="col">{service.compareLabels[1]}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {service.compare.map((row) => (
+              <tr>
+                <td><strong>{row.factor}</strong></td>
+                <td>{row.left}</td>
+                <td>{row.right}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {comparisonGuide && (
+        <div class="seoRelated" style="margin-top:24px">
+          <a href={comparisonGuide.href}>
+            <small>Authoritative Decision Guide</small>
+            <strong>{comparisonGuide.label} ↗</strong>
+          </a>
+        </div>
+      )}
+    </section>
+
+    <section class="seoSection">
+      <div class="seoSectionHead">
+        <h2>Frequently asked questions.</h2>
+        <p>Direct answers to common questions about scope, process, measurement, and suitability across India.</p>
+      </div>
+      <div class="seoFaq">
+        {service.faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="seoSection">
+      <div class="seoSectionHead">
+        <h2>Related growth services.</h2>
+        <p>These services commonly work alongside {service.shortName.toLowerCase()}.</p>
+      </div>
+      <div class="seoRelated">
+        {related.map((item) => (
+          <a href={`/services/${item.slug}/`}>
+            <small>{item.eyebrow}</small>
+            <strong>{item.name} ↗</strong>
+          </a>
+        ))}
+      </div>
+    </section>
   </div>
 </SeoLayout>

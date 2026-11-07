@@ -1,9 +1,61 @@
 ---
 import SeoLayout from "../../layouts/SeoLayout.astro";
 import { brand, breadcrumbSchema, insights } from "../../data/seo";
+
 const origin = (Astro.site ?? new URL(brand.domain)).origin;
-const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Insights", path: "/insights/" }])];
+const schemas = [
+  breadcrumbSchema(origin, [
+    { name: "Home", path: "/" },
+    { name: "Insights", path: "/insights/" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "PrysmNexus Strategic Insights & Playbooks",
+    itemListElement: insights.map((article, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${origin}/insights/${article.slug}/`,
+      name: article.title,
+    })),
+  },
+];
+
+const keywords = [
+  "growth marketing insights India",
+  "digital marketing guides",
+  "AI automation playbooks",
+  "local SEO strategies India",
+  "custom software decisions",
+  "hospitality marketing frameworks",
+];
 ---
-<SeoLayout title="Growth, Automation & Software Insights | PrysmNexus" description="Practical comparisons and guides covering growth marketing, AI automation, custom software, SaaS, digital PR, paid media, SEO, and content." eyebrow="Practical decision guidance" heading="Clear comparisons for better growth and technology decisions." lead="Original guidance from the PrysmNexus Strategy Team for businesses evaluating marketing channels, AI workflows, authority building, and digital products." schemas={schemas}>
-  <div class="seoMain"><aside class="answerBlock"><span>Editorial standard</span><p>PrysmNexus Insights explains trade-offs, process, limitations, and measurement behind practical marketing and technology decisions. Articles are reviewed for clarity and updated when guidance or business context changes.</p></aside><div class="seoIndexGrid">{insights.map((article) => <a class="seoIndexCard" href={`/insights/${article.slug}/`}><small>Updated {article.updated}</small><div><h2>{article.title}</h2><p>{article.description}</p></div><strong>Read insight ↗</strong></a>)}</div></div>
+
+<SeoLayout
+  title="Growth, Automation & Software Insights | PrysmNexus"
+  description="Practical comparisons and guides covering growth marketing, AI automation, custom software, SaaS, digital PR, paid media, SEO, and content."
+  keywords={keywords}
+  eyebrow="Practical decision guidance"
+  heading="Clear comparisons for better growth and technology decisions."
+  lead="Original guidance from the PrysmNexus Strategy Team for businesses evaluating marketing channels, AI workflows, authority building, and digital products."
+  schemas={schemas}
+>
+  <div class="seoMain">
+    <aside class="answerBlock">
+      <span>Editorial Standard (AEO Summary)</span>
+      <p>PrysmNexus Insights explains trade-offs, process, limitations, and measurement behind practical marketing and technology decisions. Articles are reviewed for clarity, updated continuously, and backed by field experience across Indian businesses.</p>
+    </aside>
+    <div class="seoIndexGrid">
+      {insights.map((article) => (
+        <a class="seoIndexCard" href={`/insights/${article.slug}/`}>
+          <small>Updated {article.updated}</small>
+          <div>
+            <h2>{article.title}</h2>
+            <p>{article.description}</p>
+          </div>
+          <strong>Read insight ↗</strong>
+        </a>
+      ))}
+    </div>
+  </div>
 </SeoLayout>

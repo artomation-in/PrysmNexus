@@ -21,7 +21,7 @@ import clientYashnasMilara from "../assets/client-yashnas-milara.png";
 import clientVastrayaCollection from "../assets/client-vastraya-collection.png";
 import clientDivineRadiance from "../assets/client-divine-radiance.png";
 import clientLovelyLadyNx from "../assets/client-lovely-lady-nx.png";
-import { brand as seoBrand, services as seoServices } from "../data/seo";
+import { brand as seoBrand, organizationSchema, websiteSchema, faqSchema } from "../data/seo";
 
 const services = [
   { number: "01", slug: "brand-strategy", title: "Strategic Branding", description: "Sharp positioning, a clear voice, and a consistent visual direction designed to make your business recognizable and memorable.", bullets: ["Brand positioning", "Visual identity", "Messaging framework", "Campaign toolkit"] },
@@ -68,52 +68,28 @@ const faqs = [
 
 const siteUrl = (Astro.site ?? Astro.url.origin).toString().replace(/\/$/, "");
 const schemas = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${siteUrl}/#organization`,
-    name: "PrysmNexus",
-    url: `${siteUrl}/`,
-    logo: `${siteUrl}/prysmnexus-logo.png`,
-    description: "PrysmNexus is an India-focused growth, automation, and software partner combining marketing, AI workflows, brand authority, and custom digital products.",
-    email: seoBrand.email,
-    areaServed: { "@type": "Country", name: "India" },
-    hasOfferCatalog: { "@type": "OfferCatalog", name: "Growth marketing services", itemListElement: seoServices.map((service) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: service.name, url: `${siteUrl}/services/${service.slug}/` } })) },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${siteUrl}/#website`,
-    url: `${siteUrl}/`,
-    name: "PrysmNexus",
-    publisher: { "@id": `${siteUrl}/#organization` },
-    inLanguage: "en",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${siteUrl}/#service`,
-    name: "PrysmNexus Growth, Automation, and Software Services",
-    url: `${siteUrl}/`,
-    provider: { "@id": `${siteUrl}/#organization` },
-    serviceType: ["Brand Strategy", "Content Production", "Social Media Management", "Performance Marketing", "Search Engine Optimization", "AI Automation Systems", "Digital PR", "Founder Authority Building", "Custom Software Development", "SaaS Development"],
-    areaServed: { "@type": "Country", name: "India" },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map(({ question, answer }) => ({
-      "@type": "Question",
-      name: question,
-      acceptedAnswer: { "@type": "Answer", text: answer },
-    })),
-  },
+  organizationSchema(siteUrl),
+  websiteSchema(siteUrl),
+  faqSchema(faqs),
+];
+
+const homeKeywords = [
+  "growth marketing agency India",
+  "AI automation systems Hyderabad",
+  "brand strategy India",
+  "content production company",
+  "performance marketing Google Meta ads",
+  "local SEO agency India",
+  "custom software development India",
+  "SaaS engineering agency",
+  "PrysmNexus",
 ];
 ---
 
 <BaseLayout
   title="PrysmNexus — Growth, AI Automation & Software in India"
   description="PrysmNexus combines growth marketing, AI automation, brand authority, and custom software services for ambitious businesses across India."
+  keywords={homeKeywords}
   schemas={schemas}
 >
   <div class="scrollProgress" aria-hidden="true"><span></span></div>
@@ -452,9 +428,11 @@ const schemas = [
           <nav class="proFooterLinks" aria-label="Footer navigation">
             <h3>Explore</h3>
             <a href="#home">Home <span>↗</span></a>
-            <a href="/about/">About <span>↗</span></a>
-            <a href="#projects">Our Works <span>↗</span></a>
-            <a href="#process">Process <span>↗</span></a>
+            <a href="/services/">All Services <span>↗</span></a>
+            <a href="/case-studies/">Case Studies <span>↗</span></a>
+            <a href="/insights/">Insights & Guides <span>↗</span></a>
+            <a href="/about/">About PrysmNexus <span>↗</span></a>
+            <a href="/contact/">Contact Us <span>↗</span></a>
           </nav>
 
           <nav class="proFooterLinks" aria-label="Service navigation">

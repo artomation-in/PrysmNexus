@@ -3,15 +3,20 @@ export const brand = {
   legalName: "PrysmNexus",
   domain: "https://www.prysmnexus.com",
   email: "connect@prysmnexus.com",
+  phone: "+91 73306 62949",
+  telephone: "+91-7330662949",
   location: "India",
-  locality: "",
-  region: "",
+  locality: "Hyderabad",
+  region: "Telangana",
   country: "IN",
+  instagram: "https://www.instagram.com/prysmnexus.agency/",
   description: "PrysmNexus is an India-focused growth, automation, and software partner combining marketing, AI workflows, brand authority, and custom digital products under one accountable team.",
-  reviewed: "2026-07-19",
+  reviewed: "2026-11-07",
 };
 
 export type Faq = { question: string; answer: string };
+export type KeyTakeaway = { bold: string; text: string };
+
 export type Service = {
   slug: string;
   name: string;
@@ -27,6 +32,7 @@ export type Service = {
   compareLabels: [string, string];
   faqs: Faq[];
   related: string[];
+  keywords: string[];
 };
 
 export const services: Service[] = [
@@ -39,12 +45,33 @@ export const services: Service[] = [
     description: "Brand strategy, positioning, messaging, and visual identity for restaurants, cafés, venues, and growing businesses across India.",
     definition: "Brand strategy is the system that defines who a business serves, what makes it distinct, how it communicates, and how its visual identity stays consistent across customer touchpoints.",
     intro: "PrysmNexus turns scattered ideas into a usable brand system. The work connects positioning, language, identity, and campaign direction so customers receive one clear impression wherever they discover the business.",
-    deliverables: ["Brand positioning and audience definition", "Messaging hierarchy and tone of voice", "Visual identity direction", "Campaign and social-media toolkit", "Menu, offer, and event creative systems", "Brand consistency guidelines"],
-    process: [{ title: "Discover", text: "Review the business, audience, competitors, customer journey, and existing brand material." }, { title: "Define", text: "Clarify positioning, promise, proof, personality, and the messages customers need first." }, { title: "Design", text: "Build the practical visual and verbal system used across content, campaigns, search, and sales." }],
+    deliverables: [
+      "Brand positioning and audience definition",
+      "Messaging hierarchy and tone of voice",
+      "Visual identity direction and design systems",
+      "Campaign and social-media creative toolkit",
+      "Menu, offer, festival, and event creative systems",
+      "Brand consistency guidelines and asset library",
+    ],
+    process: [
+      { title: "Discover", text: "Review the business, audience, competitors, customer journey, and existing brand material." },
+      { title: "Define", text: "Clarify positioning, promise, proof, personality, and the messages customers need first." },
+      { title: "Design", text: "Build the practical visual and verbal system used across content, campaigns, search, and sales." },
+    ],
     compareLabels: ["Brand strategy", "Logo-only design"],
-    compare: [{ factor: "Purpose", left: "Defines market position and customer meaning", right: "Creates a visual mark" }, { factor: "Coverage", left: "Messaging, identity, audience, experience, campaigns", right: "Logo files and basic usage" }, { factor: "Best for", left: "Businesses building consistent recognition", right: "Businesses with an established strategy" }],
-    faqs: [{ question: "What is included in a brand strategy project?", answer: "A PrysmNexus brand strategy project can include audience definition, positioning, messaging, tone of voice, visual direction, identity guidelines, and a practical toolkit for content and campaigns. The exact scope is agreed after discovery." }, { question: "Can you refresh an existing brand without replacing everything?", answer: "Yes. We can retain recognizable assets while improving positioning, messaging, hierarchy, colour, typography, and consistency. The objective is useful evolution, not unnecessary reinvention." }, { question: "Do you create campaign and social-media templates?", answer: "Yes. Brand systems can include reusable campaign, social, menu, offer, festival, and event formats so daily execution remains recognizably yours." }],
+    compare: [
+      { factor: "Purpose", left: "Defines market position and customer meaning", right: "Creates a visual mark" },
+      { factor: "Coverage", left: "Messaging, identity, audience, experience, campaigns", right: "Logo files and basic usage" },
+      { factor: "Best for", left: "Businesses building consistent recognition", right: "Businesses with an established strategy" },
+    ],
+    faqs: [
+      { question: "What is included in a brand strategy project?", answer: "A PrysmNexus brand strategy project can include audience definition, positioning, messaging, tone of voice, visual direction, identity guidelines, and a practical toolkit for content and campaigns. The exact scope is agreed after discovery." },
+      { question: "Can you refresh an existing brand without replacing everything?", answer: "Yes. We can retain recognizable assets while improving positioning, messaging, hierarchy, colour, typography, and consistency. The objective is useful evolution, not unnecessary reinvention." },
+      { question: "Do you create campaign and social-media templates?", answer: "Yes. Brand systems can include reusable campaign, social, menu, offer, festival, and event formats so daily execution remains recognizably yours." },
+      { question: "How long does a typical brand strategy project take in India?", answer: "Most brand strategy engagements range from 3 to 6 weeks, depending on whether it is a strategic repositioning of an existing company or creating an entirely new brand identity system from scratch." },
+    ],
     related: ["content-production", "social-media-management"],
+    keywords: ["brand strategy India", "brand identity design", "brand positioning agency Hyderabad", "hospitality branding India", "visual identity system"],
   },
   {
     slug: "content-production",
@@ -55,12 +82,33 @@ export const services: Service[] = [
     description: "Original photography, videography, reels, creative copy, and campaign content production for brands and hospitality businesses across India.",
     definition: "Content production is the planned creation of original photography, video, reels, design, and copy that gives a brand useful material for social media, advertising, search, and customer communication.",
     intro: "PrysmNexus plans content around business priorities rather than filling a calendar with generic posts. Shoots, scripts, styling, editing, and design work together so each asset has a clear role in awareness, engagement, or conversion.",
-    deliverables: ["Professional photography and styling", "Video production and editing", "Reels and short-form content", "Campaign concepts and creative copy", "Poster, story, festival, menu, and offer designs", "Content libraries for ads and social publishing"],
-    process: [{ title: "Plan", text: "Define audiences, channels, formats, offers, shot lists, and the purpose of each asset." }, { title: "Produce", text: "Coordinate photography, video, styling, scripting, design, and on-site production." }, { title: "Adapt", text: "Edit and format assets for organic social, ads, Google profiles, websites, and messaging." }],
+    deliverables: [
+      "Professional commercial photography and food styling",
+      "Cinematic video production and post-production editing",
+      "Short-form reels and high-retention video formats",
+      "Campaign concepts, creative copy, and ad scripts",
+      "Poster, story, festival, menu, and promotional designs",
+      "Search and ad-ready content libraries for multi-channel publishing",
+    ],
+    process: [
+      { title: "Plan", text: "Define audiences, channels, formats, offers, shot lists, and the purpose of each asset." },
+      { title: "Produce", text: "Coordinate photography, video, styling, scripting, design, and on-site production." },
+      { title: "Adapt", text: "Edit and format assets for organic social, ads, Google profiles, websites, and messaging." },
+    ],
     compareLabels: ["Original production", "Template-led content"],
-    compare: [{ factor: "Source", left: "Created around the real business", right: "Built from generic stock or repeated templates" }, { factor: "Distinctiveness", left: "Ownable visual material and stories", right: "Familiar formats shared by many brands" }, { factor: "Best for", left: "Recognition, campaigns, and long-term libraries", right: "Short-term publishing volume" }],
-    faqs: [{ question: "Do you handle both photography and video?", answer: "Yes. PrysmNexus can plan and produce photography, video, reels, styling, scripts, editing, and supporting campaign design as one coordinated content scope." }, { question: "Can content be used in paid advertising?", answer: "Yes. Production plans can include ad-ready hooks, formats, variations, calls to action, and landing-page alignment rather than treating advertising as an afterthought." }, { question: "How often should a hospitality brand schedule a shoot?", answer: "The right frequency depends on menu changes, campaigns, events, publishing volume, and available content. We recommend a practical cadence after reviewing the monthly channel plan." }],
+    compare: [
+      { factor: "Source", left: "Created around the real business", right: "Built from generic stock or repeated templates" },
+      { factor: "Distinctiveness", left: "Ownable visual material and stories", right: "Familiar formats shared by many brands" },
+      { factor: "Best for", left: "Recognition, campaigns, and long-term libraries", right: "Short-term publishing volume" },
+    ],
+    faqs: [
+      { question: "Do you handle both photography and video?", answer: "Yes. PrysmNexus can plan and produce photography, video, reels, styling, scripts, editing, and supporting campaign design as one coordinated content scope." },
+      { question: "Can content be used in paid advertising?", answer: "Yes. Production plans can include ad-ready hooks, formats, variations, calls to action, and landing-page alignment rather than treating advertising as an afterthought." },
+      { question: "How often should a hospitality brand schedule a shoot?", answer: "The right frequency depends on menu changes, campaigns, events, publishing volume, and available content. We recommend a practical cadence after reviewing the monthly channel plan." },
+      { question: "Do you travel across India for on-site production?", answer: "Yes. Our production teams operate in Hyderabad, Bengaluru, Mumbai, and Delhi NCR, providing full on-site equipment, styling, and cinematography." },
+    ],
     related: ["brand-strategy", "social-media-management", "performance-marketing"],
+    keywords: ["content production agency India", "food photography Hyderabad", "hospitality videography India", "reels production agency", "commercial video shoots"],
   },
   {
     slug: "social-media-management",
@@ -71,12 +119,33 @@ export const services: Service[] = [
     description: "Social media strategy, content calendars, publishing, page handling, community engagement, WhatsApp marketing, and reporting for businesses across India.",
     definition: "Social media management is the coordinated planning, publishing, community response, and performance review required to keep a brand active, consistent, and useful across the platforms its customers use.",
     intro: "PrysmNexus connects social planning with original production, brand standards, campaigns, and reporting. That means the monthly calendar reflects business priorities, not disconnected trends or posting for its own sake.",
-    deliverables: ["Monthly strategy and content calendar", "Publishing and page handling", "Reels, stories, posts, and campaign creative", "Community engagement and response planning", "WhatsApp marketing support", "Monthly performance reporting"],
-    process: [{ title: "Set the plan", text: "Map objectives, audiences, offers, content pillars, platform roles, and monthly priorities." }, { title: "Create and publish", text: "Produce original content, approve the calendar, publish consistently, and manage pages." }, { title: "Learn and improve", text: "Review reach, engagement, audience response, enquiries, and content patterns each month." }],
+    deliverables: [
+      "Monthly social media strategy and structured content calendar",
+      "Multi-platform publishing and daily page handling",
+      "Reels, stories, carousel posts, and campaign creative",
+      "Community engagement, comment handling, and response workflows",
+      "WhatsApp marketing broadcasts and customer journey support",
+      "Monthly executive reporting on reach, engagement, and enquiry trends",
+    ],
+    process: [
+      { title: "Set the plan", text: "Map objectives, audiences, offers, content pillars, platform roles, and monthly priorities." },
+      { title: "Create and publish", text: "Produce original content, approve the calendar, publish consistently, and manage pages." },
+      { title: "Learn and improve", text: "Review reach, engagement, audience response, enquiries, and content patterns each month." },
+    ],
     compareLabels: ["Managed social system", "Posting service"],
-    compare: [{ factor: "Planning", left: "Business goals, pillars, campaigns, and calendars", right: "A fixed number of posts" }, { factor: "Execution", left: "Production, publishing, community, and reporting", right: "Design and upload only" }, { factor: "Best for", left: "Sustained visibility and audience relationships", right: "Basic page activity" }],
-    faqs: [{ question: "Which social platforms do you manage?", answer: "Platform selection depends on the audience and business. Typical scopes may include Instagram, Facebook, YouTube, Pinterest, and supporting WhatsApp communication where it fits the customer journey." }, { question: "Is content production included?", answer: "It can be. PrysmNexus can combine photography, video, reels, copy, design, publishing, and reporting so the page is not dependent on recycled or mismatched material." }, { question: "How do you measure social-media performance?", answer: "We agree on relevant measures such as reach, content views, engagement, follower quality, profile actions, enquiries, and assisted conversions. Reporting is tied to the role social media plays in the wider plan." }],
+    compare: [
+      { factor: "Planning", left: "Business goals, pillars, campaigns, and calendars", right: "A fixed number of posts" },
+      { factor: "Execution", left: "Production, publishing, community, and reporting", right: "Design and upload only" },
+      { factor: "Best for", left: "Sustained visibility and audience relationships", right: "Basic page activity" },
+    ],
+    faqs: [
+      { question: "Which social platforms do you manage?", answer: "Platform selection depends on the audience and business. Typical scopes may include Instagram, Facebook, YouTube, LinkedIn, and supporting WhatsApp communication where it fits the customer journey." },
+      { question: "Is content production included in social management?", answer: "It can be. PrysmNexus frequently combines photography, video, reels, copy, design, publishing, and reporting so the page is not dependent on recycled or mismatched material." },
+      { question: "How do you measure social-media performance?", answer: "We agree on relevant measures such as reach, content views, engagement, follower quality, profile actions, enquiries, and assisted conversions. Reporting is tied to the role social media plays in the wider plan." },
+      { question: "How do you handle Indian festival and event campaigns?", answer: "We pre-plan festival campaigns (Diwali, Eid, New Year, regional holidays) at least 3 weeks ahead with custom graphics, festive reels, and promotion calendars." },
+    ],
     related: ["content-production", "performance-marketing"],
+    keywords: ["social media management India", "Instagram marketing agency Hyderabad", "social media handling for restaurants", "WhatsApp marketing India"],
   },
   {
     slug: "performance-marketing",
@@ -87,12 +156,33 @@ export const services: Service[] = [
     description: "Performance marketing, Google Ads, Meta Ads, lead generation, campaign creative, conversion planning, optimization, and reporting across India.",
     definition: "Performance marketing is paid digital acquisition managed against measurable actions such as qualified leads, calls, bookings, purchases, or other agreed conversions rather than exposure alone.",
     intro: "PrysmNexus aligns campaign strategy, audience selection, creative, landing journeys, tracking, and optimization. The objective is not simply to buy traffic; it is to create a measurable path from attention to a useful business action.",
-    deliverables: ["Google Ads and Meta Ads planning", "Account and campaign setup", "Audience, keyword, and offer strategy", "Lead-generation and conversion journeys", "Ad creative and copy variations", "Optimization and monthly reporting"],
-    process: [{ title: "Define conversion", text: "Agree what a qualified action is and ensure tracking, landing pages, offers, and response ownership are clear." }, { title: "Launch tests", text: "Build campaigns around focused audiences, keywords, creative variations, and controlled budgets." }, { title: "Optimize", text: "Review search terms, audience response, creative, cost, lead quality, and conversion performance." }],
+    deliverables: [
+      "Google Ads (Search, Performance Max, Display, YouTube) planning",
+      "Meta Ads (Instagram & Facebook) funnel and lead generation",
+      "Conversion tracking setup (GA4, Google Tag Manager, Meta CAPI)",
+      "Ad creative design, video hooks, and high-converting copywriting",
+      "Landing page review, CRO recommendations, and form optimization",
+      "Weekly bid optimization and transparent monthly ROI reporting",
+    ],
+    process: [
+      { title: "Define conversion", text: "Agree what a qualified action is and ensure tracking, landing pages, offers, and response ownership are clear." },
+      { title: "Launch tests", text: "Build campaigns around focused audiences, keywords, creative variations, and controlled budgets." },
+      { title: "Optimize", text: "Review search terms, audience response, creative, cost, lead quality, and conversion performance." },
+    ],
     compareLabels: ["Google Ads", "Meta Ads"],
-    compare: [{ factor: "Primary strength", left: "Captures existing search intent", right: "Creates demand through audience and creative" }, { factor: "Useful for", left: "Services people are actively searching for", right: "Visual offers, discovery, retargeting, and lead forms" }, { factor: "Best approach", left: "Focused keywords and conversion pages", right: "Strong creative, offers, and audience testing" }],
-    faqs: [{ question: "Should a local business use Google Ads or Meta Ads?", answer: "Google Ads is often useful when customers already search for the service. Meta Ads is often useful for visual discovery, offers, retargeting, and lead generation. Many businesses need a measured combination rather than choosing one platform universally." }, { question: "Do you create advertising content?", answer: "Yes. Campaign scopes can include photography, video, reels, design, copy, offer framing, and creative variations aligned to the selected audience and conversion action." }, { question: "What performance metrics do you report?", answer: "Metrics depend on the objective and may include impressions, clicks, click-through rate, cost per click, qualified leads, cost per lead, conversion rate, and lead quality. No single metric is treated as success in isolation." }],
+    compare: [
+      { factor: "Primary strength", left: "Captures existing search intent", right: "Creates demand through audience and creative" },
+      { factor: "Useful for", left: "Services people are actively searching for", right: "Visual offers, discovery, retargeting, and lead forms" },
+      { factor: "Best approach", left: "Focused keywords and conversion pages", right: "Strong creative, offers, and audience testing" },
+    ],
+    faqs: [
+      { question: "Should a local business use Google Ads or Meta Ads?", answer: "Google Ads is often useful when customers already search for the service. Meta Ads is often useful for visual discovery, offers, retargeting, and lead generation. Many businesses need a measured combination rather than choosing one platform universally." },
+      { question: "Do you create advertising content?", answer: "Yes. Campaign scopes can include photography, video, reels, design, copy, offer framing, and creative variations aligned to the selected audience and conversion action." },
+      { question: "What performance metrics do you report?", answer: "Metrics depend on the objective and may include impressions, clicks, click-through rate, cost per click, qualified leads, cost per lead, conversion rate, and lead quality. No single metric is treated as success in isolation." },
+      { question: "What minimum ad spend budget do you recommend for Indian businesses?", answer: "A sensible monthly testing budget typically starts between ₹30,000 and ₹75,000 depending on the target city, industry competition, and conversion objective." },
+    ],
     related: ["content-production", "seo-local-search-reputation"],
+    keywords: ["performance marketing agency India", "Google Ads management Hyderabad", "Meta ads agency India", "lead generation agency India", "paid media ROI"],
   },
   {
     slug: "seo-local-search-reputation",
@@ -103,12 +193,33 @@ export const services: Service[] = [
     description: "SEO, local search optimization, Google Business Profile management, reputation support, and search content for businesses across India.",
     definition: "Local SEO is the practice of improving a business website, Google Business Profile, location relevance, content, and reputation signals so nearby customers can discover and evaluate the business in search and maps.",
     intro: "PrysmNexus connects website SEO with local discovery and customer trust. The work covers technical foundations, service content, Google Business Profile accuracy, useful updates, reviews, and measurement—without using fabricated locations or repetitive doorway pages.",
-    deliverables: ["Technical and on-page SEO foundations", "Service and local-intent content", "Google Business Profile optimization", "Google photo and update planning", "Review and reputation workflows", "Search visibility and profile-action reporting"],
-    process: [{ title: "Audit discovery", text: "Review crawlability, indexing, site structure, service relevance, local signals, profile quality, and current visibility." }, { title: "Build relevance", text: "Improve technical foundations, service pages, internal links, profile content, and trustworthy local information." }, { title: "Strengthen trust", text: "Support review workflows, useful updates, citations, measurement, and ongoing content improvements." }],
+    deliverables: [
+      "Technical SEO audit, Core Web Vitals optimization, and crawl health",
+      "High-intent service and local landing page content optimization",
+      "Google Business Profile (GBP) optimization and categories alignment",
+      "Local citation consistency, Google Maps geo-grid optimization",
+      "Review generation workflows and reputation management systems",
+      "Search Console rankings, profile-action tracking, and monthly reporting",
+    ],
+    process: [
+      { title: "Audit discovery", text: "Review crawlability, indexing, site structure, service relevance, local signals, profile quality, and current visibility." },
+      { title: "Build relevance", text: "Improve technical foundations, service pages, internal links, profile content, and trustworthy local information." },
+      { title: "Strengthen trust", text: "Support review workflows, useful updates, citations, measurement, and ongoing content improvements." },
+    ],
     compareLabels: ["Website SEO", "Local SEO"],
-    compare: [{ factor: "Primary surface", left: "Organic website results", right: "Local results, maps, and nearby intent" }, { factor: "Core work", left: "Technical structure, content, links, and authority", right: "Website relevance, Business Profile, location data, and reputation" }, { factor: "Best approach", left: "Create useful service and informational pages", right: "Keep website and real-world business information consistent" }],
-    faqs: [{ question: "What is the difference between SEO and local SEO?", answer: "SEO improves a website's broader organic visibility. Local SEO adds geographic relevance, Google Business Profile quality, location consistency, nearby search intent, and reputation signals. Service businesses across India commonly need both working together." }, { question: "Do you manage Google Business Profile updates?", answer: "Yes. A scope may cover profile accuracy, categories, services, descriptions, photos, updates, review workflows, and measurement of calls, directions, website visits, and other profile actions." }, { question: "How quickly can SEO improve rankings?", answer: "SEO timing varies with competition, site condition, content quality, authority, and crawl frequency. Technical fixes may be processed quickly, while meaningful ranking and lead changes commonly require sustained work and cannot be guaranteed to a fixed date." }],
+    compare: [
+      { factor: "Primary surface", left: "Organic website results", right: "Local results, maps, and nearby intent" },
+      { factor: "Core work", left: "Technical structure, content, links, and authority", right: "Website relevance, Business Profile, location data, and reputation" },
+      { factor: "Best approach", left: "Create useful service and informational pages", right: "Keep website and real-world business information consistent" },
+    ],
+    faqs: [
+      { question: "What is the difference between SEO and local SEO?", answer: "SEO improves a website's broader organic visibility. Local SEO adds geographic relevance, Google Business Profile quality, location consistency, nearby search intent, and reputation signals. Service businesses across India commonly need both working together." },
+      { question: "Do you manage Google Business Profile updates?", answer: "Yes. A scope may cover profile accuracy, categories, services, descriptions, photos, updates, review workflows, and measurement of calls, directions, website visits, and other profile actions." },
+      { question: "How quickly can SEO improve rankings?", answer: "SEO timing varies with competition, site condition, content quality, authority, and crawl frequency. Technical fixes may be processed quickly, while meaningful ranking and lead changes commonly require sustained work and cannot be guaranteed to a fixed date." },
+      { question: "How does AEO (Answer Engine Optimization) connect with SEO?", answer: "AEO structures your content into concise, direct definitions and factual summaries that AI search engines (like Google Gemini, Perplexity, and SearchGPT) can easily extract and cite as the direct answer in AI Overviews." },
+    ],
     related: ["brand-strategy", "performance-marketing"],
+    keywords: ["SEO agency India", "local SEO services Hyderabad", "Google Business Profile optimization", "AEO services India", "map pack ranking India"],
   },
   {
     slug: "ai-automation-systems",
@@ -119,12 +230,33 @@ export const services: Service[] = [
     description: "AI automation systems, CRM workflows, messaging bots, custom AI agents, and business process automation designed for growing companies across India.",
     definition: "AI automation systems connect business software, data, messaging, and decision steps so repetitive work can move reliably with less manual intervention while people retain appropriate oversight.",
     intro: "PrysmNexus designs modular automation around the way your team already works. CRM events, WhatsApp conversations, internal approvals, documents, and AI-assisted tasks become one observable system rather than a collection of disconnected shortcuts.",
-    deliverables: ["CRM and pipeline automation", "WhatsApp and Telegram messaging workflows", "Custom AI agents for content, SEO, and support", "Customer onboarding and invoice automation", "Business software and API integrations", "n8n-based workflow orchestration and monitoring"],
-    process: [{ title: "Map", text: "Document the workflow, systems, data, decisions, exceptions, ownership, and business risk before automating it." }, { title: "Build", text: "Connect approved tools, create modular workflows, add human checkpoints, and test failure paths with representative data." }, { title: "Operate", text: "Deploy with monitoring, access controls, documentation, and an improvement backlog based on real operational use." }],
+    deliverables: [
+      "CRM pipeline automation (HubSpot, Zoho, Salesforce, Notion)",
+      "WhatsApp Business API and Telegram conversational workflows",
+      "Autonomous custom AI agents for customer support, triage, and data entry",
+      "Automated customer onboarding, contract generation, and invoice routing",
+      "Software API integrations and webhooks across business systems",
+      "Self-hosted n8n workflow orchestration with monitoring and error alerts",
+    ],
+    process: [
+      { title: "Map", text: "Document the workflow, systems, data, decisions, exceptions, ownership, and business risk before automating it." },
+      { title: "Build", text: "Connect approved tools, create modular workflows, add human checkpoints, and test failure paths with representative data." },
+      { title: "Operate", text: "Deploy with monitoring, access controls, documentation, and an improvement backlog based on real operational use." },
+    ],
     compareLabels: ["AI automation", "Rule-based automation"],
-    compare: [{ factor: "Best suited to", left: "Variable language, classification, generation, and assisted decisions", right: "Predictable triggers, fixed rules, and repeatable transfers" }, { factor: "Control model", left: "Guardrails, confidence thresholds, review, and observability", right: "Explicit conditions and deterministic actions" }, { factor: "Strongest system", left: "AI for interpretation combined with rules for control", right: "Rules alone when every input and outcome is known" }],
-    faqs: [{ question: "What business processes can PrysmNexus automate?", answer: "Typical scopes include lead capture, CRM entry, pipeline updates, customer onboarding, WhatsApp or Telegram responses, document creation, invoice workflows, internal notifications, content assistance, and customer-support triage. Feasibility depends on the systems, data, access, and risk involved." }, { question: "Are AI agents the same as chatbots?", answer: "No. A chatbot is primarily a conversational interface. An AI agent may interpret information, use approved tools, complete a defined multi-step task, and request human approval when needed. Some solutions combine both." }, { question: "Will automation replace our existing software?", answer: "Not necessarily. The first option is often to connect and improve the systems already in use. Replacement is considered only when current tools cannot support the required workflow, security, or scale." }],
+    compare: [
+      { factor: "Best suited to", left: "Variable language, classification, generation, and assisted decisions", right: "Predictable triggers, fixed rules, and repeatable transfers" },
+      { factor: "Control model", left: "Guardrails, confidence thresholds, review, and observability", right: "Explicit conditions and deterministic actions" },
+      { factor: "Strongest system", left: "AI for interpretation combined with rules for control", right: "Rules alone when every input and outcome is known" },
+    ],
+    faqs: [
+      { question: "What business processes can PrysmNexus automate?", answer: "Typical scopes include lead capture, CRM entry, pipeline updates, customer onboarding, WhatsApp or Telegram responses, document creation, invoice workflows, internal notifications, content assistance, and customer-support triage. Feasibility depends on the systems, data, access, and risk involved." },
+      { question: "Are AI agents the same as chatbots?", answer: "No. A chatbot is primarily a conversational interface. An AI agent may interpret information, use approved tools, complete a defined multi-step task, and request human approval when needed. Some solutions combine both." },
+      { question: "Will automation replace our existing software?", answer: "Not necessarily. The first option is often to connect and improve the systems already in use. Replacement is considered only when current tools cannot support the required workflow, security, or scale." },
+      { question: "Why do you use n8n instead of Zapier or Make?", answer: "n8n offers superior data privacy, self-hosting on Indian servers for compliance, complex branching logic, and no per-step subscription penalties as workflow volume scales." },
+    ],
     related: ["custom-software-saas", "performance-marketing"],
+    keywords: ["AI automation agency India", "n8n automation services", "WhatsApp CRM automation India", "business process automation", "AI agent development"],
   },
   {
     slug: "brand-pr-authority",
@@ -135,12 +267,33 @@ export const services: Service[] = [
     description: "Brand identity, digital PR, media outreach, podcast placement, founder positioning, and LinkedIn authority building for ambitious businesses across India.",
     definition: "Brand and PR authority combines a recognizable identity, defensible positioning, credible third-party visibility, and consistent expert communication so a business and its leaders become easier to recognize and trust.",
     intro: "PrysmNexus aligns brand strategy, media narratives, founder expertise, and ongoing content. The goal is sustained credibility built through useful ideas and relevant exposure, not a short burst of vanity coverage.",
-    deliverables: ["Brand identity and positioning strategy", "Brand voice and social template systems", "Press-release and media-outreach planning", "Relevant media and podcast placement support", "Founder LinkedIn authority strategy", "Thought-leadership content and editorial planning"],
-    process: [{ title: "Position", text: "Define the category, audience, expertise, proof, point of view, and stories the market can understand and verify." }, { title: "Package", text: "Create the identity, narrative, founder platform, media material, and editorial assets needed for consistent communication." }, { title: "Build authority", text: "Publish useful insight, pursue relevant earned opportunities, and review which messages create qualified attention and trust." }],
+    deliverables: [
+      "Brand identity and defensible positioning strategy",
+      "Executive voice guidelines and thought-leadership framework",
+      "Press-release framing and targeted industry media outreach",
+      "Podcast guest placement and event speaking representation",
+      "Founder LinkedIn profile architecture and publishing strategy",
+      "Reusable authority proof assets for proposals and marketing pages",
+    ],
+    process: [
+      { title: "Position", text: "Define the category, audience, expertise, proof, point of view, and stories the market can understand and verify." },
+      { title: "Package", text: "Create the identity, narrative, founder platform, media material, and editorial assets needed for consistent communication." },
+      { title: "Build authority", text: "Publish useful insight, pursue relevant earned opportunities, and review which messages create qualified attention and trust." },
+    ],
     compareLabels: ["Earned authority", "Paid awareness"],
-    compare: [{ factor: "Source of attention", left: "Editorial relevance, expertise, and third-party recognition", right: "Purchased media distribution" }, { factor: "Primary value", left: "Credibility and durable reputation", right: "Controllable reach and faster testing" }, { factor: "Best approach", left: "Consistent evidence-led thought leadership", right: "Clear offers, creative, targeting, and measurement" }],
-    faqs: [{ question: "Can you guarantee media coverage or podcast placement?", answer: "No responsible PR partner can guarantee independent editorial decisions. PrysmNexus can strengthen positioning, materials, targeting, outreach, and follow-up, while clearly separating earned, sponsored, and paid opportunities." }, { question: "What does founder authority building include?", answer: "A scope may include positioning, profile architecture, editorial themes, interview-led writing, LinkedIn content, response guidance, proof development, and a sustainable publishing cadence suited to the founder's expertise and time." }, { question: "How is PR authority measured?", answer: "Measurement can include quality and relevance of placements, referral activity, branded search, qualified conversations, share of relevant discussion, content engagement, and the reuse value of earned proof. Exposure alone is not treated as business impact." }],
+    compare: [
+      { factor: "Source of attention", left: "Editorial relevance, expertise, and third-party recognition", right: "Purchased media distribution" },
+      { factor: "Primary value", left: "Credibility and durable reputation", right: "Controllable reach and faster testing" },
+      { factor: "Best approach", left: "Consistent evidence-led thought leadership", right: "Clear offers, creative, targeting, and measurement" },
+    ],
+    faqs: [
+      { question: "Can you guarantee media coverage or podcast placement?", answer: "No responsible PR partner can guarantee independent editorial decisions. PrysmNexus can strengthen positioning, materials, targeting, outreach, and follow-up, while clearly separating earned, sponsored, and paid opportunities." },
+      { question: "What does founder authority building include?", answer: "A scope may include positioning, profile architecture, editorial themes, interview-led writing, LinkedIn content, response guidance, proof development, and a sustainable publishing cadence suited to the founder's expertise and time." },
+      { question: "How is PR authority measured?", answer: "Measurement can include quality and relevance of placements, referral activity, branded search, qualified conversations, share of relevant discussion, content engagement, and the reuse value of earned proof. Exposure alone is not treated as business impact." },
+      { question: "How does PR authority help with SEO and AI Overviews?", answer: "Authoritative media mentions, brand co-citations, and founder bylines build high-trust E-E-A-T signals that Google and AI answer engines require before recommending a brand as an industry leader." },
+    ],
     related: ["brand-strategy", "content-production", "performance-marketing"],
+    keywords: ["digital PR agency India", "founder branding LinkedIn India", "brand authority consulting", "thought leadership agency", "media outreach India"],
   },
   {
     slug: "custom-software-saas",
@@ -151,12 +304,33 @@ export const services: Service[] = [
     description: "Custom software, SaaS platforms, enterprise web applications, system modernization, dashboards, and MVP development for organizations across India.",
     definition: "Custom software engineering turns specific business workflows, rules, data, and customer needs into maintainable digital systems when generic tools create operational limits or competitive friction.",
     intro: "PrysmNexus translates business logic into clear product architecture, secure workflows, useful interfaces, and staged delivery. We focus on the smallest reliable system that can prove value, then scale it without locking the business into avoidable complexity.",
-    deliverables: ["Custom software and multi-tenant SaaS architecture", "Enterprise dashboards, admin panels, and internal tools", "Workflow, API, and third-party system integration", "Legacy-system assessment and modernization", "Product strategy, prototyping, and MVP delivery", "Production deployment, documentation, and improvement planning"],
-    process: [{ title: "Model", text: "Define users, workflows, business rules, data, integrations, risks, success criteria, and the smallest valuable release." }, { title: "Engineer", text: "Design the architecture and interface, build in testable increments, and validate critical paths with stakeholders." }, { title: "Scale", text: "Deploy, observe production use, improve reliability and security, and expand only where evidence supports the next investment." }],
+    deliverables: [
+      "Custom web applications and multi-tenant SaaS architecture",
+      "Executive analytics dashboards, portals, and internal tools",
+      "Custom REST & GraphQL API development and systems integration",
+      "Legacy software refactoring, cloud migration, and performance modernization",
+      "Rapid MVP prototyping and phased production delivery",
+      "DevOps deployment, automated CI/CD, documentation, and support",
+    ],
+    process: [
+      { title: "Model", text: "Define users, workflows, business rules, data, integrations, risks, success criteria, and the smallest valuable release." },
+      { title: "Engineer", text: "Design the architecture and interface, build in testable increments, and validate critical paths with stakeholders." },
+      { title: "Scale", text: "Deploy, observe production use, improve reliability and security, and expand only where evidence supports the next investment." },
+    ],
     compareLabels: ["Custom software", "Off-the-shelf SaaS"],
-    compare: [{ factor: "Workflow fit", left: "Designed around differentiating business logic", right: "Business adapts to a standardized product" }, { factor: "Initial investment", left: "Higher discovery and engineering commitment", right: "Lower setup cost and faster adoption" }, { factor: "Best for", left: "Unique workflows, integration depth, control, or product IP", right: "Common needs already solved well by an established tool" }],
-    faqs: [{ question: "When should a business build custom software instead of buying SaaS?", answer: "Custom development becomes reasonable when a workflow is strategically important, generic products cause costly workarounds, integration or control requirements are substantial, and the long-term value justifies ownership. Established SaaS is usually better for standard needs." }, { question: "Can you modernize an existing legacy application?", answer: "Yes. Modernization may involve discovery, stabilization, API design, modular refactoring, interface improvements, cloud migration, data planning, and staged replacement. The safest path depends on business continuity and technical risk." }, { question: "Do you build MVPs for startups?", answer: "Yes. MVP work focuses on the smallest product that can test a meaningful business assumption. Scope, architecture, analytics, and release planning are kept disciplined so speed does not create unnecessary technical debt." }],
+    compare: [
+      { factor: "Workflow fit", left: "Designed around differentiating business logic", right: "Business adapts to a standardized product" },
+      { factor: "Initial investment", left: "Higher discovery and engineering commitment", right: "Lower setup cost and faster adoption" },
+      { factor: "Best for", left: "Unique workflows, integration depth, control, or product IP", right: "Common needs already solved well by an established tool" },
+    ],
+    faqs: [
+      { question: "When should a business build custom software instead of buying SaaS?", answer: "Custom development becomes reasonable when a workflow is strategically important, generic products cause costly workarounds, integration or control requirements are substantial, and the long-term value justifies ownership. Established SaaS is usually better for standard needs." },
+      { question: "Can you modernize an existing legacy application?", answer: "Yes. Modernization may involve discovery, stabilization, API design, modular refactoring, interface improvements, cloud migration, data planning, and staged replacement. The safest path depends on business continuity and technical risk." },
+      { question: "Do you build MVPs for startups?", answer: "Yes. MVP work focuses on the smallest product that can test a meaningful business assumption. Scope, architecture, analytics, and release planning are kept disciplined so speed does not create unnecessary technical debt." },
+      { question: "What technology stack do you build with?", answer: "We select modern, performant stacks suited to the project—typically TypeScript, Next.js or Astro, Node.js, Python, PostgreSQL, Redis, Docker, and AWS or Cloudflare infrastructure." },
+    ],
     related: ["ai-automation-systems", "brand-pr-authority"],
+    keywords: ["custom software development India", "SaaS development agency", "web application development Hyderabad", "MVP development India", "software modernization"],
   },
 ];
 
@@ -168,27 +342,475 @@ export const caseStudies = [
   { slug: "lovely-lady-nx", name: "Lovely Lady NX", sector: "Designer sarees & retail", title: "Local retail discovery and campaign management for apparel", summary: "PrysmNexus is managing store discovery, local search presence, and seasonal campaign creative for Lovely Lady NX. Published metrics will follow once a reporting period is available.", metrics: [] as { value: string; label: string; note: string }[], services: ["Local SEO & Discovery", "Meta advertising", "Content production"] },
 ];
 
-export const insights = [
-  { slug: "digital-marketing-for-restaurants-india", title: "Digital marketing for restaurants and cafés in India", description: "A practical framework for connecting restaurant branding, content, social media, paid campaigns, local search, and reviews.", updated: "2026-07-17", answer: "Digital marketing for restaurants in India works best as a connected system: clear positioning, original food and venue content, consistent social publishing, focused paid campaigns, accurate local search information, and an active reputation workflow.", sections: [{ title: "Start with the customer journey", text: "A guest may first see a reel, check reviews, open a map listing, view the menu, and then call or visit. Treating those moments as separate projects creates gaps. A useful plan assigns each channel a role and keeps the offer, imagery, address, hours, and brand message consistent." }, { title: "Build a reusable content library", text: "Plan photography and video around signature items, atmosphere, people, service moments, events, and frequently asked questions. This gives organic social, ads, Google updates, websites, and messaging channels enough original material to work together." }, { title: "Measure actions, not attention alone", text: "Reach and views explain distribution, but restaurants should also review calls, directions, reservations, enquiries, offer redemptions, repeat engagement, and the quality of customer response." }], checklist: ["Clear positioning and current menu information", "Original photo and video library", "Monthly social plan", "Google Business Profile accuracy", "Review response workflow", "Tracked calls, directions, bookings, or enquiries"] },
-  { slug: "local-seo-google-business-profile-india", title: "Local SEO and Google Business Profile optimization in India", description: "How Indian businesses can improve local discovery using website relevance, accurate profile information, useful content, and reputation signals.", updated: "2026-07-17", answer: "Local SEO for a business in India combines an indexable website, descriptive service pages, accurate business information, a complete Google Business Profile, locally relevant content, quality photos, and a consistent process for earning and responding to genuine reviews.", sections: [{ title: "Website and profile information must agree", text: "Use the same business name, service description, location information, hours, contact details, and customer promise wherever the business is represented. Inconsistency makes evaluation harder for people and machines." }, { title: "Service pages create specific relevance", text: "A single generic services paragraph rarely answers detailed search intent. Create substantial pages that define each service, explain the process, answer common questions, and link to relevant proof." }, { title: "Reputation is an operating system", text: "Ask real customers for feedback at appropriate moments, make the process simple, respond professionally, and use recurring themes to improve the business. Never manufacture reviews or add unsupported rating markup." }], checklist: ["Indexable service pages", "Accurate Business Profile categories and services", "Current hours and contact information", "Original business photos", "Review request and response process", "Search Console and profile-action measurement"] },
-  { slug: "google-ads-vs-meta-ads-local-business", title: "Google Ads vs Meta Ads for a local business", description: "A straightforward comparison of Google Ads and Meta Ads for local lead generation, discovery, retargeting, and measurable campaigns.", updated: "2026-07-16", answer: "Google Ads is strongest when customers already search for a service; Meta Ads is strongest when creative and audience targeting can generate discovery or demand. Local businesses often use Google for intent and Meta for reach, retargeting, offers, and lead generation.", sections: [{ title: "Choose Google Ads for active intent", text: "Search campaigns can meet people who are already describing a need. Results depend on keyword focus, geographic settings, useful ads, a relevant landing page, conversion tracking, and fast lead handling." }, { title: "Choose Meta Ads for visual discovery", text: "Meta campaigns can introduce offers, experiences, products, and stories to selected audiences. Creative quality and variation matter because the campaign interrupts rather than answers an active search." }, { title: "Use business economics to judge both", text: "Compare platforms using qualified leads, conversion rate, cost per acquisition, sales value, lead response, and customer quality—not clicks or cheap leads alone." }], checklist: ["Define a qualified conversion", "Set geographic boundaries", "Prepare platform-specific creative", "Use relevant landing or lead journeys", "Track lead quality", "Review budget against business value"] },
-  { slug: "social-media-content-plan-hospitality", title: "A practical social-media content plan for hospitality brands", description: "How restaurants, cafés, and venues can plan original social content around discovery, trust, experience, offers, and customer response.", updated: "2026-07-16", answer: "A hospitality social-media plan should balance product appeal, atmosphere, people, proof, useful information, and timely offers. The calendar should connect original production with business priorities, consistent publishing, community response, and monthly performance review.", sections: [{ title: "Use clear content roles", text: "Product and atmosphere content attract attention; people and process build trust; useful information reduces friction; customer proof supports evaluation; offers and events create timely reasons to act." }, { title: "Plan production before the calendar", text: "Create a shot list from upcoming launches, seasonal moments, menu priorities, common questions, and campaign needs. Capture adaptable horizontal and vertical assets so the same production day supports several channels." }, { title: "Review patterns monthly", text: "Look at completion, saves, shares, comments, profile actions, enquiries, and the quality of audience response. Repeat useful patterns while changing weak hooks, formats, frequency, or distribution." }], checklist: ["Monthly commercial priorities", "Five to seven content pillars", "Shot list and production dates", "Publishing and response ownership", "Campaign and event schedule", "Monthly learning review"] },
-  { slug: "ai-agents-vs-chatbots-business-automation", title: "AI agents vs chatbots for business automation", description: "Compare AI agents and chatbots by capability, control, integration depth, risk, and the business workflows each approach is best suited to automate.", updated: "2026-07-19", answer: "A chatbot manages a conversation; an AI agent can interpret information, use approved tools, and complete defined tasks across a workflow. Use a chatbot for focused questions and guided service. Use an agent when the job requires controlled multi-step action, integrations, monitoring, and human approval.", sections: [{ title: "Chatbots are strongest at structured conversation", text: "A well-designed chatbot can answer known questions, collect lead details, route requests, provide order or appointment information, and guide users through a predictable service path. It should clearly disclose its role and offer a human route when confidence is low." }, { title: "AI agents add tools and task execution", text: "An agent may read a request, classify it, retrieve approved information, update a CRM, draft a response, create a document, or trigger the next workflow step. Greater capability also requires stronger permissions, logging, evaluation, and exception handling." }, { title: "Combine AI interpretation with deterministic controls", text: "Reliable systems rarely make every step autonomous. Use AI where language or judgment creates value, conventional rules where outcomes must be deterministic, and human approval where legal, financial, reputational, or customer risk is material." }], checklist: ["Define the exact task and acceptable outcome", "Limit tools, data access, and permissions", "Create confidence thresholds and escalation paths", "Log actions and test representative failures", "Keep sensitive decisions under human review", "Measure resolution quality, time saved, and exceptions"] },
-  { slug: "custom-software-vs-off-the-shelf-saas", title: "Custom software vs off-the-shelf SaaS", description: "A practical comparison of custom software and established SaaS covering workflow fit, cost, ownership, integration, implementation speed, and long-term scale.", updated: "2026-07-19", answer: "Choose established SaaS when the need is common and a reliable product already solves it well. Consider custom software when the workflow creates strategic advantage, generic tools impose recurring operational cost, or integration, ownership, and control requirements justify the investment.", sections: [{ title: "SaaS wins for standard business capabilities", text: "Accounting, email, help desks, analytics, and many collaboration needs are usually served best by mature products. They provide faster implementation, known pricing, support, security investment, and established integrations without the burden of owning every technical decision." }, { title: "Custom software earns its place through differentiation", text: "Custom engineering is justified when the workflow is unique, central to customer value, constrained by repeated workarounds, or difficult to coordinate across generic tools. The business must be willing to own product decisions, maintenance, security, and continued improvement." }, { title: "Compare total operating impact, not licence price alone", text: "Model setup, subscriptions, customization, migration, training, manual work, integration, change management, maintenance, and the value of faster or better operations. A staged prototype can test assumptions before committing to a larger build." }], checklist: ["Map the workflow and non-negotiable requirements", "Audit credible SaaS options first", "Estimate workarounds and integration cost", "Define ownership, security, and maintenance", "Prototype the highest-risk assumption", "Choose the option with the clearest long-term operating value"] },
-  { slug: "digital-pr-vs-performance-marketing", title: "Digital PR vs performance marketing", description: "Compare digital PR and performance marketing by purpose, speed, measurement, trust, control, and the role each plays in sustainable business growth.", updated: "2026-07-19", answer: "Digital PR builds credibility through relevant stories, expertise, and third-party recognition; performance marketing buys measurable distribution to generate defined actions. PR is stronger for authority and reputation, while paid media is stronger for controlled reach and rapid testing. Many growth plans need both in different roles.", sections: [{ title: "Digital PR compounds credibility", text: "Relevant press, interviews, commentary, podcasts, and expert content can strengthen recognition, branded search, trust, and the evidence used across sales and marketing. Outcomes depend on genuine relevance and editorial decisions, so placement and timing should never be presented as guaranteed." }, { title: "Performance marketing provides controllable distribution", text: "Google and Meta campaigns can target defined audiences, test offers, and measure conversion paths more directly. Results depend on creative, intent, tracking, landing experience, budget, competition, and lead handling rather than media spend alone." }, { title: "Use one system to strengthen the other", text: "PR proof can improve campaign and landing-page credibility. Paid campaigns can distribute strong founder insight or earned coverage to a relevant audience. Keep measurement distinct: authority signals and qualified visibility are not the same as paid conversions." }], checklist: ["Define whether the priority is authority or immediate demand", "Separate earned, sponsored, and paid placement", "Prepare verifiable expertise and proof", "Use conversion tracking for paid campaigns", "Reuse credible coverage across owned channels", "Evaluate commercial quality, not exposure alone"] },
-  { slug: "digital-marketing-for-fashion-design-academies-india", title: "Digital marketing for fashion design academies in India", description: "How fashion design academies and institutes in India can build enrollment through brand positioning, original content, social proof, and local search visibility.", updated: "2026-07-25", answer: "Digital marketing for a fashion design academy works best as a connected system: a clear brand identity that signals credibility to prospective students and parents, an original content library showing real student work and campus life, active social publishing where fashion audiences already are, and accurate local search presence for admissions-intent searches. PrysmNexus currently applies this approach with Smiley Fashion Academy.", sections: [{ title: "Brand positioning shapes every admissions decision", text: "Prospective students and parents compare academies on faculty credibility, placement outcomes, course structure, and campus environment before they compare fees. A clear brand identity—consistent visual language, tone, and messaging—makes those comparisons easier to win and reduces the burden on every individual conversation." }, { title: "Original content proves quality better than claims do", text: "Fashion is a visual discipline, so photography and video of real student collections, workshops, faculty, and campus life carry more weight than generic stock imagery or text-only claims. A reusable content library supports the website, social channels, admissions material, and paid campaigns from the same original production." }, { title: "Social presence and local search close the loop", text: "Prospective students discover academies through Instagram and YouTube, then verify legitimacy through Google search and reviews before enquiring. A consistent publishing calendar paired with an accurate, complete Google Business Profile and a genuine review process makes that verification step work in the academy's favour instead of against it." }], checklist: ["Clear brand positioning and visual identity", "Original photography and video of student work and campus", "Active social publishing calendar", "Accurate Google Business Profile for admissions-intent search", "Genuine review and reputation workflow", "Consistent messaging across website, social, and admissions material"] },
+export type Insight = {
+  slug: string;
+  title: string;
+  description: string;
+  updated: string;
+  answer: string;
+  keyTakeaways: KeyTakeaway[];
+  sections: { title: string; text: string }[];
+  checklist: string[];
+  faqs: Faq[];
+  keywords: string[];
+};
+
+export const insights: Insight[] = [
+  {
+    slug: "digital-marketing-services-india",
+    title: "Digital marketing services for growing businesses in India",
+    description: "A comprehensive guide to digital marketing services in India: combining branding, content production, paid media, SEO, and AI automation under one accountable team.",
+    updated: "2026-11-07",
+    answer: "Digital marketing services in India deliver the highest return when managed as one connected system rather than fragmented agency retainers. Ambitious businesses combine clear brand positioning, original photo and video production, intent-driven Google and Meta advertising, local SEO, and AI automation to generate sustained, measurable growth.",
+    keyTakeaways: [
+      { bold: "Unified over fragmented", text: "Connecting brand strategy, original content, and paid advertising under one team eliminates communication friction and improves conversion rates." },
+      { bold: "Original creative outperforms templates", text: "Original photo and video assets created for Indian audiences consistently generate higher engagement and lower cost-per-lead than generic stock imagery." },
+      { bold: "High-intent search drives revenue", text: "Combining local search optimization (Google Maps & GBP) with targeted Google Ads captures consumers with active purchasing intent." },
+      { bold: "Automation scales response speed", text: "Integrating WhatsApp and CRM workflows ensures inbound leads receive instant responses within minutes, dramatically raising conversion." },
+    ],
+    sections: [
+      { title: "Why fragmented agency retainers fail in the Indian market", text: "Many companies hire separate vendors for social media, SEO, paid ads, and website development. The result is conflicting messaging, disconnected metrics, and finger-pointing when results lag. A unified growth partner ensures every creative asset, ad rupee, and search ranking reinforces the same commercial goal." },
+      { title: "The 5 pillars of high-ROI digital marketing in India", text: "A successful digital marketing architecture starts with clear brand positioning, feeds continuous original content into social and paid channels, captures active intent through local SEO and Google Search, and converts traffic via frictionless landing pages and WhatsApp workflows." },
+      { title: "Measuring real commercial outcomes instead of vanity metrics", text: "Impressions and reach only reflect distribution. Sustainable digital marketing evaluates qualified enquiries, customer acquisition cost (CAC), lead response velocity, appointment or table bookings, and lifetime revenue generated." },
+    ],
+    checklist: [
+      "Documented brand positioning and customer personas",
+      "Original monthly photography and video production calendar",
+      "Optimized Google Business Profile and local search foundations",
+      "Active Google Ads and Meta Ads campaigns with conversion tracking",
+      "Frictionless WhatsApp lead response and CRM integration",
+      "Monthly executive reporting on CAC, pipeline value, and return on ad spend",
+    ],
+    faqs: [
+      { question: "What is the typical cost of digital marketing services in India?", answer: "Professional digital marketing retainers in India typically range from ₹40,000 to ₹1,50,000 per month depending on deliverables, content production volume, advertising channels, and automation requirements." },
+      { question: "How long does it take to see measurable results from digital marketing?", answer: "Paid campaigns (Google & Meta) can generate qualified leads within 1 to 2 weeks. Organic SEO and brand authority typically show meaningful compounding results within 3 to 6 months of consistent execution." },
+      { question: "Why is WhatsApp integration essential for Indian digital marketing?", answer: "Over 80% of Indian consumers prefer engaging and inquiring via WhatsApp rather than traditional email. Automated WhatsApp CRM routing ensures rapid lead qualification and higher close rates." },
+    ],
+    keywords: ["digital marketing services India", "growth marketing agency India", "best digital marketing company Hyderabad", "digital marketing strategy India", "integrated marketing partner"],
+  },
+  {
+    slug: "digital-marketing-for-restaurants-india",
+    title: "Digital marketing for restaurants and cafés in India",
+    description: "A practical framework for connecting restaurant branding, content, social media, paid campaigns, local search, and reviews.",
+    updated: "2026-11-07",
+    answer: "Digital marketing for restaurants in India works best as a connected system: clear positioning, original food and venue content, consistent social publishing, focused paid campaigns, accurate local search information, and an active reputation workflow.",
+    keyTakeaways: [
+      { bold: "Visual appeal drives footfall", text: "Professional photography and short-form reels showcasing signature dishes and ambiance directly influence dining decisions." },
+      { bold: "Local search captures hungry diners", text: "Accurate Google Business Profile data, menu items, and consistent operating hours place your restaurant in high-intent 'near me' searches." },
+      { bold: "Geo-targeted paid promotions", text: "Meta and Google Ads targeted within a 3–7 km radius around your venue drive reservations for weekend dining and special events." },
+      { bold: "Review management builds trust", text: "A proactive system for requesting and responding to customer reviews on Google and Zomato directly boosts search visibility." },
+    ],
+    sections: [
+      { title: "Start with the customer journey", text: "A guest may first see a reel, check reviews, open a map listing, view the menu, and then call or visit. Treating those moments as separate projects creates gaps. A useful plan assigns each channel a role and keeps the offer, imagery, address, hours, and brand message consistent." },
+      { title: "Build a reusable content library", text: "Plan photography and video around signature items, atmosphere, people, service moments, events, and frequently asked questions. This gives organic social, ads, Google updates, websites, and messaging channels enough original material to work together." },
+      { title: "Measure actions, not attention alone", text: "Reach and views explain distribution, but restaurants should also review calls, directions, reservations, enquiries, offer redemptions, repeat engagement, and the quality of customer response." },
+    ],
+    checklist: [
+      "Clear positioning and current menu information",
+      "Original photo and video library",
+      "Monthly social plan",
+      "Google Business Profile accuracy",
+      "Review response workflow",
+      "Tracked calls, directions, bookings, or enquiries",
+    ],
+    faqs: [
+      { question: "How can restaurants in India increase weekend bookings through social media?", answer: "Run promotional reels showcasing the dining atmosphere and weekend specials mid-week (Wednesday–Friday) paired with a direct WhatsApp booking link." },
+      { question: "What is the best platform for restaurant advertising in India?", answer: "Meta Ads (Instagram) is unmatched for visual discovery and food reels, while Google Search & Maps capture immediate dining intent in nearby localities." },
+      { question: "How important are food photos compared to text menus?", answer: "Visual menus and high-definition food photos increase dining conversion rates by up to 35% compared to plain text listings." },
+    ],
+    keywords: ["restaurant digital marketing India", "cafe marketing Hyderabad", "hospitality marketing strategy", "food photography marketing", "restaurant SEO India"],
+  },
+  {
+    slug: "local-seo-google-business-profile-india",
+    title: "Local SEO and Google Business Profile optimization in India",
+    description: "How Indian businesses can improve local discovery using website relevance, accurate profile information, useful content, and reputation signals.",
+    updated: "2026-11-07",
+    answer: "Local SEO for a business in India combines an indexable website, descriptive service pages, accurate business information, a complete Google Business Profile, locally relevant content, quality photos, and a consistent process for earning and responding to genuine reviews.",
+    keyTakeaways: [
+      { bold: "NAP consistency is mandatory", text: "Exact name, address, and phone number consistency across your website, Google Business Profile, and citations is foundational for map rankings." },
+      { bold: "Primary category precision", text: "Selecting the precise primary category that matches high-volume search intent dictates over 60% of Google 3-Pack placement." },
+      { bold: "Dedicated local service pages", text: "Substantial website pages defining specific services and localities provide the search engine with verified context." },
+      { bold: "Systematic review generation", text: "Regular, keyword-rich customer reviews and prompt owner responses create ongoing trust signals for the algorithm." },
+    ],
+    sections: [
+      { title: "Website and profile information must agree", text: "Use the same business name, service description, location information, hours, contact details, and customer promise wherever the business is represented. Inconsistency makes evaluation harder for people and machines." },
+      { title: "Service pages create specific relevance", text: "A single generic services paragraph rarely answers detailed search intent. Create substantial pages that define each service, explain the process, answer common questions, and link to relevant proof." },
+      { title: "Reputation is an operating system", text: "Ask real customers for feedback at appropriate moments, make the process simple, respond professionally, and use recurring themes to improve the business. Never manufacture reviews or add unsupported rating markup." },
+    ],
+    checklist: [
+      "Indexable service pages",
+      "Accurate Business Profile categories and services",
+      "Current hours and contact information",
+      "Original business photos",
+      "Review request and response process",
+      "Search Console and profile-action measurement",
+    ],
+    faqs: [
+      { question: "How long does it take to rank in Google's Local 3-Pack in Indian cities?", answer: "With an optimized profile, accurate NAP data, and active review management, businesses commonly see rank improvements within 4 to 12 weeks." },
+      { question: "Does having a website help Google Business Profile rankings?", answer: "Yes. Google indexes the linked website to confirm service relevance, geographic coverage, and schema markup, directly boosting map rank." },
+      { question: "How can businesses collect more Google reviews ethically?", answer: "Send a direct WhatsApp review link immediately after a successful transaction or service delivery while customer satisfaction is highest." },
+    ],
+    keywords: ["local SEO India", "Google Business Profile optimization", "Google Maps ranking India", "local search marketing Hyderabad", "reputation management"],
+  },
+  {
+    slug: "google-ads-vs-meta-ads-local-business",
+    title: "Google Ads vs Meta Ads for a local business",
+    description: "A straightforward comparison of Google Ads and Meta Ads for local lead generation, discovery, retargeting, and measurable campaigns.",
+    updated: "2026-11-07",
+    answer: "Google Ads is strongest when customers already search for a service; Meta Ads is strongest when creative and audience targeting can generate discovery or demand. Local businesses often use Google for intent and Meta for reach, retargeting, offers, and lead generation.",
+    keyTakeaways: [
+      { bold: "Intent vs Discovery", text: "Google Ads captures customers actively searching for immediate solutions; Meta Ads introduces your brand to potential customers scrolling their feeds." },
+      { bold: "Cost-per-click dynamics", text: "Meta Ads generally provides cheaper clicks and impressions, while Google Ads has higher CPCs but significantly higher immediate commercial intent." },
+      { bold: "Creative dependency", text: "Meta requires frequent creative refreshes (reels, graphics) to prevent ad fatigue; Google Search relies on keyword match types and persuasive ad copy." },
+      { bold: "The winning combination", text: "The highest ROI approach uses Google Search to capture high-intent buyers and Meta to retarget site visitors and generate local brand recall." },
+    ],
+    sections: [
+      { title: "Choose Google Ads for active intent", text: "Search campaigns can meet people who are already describing a need. Results depend on keyword focus, geographic settings, useful ads, a relevant landing page, conversion tracking, and fast lead handling." },
+      { title: "Choose Meta Ads for visual discovery", text: "Meta campaigns can introduce offers, experiences, products, and stories to selected audiences. Creative quality and variation matter because the campaign interrupts rather than answers an active search." },
+      { title: "Use business economics to judge both", text: "Compare platforms using qualified leads, conversion rate, cost per acquisition, sales value, lead response, and customer quality—not clicks or cheap leads alone." },
+    ],
+    checklist: [
+      "Define a qualified conversion",
+      "Set geographic boundaries",
+      "Prepare platform-specific creative",
+      "Use relevant landing or lead journeys",
+      "Track lead quality",
+      "Review budget against business value",
+    ],
+    faqs: [
+      { question: "Which platform gives faster leads for local businesses in India?", answer: "Google Search Ads typically produces same-day leads because searchers are actively hunting for a service provider." },
+      { question: "Can Meta Ads generate B2B leads in India?", answer: "Yes, when paired with clear industry pain points, video testimonials, and friction-free Meta Instant Forms or WhatsApp lead routing." },
+      { question: "How do you allocate budget between Google and Meta?", answer: "A typical starting balance is 60% Google Search for high-intent capture and 40% Meta for visual retargeting and demand generation." },
+    ],
+    keywords: ["Google Ads vs Meta Ads", "local business advertising India", "PPC agency India", "paid acquisition strategy", "lead generation comparison"],
+  },
+  {
+    slug: "social-media-content-plan-hospitality",
+    title: "A practical social-media content plan for hospitality brands",
+    description: "How restaurants, cafés, and venues can plan original social content around discovery, trust, experience, offers, and customer response.",
+    updated: "2026-11-07",
+    answer: "A hospitality social-media plan should balance product appeal, atmosphere, people, proof, useful information, and timely offers. The calendar should connect original production with business priorities, consistent publishing, community response, and monthly performance review.",
+    keyTakeaways: [
+      { bold: "Five core content pillars", text: "Divide your calendar across signature food/drinks, venue atmosphere, kitchen craft, guest testimonials, and seasonal promotions." },
+      { bold: "Short-form video priority", text: "Reels highlighting sizzle, plating, and ambiance capture over 70% of organic reach on hospitality Instagram accounts." },
+      { bold: "Production batching", text: "Schedule one focused half-day shoot monthly to capture all vertical reels, photos, and stories needed for 30 days." },
+      { bold: "Engagement and reservation routing", text: "Every post must have an active direct route to reserve a table or order via WhatsApp or phone." },
+    ],
+    sections: [
+      { title: "Use clear content roles", text: "Product and atmosphere content attract attention; people and process build trust; useful information reduces friction; customer proof supports evaluation; offers and events create timely reasons to act." },
+      { title: "Plan production before the calendar", text: "Create a shot list from upcoming launches, seasonal moments, menu priorities, common questions, and campaign needs. Capture adaptable horizontal and vertical assets so the same production day supports several channels." },
+      { title: "Review patterns monthly", text: "Look at completion, saves, shares, comments, profile actions, enquiries, and the quality of audience response. Repeat useful patterns while changing weak hooks, formats, frequency, or distribution." },
+    ],
+    checklist: [
+      "Monthly commercial priorities",
+      "Five to seven content pillars",
+      "Shot list and production dates",
+      "Publishing and response ownership",
+      "Campaign and event schedule",
+      "Monthly learning review",
+    ],
+    faqs: [
+      { question: "How many times a week should a restaurant post on Instagram?", answer: "We recommend 3 to 4 high-quality original reels per week plus daily stories covering daily specials and behind-the-scenes moments." },
+      { question: "What reels hook works best for food and drinks?", answer: "Close-up action hooks (cheese pulls, sizzling pans, pouring syrups) in the first 2 seconds outperform static menu displays." },
+      { question: "How can hospitality brands turn likes into actual diners?", answer: "Add interactive story polls, exclusive weekly specials with promo codes, and a prominent WhatsApp reservation link in the bio." },
+    ],
+    keywords: ["hospitality content plan", "restaurant social media calendar", "Instagram food reels strategy", "cafe marketing plan", "hospitality branding"],
+  },
+  {
+    slug: "ai-agents-vs-chatbots-business-automation",
+    title: "AI agents vs chatbots for business automation",
+    description: "Compare AI agents and chatbots by capability, control, integration depth, risk, and the business workflows each approach is best suited to automate.",
+    updated: "2026-11-07",
+    answer: "A chatbot manages a conversation; an AI agent can interpret information, use approved tools, and complete defined tasks across a workflow. Use a chatbot for focused questions and guided service. Use an agent when the job requires controlled multi-step action, integrations, monitoring, and human approval.",
+    keyTakeaways: [
+      { bold: "Conversation vs Execution", text: "Chatbots output text answers to user prompts; AI agents execute actions like updating CRMs, generating invoices, and checking calendars." },
+      { bold: "Tool use and API connectivity", text: "Agents connect to internal databases, payment gateways, and WhatsApp via APIs to perform end-to-end tasks." },
+      { bold: "Deterministic guardrails", text: "Business-critical steps (refunds, contracts, legal terms) must use deterministic rules while AI handles natural language interpretation." },
+      { bold: "Observable orchestration", text: "Using workflow engines like n8n ensures complete logging, human review checkpoints, and immediate failure notifications." },
+    ],
+    sections: [
+      { title: "Chatbots are strongest at structured conversation", text: "A well-designed chatbot can answer known questions, collect lead details, route requests, provide order or appointment information, and guide users through a predictable service path. It should clearly disclose its role and offer a human route when confidence is low." },
+      { title: "AI agents add tools and task execution", text: "An agent may read a request, classify it, retrieve approved information, update a CRM, draft a response, create a document, or trigger the next workflow step. Greater capability also requires stronger permissions, logging, evaluation, and exception handling." },
+      { title: "Combine AI interpretation with deterministic controls", text: "Reliable systems rarely make every step autonomous. Use AI where language or judgment creates value, conventional rules where outcomes must be deterministic, and human approval where legal, financial, reputational, or customer risk is material." },
+    ],
+    checklist: [
+      "Define the exact task and acceptable outcome",
+      "Limit tools, data access, and permissions",
+      "Create confidence thresholds and escalation paths",
+      "Log actions and test representative failures",
+      "Keep sensitive decisions under human review",
+      "Measure resolution quality, time saved, and exceptions",
+    ],
+    faqs: [
+      { question: "Can an AI agent hallucinate and make business mistakes?", answer: "Without guardrails, LLMs can hallucinate. Robust implementations restrict tools to strict schemas, enforce validation rules, and require human approval for financial or legal actions." },
+      { question: "What is the cost difference between chatbots and custom AI agents?", answer: "Basic rule-based chatbots require low initial setup, while AI agent systems require custom tool integration, API orchestration, and testing, delivering substantially higher operational efficiency." },
+      { question: "Can AI agents integrate with WhatsApp for Indian businesses?", answer: "Yes. Using the official WhatsApp Business Cloud API, AI agents can converse in multiple Indian languages, qualify buyer intent, and record details in your CRM." },
+    ],
+    keywords: ["AI agents vs chatbots", "business AI automation India", "n8n AI agent workflows", "WhatsApp AI agent", "operational AI systems"],
+  },
+  {
+    slug: "custom-software-vs-off-the-shelf-saas",
+    title: "Custom software vs off-the-shelf SaaS",
+    description: "A practical comparison of custom software and established SaaS covering workflow fit, cost, ownership, integration, implementation speed, and long-term scale.",
+    updated: "2026-11-07",
+    answer: "Choose established SaaS when the need is common and a reliable product already solves it well. Consider custom software when the workflow creates strategic advantage, generic tools impose recurring operational cost, or integration, ownership, and control requirements justify the investment.",
+    keyTakeaways: [
+      { bold: "Commodity vs Strategic", text: "Use standard SaaS for commodity needs (accounting, email); build custom software for proprietary workflows that give your business competitive advantage." },
+      { bold: "Total Cost of Ownership (TCO)", text: "Monthly per-seat SaaS costs balloon as your team grows; custom software carries higher upfront build cost but near-zero marginal user fees." },
+      { bold: "Data sovereignty and IP", text: "Custom software keeps all customer and transaction data under your direct control, creating defensible enterprise valuation." },
+      { bold: "Integration freedom", text: "Custom software connects cleanly with your legacy databases and local payment methods without vendor lock-in." },
+    ],
+    sections: [
+      { title: "SaaS wins for standard business capabilities", text: "Accounting, email, help desks, analytics, and many collaboration needs are usually served best by mature products. They provide faster implementation, known pricing, support, security investment, and established integrations without the burden of owning every technical decision." },
+      { title: "Custom software earns its place through differentiation", text: "Custom engineering is justified when the workflow is unique, central to customer value, constrained by repeated workarounds, or difficult to coordinate across generic tools. The business must be willing to own product decisions, maintenance, security, and continued improvement." },
+      { title: "Compare total operating impact, not licence price alone", text: "Model setup, subscriptions, customization, migration, training, manual work, integration, change management, maintenance, and the value of faster or better operations. A staged prototype can test assumptions before committing to a larger build." },
+    ],
+    checklist: [
+      "Map the workflow and non-negotiable requirements",
+      "Audit credible SaaS options first",
+      "Estimate workarounds and integration cost",
+      "Define ownership, security, and maintenance",
+      "Prototype the highest-risk assumption",
+      "Choose the option with the clearest long-term operating value",
+    ],
+    faqs: [
+      { question: "How much does custom software development cost in India?", answer: "Typical MVP builds for internal business portals or multi-tenant SaaS range from ₹2,50,000 to ₹10,00,000 depending on features, security, integrations, and scale." },
+      { question: "How long does it take to launch a custom software MVP?", answer: "A focused MVP designed around critical core workflows typically takes 6 to 12 weeks from technical architecture to production deployment." },
+      { question: "Who owns the code in a custom software engagement?", answer: "With PrysmNexus, the client retains 100% intellectual property ownership of all custom codebase, repositories, databases, and deployment scripts." },
+    ],
+    keywords: ["custom software vs SaaS", "software development India", "build vs buy software", "custom web app development Hyderabad", "SaaS MVP engineering"],
+  },
+  {
+    slug: "digital-pr-vs-performance-marketing",
+    title: "Digital PR vs performance marketing",
+    description: "Compare digital PR and performance marketing by purpose, speed, measurement, trust, control, and the role each plays in sustainable business growth.",
+    updated: "2026-11-07",
+    answer: "Digital PR builds credibility through relevant stories, expertise, and third-party recognition; performance marketing buys measurable distribution to generate defined actions. PR is stronger for authority and reputation, while paid media is stronger for controlled reach and rapid testing. Many growth plans need both in different roles.",
+    keyTakeaways: [
+      { bold: "Authority vs Immediacy", text: "Digital PR creates enduring organic credibility and backlinks; performance marketing buys fast, on-demand traffic and immediate leads." },
+      { bold: "E-E-A-T and Search Rankings", text: "Editorial mentions and brand citations from authoritative publications give Google the trust signals required to rank competitive keywords." },
+      { bold: "Conversion synergy", text: "Featuring third-party media logos and verified press quotes on your landing pages improves paid ad conversion rates by up to 25%." },
+      { bold: "Measurement clarity", text: "Judge PR by branded search volume, referral traffic, and domain authority; judge paid media by cost per lead, ROAS, and conversion rate." },
+    ],
+    sections: [
+      { title: "Digital PR compounds credibility", text: "Relevant press, interviews, commentary, podcasts, and expert content can strengthen recognition, branded search, trust, and the evidence used across sales and marketing. Outcomes depend on genuine relevance and editorial decisions, so placement and timing should never be presented as guaranteed." },
+      { title: "Performance marketing provides controllable distribution", text: "Google and Meta campaigns can target defined audiences, test offers, and measure conversion paths more directly. Results depend on creative, intent, tracking, landing experience, budget, competition, and lead handling rather than media spend alone." },
+      { title: "Use one system to strengthen the other", text: "PR proof can improve campaign and landing-page credibility. Paid campaigns can distribute strong founder insight or earned coverage to a relevant audience. Keep measurement distinct: authority signals and qualified visibility are not the same as paid conversions." },
+    ],
+    checklist: [
+      "Define whether the priority is authority or immediate demand",
+      "Separate earned, sponsored, and paid placement",
+      "Prepare verifiable expertise and proof",
+      "Use conversion tracking for paid campaigns",
+      "Reuse credible coverage across owned channels",
+      "Evaluate commercial quality, not exposure alone",
+    ],
+    faqs: [
+      { question: "Can digital PR replace paid advertising?", answer: "No. Digital PR builds long-term authority and organic trust, while paid advertising provides controlled volume and on-demand conversion testing." },
+      { question: "How does digital PR improve Google AI Overview citations?", answer: "AI answer engines synthesize answers from high-authority media and consensus sources; consistent PR citations establish your company as a primary factual reference." },
+      { question: "What qualifies as good founder PR on LinkedIn?", answer: "Transparent case studies, proprietary frameworks, lessons from failures, and genuine industry insights that peers and buyers find practically useful." },
+    ],
+    keywords: ["digital PR vs performance marketing", "brand authority India", "founder PR LinkedIn", "media outreach strategy", "E-E-A-T SEO India"],
+  },
+  {
+    slug: "digital-marketing-for-fashion-design-academies-india",
+    title: "Digital marketing for fashion design academies in India",
+    description: "How fashion design academies and institutes in India can build enrollment through brand positioning, original content, social proof, and local search visibility.",
+    updated: "2026-11-07",
+    answer: "Digital marketing for a fashion design academy works best as a connected system: a clear brand identity that signals credibility to prospective students and parents, an original content library showing real student work and campus life, active social publishing where fashion audiences already are, and accurate local search presence for admissions-intent searches. PrysmNexus currently applies this approach with Smiley Fashion Academy.",
+    keyTakeaways: [
+      { bold: "Parent and student alignment", text: "Students look for creative inspiration, runway events, and campus vibe; parents evaluate faculty credentials, placement history, and fees." },
+      { bold: "Student portfolio showcases", text: "Original videos of student garment construction, pattern making, and runway showcases carry more conversion weight than stock graphics." },
+      { bold: "Admissions cycle synchronization", text: "Scale paid acquisition campaigns and campus open-day promotions 6 to 8 weeks before admission deadlines (May–July and November–January)." },
+      { bold: "Local search and campus tours", text: "Optimized Google Business Profile listings capturing 'fashion designing institute near me' drive direct campus visits and admissions enquiries." },
+    ],
+    sections: [
+      { title: "Brand positioning shapes every admissions decision", text: "Prospective students and parents compare academies on faculty credibility, placement outcomes, course structure, and campus environment before they compare fees. A clear brand identity—consistent visual language, tone, and messaging—makes those comparisons easier to win and reduces the burden on every individual conversation." },
+      { title: "Original content proves quality better than claims do", text: "Fashion is a visual discipline, so photography and video of real student collections, workshops, faculty, and campus life carry more weight than generic stock imagery or text-only claims. A reusable content library supports the website, social channels, admissions material, and paid campaigns from the same original production." },
+      { title: "Social presence and local search close the loop", text: "Prospective students discover academies through Instagram and YouTube, then verify legitimacy through Google search and reviews before enquiring. A consistent publishing calendar paired with an accurate, complete Google Business Profile and a genuine review process makes that verification step work in the academy's favour instead of against it." },
+    ],
+    checklist: [
+      "Clear brand positioning and visual identity",
+      "Original photography and video of student work and campus",
+      "Active social publishing calendar",
+      "Accurate Google Business Profile for admissions-intent search",
+      "Genuine review and reputation workflow",
+      "Consistent messaging across website, social, and admissions material",
+    ],
+    faqs: [
+      { question: "What is the best platform to recruit fashion design students in India?", answer: "Instagram is the primary discovery engine for prospective students, while Google Search and WhatsApp drive parental consultation and campus visits." },
+      { question: "When should admissions advertising campaigns begin?", answer: "Pre-admission awareness campaigns should launch 2 to 3 months prior to board exam results, ramping into direct inquiry ads during result season." },
+      { question: "How does PrysmNexus work with fashion academies like Smiley Fashion Academy?", answer: "We provide end-to-end brand identity refinement, professional photography of campus workshops, social media management, and local search discovery to increase admissions." },
+    ],
+    keywords: ["fashion design academy marketing", "education marketing agency India", "fashion institute student recruitment", "Smiley Fashion Academy marketing", "fashion education SEO"],
+  },
 ];
 
 export const serviceBySlug = (slug: string) => services.find((service) => service.slug === slug);
+export const insightBySlug = (slug: string) => insights.find((insight) => insight.slug === slug);
+
+// Schema Generators for SEO and Answer Engine Optimization (AEO)
+export const organizationSchema = (origin: string) => ({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${origin}/#organization`,
+  name: brand.name,
+  alternateName: ["Prysm Nexus", "PrysmNexus India", "PrysmNexus Growth Agency"],
+  legalName: brand.legalName,
+  url: `${origin}/`,
+  logo: `${origin}/prysmnexus-logo.png`,
+  image: `${origin}/prysmnexus-logo.png`,
+  description: brand.description,
+  email: brand.email,
+  telephone: brand.telephone,
+  priceRange: "₹₹",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: brand.locality,
+    addressRegion: brand.region,
+    addressCountry: brand.country,
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "17.3850",
+    longitude: "78.4867",
+  },
+  areaServed: [
+    { "@type": "Country", name: "India" },
+    { "@type": "City", name: "Hyderabad" },
+    { "@type": "City", name: "Bengaluru" },
+    { "@type": "City", name: "Mumbai" },
+    { "@type": "City", name: "Delhi NCR" },
+  ],
+  sameAs: [
+    brand.instagram,
+    "https://www.linkedin.com/company/prysmnexus",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: brand.telephone,
+    email: brand.email,
+    availableLanguage: ["English", "Hindi", "Telugu"],
+    areaServed: "IN",
+  },
+  knowsAbout: [
+    "Growth Marketing",
+    "Brand Strategy & Positioning",
+    "Commercial Photography & Video Production",
+    "Social Media Marketing",
+    "Performance Marketing (Google Ads & Meta Ads)",
+    "Local SEO & Google Business Profile Optimization",
+    "AI Automation Systems & n8n Workflows",
+    "Custom Software & SaaS Development",
+    "Digital PR & Founder Authority Building",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "PrysmNexus Growth Marketing & Automation Services",
+    itemListElement: services.map((service, index) => ({
+      "@type": "Offer",
+      position: index + 1,
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+        url: `${origin}/services/${service.slug}/`,
+      },
+    })),
+  },
+});
+
+export const websiteSchema = (origin: string) => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${origin}/#website`,
+  url: `${origin}/`,
+  name: brand.name,
+  description: brand.description,
+  publisher: { "@id": `${origin}/#organization` },
+  inLanguage: "en-IN",
+});
+
+export const serviceSchema = (origin: string, service: Service) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${origin}/services/${service.slug}/#service`,
+  name: service.name,
+  serviceType: service.name,
+  description: service.description,
+  url: `${origin}/services/${service.slug}/`,
+  provider: { "@id": `${origin}/#organization` },
+  areaServed: { "@type": "Country", name: "India" },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: `${service.shortName} Deliverables`,
+    itemListElement: service.deliverables.map((item, index) => ({
+      "@type": "Offer",
+      position: index + 1,
+      name: item,
+    })),
+  },
+  termsOfService: `${origin}/privacy/`,
+});
+
+export const articleSchema = (origin: string, article: Insight) => ({
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": `${origin}/insights/${article.slug}/#article`,
+  headline: article.title,
+  description: article.description,
+  datePublished: article.updated,
+  dateModified: article.updated,
+  inLanguage: "en-IN",
+  author: {
+    "@type": "Organization",
+    "@id": `${origin}/#organization`,
+    name: "PrysmNexus Strategy Team",
+    url: `${origin}/`,
+  },
+  publisher: { "@id": `${origin}/#organization` },
+  mainEntityOfPage: `${origin}/insights/${article.slug}/`,
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: [".answerBlock p", ".keyTakeawaysBox", ".seoHeroLead", "h1"],
+  },
+});
+
+export const caseStudySchema = (origin: string, study: (typeof caseStudies)[number]) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${origin}/case-studies/${study.slug}/#article`,
+  headline: study.title,
+  description: study.summary,
+  about: {
+    "@type": "Organization",
+    name: study.name,
+  },
+  author: { "@id": `${origin}/#organization` },
+  publisher: { "@id": `${origin}/#organization` },
+  datePublished: "2026-07-25",
+  dateModified: brand.reviewed,
+  url: `${origin}/case-studies/${study.slug}/`,
+});
 
 export const breadcrumbSchema = (origin: string, items: { name: string; path: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: items.map((item, index) => ({ "@type": "ListItem", position: index + 1, name: item.name, item: `${origin}${item.path}` })),
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    item: `${origin}${item.path}`,
+  })),
 });
 
 export const faqSchema = (faqs: Faq[]) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })),
+  mainEntity: faqs.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer },
+  })),
 });

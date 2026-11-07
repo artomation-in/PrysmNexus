@@ -2,11 +2,49 @@
 import SeoLayout from "../../layouts/SeoLayout.astro";
 import { brand, breadcrumbSchema, services } from "../../data/seo";
 const origin = (Astro.site ?? new URL(brand.domain)).origin;
-const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Services", path: "/services/" }]), { "@context": "https://schema.org", "@type": "ItemList", name: "PrysmNexus services", itemListElement: services.map((service, index) => ({ "@type": "ListItem", position: index + 1, url: `${origin}/services/${service.slug}/`, name: service.name })) }];
+const schemas = [
+  breadcrumbSchema(origin, [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services/" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "PrysmNexus Services",
+    itemListElement: services.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${origin}/services/${service.slug}/`,
+      name: service.name,
+    })),
+  },
+];
+
+const keywords = [
+  "digital marketing services India",
+  "AI automation services Hyderabad",
+  "brand strategy India",
+  "content production India",
+  "performance marketing agency",
+  "local SEO services",
+  "custom software development",
+];
 ---
-<SeoLayout title="Growth, AI Automation & Software Services | PrysmNexus" description="Explore PrysmNexus growth marketing, AI automation, brand authority, custom software, SaaS, and digital product services for businesses across India." eyebrow="Connected business systems" heading="Growth, automation, authority, and software. One accountable team." lead="Marketing, intelligent workflows, credible positioning, and purpose-built technology work better when they share a clear commercial direction." schemas={schemas}>
+
+<SeoLayout
+  title="Growth, AI Automation & Software Services | PrysmNexus"
+  description="Explore PrysmNexus growth marketing, AI automation, brand authority, custom software, SaaS, and digital product services for businesses across India."
+  keywords={keywords}
+  eyebrow="Connected business systems"
+  heading="Growth, automation, authority, and software. One accountable team."
+  lead="Marketing, intelligent workflows, credible positioning, and purpose-built technology work better when they share a clear commercial direction."
+  schemas={schemas}
+>
   <div class="seoMain">
-    <aside class="answerBlock"><span>What PrysmNexus does</span><p>PrysmNexus is an India-focused growth, automation, and software partner connecting marketing, AI workflows, brand authority, and custom digital products under one coordinated team.</p></aside>
+    <aside class="answerBlock">
+      <span>What PrysmNexus Does (AEO Summary)</span>
+      <p>{brand.description}</p>
+    </aside>
     <section class="seoSection">
       <div class="seoSectionHead"><h2>Eight focused service systems.</h2><p>Each page defines the service, explains its working process, answers common questions, and shows how it connects with the wider business system.</p></div>
       <div class="seoIndexGrid" style="margin-top:38px">{services.map((service, index) => <a class="seoIndexCard" href={`/services/${service.slug}/`}><small>0{index + 1} · {service.eyebrow}</small><div><h2>{service.name}</h2><p>{service.description}</p></div><strong>Explore service ↗</strong></a>)}</div>

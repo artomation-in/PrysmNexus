@@ -1,35 +1,52 @@
 # PrysmNexus
 
-> PrysmNexus is an India-focused growth, automation, and software partner connecting marketing, AI workflows, brand authority, and custom digital products under one accountable team.
+> PrysmNexus is an India-focused growth, automation, and software partner connecting brand strategy, content production, paid media, local SEO, AI workflows, and custom digital products under one accountable team.
 
-## Primary pages
+## Primary Pages
 
-- [Homepage](/): Brand overview, selected capabilities, process, evidence, and FAQs.
-- [Services](/services/): Complete service overview.
-- [Case Studies](/case-studies/): Named, evidence-labelled client work.
-- [Insights](/insights/): Practical guidance for businesses across India.
-- [About](/about/): Entity and working approach.
-- [Contact](/contact/): Primary enquiry route.
+- [Homepage](https://www.prysmnexus.com/): Brand positioning, selected capabilities, working process, case studies, and FAQ.
+- [Services](https://www.prysmnexus.com/services/): Complete overview of our 8 core capabilities.
+- [Case Studies](https://www.prysmnexus.com/case-studies/): Named, evidence-backed client work across Indian sectors.
+- [Insights & Guides](https://www.prysmnexus.com/insights/): Authoritative playbooks and strategic comparisons for growing Indian businesses.
+- [About](https://www.prysmnexus.com/about/): Operating philosophy and multidisciplinary team model.
+- [Contact](https://www.prysmnexus.com/contact/): Direct consultation and project enquiry form.
 
-## Core services
+## Core Services
 
-- [Brand Strategy and Identity](/services/brand-strategy/)
-- [Content Production](/services/content-production/)
-- [Social Media Management](/services/social-media-management/)
-- [Performance Marketing](/services/performance-marketing/)
-- [SEO, Local Search, and Reputation](/services/seo-local-search-reputation/)
-- [AI Automation Systems](/services/ai-automation-systems/)
-- [Brand and PR Authority](/services/brand-pr-authority/)
-- [Custom Software and SaaS Development](/services/custom-software-saas/)
+- [Brand Strategy and Identity](https://www.prysmnexus.com/services/brand-strategy/): Positioning, audience definition, messaging framework, and visual design systems.
+- [Content Production](https://www.prysmnexus.com/services/content-production/): Commercial photography, food styling, cinematic video, reels, and ad creatives.
+- [Social Media Management](https://www.prysmnexus.com/services/social-media-management/): Content calendars, daily publishing, community response, and WhatsApp marketing.
+- [Performance Marketing](https://www.prysmnexus.com/services/performance-marketing/): High-intent Google Search, Performance Max, and Meta lead acquisition.
+- [SEO, Local Search, and Reputation](https://www.prysmnexus.com/services/seo-local-search-reputation/): Technical SEO, Google Business Profile (GBP), Local 3-Pack rank, and review systems.
+- [AI Automation Systems](https://www.prysmnexus.com/services/ai-automation-systems/): CRM pipeline automation, WhatsApp Business API, autonomous AI agents, and n8n orchestration.
+- [Brand and PR Authority](https://www.prysmnexus.com/services/brand-pr-authority/): Digital PR, media outreach, podcast bookings, and founder LinkedIn thought leadership.
+- [Custom Software and SaaS Development](https://www.prysmnexus.com/services/custom-software-saas/): Web applications, multi-tenant SaaS architectures, dashboards, and MVP engineering.
 
-## Decision guides
+## Decision Guides & Insights
 
-- [AI Agents vs Chatbots](/insights/ai-agents-vs-chatbots-business-automation/)
-- [Custom Software vs Off-the-Shelf SaaS](/insights/custom-software-vs-off-the-shelf-saas/)
-- [Digital PR vs Performance Marketing](/insights/digital-pr-vs-performance-marketing/)
+- [Digital Marketing Services in India](https://www.prysmnexus.com/insights/digital-marketing-services-india/): Cornerstone playbook on combining branding, content, SEO, and paid acquisition.
+- [Digital Marketing for Restaurants & Cafés](https://www.prysmnexus.com/insights/digital-marketing-for-restaurants-india/): Customer journey, food reels, and local discovery for hospitality.
+- [Local SEO & Google Business Profile in India](https://www.prysmnexus.com/insights/local-seo-google-business-profile-india/): Map rankings, NAP consistency, and ethical reputation workflows.
+- [Google Ads vs Meta Ads for Local Business](https://www.prysmnexus.com/insights/google-ads-vs-meta-ads-local-business/): Search intent versus visual discovery lead generation.
+- [Hospitality Social Media Content Plan](https://www.prysmnexus.com/insights/social-media-content-plan-hospitality/): Content pillars, production batching, and reservation routing.
+- [AI Agents vs Chatbots for Automation](https://www.prysmnexus.com/insights/ai-agents-vs-chatbots-business-automation/): Multi-step tool use, deterministic guardrails, and n8n workflows.
+- [Custom Software vs Off-the-Shelf SaaS](https://www.prysmnexus.com/insights/custom-software-vs-off-the-shelf-saas/): Workflow differentiation, total cost of ownership, and IP ownership.
+- [Digital PR vs Performance Marketing](https://www.prysmnexus.com/insights/digital-pr-vs-performance-marketing/): E-E-A-T trust compounding versus direct paid lead generation.
+- [Digital Marketing for Fashion Design Academies](https://www.prysmnexus.com/insights/digital-marketing-for-fashion-design-academies-india/): Student recruitment, visual proof, and admissions cycles.
 
-## Contact
+## Featured Client Case Studies
 
-- Email: connect@prysmnexus.com
-- Service area: India
-- Last reviewed: 2026-07-19
+- [Smiley Fashion Academy](https://www.prysmnexus.com/case-studies/smiley-fashion-academy/): Fashion education branding, campus photography, and student recruitment.
+- [Yashna's Milara](https://www.prysmnexus.com/case-studies/yashnas-milara/): Healthy foods FMCG identity, packaging design, and social media launch.
+- [Vastraya Collection](https://www.prysmnexus.com/case-studies/vastraya-collection/): Designer ethnic fashion visual storytelling, reels, and digital audience reach.
+- [Divine Radiance Jewelry](https://www.prysmnexus.com/case-studies/divine-radiance/): Fine luxury jewelry visual guidelines and high-intent acquisition campaigns.
+- [Lovely Lady NX](https://www.prysmnexus.com/case-studies/lovely-lady-nx/): Retail apparel store discovery, seasonal campaigns, and Meta advertising.
+
+## Contact & Entity Information
+
+- Canonical URL: https://www.prysmnexus.com/
+- Primary Email: connect@prysmnexus.com
+- Phone: +91 73306 62949
+- Geographic Base: Hyderabad, Telangana, India
+- Service Area: Pan-India (Hyderabad, Bengaluru, Mumbai, Delhi NCR, and nationwide)
+- Last Reviewed: 2026-11-07

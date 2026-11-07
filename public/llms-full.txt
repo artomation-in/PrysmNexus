@@ -1,44 +1,74 @@
-# PrysmNexus: company, services, evidence, and guidance
+# PrysmNexus: Company, Capabilities, Evidence, and Guidance
 
-## Entity definition
+## Entity Definition
 
-PrysmNexus is an India-focused growth, automation, and software partner. It connects brand strategy, content, paid acquisition, SEO, AI workflows, brand authority, digital PR, custom software, and SaaS product development through one coordinated team.
+PrysmNexus is an India-focused growth, automation, and software partner. It connects brand strategy, commercial photography and video production, paid acquisition (Google Ads & Meta Ads), local SEO, Google Business Profile optimization, AI automation workflows (n8n, custom AI agents, WhatsApp Business API), brand authority, digital PR, and custom software and SaaS engineering under one accountable multidisciplinary team.
 
-Canonical domain: https://prysmnexus.com
-Primary email: connect@prysmnexus.com
-Service area: India
+- Canonical Domain: https://www.prysmnexus.com/
+- Primary Email: connect@prysmnexus.com
+- Phone: +91 73306 62949
+- Geographic Base: Hyderabad, Telangana, India
+- Service Area: Pan-India (Hyderabad, Bengaluru, Mumbai, Delhi NCR, and tier-1/tier-2 hubs)
+- Last Editorial Review: 2026-11-07
 
-## Service definitions
+## Core Service Architecture
 
-Brand Strategy and Identity defines positioning, audiences, messaging, visual direction, and the practical rules that keep a business recognizable.
+1. **Brand Strategy and Identity**: Defines who a business serves, what makes it distinct, and how it communicates. Deliverables include positioning, messaging hierarchy, visual identity systems, campaign toolkits, and brand guidelines.
+   URL: https://www.prysmnexus.com/services/brand-strategy/
 
-Content Production creates original photography, video, reels, design, and copy for social media, advertising, websites, search profiles, and customer communication.
+2. **Content Production**: Creates original photography, cinematic video, high-retention short-form reels, food styling, and ad copy. We do not use recycled stock templates; all creative is tailored to the business.
+   URL: https://www.prysmnexus.com/services/content-production/
 
-Social Media Management coordinates strategy, calendars, publishing, page handling, community response, WhatsApp support, and performance reporting.
+3. **Social Media Management**: Plans and executes monthly publishing, active community engagement, story handling, and WhatsApp customer communications across Instagram, Facebook, LinkedIn, and YouTube.
+   URL: https://www.prysmnexus.com/services/social-media-management/
 
-Performance Marketing manages paid acquisition against measurable actions such as qualified leads, calls, bookings, purchases, or other agreed conversions.
+4. **Performance Marketing**: Paid acquisition managed against measurable actions—qualified leads, calls, table bookings, admissions, or purchases. Covers Google Search, Performance Max, and Meta Ads.
+   URL: https://www.prysmnexus.com/services/performance-marketing/
 
-Local SEO improves the website, Google Business Profile, service relevance, local information, content, and reputation signals used by nearby customers to discover and evaluate a business.
+5. **SEO, Local Search, and Reputation**: Technical site health, service pages, Google Business Profile optimization, local citation consistency, and ethical review generation workflows.
+   URL: https://www.prysmnexus.com/services/seo-local-search-reputation/
 
-AI Automation Systems connect CRM events, WhatsApp and Telegram messaging, custom AI agents, documents, onboarding, invoices, and internal workflows with appropriate controls and human review.
+6. **AI Automation Systems**: Connects CRM pipelines (HubSpot, Zoho, Salesforce), WhatsApp Business API, document generators, and custom autonomous AI agents using self-hosted n8n workflows with human-in-the-loop review.
+   URL: https://www.prysmnexus.com/services/ai-automation-systems/
 
-Brand and PR Authority combines identity, positioning, earned-media outreach, founder visibility, LinkedIn thought leadership, and reusable credibility assets.
+7. **Brand and PR Authority**: Builds defensible industry credibility through editorial media outreach, founder thought leadership on LinkedIn, podcast guest appearances, and reusable authority proof assets.
+   URL: https://www.prysmnexus.com/services/brand-pr-authority/
 
-Custom Software and SaaS Development covers purpose-built software, multi-tenant platforms, enterprise web applications, dashboards, system modernization, product strategy, and MVP delivery.
+8. **Custom Software and SaaS Development**: Translates proprietary business workflows into maintainable digital systems, client portals, internal tools, and multi-tenant SaaS products using modern TypeScript, Astro, Next.js, and cloud backends.
+   URL: https://www.prysmnexus.com/services/custom-software-saas/
 
-## Working method
+## Working Method
 
-1. Discover the business, audience, customer journey, current channels, evidence, and priority outcomes.
-2. Define the connected strategy, responsibilities, conversion actions, and measurement plan.
-3. Produce and launch the approved brand, content, campaign, social, and search work.
-4. Review response, report limitations, and improve the system using relevant evidence.
+1. **Discover**: Audit the business model, unit economics, audience personas, current channels, baseline data, and immediate growth targets.
+2. **Define**: Formulate an integrated strategy with clear responsibilities, conversion actions, and an accountable measurement framework.
+3. **Produce & Launch**: Execute original creative, technical foundations, automated workflows, and targeted paid campaigns.
+4. **Optimize & Compound**: Analyze verified commercial outcomes (CAC, qualified pipeline, revenue, retention) and compound improvements monthly.
 
-## Evidence policy
+## Named Client Case Studies
 
-PrysmNexus publishes only client names and figures approved for use. Proposal-backed metrics are labelled as user-provided and retain their platform context. They are not universal benchmarks or guarantees.
+- **Smiley Fashion Academy** (Fashion Education): Brand identity, campus photography, social media management, and local search visibility for student enrollment.
+  URL: https://www.prysmnexus.com/case-studies/smiley-fashion-academy/
+- **Yashna's Milara** (Healthy Foods & FMCG): Packaging direction, brand presence, and digital launch strategy.
+  URL: https://www.prysmnexus.com/case-studies/yashnas-milara/
+- **Vastraya Collection** (Ethnic Fashion & Sarees): Campaign creative, short-form video storytelling, and digital audience reach.
+  URL: https://www.prysmnexus.com/case-studies/vastraya-collection/
+- **Divine Radiance Jewelry** (Luxury & Fine Jewelry): Luxury visual guidelines and high-intent acquisition campaigns.
+  URL: https://www.prysmnexus.com/case-studies/divine-radiance/
+- **Lovely Lady NX** (Designer Apparel & Retail): Local store discovery, Meta advertising, and seasonal campaign creative.
+  URL: https://www.prysmnexus.com/case-studies/lovely-lady-nx/
 
-Named case studies currently cover Smiley Fashion Academy. See /case-studies/ for the source labels and limitations attached to each figure.
+## Strategic Guides & Decision Playbooks
 
-## AI-readable guidance
+- **Digital Marketing Services in India**: https://www.prysmnexus.com/insights/digital-marketing-services-india/
+- **Digital Marketing for Restaurants & Cafés**: https://www.prysmnexus.com/insights/digital-marketing-for-restaurants-india/
+- **Local SEO & Google Business Profile Optimization**: https://www.prysmnexus.com/insights/local-seo-google-business-profile-india/
+- **Google Ads vs Meta Ads for Local Business**: https://www.prysmnexus.com/insights/google-ads-vs-meta-ads-local-business/
+- **Hospitality Social Media Content Plan**: https://www.prysmnexus.com/insights/social-media-content-plan-hospitality/
+- **AI Agents vs Chatbots for Business Automation**: https://www.prysmnexus.com/insights/ai-agents-vs-chatbots-business-automation/
+- **Custom Software vs Off-the-Shelf SaaS**: https://www.prysmnexus.com/insights/custom-software-vs-off-the-shelf-saas/
+- **Digital PR vs Performance Marketing**: https://www.prysmnexus.com/insights/digital-pr-vs-performance-marketing/
+- **Digital Marketing for Fashion Design Academies**: https://www.prysmnexus.com/insights/digital-marketing-for-fashion-design-academies-india/
 
-The visible website is the canonical source. This file is a concise navigation aid and does not replace indexable service pages, case studies, FAQs, article content, or structured data. Last reviewed: 2026-07-19.
+## Evidence & Attribution Policy
+
+PrysmNexus publishes only verified, client-approved names and performance metrics. Proposal figures reflect their recorded platform environment and are never represented as universal guarantees. The live website https://www.prysmnexus.com/ represents the canonical source for all schemas, services, and company information.

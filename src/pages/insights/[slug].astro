@@ -1,24 +1,113 @@
 ---
 import SeoLayout from "../../layouts/SeoLayout.astro";
-import { brand, breadcrumbSchema, insights } from "../../data/seo";
+import { brand, breadcrumbSchema, articleSchema, faqSchema, insights, type Insight } from "../../data/seo";
+
 export const getStaticPaths = () => insights.map((article) => ({ params: { slug: article.slug }, props: { article } }));
-const { article } = Astro.props;
+
+const { article } = Astro.props as { article: Insight };
 const origin = (Astro.site ?? new URL(brand.domain)).origin;
+
 const relatedServices: Record<string, { href: string; label: string }> = {
+  "digital-marketing-services-india": { href: "/services/performance-marketing/", label: "Explore Performance Marketing" },
+  "digital-marketing-for-restaurants-india": { href: "/services/content-production/", label: "Explore Content Production" },
+  "local-seo-google-business-profile-india": { href: "/services/seo-local-search-reputation/", label: "Explore SEO & Local Search" },
+  "google-ads-vs-meta-ads-local-business": { href: "/services/performance-marketing/", label: "Explore Performance Marketing" },
+  "social-media-content-plan-hospitality": { href: "/services/social-media-management/", label: "Explore Social Media Management" },
   "ai-agents-vs-chatbots-business-automation": { href: "/services/ai-automation-systems/", label: "Explore AI Automation Systems" },
   "custom-software-vs-off-the-shelf-saas": { href: "/services/custom-software-saas/", label: "Explore Custom Software & SaaS" },
   "digital-pr-vs-performance-marketing": { href: "/services/brand-pr-authority/", label: "Explore Brand & PR Authority" },
-  "digital-marketing-for-fashion-design-academies-india": { href: "/services/brand-strategy/", label: "Explore Brand Strategy and Identity" },
+  "digital-marketing-for-fashion-design-academies-india": { href: "/services/brand-strategy/", label: "Explore Brand Strategy & Identity" },
 };
+
 const relatedService = relatedServices[article.slug];
-const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Insights", path: "/insights/" }, { name: article.title, path: `/insights/${article.slug}/` }]), { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.description, datePublished: article.updated, dateModified: article.updated, author: { "@type": "Organization", "@id": `${origin}/#organization`, name: "PrysmNexus Strategy Team" }, publisher: { "@id": `${origin}/#organization` }, mainEntityOfPage: `${origin}/insights/${article.slug}/` }];
+
+const schemas = [
+  breadcrumbSchema(origin, [
+    { name: "Home", path: "/" },
+    { name: "Insights", path: "/insights/" },
+    { name: article.title, path: `/insights/${article.slug}/` },
+  ]),
+  articleSchema(origin, article),
+  article.faqs && article.faqs.length > 0 ? faqSchema(article.faqs) : null,
+].filter(Boolean) as Record<string, unknown>[];
 ---
-<SeoLayout title={`${article.title} | PrysmNexus`} description={article.description} eyebrow="PrysmNexus Insights" heading={article.title} lead={article.description} schemas={schemas} type="article" published={article.updated} modified={article.updated}>
+
+<SeoLayout
+  title={`${article.title} | PrysmNexus`}
+  description={article.description}
+  keywords={article.keywords}
+  eyebrow="PrysmNexus Insights"
+  heading={article.title}
+  lead={article.description}
+  schemas={schemas}
+  type="article"
+  published={article.updated}
+  modified={article.updated}
+>
   <div class="seoMain articleBody">
-    <aside class="answerBlock"><span>Direct answer</span><p>{article.answer}</p></aside>
-    {article.sections.map((section) => <section><h2>{section.title}</h2><p>{section.text}</p></section>)}
-    <section><h2>Practical checklist.</h2><ul class="seoList">{article.checklist.map((item) => <li>{item}</li>)}</ul></section>
-    {relatedService && <aside class="answerBlock"><span>Related PrysmNexus service</span><p>Need help applying this decision to your business? <a href={relatedService.href}>{relatedService.label} ↗</a></p></aside>}
-    <aside class="sourceBox"><strong>Method and limitations:</strong> This guide reflects PrysmNexus working practice and general platform principles reviewed on {article.updated}. Recommendations must be adapted to the business, market, budget, evidence, and platform conditions; no ranking or commercial result is guaranteed.</aside>
+    <aside class="answerBlock">
+      <span>Direct Answer (AEO Summary)</span>
+      <p>{article.answer}</p>
+    </aside>
+
+    {article.keyTakeaways && article.keyTakeaways.length > 0 && (
+      <div class="keyTakeawaysBox">
+        <span class="takeawayHeading">Key Takeaways at a Glance</span>
+        <ul class="takeawayList">
+          {article.keyTakeaways.map((takeaway) => (
+            <li>
+              <strong>{takeaway.bold}</strong>: {takeaway.text}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {article.sections.map((section) => (
+      <section>
+        <h2>{section.title}</h2>
+        <p>{section.text}</p>
+      </section>
+    ))}
+
+    <section>
+      <h2>Practical Checklist</h2>
+      <ul class="seoList">
+        {article.checklist.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    {article.faqs && article.faqs.length > 0 && (
+      <section class="seoSection">
+        <div class="seoSectionHead">
+          <h2>Frequently Asked Questions</h2>
+          <p>Direct answers for search engines, answer engines, and business decision-makers.</p>
+        </div>
+        <div class="seoFaq">
+          {article.faqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {relatedService && (
+      <aside class="answerBlock">
+        <span>Related PrysmNexus Service</span>
+        <p>
+          Need help applying this framework to your business?{" "}
+          <a href={relatedService.href}>{relatedService.label} ↗</a>
+        </p>
+      </aside>
+    )}
+
+    <aside class="sourceBox">
+      <strong>Method and editorial standard:</strong> This guide reflects PrysmNexus working practice, field data, and platform principles reviewed on {article.updated}. Recommendations must be adapted to your business model, customer journey, and platform conditions; no ranking or commercial outcome is guaranteed.
+    </aside>
   </div>
 </SeoLayout>

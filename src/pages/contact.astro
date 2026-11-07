@@ -3,11 +3,45 @@ import SeoLayout from "../layouts/SeoLayout.astro";
 import { brand, breadcrumbSchema } from "../data/seo";
 const origin = (Astro.site ?? new URL(brand.domain)).origin;
 const formEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim() ?? "https://formsubmit.co/ajax/connect@prysmnexus.com";
-const schemas = [breadcrumbSchema(origin, [{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }]), { "@context": "https://schema.org", "@type": "ContactPage", name: "Contact PrysmNexus", url: `${origin}/contact/`, mainEntity: { "@id": `${origin}/#organization` } }];
+const schemas = [
+  breadcrumbSchema(origin, [
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact/" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact PrysmNexus",
+    url: `${origin}/contact/`,
+    mainEntity: { "@id": `${origin}/#organization` },
+  },
+];
+
+const keywords = [
+  "contact PrysmNexus",
+  "hire marketing agency India",
+  "growth marketing consultation",
+  "PrysmNexus phone email",
+  "marketing agency Hyderabad contact",
+];
 ---
-<SeoLayout title="Contact PrysmNexus | Growth, AI & Software India" description="Contact PrysmNexus to discuss growth marketing, AI automation, brand authority, custom software, SaaS, or connected digital systems across India." eyebrow="Start a conversation" heading="Tell us what needs to grow, change, or work more intelligently." lead="Share the business, current systems, priority outcomes, and the problem you want the next stage of growth or technology to solve." schemas={schemas}>
+<SeoLayout
+  title="Contact PrysmNexus | Growth, AI & Software India"
+  description="Contact PrysmNexus to discuss growth marketing, AI automation, brand authority, custom software, SaaS, or connected digital systems across India."
+  keywords={keywords}
+  eyebrow="Start a conversation"
+  heading="Tell us what needs to grow, change, or work more intelligently."
+  lead="Share the business, current systems, priority outcomes, and the problem you want the next stage of growth or technology to solve."
+  schemas={schemas}
+>
   <div class="seoMain">
-    <aside class="answerBlock"><span>Primary contact</span><p>Email <a href={`mailto:${brand.email}`}>{brand.email}</a>. PrysmNexus supports brands and hospitality businesses across India where the scope is a strong fit.</p></aside>
+    <aside class="answerBlock">
+      <span>Primary Contact (AEO Direct Answer)</span>
+      <p>
+        Email <a href={`mailto:${brand.email}`}>{brand.email}</a> or call/WhatsApp{" "}
+        <a href="tel:+917330662949">+91 73306 62949</a>. Headquartered in Hyderabad, Telangana, PrysmNexus supports ambitious brands and enterprises across India.
+      </p>
+    </aside>
     <section class="seoSection contactSection" aria-labelledby="contact-form-title">
       <div class="contactIntro">
         <span class="contactKicker">Project enquiry</span>

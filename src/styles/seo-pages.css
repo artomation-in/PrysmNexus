@@ -326,6 +326,55 @@
   letter-spacing: -.025em
 }
 
+.keyTakeawaysBox {
+  margin: -24px 0 60px;
+  padding: 28px 32px;
+  border: 1px solid rgba(220, 52, 57, .18);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .96) 0%, rgba(254, 246, 246, .82) 100%);
+  box-shadow: 0 14px 36px rgba(19, 26, 36, .05)
+}
+
+.takeawayHeading {
+  display: block;
+  color: var(--red);
+  font: 800 11px/1 Manrope, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 18px
+}
+
+.takeawayList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px
+}
+
+.takeawayList li {
+  position: relative;
+  padding-left: 28px;
+  font: 500 clamp(15px, 1.3vw, 17px)/1.6 Manrope, sans-serif;
+  color: #252e3b
+}
+
+.takeawayList li strong {
+  color: #111722;
+  font-weight: 700
+}
+
+.takeawayList li::before {
+  content: "✦";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  color: var(--red);
+  font-weight: 800;
+  font-size: 14px
+}
+
 .seoSection {
   padding: 66px 0;
   border-top: 1px solid var(--line)
@@ -1105,6 +1154,11 @@
   padding: 24px 28px
 }
 
+.keyTakeawaysBox {
+  margin-bottom: 42px;
+  padding: 22px 24px
+}
+
 .seoSection {
   padding: clamp(46px, 4.5vw, 60px) 0
 }
@@ -1211,6 +1265,11 @@
     padding: 22px 20px
   }
 
+  .keyTakeawaysBox {
+    margin-bottom: 34px;
+    padding: 20px 18px
+  }
+
   .seoSection {
     padding-block: 36px
   }
@@ -1313,6 +1372,12 @@
   .answerBlock {
     margin-bottom: 28px;
     padding: 19px 18px;
+    border-radius: 18px
+  }
+
+  .keyTakeawaysBox {
+    margin-bottom: 28px;
+    padding: 18px 16px;
     border-radius: 18px
   }
 
