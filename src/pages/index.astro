@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import aboutImage from "../assets/about-prysmnexus-v2.png";
 import serviceImage from "../assets/service.webp";
-import heroImage from "../assets/hero.png";
 import processBackdrop from "../assets/work-process-prism.png";
 import whyAnalyticsImage from "../assets/why-analytics.jpg";
 import whyFeatureImage from "../assets/why-feature-prysmnexus-v2.png";
@@ -18,6 +17,10 @@ import capabilityTeamImage from "../assets/capability-team-hq.png";
 import capabilitySearchImage from "../assets/capability-search-hq.png";
 import prysmNexusLogo from "../assets/prysmnexus-logo-mark-hq-transparent.png";
 import clientSmileyFashionAcademy from "../assets/client-smiley-fashion-academy.png";
+import clientYashnasMilara from "../assets/client-yashnas-milara.png";
+import clientVastrayaCollection from "../assets/client-vastraya-collection.png";
+import clientDivineRadiance from "../assets/client-divine-radiance.png";
+import clientLovelyLadyNx from "../assets/client-lovely-lady-nx.png";
 import { brand as seoBrand, services as seoServices } from "../data/seo";
 
 const services = [
@@ -41,6 +44,10 @@ const projectStudies = [
 
 const featuredClients = [
   { key: "smiley-fashion", image: clientSmileyFashionAcademy, name: "Smiley Fashion Academy", category: "Fashion Education", caseStudySlug: "smiley-fashion-academy" },
+  { key: "yashnas-milara", image: clientYashnasMilara, name: "Yashna's Milara", category: "Healthy Bites", caseStudySlug: "yashnas-milara" },
+  { key: "vastraya-collection", image: clientVastrayaCollection, name: "Vastraya Collection", category: "Ethnic Fashion", caseStudySlug: "vastraya-collection" },
+  { key: "divine-radiance", image: clientDivineRadiance, name: "Divine Radiance", category: "Fine Jewelry", caseStudySlug: "divine-radiance" },
+  { key: "lovely-lady-nx", image: clientLovelyLadyNx, name: "Lovely Lady NX", category: "Designer Sarees", caseStudySlug: "lovely-lady-nx" },
 ];
 
 const workProcessSteps = [
@@ -151,11 +158,11 @@ const schemas = [
     <section class="capabilityShowcase" aria-label="Core marketing capabilities">
       <div class="capabilityPanel">
         {[
-          ["Strategic Branding", "Clear positioning and visual direction that make your business recognizable.", "↗", capabilityBrandingImage, "Brand strategy materials arranged on a creative studio table"],
-          ["Original Content", "Photography, video, reels, and creative work produced for your brand.", "✦", capabilityContentImage, "Filmmaker preparing a professional cinema camera in a content studio"],
-          ["One Accountable Team", "Strategy, production, publishing, campaigns, and reporting managed together.", "◎", capabilityTeamImage, "Integrated marketing team collaborating around one campaign plan"],
-          ["Search & Reputation", "SEO, Google profile, local discovery, and trust signals working as one.", "⌕", capabilitySearchImage, "Search visibility and reputation analytics across laptop and mobile"],
-        ].map(([title, text, glyph, image, alt], index) => (
+          { title: "Strategic Branding", text: "Clear positioning and visual direction that make your business recognizable.", glyph: "↗", image: capabilityBrandingImage, alt: "Brand strategy materials arranged on a creative studio table" },
+          { title: "Original Content", text: "Photography, video, reels, and creative work produced for your brand.", glyph: "✦", image: capabilityContentImage, alt: "Filmmaker preparing a professional cinema camera in a content studio" },
+          { title: "One Accountable Team", text: "Strategy, production, publishing, campaigns, and reporting managed together.", glyph: "◎", image: capabilityTeamImage, alt: "Integrated marketing team collaborating around one campaign plan" },
+          { title: "Search & Reputation", text: "SEO, Google profile, local discovery, and trust signals working as one.", glyph: "⌕", image: capabilitySearchImage, alt: "Search visibility and reputation analytics across laptop and mobile" },
+        ].map(({ title, text, glyph, image, alt }, index) => (
           <article class="capabilityCard" data-reveal="up" style={`--reveal-delay:${index * 100}ms`}>
             <div class="capabilityPhoto"><Image class="capabilityImage" src={image} alt={alt} widths={[480, 720, 960, 1440, 2048]} sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1100px) 46vw, 24vw" format="webp" quality={92} loading={index === 0 ? "eager" : "lazy"} /></div>
             <span class="capabilityIcon" aria-hidden="true"><b>{glyph}</b></span>
@@ -671,8 +678,10 @@ const schemas = [
     const header = document.querySelector<HTMLElement>("[data-site-header]");
     const glassLayer = document.querySelector<HTMLElement>(".glassLayer");
     const navLinks = document.querySelectorAll<HTMLElement>("#primary-nav a");
+    const clientWindow = document.querySelector<HTMLElement>(".clientMarqueeWindow");
+    const clientTrack = document.querySelector<HTMLElement>(".clientMarqueeTrack");
     const motionSurfaces = Array.from(document.querySelectorAll<HTMLElement>(
-      ".capabilityShowcase, .about, .servicesShowcase, .whyChoose, .projectShowcase, .clientMarquee, .workProcess, .faqEditorial, .proFooter"
+      ".capabilityShowcase, .about, .servicesShowcase, .whyChoose, .projectShowcase, .workProcess, .faqEditorial, .proFooter"
     ));
     const visibleMotionSurfaces = new Set<HTMLElement>(motionSurfaces);
     let scrollFrame = 0;
@@ -707,6 +716,10 @@ const schemas = [
       scrollEnergy *= .88;
       motionRate += (1 + scrollEnergy * .78 - motionRate) * .22;
       publishMotionState();
+      if (clientTrack) {
+        const anim = clientTrack.getAnimations()[0];
+        if (anim) anim.playbackRate = 1;
+      }
       if (scrollEnergy > .008 || Math.abs(motionRate - 1) > .01) {
         motionFrame = requestAnimationFrame(settleMotion);
       } else {
@@ -754,6 +767,14 @@ const schemas = [
         const glassOpacity = Math.min(scrollY / 200, 0.8);
         glassLayer.style.setProperty('--glass-opacity', String(glassOpacity));
       }
+
+      // Client marquee velocity response on page scroll
+      if (clientTrack) {
+        const anim = clientTrack.getAnimations()[0];
+        if (anim) {
+          anim.playbackRate = Math.max(0.7, 1 + scrollEnergy * 2.8);
+        }
+      }
       
       // Nav link underline position based on scroll
       const navPositions = Array.from(navLinks).map((link) => {
@@ -783,6 +804,50 @@ const schemas = [
       }
     });
     updateScrollEffects();
+
+    // Wheel and pointer drag interaction for client marquee
+    if (clientWindow && clientTrack) {
+      clientWindow.addEventListener("wheel", (e) => {
+        const anim = clientTrack.getAnimations()[0];
+        if (anim && typeof anim.currentTime === "number") {
+          const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+          anim.currentTime = (anim.currentTime + delta * 5 + 2800000) % 28000;
+        }
+      }, { passive: true });
+
+      let isDragging = false;
+      let startX = 0;
+      let startTime = 0;
+
+      clientWindow.addEventListener("pointerdown", (e) => {
+        if (e.button !== 0) return;
+        const anim = clientTrack.getAnimations()[0];
+        if (anim && typeof anim.currentTime === "number") {
+          isDragging = true;
+          startX = e.clientX;
+          startTime = anim.currentTime;
+          clientWindow.setPointerCapture(e.pointerId);
+        }
+      });
+
+      clientWindow.addEventListener("pointermove", (e) => {
+        if (!isDragging) return;
+        const anim = clientTrack.getAnimations()[0];
+        if (anim) {
+          const diffX = e.clientX - startX;
+          anim.currentTime = (startTime - diffX * 14 + 2800000) % 28000;
+        }
+      });
+
+      const stopDrag = (e: PointerEvent) => {
+        if (!isDragging) return;
+        isDragging = false;
+        try { clientWindow.releasePointerCapture(e.pointerId); } catch {}
+      };
+
+      clientWindow.addEventListener("pointerup", stopDrag);
+      clientWindow.addEventListener("pointercancel", stopDrag);
+    }
 
     const missionContent = [
       ["Our mission is to give every client hands-on attention, original creative work, and marketing built around what genuinely grows the business."],
