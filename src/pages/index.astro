@@ -182,12 +182,12 @@ const schemas = [
           <div class="aboutMetrics" data-reveal="up">
             <article class="experienceMetric">
               <Image class="metricMark" src={prysmNexusLogo} alt="" widths={[160, 240, 320]} sizes="100px" format="webp" quality={100} loading="lazy" />
-              <strong data-count="46" data-suffix="K+">0</strong>
+              <strong data-count="275" data-suffix="K+">275K+</strong>
               <span>Content Views<br />Generated</span>
             </article>
             <article class="wide loyaltyMetric">
               <Image class="metricBackdrop" src={serviceImage} alt="" widths={[520, 760]} sizes="(max-width: 760px) 100vw, 34vw" format="webp" quality={72} loading="lazy" />
-              <strong data-count="87" data-suffix="K+">0</strong>
+              <strong data-count="5" data-suffix="M+">5M+</strong>
               <div class="metricAvatars" aria-hidden="true">
                 <Image src={aboutImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
                 <Image src={serviceImage} alt="" width={42} height={42} format="webp" quality={70} loading="lazy" />
@@ -516,12 +516,6 @@ const schemas = [
       if (window.innerWidth > 760 && nav?.classList.contains("open")) setMenuOpen(false);
     }, { passive: true });
 
-    const smoothSpring = (t: number, b: number, c: number, d: number) => {
-      const p = .9;
-      const a = 2;
-      return c * (1 - Math.exp(-p * t / d)) * Math.sin(a * p * t / d) + b;
-    };
-
     // Advanced reveal system with multiple animation types
     class RevealSystem {
       constructor() {
@@ -633,15 +627,27 @@ const schemas = [
         if (counter.dataset.counted === "true") return;
         counter.dataset.counted = "true";
         const target = Number(counter.dataset.count ?? "0");
+        const suffix = counter.dataset.suffix ?? "";
+        const format = (val: number) => `${new Intl.NumberFormat(document.documentElement.lang || "en").format(Math.round(val))}${suffix}`;
+        
+        if (reduceMotion.matches) {
+          counter.textContent = format(target);
+          return;
+        }
+
         const started = performance.now();
         const duration = Math.round(680 / getMotionRate());
-        const startValue = Number(counter.textContent?.match(/\d+/)?.[0] || "0");
+        const startValue = 0;
         
         const tick = (now: number) => {
           const progress = Math.min((now - started) / duration, 1);
-          const eased = smoothSpring(progress, startValue, target - startValue, 1);
-          counter.textContent = `${new Intl.NumberFormat(document.documentElement.lang || "en").format(Math.round(eased))}${counter.dataset.suffix ?? ""}`;
-          if (progress < 1) requestAnimationFrame(tick);
+          if (progress >= 1) {
+            counter.textContent = format(target);
+            return;
+          }
+          const eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = format(startValue + (target - startValue) * eased);
+          requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
       }
@@ -1001,7 +1007,7 @@ const schemas = [
 
     const finePointer = window.matchMedia("(pointer: fine)");
     const halo = document.querySelector<HTMLElement>(".cursorHalo");
-    if (finePointer.matches && !reduceMotion.matches) {
+    if (finePointer.matches) {
       addEventListener("pointermove", (event) => {
         halo?.style.setProperty("--pointer-x", `${event.clientX}px`);
         halo?.style.setProperty("--pointer-y", `${event.clientY}px`);
@@ -1018,42 +1024,42 @@ const schemas = [
           element.style.setProperty("--magnet-y", "0px");
         });
       });
-    const hero = document.querySelector<HTMLElement>(".hero");
-    const heroPortrait = document.querySelector<HTMLElement>(".heroPortrait");
-    const heroGlow = document.querySelector<HTMLElement>(".heroGlow");
-    const heroCopy = document.querySelector<HTMLElement>(".heroCopy");
-    
-    if (hero && !reduceMotion.matches) {
-      hero.addEventListener("pointermove", (event) => {
-        const x = event.clientX / innerWidth - .5;
-        const y = event.clientY / innerHeight - .5;
-        const intensity = Math.sqrt(x * x + y * y);
-        
-        hero.style.setProperty("--pointer-shift-x", `${x * 18 * intensity}px`);
-        hero.style.setProperty("--pointer-shift-y", `${y * 12 * intensity}px`);
-        
-        if (heroPortrait) {
-          heroPortrait.style.setProperty("--portrait-tilt", `${-y * 8}deg`);
-          heroPortrait.style.setProperty("--portrait-scale", `${1 + intensity * .02}`);
-        }
-        
-        if (heroGlow) {
-          heroGlow.style.setProperty("--glow-intensity", `${intensity * .6}`);
-          heroGlow.style.setProperty("--glow-x", `${x * 50}%`);
-          heroGlow.style.setProperty("--glow-y", `${y * 50}%`);
-        }
-      }, { passive: true });
+      const hero = document.querySelector<HTMLElement>(".hero");
+      const heroPortrait = document.querySelector<HTMLElement>(".heroPortrait");
+      const heroGlow = document.querySelector<HTMLElement>(".heroGlow");
+      const heroCopy = document.querySelector<HTMLElement>(".heroCopy");
       
-      if (heroCopy) {
-        heroCopy.addEventListener("pointermove", (event) => {
-          const rect = heroCopy.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - .5;
-          const y = (event.clientY - rect.top) / rect.height - .5;
-          heroCopy.style.setProperty("--copy-shift-x", `${x * 5}px`);
-          heroCopy.style.setProperty("--copy-shift-y", `${y * 5}px`);
+      if (hero) {
+        hero.addEventListener("pointermove", (event) => {
+          const x = event.clientX / innerWidth - .5;
+          const y = event.clientY / innerHeight - .5;
+          const intensity = Math.sqrt(x * x + y * y);
+          
+          hero.style.setProperty("--pointer-shift-x", `${x * 18 * intensity}px`);
+          hero.style.setProperty("--pointer-shift-y", `${y * 12 * intensity}px`);
+          
+          if (heroPortrait) {
+            heroPortrait.style.setProperty("--portrait-tilt", `${-y * 8}deg`);
+            heroPortrait.style.setProperty("--portrait-scale", `${1 + intensity * .02}`);
+          }
+          
+          if (heroGlow) {
+            heroGlow.style.setProperty("--glow-intensity", `${intensity * .6}`);
+            heroGlow.style.setProperty("--glow-x", `${x * 50}%`);
+            heroGlow.style.setProperty("--glow-y", `${y * 50}%`);
+          }
         }, { passive: true });
+        
+        if (heroCopy) {
+          heroCopy.addEventListener("pointermove", (event) => {
+            const rect = heroCopy.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - .5;
+            const y = (event.clientY - rect.top) / rect.height - .5;
+            heroCopy.style.setProperty("--copy-shift-x", `${x * 5}px`);
+            heroCopy.style.setProperty("--copy-shift-y", `${y * 5}px`);
+          }, { passive: true });
+        }
       }
-    }
     }
 
     const canvas = document.querySelector<HTMLCanvasElement>(".prismCanvas");
@@ -1083,6 +1089,7 @@ const schemas = [
           uniform float uReflection;
           uniform vec2 uPointer;
           uniform vec2 uAnchor;
+          uniform float uTime;
 
           mat2 rotate2d(float angle) {
             float c = cos(angle), s = sin(angle);
@@ -1129,8 +1136,6 @@ const schemas = [
           }
 
           vec2 scene(vec3 p) {
-            // Enlarge the complete prism without changing the three-panel
-            // geometry, assembly timing, pointer response, or screen anchor.
             const float prismScale = 1.18;
             p /= prismScale;
 
@@ -1139,11 +1144,16 @@ const schemas = [
             float third = uAssembly.z;
             float frontPose = smoothstep(.86, .995, min(first, min(second, third)));
 
-            float faceRotation = mix(-.12, -.08, frontPose);
+            float idleFloat = sin(uTime * 0.82) * 0.045;
+            float idleRotX = sin(uTime * 0.35) * 0.04;
+            float idleRotY = cos(uTime * 0.28) * 0.05;
+            p.y += idleFloat;
+
+            float faceRotation = mix(-.12 + idleRotX * .5, -.08, frontPose);
             float depthTilt = 1.0 - frontPose;
             p.xy *= rotate2d(faceRotation);
-            p.yz *= rotate2d(.69 * depthTilt);
-            p.xz *= rotate2d(-.38 * depthTilt);
+            p.yz *= rotate2d(.69 * depthTilt + idleRotX);
+            p.xz *= rotate2d(-.38 * depthTilt + idleRotY);
             p.yz *= rotate2d(uPointer.y * .18 * frontPose);
             p.xz *= rotate2d(-uPointer.x * .22 * frontPose);
 
@@ -1190,7 +1200,7 @@ const schemas = [
               if (travel > 8.0) break;
             }
 
-            float aura = exp(-10.5 * nearest) * .18;
+            float aura = exp(-10.5 * nearest) * (.17 + .03 * sin(uTime * 1.5));
             vec3 auraColor = mix(vec3(.88, .015, .035), vec3(1.0, .19, .24), .72);
             if (!hit) {
               float pixelFootprint = 2.0 / min(uResolution.x, uResolution.y);
@@ -1226,7 +1236,8 @@ const schemas = [
             color += vec3(1.0, .8, .78) * pow(max(dot(reflect(rayDirection, normal), lightDirection), 0.0), 42.0) * .9;
 
             float joined = smoothstep(.94, .998, min(uAssembly.x, min(uAssembly.y, uAssembly.z)));
-            float sweepProgress = clamp(uReflection, 0.0, 1.0);
+            float idleSweep = mod(uTime * .3, 2.8);
+            float sweepProgress = uReflection >= 0.0 ? clamp(uReflection, 0.0, 1.0) : (idleSweep < 1.0 ? idleSweep : 0.0);
             float sweepStrength = sin(sweepProgress * 3.14159265);
             float sweepPosition = mix(-1.05, 1.05, sweepProgress);
             float reflectionBand = exp(-54.0 * pow((uv.x + uv.y * .42) - sweepPosition, 2.0));
@@ -1279,6 +1290,7 @@ const schemas = [
             const reflectionUniform = gl.getUniformLocation(program, "uReflection");
             const pointerUniform = gl.getUniformLocation(program, "uPointer");
             const anchorUniform = gl.getUniformLocation(program, "uAnchor");
+            const timeUniform = gl.getUniformLocation(program, "uTime");
             let width = 0;
             let height = 0;
             let visible = true;
@@ -1286,6 +1298,7 @@ const schemas = [
             let scrollFrame = 0;
             let lastPrismScrollY = scrollY;
             let previousFrame = 0;
+            let shaderTime = 0;
             let entranceActive = false;
             let entranceStart = 0;
             let reflectionStart = -1;
@@ -1293,7 +1306,7 @@ const schemas = [
             let destroyed = false;
             let clickSeparated = false;
             let clickSplitTimer = 0;
-            const assembly = [1, 1, 1];
+            const assembly = [0, 0, 0];
             let assemblyTarget = [1, 1, 1];
             const pointer = [0, 0];
             const pointerTarget = [0, 0];
@@ -1308,7 +1321,6 @@ const schemas = [
             const easeOutCubic = (value: number) => 1 - Math.pow(1 - clamp01(value), 3);
 
             const getScrollAssembly = () => {
-              if (reduceMotion.matches) return [1, 1, 1];
               if (clickSeparated) return [0, 0, 0];
               const bounds = prismHero.getBoundingClientRect();
               const travelled = Math.max(0, -bounds.top);
@@ -1320,7 +1332,7 @@ const schemas = [
               ];
             };
 
-            const drawPrism = (reflectionProgress = 0) => {
+            const drawPrism = (reflectionProgress = -1, time = 0) => {
               gl.clearColor(0, 0, 0, 0);
               gl.clear(gl.COLOR_BUFFER_BIT);
               gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
@@ -1328,6 +1340,7 @@ const schemas = [
               gl.uniform1f(reflectionUniform, reflectionProgress);
               gl.uniform2f(pointerUniform, pointer[0], pointer[1]);
               gl.uniform2f(anchorUniform, prismAnchor[0], prismAnchor[1]);
+              gl.uniform1f(timeUniform, time);
               gl.drawArrays(gl.TRIANGLES, 0, 3);
             };
 
@@ -1343,8 +1356,6 @@ const schemas = [
             };
 
             const resizePrism = () => {
-              // A true 2x backing store keeps the ray-marched silhouette smooth
-              // without altering the prism's CSS size or animation geometry.
               const ratio = Math.min(devicePixelRatio || 1, 2);
               width = prismHero.clientWidth;
               height = prismHero.clientHeight;
@@ -1367,9 +1378,10 @@ const schemas = [
               if (!visible || destroyed) return;
               const delta = previousFrame ? Math.min((now - previousFrame) / 1000, .05) : 1 / 60;
               previousFrame = now;
+              shaderTime += delta;
 
               let moving = false;
-              if (entranceActive && !reduceMotion.matches) {
+              if (entranceActive) {
                 const delays = [0, 90, 180];
                 for (let index = 0; index < assembly.length; index += 1) {
                   const progress = clamp01((now - entranceStart - delays[index]) / 760);
@@ -1405,19 +1417,17 @@ const schemas = [
               }
 
               const joined = assembly.every((value) => value > .997) && assemblyTarget.every((value) => value > .997);
-              if (joined && !wasJoined && !reduceMotion.matches) reflectionStart = now;
+              if (joined && !wasJoined) reflectionStart = now;
               wasJoined = joined;
 
-              let reflectionProgress = 0;
+              let reflectionProgress = -1;
               if (reflectionStart >= 0) {
                 reflectionProgress = clamp01((now - reflectionStart) / 720);
-                if (reflectionProgress < 1) moving = true;
-                else reflectionStart = -1;
+                if (reflectionProgress >= 1) reflectionStart = -1;
               }
 
-              drawPrism(reflectionProgress);
-              if (entranceActive || moving) schedulePrism();
-              else previousFrame = 0;
+              drawPrism(reflectionProgress, shaderTime);
+              if (visible && !destroyed) schedulePrism();
             }
 
             new ResizeObserver(resizePrism).observe(prismHero);
@@ -1434,7 +1444,7 @@ const schemas = [
             }).observe(prismHero);
 
             const updatePointerTarget = (event: PointerEvent) => {
-              if (reduceMotion.matches || event.pointerType === "touch") return;
+              if (event.pointerType === "touch") return;
               const bounds = prismHero.getBoundingClientRect();
               if (bounds.bottom <= 0 || bounds.top >= innerHeight) return;
               pointerTarget[0] = Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - .5) * 2));
@@ -1450,7 +1460,7 @@ const schemas = [
             prismHero.addEventListener("pointerleave", resetPointerTarget, { passive: true });
 
             const splitPrismOnClick = (event: MouseEvent) => {
-              if (reduceMotion.matches || clickSeparated || assembly.some((value) => value < .94)) return;
+              if (clickSeparated || assembly.some((value) => value < .94)) return;
               const target = event.target as Element | null;
               if (target?.closest("a, button, input, select, textarea, label")) return;
 
@@ -1459,7 +1469,7 @@ const schemas = [
               const pixelX = Math.max(0, Math.min(canvas.width - 1, Math.round((event.clientX - bounds.left) * canvas.width / bounds.width)));
               const pixelY = Math.max(0, Math.min(canvas.height - 1, Math.round((bounds.bottom - event.clientY) * canvas.height / bounds.height)));
               gl.readPixels(pixelX, pixelY, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
-              if (pixel[3] < 160) return;
+              if (pixel[3] < 50) return;
 
               clickSeparated = true;
               entranceActive = false;
@@ -1489,13 +1499,6 @@ const schemas = [
 
             const restorePrismState = () => {
               assemblyTarget = getScrollAssembly();
-              if (reduceMotion.matches) {
-                assembly.splice(0, 3, 1, 1, 1);
-                pointer.splice(0, 2, 0, 0);
-                pointerTarget.splice(0, 2, 0, 0);
-                entranceActive = false;
-                reflectionStart = -1;
-              }
               schedulePrism();
             };
 
@@ -1510,7 +1513,7 @@ const schemas = [
 
             resizePrism();
             assemblyTarget = getScrollAssembly();
-            const startsAtHero = assemblyTarget.every((value) => value > .997) && !reduceMotion.matches;
+            const startsAtHero = assemblyTarget.every((value) => value > .997);
             if (startsAtHero) {
               assembly.splice(0, 3, 0, 0, 0);
               entranceActive = true;

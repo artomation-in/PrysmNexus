@@ -2583,7 +2583,6 @@ footer {
     transform: none !important
   }
 
-  .prismCanvas,
   .prismField,
   .cursorHalo {
     display: none !important
